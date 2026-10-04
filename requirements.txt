@@ -1,4 +1,5 @@
 quantecarlo>=0.7.5
+multivariate-probit[orthant]>=0.2.3
 numpy
 scipy
 pandas

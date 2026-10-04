@@ -15,6 +15,7 @@ the same variance; it has no closed form here and is simulated only.
 """
 from __future__ import annotations
 
+import os
 import time
 
 import numpy as np
@@ -23,9 +24,46 @@ from scipy.stats import multivariate_normal
 from quantecarlo import orthant_cdf as _orthant_cdf
 
 
-def orthant_cdf(*args, retries=3, **kw):
-    """quantecarlo.orthant_cdf with retries: a fit makes hundreds of calls, and
-    one transient HTTP error (a timeout, a worker restart) should not end it."""
+def _load_env():
+    """ORTHANT_KEY from orthant_rfc/.env (gitignored) unless already set."""
+    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", ".env")
+    try:
+        for line in open(path):
+            k, _, v = line.strip().partition("=")
+            if k and not k.startswith("#"):
+                os.environ.setdefault(k, v.strip().strip("'\""))
+    except OSError:
+        pass
+
+
+def _local_orthant():
+    """The paid local binary (multivariate-probit[orthant] >= 0.2.3), or None."""
+    _load_env()
+    try:
+        from multivariate_probit import orthant
+    except ImportError:
+        return None
+    return orthant if orthant.tier == "paid" and "dup_corr" in (orthant.cdf.__doc__ or "") else None
+
+
+# ORTHANT_BACKEND: "local", "service" (the hosted endpoint via quantecarlo), or
+# unset = local when the paid binary loads, else service. Both fold
+# near-duplicates at rho >= 0.97 and agree to ~1e-8.
+_LOCAL = None if os.environ.get("ORTHANT_BACKEND") == "service" else _local_orthant()
+if os.environ.get("ORTHANT_BACKEND") == "local" and _LOCAL is None:
+    raise ImportError("ORTHANT_BACKEND=local but the paid orthant binary did not load "
+                      "(need multivariate-probit[orthant] >= 0.2.3 and ORTHANT_KEY)")
+BACKEND = "local" if _LOCAL is not None else "service"
+
+
+def orthant_cdf(upper, cov, retries=3, resolution="high", dtype=None):
+    """P(Z <= upper[i]), Z ~ N(0, cov), on BACKEND. Service calls retry: a fit
+    makes hundreds of calls, and one transient HTTP error (a timeout, a worker
+    restart) should not end it. dtype is the service's wire width only."""
+    if _LOCAL is not None:
+        return np.asarray(_LOCAL.cdf(np.atleast_2d(upper), cov, resolution=resolution), dtype=float)
+    kw = {"resolution": resolution} if dtype is None else {"resolution": resolution, "dtype": dtype}
+    args = (upper, cov)
     import urllib.error
     for attempt in range(retries + 1):
         try:
