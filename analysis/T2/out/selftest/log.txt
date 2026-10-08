@@ -1,0 +1,11 @@
+[15:10:11] T2 selftest: truths ['L1'], k [8], reps 1, N 300, engine backend local
+[15:10:11]   L1 k=8: take rates [0.23 0.36 0.41 0.31 0.13 0.28 0.27 0.14 0.27 0.21 0.22 0.14]
+[15:11:14] truths done (62 s)
+[15:11:14] CS / IL / IFM fits done (62 s)
+[15:12:28] MVP-ML fits done (137 s)
+[15:12:28] MVP-Gibbs fits done (137 s)
+[15:12:28] fits saved to /home/ubuntu/projects/orthant_rfc/analysis/T2/out/selftest/fits.json
+[15:12:57] scoring done (165 s)
+[15:12:57] L1 k=8 rep 0: cs_f turf F4.45% j2 1.34 t 2s; cs_o turf F2.31% j2 1.31 t 3s; il turf F10.95% j2 1.93 t 0s; ifm turf -0.00% j2 0.32 t 7s; ml turf -0.00% j2 0.34 t 139s; gibbs turf -0.00% j2 0.34 t 102s
+[15:12:57] selftest OK
+[15:12:57] done (166 s)

@@ -8,3 +8,4 @@ sizing/
 data/
 analysis/*/out/**/hb/
 analysis/*/out/**/hb_*.csv
+analysis/*/out/**/phase_*.json

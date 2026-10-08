@@ -86,9 +86,8 @@ point D).
 - **D-price.** Raise one linked item's price 20%: change in each other item's take and in
   "basket contains ≥ 1 linked item". Error, and a flip on the sign of the largest
   cross-effect.
-- **D-promo.** Choose which one item to discount 20% to maximise expected menu
-  contribution Σ (p − c)·P(take) with fixed unit costs. A cross-subset decision (item 4).
-  Flip and regret (% of true optimum).
+- **D-promo** (replaced by D-TURF; see Revisions). Choose which one item to discount 20%
+  to maximise expected menu contribution Σ (p − c)·P(take) with fixed unit costs.
 - **Holdout log-likelihood** of observed patterns (descriptive).
 
 **Speed (Q3).** Wall-clock time to decision per method (fit + decision search), against k,
@@ -125,6 +124,31 @@ On truths L1 and L2, pooled over k ≥ 8 and replicates.
 - **PASS** if either fails in MVP's favour.
 - **Guards** (reported as caveats, not part of the kill): L0, MVP's median |ρ̂| above ___
   means it invents dependence; LC, MVP's flips above ___ means misspecification costs.
+
+## Revisions during the build (2026-10-08)
+
+- **D-promo replaced by D-TURF.** With own-price effects only in the truth, D-promo's
+  contribution Σ(p − c)·P(take) depends only on marginal take rates, so the truth's
+  correlation never enters it. D-TURF does: pick the 4 of 12 items that maximise reach,
+  P(at least one taken), at base prices (all 495 sets; flip and regret). It spans subsets
+  (item 4) and is the standard TURF question in MBC/MaxDiff work. Also scored: best triple by
+  joint take (D-bundle-3) and best pair by lift (descriptive).
+- **D-price scored as errors, not flips.** In L0–L2 the true cross-effect on other items'
+  take is 0, so a sign flip is undefined; reported: MAE of the change in other items' take
+  and error in the change of P(any linked item).
+- **Probit decisions scored with GHK-QMC, not the engine.** At L2 (correlations to 0.8) the
+  engine was up to 2 points off in 4-item reach, enough to flip TURF picks for reasons that
+  are not the model's. Fitted probits' decisions use GHK with 16,384 Sobol points (matches
+  SciPy to 1e-5); the engine recomputes them as a second column (its flips and decision
+  time, for Q3). Holdout pattern log-likelihoods (12-dim, probabilities near 1e-4) also use
+  GHK: the engine returned 0 for some of them.
+- **MVP-Gibbs uses own-price margins.** bayesm's rmvpGibbs cost per iteration grows with the
+  square of the design width; all 12 log prices per item (156 columns) made it impractical.
+  The truth has own-price effects only, so this is correctly specified (IFM and ML use all
+  12 prices per margin, as a user would).
+- **Fits run on Modal** (CS/IL/IFM and Gibbs on CPU containers, ML on the deployed GPU
+  service, scoring on CPU containers); fits are saved (`out/full/fits.json`) and can be
+  rescored with `--eval-only`.
 
 ## Decisions (2026-10-08)
 

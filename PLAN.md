@@ -121,7 +121,7 @@ Kill: the incumbents scale adequately, or decisions match logit plus RFC.
 |---|---|---|---|---|
 | T1 | 3, 5 | G0, G1, G2 × RFC-S, RFC-G done 2026-10-08; MVP refit (total variance) | PASS (MVP better) with caveats, 2026-10-08 | [design](analysis/T1/DESIGN.md), [results](analysis/T1/RESULTS.md) |
 | D1 | 5 | proposed (conditional on T1) | — | — |
-| T2 | 2, 4 | design approved 2026-10-08; building | — | [design](analysis/T2/DESIGN.md) |
+| T2 | 2, 4 | done 2026-10-08 (L0, L1, L2, LC × k 5/8/12 × 20) | PASS on decisions (MVP 28 vs CS 146 flips of 240); no time saving at k ≤ 12; T3 goes ahead | [design](analysis/T2/DESIGN.md), [results](analysis/T2/RESULTS.md) |
 | T3 | 2, 4 | proposed (skipped if T2 killed) | — | — |
 | T4 | 1 | proposed | — | — |
 
@@ -147,7 +147,11 @@ Decided 2026-10-08: get through T1–T4 first; each test's follow-ups wait.
   normalisation into `run.py`; an engine-based fitter for the panel likelihood (engine
   still in progress).
 - **T2:** respondent heterogeneity (random intercepts; panel methods for every arm); MACML
-  (backlog, no implementation); engine-based full MLE; N ∈ {300, 3000} at k = 8.
+  (backlog, no implementation); engine-based full MLE; N ∈ {300, 3000} at k = 8; decision
+  search over many scenarios (where the engine's ~500× decision speed matters).
+- **Service:** `mvp_fit`'s SE step took ~18 of ~20 min per fit at d = 12, 222 parameters
+  (T2 ran with `se=False`). Engine accuracy at correlations ~0.8 (2 points in 4-item reach)
+  and for 12-dim patterns near 1e-4 (returns 0): candidates for the QMC-fallback router.
 - **T4:** a proper panel probit fitter (MixedProbit: QMC over tastes, exact per-task
   orthant) in the library or API rather than a one-off; the engine as its inner integrator.
 
