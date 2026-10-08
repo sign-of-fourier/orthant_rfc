@@ -9,3 +9,5 @@ data/
 analysis/*/out/**/hb/
 analysis/*/out/**/hb_*.csv
 analysis/*/out/**/phase_*.json
+analysis/*/out/**/*.pkl
+analysis/*/out/**/stdout.txt

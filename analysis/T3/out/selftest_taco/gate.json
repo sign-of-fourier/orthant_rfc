@@ -1,0 +1,14 @@
+{
+ "passed": true,
+ "linked": [
+  "shells/tortillas",
+  "taco seasoning",
+  "salsa",
+  "beans",
+  "sour cream",
+  "shredded cheese",
+  "tortilla chips",
+  "lettuce"
+ ],
+ "size": 8
+}

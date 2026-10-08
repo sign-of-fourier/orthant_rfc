@@ -122,7 +122,7 @@ Kill: the incumbents scale adequately, or decisions match logit plus RFC.
 | T1 | 3, 5 | G0, G1, G2 × RFC-S, RFC-G done 2026-10-08; MVP refit (total variance) | PASS (MVP better) with caveats, 2026-10-08 | [design](analysis/T1/DESIGN.md), [results](analysis/T1/RESULTS.md) |
 | D1 | 5 | proposed (conditional on T1) | — | — |
 | T2 | 2, 4 | done 2026-10-08 (L0, L1, L2, LC × k 5/8/12 × 20) | PASS on decisions (MVP 28 vs CS 146 flips of 240); no time saving at k ≤ 12; T3 goes ahead | [design](analysis/T2/DESIGN.md), [results](analysis/T2/RESULTS.md) |
-| T3 | 2, 4 | proposed (skipped if T2 killed) | — | — |
+| T3 | 2, 4 | done 2026-10-08 (taco cluster, 8 items, 1,869 households) | PASS (MVP better): 6 of 11 decisions differ, holdout supports MVP on 4, CS on 0; controls pass; no time saving | [design](analysis/T3/DESIGN.md), [results](analysis/T3/RESULTS.md) |
 | T4 | 1 | proposed | — | — |
 
 ## Prior work in this repo (inputs, not conclusions)
@@ -152,6 +152,16 @@ Decided 2026-10-08: get through T1–T4 first; each test's follow-ups wait.
 - **Service:** `mvp_fit`'s SE step took ~18 of ~20 min per fit at d = 12, 222 parameters
   (T2 ran with `se=False`). Engine accuracy at correlations ~0.8 (2 points in 4-item reach)
   and for 12-dim patterns near 1e-4 (returns 0): candidates for the QMC-fallback router.
+- **SE value prop (user, 2026-10-08; after T3/T4):** time-to-SE and 95% coverage, ours vs best
+  practice, on T2 L1/L2 k = 12 (40 datasets). Arms: deployed `mvp_fit` SEs (T4, float64 Hessian);
+  fast variants (per-row gradients only, Hessian on A100, float32 Hessian); bayesm Gibbs 20k
+  posterior SDs; IFM + 200-resample bootstrap; optional R `mvProbit` (1 h cap). Metrics: coverage
+  of R, slopes, pair joints, TURF-4 reach; width; P(chosen bundle is best). Est. 45–60 min wall,
+  ~$8 GPU. Check whether Sawtooth's simulator SEs reflect only cross-respondent spread before
+  claiming it.
+- **T3:** cookout cluster (fallback, unused); random household effects; engine for
+  many-trip decisions is slower than one simulated pattern distribution (44 s vs 5–7 s), so
+  a batched/aggregated path if the engine is to be used there.
 - **T4:** a proper panel probit fitter (MixedProbit: QMC over tastes, exact per-task
   orthant) in the library or API rather than a one-off; the engine as its inner integrator.
 
