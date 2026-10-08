@@ -2,3 +2,9 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 .env
+# private / large (not for the public repo)
+PRODUCT_NOTES.md
+sizing/
+data/
+analysis/*/out/**/hb/
+analysis/*/out/**/hb_*.csv

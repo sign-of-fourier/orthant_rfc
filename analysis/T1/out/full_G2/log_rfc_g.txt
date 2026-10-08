@@ -1,0 +1,2 @@
+[02:11:57] RFC-G on G2: 20 replicates
+[02:20:00] rep 0: HB 144 s, tune 334 s; sigma [1.431 1.442 1.202], g 0.235, S1 0.623 (RFC-S 0.655), MAE 0.0152 (RFC-S 0.0159) []

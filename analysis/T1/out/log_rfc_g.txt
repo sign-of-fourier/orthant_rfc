@@ -1,0 +1,120 @@
+[02:21:31] RFC-G: 59 replicates (HB local x2, tuning on Modal CPU)
+[02:21:31] G0 rep 0: HB 0 s; tuning submitted
+[02:23:08] G0 rep 2: HB 95 s; tuning submitted
+[02:23:09] G0 rep 1: HB 97 s; tuning submitted
+[02:24:44] G0 rep 3: HB 96 s; tuning submitted
+[02:24:46] G0 rep 4: HB 96 s; tuning submitted
+[02:26:20] G0 rep 5: HB 96 s; tuning submitted
+[02:26:21] G0 rep 6: HB 95 s; tuning submitted
+[02:27:56] G0 rep 8: HB 95 s; tuning submitted
+[02:27:57] G0 rep 7: HB 96 s; tuning submitted
+[02:29:31] G0 rep 9: HB 94 s; tuning submitted
+[02:29:35] G0 rep 10: HB 97 s; tuning submitted
+[02:31:10] G0 rep 11: HB 99 s; tuning submitted
+[02:31:14] G0 rep 12: HB 99 s; tuning submitted
+[02:32:58] G0 rep 13: HB 107 s; tuning submitted
+[02:33:04] G0 rep 14: HB 108 s; tuning submitted
+[02:34:34] G0 rep 15: HB 96 s; tuning submitted
+[02:34:39] G0 rep 16: HB 94 s; tuning submitted
+[02:36:09] G0 rep 17: HB 94 s; tuning submitted
+[02:36:14] G0 rep 18: HB 96 s; tuning submitted
+[02:36:15] G1 rep 0: HB 0 s; tuning submitted
+[02:37:45] G0 rep 19: HB 96 s; tuning submitted
+[02:37:50] G1 rep 1: HB 95 s; tuning submitted
+[02:39:20] G1 rep 2: HB 94 s; tuning submitted
+[02:39:26] G1 rep 3: HB 95 s; tuning submitted
+[02:40:56] G1 rep 4: HB 96 s; tuning submitted
+[02:41:03] G1 rep 5: HB 96 s; tuning submitted
+[02:42:33] G1 rep 6: HB 97 s; tuning submitted
+[02:42:36] G1 rep 7: HB 93 s; tuning submitted
+[02:44:09] G1 rep 8: HB 95 s; tuning submitted
+[02:44:11] G1 rep 9: HB 94 s; tuning submitted
+[02:45:45] G1 rep 10: HB 96 s; tuning submitted
+[02:45:46] G1 rep 11: HB 94 s; tuning submitted
+[02:47:22] G1 rep 13: HB 96 s; tuning submitted
+[02:47:23] G1 rep 12: HB 97 s; tuning submitted
+[02:49:01] G1 rep 15: HB 98 s; tuning submitted
+[02:49:02] G1 rep 14: HB 100 s; tuning submitted
+[02:50:37] G1 rep 16: HB 95 s; tuning submitted
+[02:50:39] G1 rep 17: HB 97 s; tuning submitted
+[02:52:13] G1 rep 18: HB 96 s; tuning submitted
+[02:52:16] G1 rep 19: HB 96 s; tuning submitted
+[02:53:49] G2 rep 1: HB 95 s; tuning submitted
+[02:53:50] G2 rep 2: HB 94 s; tuning submitted
+[02:55:26] G2 rep 3: HB 96 s; tuning submitted
+[02:55:27] G2 rep 4: HB 96 s; tuning submitted
+[02:57:02] G2 rep 5: HB 96 s; tuning submitted
+[02:57:03] G2 rep 6: HB 95 s; tuning submitted
+[02:58:39] G2 rep 7: HB 97 s; tuning submitted
+[02:58:40] G2 rep 8: HB 97 s; tuning submitted
+[03:00:15] G2 rep 9: HB 96 s; tuning submitted
+[03:00:16] G2 rep 10: HB 96 s; tuning submitted
+[03:01:52] G2 rep 11: HB 96 s; tuning submitted
+[03:01:53] G2 rep 12: HB 96 s; tuning submitted
+[03:03:28] G2 rep 13: HB 96 s; tuning submitted
+[03:03:29] G2 rep 14: HB 96 s; tuning submitted
+[03:05:05] G2 rep 16: HB 95 s; tuning submitted
+[03:05:06] G2 rep 15: HB 97 s; tuning submitted
+[03:06:41] G2 rep 18: HB 95 s; tuning submitted
+[03:06:41] G2 rep 17: HB 95 s; tuning submitted
+[03:08:16] G2 rep 19: HB 95 s; tuning submitted
+[03:08:17] G0 rep 0: tune 316 s; sigma [0.796 0.013 0.01 ], g 1.104, S1 0.000 (RFC-S 0.127), MAE 0.0130 (RFC-S 0.0142) ['param 2 at bound']
+[03:08:17] G0 rep 2: tune 374 s; sigma [0.01 0.01 0.01], g 1.162, S1 0.000 (RFC-S 0.000), MAE 0.0160 (RFC-S 0.0160) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 1: tune 434 s; sigma [1.226 0.01  0.01 ], g 1.187, S1 0.000 (RFC-S 0.000), MAE 0.0243 (RFC-S 0.0253) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 3: tune 141 s; sigma [0.01 0.01 0.01], g 1.459, S1 0.000 (RFC-S 0.000), MAE 0.0157 (RFC-S 0.0157) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 4: tune 214 s; sigma [0.011 0.01  0.01 ], g 1.146, S1 0.000 (RFC-S 0.000), MAE 0.0149 (RFC-S 0.0149) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 5: tune 478 s; sigma [0.061 0.428 0.03 ], g 1.220, S1 0.070 (RFC-S 0.000), MAE 0.0163 (RFC-S 0.0164) []
+[03:08:17] G0 rep 6: tune 417 s; sigma [0.751 0.01  0.01 ], g 0.919, S1 0.000 (RFC-S 0.000), MAE 0.0126 (RFC-S 0.0129) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 8: tune 185 s; sigma [0.01  0.686 0.393], g 1.121, S1 0.232 (RFC-S 0.148), MAE 0.0148 (RFC-S 0.0154) ['param 0 at bound']
+[03:08:17] G0 rep 7: tune 388 s; sigma [1.153 0.01  0.01 ], g 1.094, S1 0.000 (RFC-S 0.000), MAE 0.0153 (RFC-S 0.0160) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 9: tune 281 s; sigma [0.01 0.01 0.01], g 1.320, S1 0.000 (RFC-S 0.000), MAE 0.0133 (RFC-S 0.0133) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 10: tune 180 s; sigma [1.037 0.025 0.152], g 0.926, S1 0.010 (RFC-S 0.058), MAE 0.0153 (RFC-S 0.0168) []
+[03:08:17] G0 rep 11: tune 183 s; sigma [0.016 0.1   0.01 ], g 1.154, S1 0.005 (RFC-S 0.000), MAE 0.0110 (RFC-S 0.0110) ['param 2 at bound']
+[03:08:17] G0 rep 12: tune 240 s; sigma [0.066 0.307 0.102], g 1.281, S1 0.037 (RFC-S 0.028), MAE 0.0118 (RFC-S 0.0118) []
+[03:08:17] G0 rep 13: tune 217 s; sigma [0.409 0.01  0.01 ], g 1.061, S1 0.000 (RFC-S 0.000), MAE 0.0170 (RFC-S 0.0170) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 14: tune 476 s; sigma [0.014 0.01  0.01 ], g 1.234, S1 0.000 (RFC-S 0.000), MAE 0.0133 (RFC-S 0.0133) ['param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 15: tune 296 s; sigma [1.082 0.102 0.09 ], g 0.923, S1 0.007 (RFC-S 0.025), MAE 0.0091 (RFC-S 0.0113) []
+[03:08:17] G0 rep 16: tune 304 s; sigma [0.045 0.584 0.01 ], g 0.996, S1 0.173 (RFC-S 0.048), MAE 0.0163 (RFC-S 0.0166) ['param 2 at bound']
+[03:08:17] G0 rep 17: tune 252 s; sigma [0.01 0.01 0.01], g 1.117, S1 0.000 (RFC-S 0.000), MAE 0.0164 (RFC-S 0.0164) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:17] G0 rep 18: tune 152 s; sigma [0.01  0.01  0.622], g 1.322, S1 0.119 (RFC-S 0.000), MAE 0.0161 (RFC-S 0.0163) ['param 0 at bound', 'param 1 at bound']
+[03:08:17] G1 rep 0: tune 268 s; sigma [1.706 1.072 1.061], g 0.240, S1 0.431 (RFC-S 0.656), MAE 0.0197 (RFC-S 0.0221) []
+[03:08:17] G0 rep 19: tune 97 s; sigma [0.348 1.002 0.417], g 1.229, S1 0.311 (RFC-S 0.164), MAE 0.0153 (RFC-S 0.0167) []
+[03:08:18] G1 rep 1: tune 185 s; sigma [0.923 1.746 0.843], g 0.123, S1 0.811 (RFC-S 0.666), MAE 0.0221 (RFC-S 0.0235) []
+[03:08:18] G1 rep 2: tune 250 s; sigma [0.01  1.736 1.283], g 0.452, S1 0.933 (RFC-S 0.666), MAE 0.0205 (RFC-S 0.0244) ['param 0 at bound']
+[03:08:18] G1 rep 3: tune 159 s; sigma [0.755 0.666 1.031], g 0.997, S1 0.406 (RFC-S 0.360), MAE 0.0165 (RFC-S 0.0169) []
+[03:08:18] G1 rep 4: tune 211 s; sigma [1.16  0.587 1.314], g 0.050, S1 0.605 (RFC-S 0.666), MAE 0.0237 (RFC-S 0.0254) ['param 3 at bound']
+[03:08:18] G1 rep 5: tune 233 s; sigma [1.124 1.181 1.127], g 0.324, S1 0.650 (RFC-S 0.640), MAE 0.0157 (RFC-S 0.0157) []
+[03:08:18] G1 rep 6: tune 199 s; sigma [0.834 0.364 1.718], g 0.050, S1 0.815 (RFC-S 0.666), MAE 0.0182 (RFC-S 0.0251) ['param 3 at bound']
+[03:08:18] G1 rep 7: tune 205 s; sigma [0.896 1.551 1.592], g 0.189, S1 0.851 (RFC-S 0.660), MAE 0.0133 (RFC-S 0.0145) []
+[03:08:18] G1 rep 8: tune 106 s; sigma [0.459 0.578 0.575], g 0.895, S1 0.303 (RFC-S 0.272), MAE 0.0189 (RFC-S 0.0191) []
+[03:08:18] G1 rep 9: tune 295 s; sigma [0.01 0.01 0.01], g 1.468, S1 0.000 (RFC-S 0.000), MAE 0.0202 (RFC-S 0.0202) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:18] G1 rep 10: tune 260 s; sigma [0.01  0.01  1.091], g 0.529, S1 0.721 (RFC-S 0.000), MAE 0.0180 (RFC-S 0.0191) ['param 0 at bound', 'param 1 at bound']
+[03:08:18] G1 rep 11: tune 162 s; sigma [1.294 1.79  1.372], g 0.194, S1 0.746 (RFC-S 0.659), MAE 0.0242 (RFC-S 0.0247) []
+[03:08:18] G1 rep 13: tune 126 s; sigma [0.893 1.376 0.817], g 0.649, S1 0.632 (RFC-S 0.507), MAE 0.0172 (RFC-S 0.0188) []
+[03:08:18] G1 rep 12: tune 209 s; sigma [0.415 0.661 0.874], g 0.603, S1 0.609 (RFC-S 0.539), MAE 0.0195 (RFC-S 0.0198) []
+[03:08:18] G1 rep 15: tune 238 s; sigma [0.01  0.01  2.027], g 0.855, S1 0.773 (RFC-S 0.666), MAE 0.0169 (RFC-S 0.0226) ['param 0 at bound', 'param 1 at bound']
+[03:08:18] G1 rep 14: tune 545 s; sigma [0.934 0.414 1.59 ], g 0.137, S1 0.749 (RFC-S 0.666), MAE 0.0233 (RFC-S 0.0249) []
+[03:08:18] G1 rep 16: tune 389 s; sigma [0.01 0.01 0.01], g 1.391, S1 0.000 (RFC-S 0.000), MAE 0.0219 (RFC-S 0.0219) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:18] G1 rep 17: tune 493 s; sigma [0.23 0.01 0.01], g 1.115, S1 0.000 (RFC-S 0.028), MAE 0.0223 (RFC-S 0.0224) ['param 1 at bound', 'param 2 at bound']
+[03:08:18] G1 rep 18: tune 206 s; sigma [0.909 0.039 0.132], g 1.136, S1 0.006 (RFC-S 0.666), MAE 0.0225 (RFC-S 0.0251) []
+[03:08:18] G1 rep 19: tune 396 s; sigma [1.378 1.177 0.033], g 1.053, S1 0.271 (RFC-S 0.659), MAE 0.0192 (RFC-S 0.0225) []
+[03:08:18] G2 rep 1: tune 161 s; sigma [0.816 1.738 1.053], g 0.050, S1 0.860 (RFC-S 0.666), MAE 0.0226 (RFC-S 0.0251) ['param 3 at bound']
+[03:08:18] G2 rep 2: tune 383 s; sigma [0.017 1.329 0.582], g 0.787, S1 0.674 (RFC-S 0.666), MAE 0.0213 (RFC-S 0.0274) []
+[03:08:18] G2 rep 3: tune 253 s; sigma [0.863 1.234 1.288], g 0.670, S1 0.682 (RFC-S 0.608), MAE 0.0162 (RFC-S 0.0172) []
+[03:08:18] G2 rep 4: tune 307 s; sigma [0.796 0.681 1.496], g 0.050, S1 0.809 (RFC-S 0.666), MAE 0.0244 (RFC-S 0.0264) ['param 3 at bound']
+[03:08:19] G2 rep 5: tune 144 s; sigma [0.8   1.229 1.177], g 0.365, S1 0.771 (RFC-S 0.625), MAE 0.0182 (RFC-S 0.0187) []
+[03:08:19] G2 rep 6: tune 191 s; sigma [0.01  0.568 1.573], g 0.848, S1 0.703 (RFC-S 0.000), MAE 0.0218 (RFC-S 0.0246) ['param 0 at bound']
+[03:08:19] G2 rep 7: tune 133 s; sigma [0.963 1.613 1.606], g 0.191, S1 0.840 (RFC-S 0.659), MAE 0.0153 (RFC-S 0.0169) []
+[03:08:19] G2 rep 8: tune 176 s; sigma [0.536 0.85  1.155], g 0.527, S1 0.734 (RFC-S 0.420), MAE 0.0212 (RFC-S 0.0217) []
+[03:08:19] G2 rep 9: tune 198 s; sigma [0.283 1.044 0.563], g 0.996, S1 0.451 (RFC-S 0.325), MAE 0.0184 (RFC-S 0.0194) []
+[03:08:19] G2 rep 10: tune 249 s; sigma [0.154 0.615 1.176], g 0.359, S1 0.882 (RFC-S 0.229), MAE 0.0176 (RFC-S 0.0194) []
+[03:08:19] G2 rep 11: tune 181 s; sigma [1.279 1.794 1.009], g 0.217, S1 0.712 (RFC-S 0.657), MAE 0.0240 (RFC-S 0.0252) []
+[03:08:19] G2 rep 12: tune 221 s; sigma [0.807 1.032 0.695], g 0.050, S1 0.703 (RFC-S 0.665), MAE 0.0193 (RFC-S 0.0196) ['param 3 at bound']
+[03:08:19] G2 rep 13: tune 178 s; sigma [0.41  1.282 0.863], g 0.702, S1 0.709 (RFC-S 0.484), MAE 0.0150 (RFC-S 0.0170) []
+[03:08:36] G2 rep 14: tune 299 s; sigma [0.943 0.747 1.522], g 0.050, S1 0.763 (RFC-S 0.666), MAE 0.0210 (RFC-S 0.0227) ['param 3 at bound']
+[03:08:36] G2 rep 16: tune 134 s; sigma [0.01 0.01 0.01], g 1.446, S1 0.000 (RFC-S 0.000), MAE 0.0226 (RFC-S 0.0226) ['param 0 at bound', 'param 1 at bound', 'param 2 at bound']
+[03:08:36] G2 rep 15: tune 181 s; sigma [0.424 1.322 1.759], g 0.460, S1 0.902 (RFC-S 0.666), MAE 0.0180 (RFC-S 0.0225) []
+[03:09:33] G2 rep 18: tune 170 s; sigma [0.115 1.007 0.655], g 0.836, S1 0.554 (RFC-S 0.666), MAE 0.0237 (RFC-S 0.0278) []
+[03:11:27] G2 rep 17: tune 283 s; sigma [0.265 0.01  0.01 ], g 1.146, S1 0.000 (RFC-S 0.035), MAE 0.0223 (RFC-S 0.0224) ['param 1 at bound', 'param 2 at bound']
+[03:12:25] G2 rep 19: tune 245 s; sigma [1.587 1.25  0.369], g 0.969, S1 0.295 (RFC-S 0.557), MAE 0.0202 (RFC-S 0.0228) []
+[03:12:25] done

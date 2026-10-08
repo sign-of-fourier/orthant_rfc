@@ -1,0 +1,10 @@
+[16:24:01] T1 selftest: truth G1, reps 1, N 100, backend local
+[16:24:01] recovery check: MVP at N=1000
+[16:31:41]   MVP N=1000 iter 5: nll 13613.063, 460 s
+[16:38:05]   MVP N=1000 iter 10: nll 13608.157, 844 s
+[16:58:36]   MVP N=1000 iter 15: nll 13607.927, 2074 s
+[18:06:42]   MVP N=1000 iter 20: nll 13607.835, 6161 s
+[18:32:19]   MVP N=1000 done: nll 13607.835, 21 iters, 100 evals, max |grad| 5.395, 7698 s, CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+[19:00:27]   sigma hat [0.428 0.66  0.658] vs true [0.363 0.86  0.86 ]; z [ 0.66 -1.41 -1.4 ]
+[19:00:27] recovery OK; peak RSS 212 MB
+[19:00:27] done

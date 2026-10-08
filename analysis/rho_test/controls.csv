@@ -1,0 +1,13 @@
+control,pair,tau,rho,n,bias,rmse,tau_bias,coverage,n_cover,reject_rate,fit_failures,reject_rate_means
+a,all,0.6,0,150,0.000793922,0.0173929,-0.0185796,0.95,20,0.0666667,0,false-positive rate
+a,pasta x pasta sauce,0.6,0,50,-0.00322302,0.0194912,-0.00238577,0.857143,7,0.08,0,false-positive rate
+a,refrigerated OJ x shelf-stable juice,0.6,0,50,0.00542972,0.0158757,-0.016132,1,7,0.04,0,false-positive rate
+a,shredded cheese x pet food,0.6,0,50,0.000175066,0.016601,-0.0372211,1,6,0.08,0,false-positive rate
+b,all,0.3,0.3,150,-0.000487727,0.0136718,0.00692361,0.95,20,1,0,power
+b,pasta x pasta sauce,0.3,0.3,50,0.000477718,0.0141848,0.000395391,1,7,1,0,power
+b,refrigerated OJ x shelf-stable juice,0.3,0.3,50,0.000175196,0.0134114,0.00978339,0.857143,7,1,0,power
+b,shredded cheese x pet food,0.3,0.3,50,-0.0021161,0.0134046,0.0105921,1,6,1,0,power
+c,all,0,0.6,150,0.00114443,0.0124616,-0.0203408,0.9,20,1,0,power
+c,pasta x pasta sauce,0,0.6,50,-0.000160183,0.0121387,-0.0146895,1,7,1,0,power
+c,refrigerated OJ x shelf-stable juice,0,0.6,50,0.00299757,0.0117791,-0.00208997,0.857143,7,1,0,power
+c,shredded cheese x pet food,0,0.6,50,0.000595918,0.013408,-0.0442429,0.833333,6,1,0,power

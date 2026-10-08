@@ -1,0 +1,27 @@
+{
+ "args": {
+  "selftest": true,
+  "truth": "G1",
+  "reps": 1,
+  "N": 100,
+  "recovery_N": 1000,
+  "msl_R": 0,
+  "recovery_only": true,
+  "no_recovery": false
+ },
+ "git_head": "b44d4ebe339ea2760743668acb10b205c78e17bc",
+ "git_status_T1": "?? analysis/T1/",
+ "sha256": {
+  "run.py": "f5993b2b1425fb324e65c0a8c911bec0a06cf1840d267c2924796e0cc8b15328",
+  "hb.R": "ef8c6522ba7bbaee55092a6cc6844ef0aa4c8147028c2a818d68e16c100bfc77"
+ },
+ "sha256_rfc_py": "da0ab335faed46de03f690244b10927677e1d02dda08c89d526a63db0f86ffd6",
+ "orthant_backend": "local",
+ "numpy": "2.5.1",
+ "scipy": "1.16.0",
+ "multivariate_probit": "0.2.3",
+ "R": "R version 4.3.3 (2024-02-29) 3.1.6",
+ "python": "3.12.9",
+ "host": "ip-172-31-0-181",
+ "started": "2026-10-06 16:24:01"
+}

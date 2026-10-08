@@ -1,0 +1,13 @@
+[17:57:20] T1 selftest: truth G1, reps 1, N 100, backend local
+[17:57:20] MVP: 1 GHK fits on GPU (M=4096), in parallel
+[17:58:49] MVP GPU fits done: 89 s wall
+[17:58:49] rep 0 [G1]: simulate N=100, T=12
+[17:58:49]   none share (training) 0.297
+[17:58:49]   truth raw share sums (before renormalization) [0.9891 0.9942]
+[17:58:49]   MVP (GHK, M=4096, GPU): 166 iters, fit 61 s, max|grad| 1.04e-01
+[17:58:49]   MVP ll fit -1303.532 vs truth -1313.893
+[17:58:49]   HB-MNL: 10000 iterations (bayesm)
+[17:58:58]   HB done 9 s; loglike drift q3->q4 0.0064
+[17:58:59]   RFC-S tuned sigma_l 1.887, g 0.193, holdout MAE 0.0341, 1 s []
+[17:58:59] rep 0 saved; peak RSS 143 MB
+[17:58:59] done

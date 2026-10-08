@@ -1,0 +1,9 @@
+[19:50:15]   MVP from truth iter 5: nll 13611.725, 538 s
+[19:57:55]   MVP from truth iter 10: nll 13608.228, 999 s
+[20:49:21]   MVP from truth iter 15: nll 13608.113, 4084 s
+[21:29:11]   MVP from truth iter 20: nll 13607.879, 6474 s
+[22:16:39]   MVP from truth iter 25: nll 13607.812, 9322 s
+[23:09:06]   MVP from truth iter 30: nll 13607.809, 12470 s
+[23:42:29]   MVP from truth done: nll 13607.809, 32 iters, 188 evals, max |grad| 11.625, 14472 s, CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH
+[23:42:43] from truth: sigma [0.477 0.723 0.721], S1 0.800, nll 13607.809 (truth 13635.558)
+[23:42:43] done
