@@ -1,0 +1,168 @@
+04:44
+gate_g_256x128 {'stage': 'fit', 'evals': 1, 'nll': 30005.213152775268, 'elapsed': 38.164937257766724}  
+gate_g_512x256 no checkpoint
+04:54
+gate_g_256x128 {'stage': 'fit', 'evals': 17, 'nll': 26929.658976952316, 'elapsed': 629.4219145774841}  
+gate_g_512x256 {'stage': 'fit', 'evals': 3, 'nll': 27216.282427947066, 'elapsed': 620.4509999752045}  
+05:04
+gate_g_256x128 {'stage': 'fit', 'evals': 33, 'nll': 26927.591364761753, 'elapsed': 1222.1664373874664}  
+gate_g_512x256 {'stage': 'fit', 'evals': 5, 'nll': 26825.001997434207, 'elapsed': 1033.0122854709625}  
+05:14
+gate_g_256x128 {'stage': 'fit', 'evals': 49, 'nll': 26927.468628065526, 'elapsed': 1814.62703871727}  
+gate_g_512x256 {'stage': 'fit', 'evals': 3, 'nll': 27216.282427947066, 'elapsed': 622.2355802059174}  
+05:24
+gate_g_256x128 {'stage': 'se', 'elapsed': 2057.7052755355835} | fit result saved 
+gate_g_512x256 {'stage': 'fit', 'evals': 6, 'nll': 26760.917338747833, 'elapsed': 1242.8498113155365}  
+05:34
+gate_g_256x128 {'stage': 'se', 'elapsed': 2057.7052755355835} | fit result saved 
+gate_g_512x256 {'stage': 'fit', 'evals': 9, 'nll': 26698.951004483457, 'elapsed': 1863.3275394439697}  
+05:44
+gate_g_256x128 {'stage': 'se', 'elapsed': 2057.7052755355835} | fit result saved 
+gate_g_512x256 {'stage': 'fit', 'evals': 12, 'nll': 26690.870827835595, 'elapsed': 2483.724244594574}  
+05:54
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 15, 'nll': 26687.4702597357, 'elapsed': 3104.833726644516}  
+06:04
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 17, 'nll': 26687.13100331422, 'elapsed': 3523.881388902664}  
+06:14
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 20, 'nll': 26686.845857920867, 'elapsed': 4159.902889966965}  
+06:24
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 23, 'nll': 26686.702888825734, 'elapsed': 4786.751481056213}  
+06:34
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 26, 'nll': 26686.652808696115, 'elapsed': 5407.262350320816}  
+06:44
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 29, 'nll': 26686.63427612349, 'elapsed': 6028.156126499176}  
+06:54
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 32, 'nll': 26686.616716342338, 'elapsed': 6649.14070224762}  
+07:04
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 35, 'nll': 26686.608828820987, 'elapsed': 7269.736101865768}  
+07:14
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 38, 'nll': 26686.599207150426, 'elapsed': 7890.310681343079}  
+07:24
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 41, 'nll': 26686.568982706725, 'elapsed': 8511.234820842743}  
+07:34
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 43, 'nll': 26686.560368156035, 'elapsed': 8924.889172792435}  
+07:44
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 46, 'nll': 26686.559590622026, 'elapsed': 9545.236110925674}  
+07:54
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 49, 'nll': 26686.55957741723, 'elapsed': 10165.672744750977}  
+08:04
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 52, 'nll': 26686.559518909275, 'elapsed': 10786.026363372803}  
+08:14
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 55, 'nll': 26686.559761275206, 'elapsed': 11406.389379501343}  
+08:24
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 58, 'nll': 26686.559500823274, 'elapsed': 12026.74025464058}  
+08:34
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 61, 'nll': 26686.559498287996, 'elapsed': 12647.029399633408}  
+08:44
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 64, 'nll': 26686.559498287996, 'elapsed': 13267.73641037941}  
+08:54
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 67, 'nll': 26686.559485157297, 'elapsed': 13888.460431098938}  
+09:05
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 70, 'nll': 26686.559324476926, 'elapsed': 14508.898067951202}  
+09:15
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 73, 'nll': 26686.559324476926, 'elapsed': 15135.883760690689}  
+09:25
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'fit', 'evals': 75, 'nll': 26686.559639682193, 'elapsed': 15552.438967227936}  
+09:35
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+09:45
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+09:55
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:05
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:15
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:25
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:35
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:45
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+10:55
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:05
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:15
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:25
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:35
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:45
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+11:55
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:05
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:15
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:25
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:35
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:45
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+12:55
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+13:05
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'se', 'elapsed': 16293.121119976044} | fit result saved 
+13:15
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'done'} | fit result saved | done
+13:25
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'done'} | fit result saved | done
+13:35
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'done'} | fit result saved | done
+13:45
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'done'} | fit result saved | done
+13:55
+gate_g_256x128 {'stage': 'done'} | fit result saved | done
+gate_g_512x256 {'stage': 'done'} | fit result saved | done
