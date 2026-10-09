@@ -1,0 +1,184 @@
+[19:01:03] T1 full: truth G2, reps 20, N 600, backend local
+[19:01:09] MVP: 20 GHK fits on GPU (M=4096, scale total), in parallel
+[19:04:36] MVP GPU fits done: 207 s wall
+[19:04:36] rep 0 [G2]: simulate N=600, T=12
+[19:04:37]   none share (training) 0.305
+[19:04:37]   truth raw share sums (before renormalization) [0.9893 0.9942]
+[19:04:37]   MVP (GHK, M=4096, GPU): 25 iters, fit 61 s, max|grad| 2.11e-01
+[19:04:37]   MVP ll fit -8060.222 vs truth -8069.514
+[19:04:37]   HB-MNL: 20000 iterations (bayesm)
+[19:06:15]   HB done 98 s; loglike drift q3->q4 0.0019
+[19:07:01]   RFC-S tuned sigma_l 1.290, g 0.234, holdout MAE 0.0159, 46 s []
+[19:07:02] rep 0 saved; peak RSS 383 MB
+[19:07:02] rep 1 [G2]: simulate N=600, T=12
+[19:07:03]   none share (training) 0.299
+[19:07:03]   truth raw share sums (before renormalization) [0.9893 1.    ]
+[19:07:03]   MVP (GHK, M=4096, GPU): 24 iters, fit 59 s, max|grad| 1.86e-01
+[19:07:03]   MVP ll fit -8129.071 vs truth -8141.653
+[19:07:03]   HB-MNL: 20000 iterations (bayesm)
+[19:08:38]   HB done 95 s; loglike drift q3->q4 0.0014
+[19:09:55]   RFC-S tuned sigma_l 1.249, g 0.050, holdout MAE 0.0251, 77 s ['param 1 at bound']
+[19:09:56] rep 1 saved; peak RSS 383 MB
+[19:09:56] rep 2 [G2]: simulate N=600, T=12
+[19:09:56]   none share (training) 0.297
+[19:09:56]   truth raw share sums (before renormalization) [0.9893 0.9783]
+[19:09:56]   MVP (GHK, M=4096, GPU): 26 iters, fit 66 s, max|grad| 3.26e-01
+[19:09:56]   MVP ll fit -8138.499 vs truth -8147.404
+[19:09:56]   HB-MNL: 20000 iterations (bayesm)
+[19:11:32]   HB done 96 s; loglike drift q3->q4 0.0029
+[19:13:01]   RFC-S tuned sigma_l 1.229, g 0.050, holdout MAE 0.0274, 89 s ['param 1 at bound']
+[19:13:02] rep 2 saved; peak RSS 383 MB
+[19:13:02] rep 3 [G2]: simulate N=600, T=12
+[19:13:03]   none share (training) 0.293
+[19:13:03]   truth raw share sums (before renormalization) [0.9893 0.9812]
+[19:13:03]   MVP (GHK, M=4096, GPU): 27 iters, fit 65 s, max|grad| 2.22e-01
+[19:13:03]   MVP ll fit -8131.164 vs truth -8140.729
+[19:13:03]   HB-MNL: 20000 iterations (bayesm)
+[19:14:40]   HB done 97 s; loglike drift q3->q4 0.0011
+[19:15:45]   RFC-S tuned sigma_l 1.121, g 0.471, holdout MAE 0.0172, 65 s []
+[19:15:46] rep 3 saved; peak RSS 384 MB
+[19:15:46] rep 4 [G2]: simulate N=600, T=12
+[19:15:46]   none share (training) 0.298
+[19:15:46]   truth raw share sums (before renormalization) [0.9893 0.9933]
+[19:15:46]   MVP (GHK, M=4096, GPU): 40 iters, fit 85 s, max|grad| 8.42e-02
+[19:15:46]   MVP ll fit -8105.501 vs truth -8110.429
+[19:15:46]   HB-MNL: 20000 iterations (bayesm)
+[19:17:23]   HB done 96 s; loglike drift q3->q4 0.0024
+[19:18:50]   RFC-S tuned sigma_l 1.063, g 0.050, holdout MAE 0.0264, 88 s ['param 1 at bound']
+[19:18:52] rep 4 saved; peak RSS 385 MB
+[19:18:52] rep 5 [G2]: simulate N=600, T=12
+[19:18:52]   none share (training) 0.301
+[19:18:52]   truth raw share sums (before renormalization) [0.9893 1.0087]
+[19:18:52]   MVP (GHK, M=4096, GPU): 23 iters, fit 57 s, max|grad| 2.16e-01
+[19:18:52]   MVP ll fit -8192.619 vs truth -8205.541
+[19:18:52]   HB-MNL: 20000 iterations (bayesm)
+[19:20:29]   HB done 97 s; loglike drift q3->q4 0.0036
+[19:21:07]   RFC-S tuned sigma_l 1.044, g 0.363, holdout MAE 0.0187, 38 s []
+[19:21:08] rep 5 saved; peak RSS 386 MB
+[19:21:08] rep 6 [G2]: simulate N=600, T=12
+[19:21:08]   none share (training) 0.299
+[19:21:08]   truth raw share sums (before renormalization) [0.9893 0.9912]
+[19:21:08]   MVP (GHK, M=4096, GPU): 40 iters, fit 93 s, max|grad| 1.34e-01
+[19:21:08]   MVP ll fit -8206.709 vs truth -8218.625
+[19:21:08]   HB-MNL: 20000 iterations (bayesm)
+[19:22:43]   HB done 95 s; loglike drift q3->q4 0.0021
+[19:24:14]   RFC-S tuned sigma_l 0.010, g 1.321, holdout MAE 0.0246, 91 s ['param 0 at bound']
+[19:24:15] rep 6 saved; peak RSS 388 MB
+[19:24:15] rep 7 [G2]: simulate N=600, T=12
+[19:24:16]   none share (training) 0.289
+[19:24:16]   truth raw share sums (before renormalization) [0.9893 0.9923]
+[19:24:16]   MVP (GHK, M=4096, GPU): 41 iters, fit 89 s, max|grad| 8.57e-02
+[19:24:16]   MVP ll fit -8068.970 vs truth -8082.469
+[19:24:16]   HB-MNL: 20000 iterations (bayesm)
+[19:25:50]   HB done 94 s; loglike drift q3->q4 0.0009
+[19:26:39]   RFC-S tuned sigma_l 1.312, g 0.193, holdout MAE 0.0169, 49 s []
+[19:26:40] rep 7 saved; peak RSS 389 MB
+[19:26:40] rep 8 [G2]: simulate N=600, T=12
+[19:26:40]   none share (training) 0.310
+[19:26:41]   truth raw share sums (before renormalization) [0.9893 0.9842]
+[19:26:41]   MVP (GHK, M=4096, GPU): 28 iters, fit 67 s, max|grad| 3.05e-01
+[19:26:41]   MVP ll fit -8175.418 vs truth -8190.333
+[19:26:41]   HB-MNL: 20000 iterations (bayesm)
+[19:28:17]   HB done 96 s; loglike drift q3->q4 0.0018
+[19:28:56]   RFC-S tuned sigma_l 0.740, g 0.766, holdout MAE 0.0217, 39 s []
+[19:28:57] rep 8 saved; peak RSS 390 MB
+[19:28:57] rep 9 [G2]: simulate N=600, T=12
+[19:28:57]   none share (training) 0.297
+[19:28:57]   truth raw share sums (before renormalization) [0.9893 0.995 ]
+[19:28:57]   MVP (GHK, M=4096, GPU): 24 iters, fit 62 s, max|grad| 1.49e-01
+[19:28:57]   MVP ll fit -8107.855 vs truth -8117.692
+[19:28:57]   HB-MNL: 20000 iterations (bayesm)
+[19:30:33]   HB done 96 s; loglike drift q3->q4 0.0009
+[19:31:26]   RFC-S tuned sigma_l 0.672, g 0.930, holdout MAE 0.0194, 53 s []
+[19:31:28] rep 9 saved; peak RSS 392 MB
+[19:31:28] rep 10 [G2]: simulate N=600, T=12
+[19:31:28]   none share (training) 0.299
+[19:31:28]   truth raw share sums (before renormalization) [0.9893 0.9914]
+[19:31:28]   MVP (GHK, M=4096, GPU): 26 iters, fit 65 s, max|grad| 1.84e-01
+[19:31:28]   MVP ll fit -8062.507 vs truth -8072.147
+[19:31:28]   HB-MNL: 20000 iterations (bayesm)
+[19:33:04]   HB done 96 s; loglike drift q3->q4 0.0003
+[19:33:40]   RFC-S tuned sigma_l 0.442, g 0.827, holdout MAE 0.0194, 36 s []
+[19:33:41] rep 10 saved; peak RSS 393 MB
+[19:33:41] rep 11 [G2]: simulate N=600, T=12
+[19:33:41]   none share (training) 0.296
+[19:33:41]   truth raw share sums (before renormalization) [0.9893 1.0002]
+[19:33:41]   MVP (GHK, M=4096, GPU): 26 iters, fit 61 s, max|grad| 3.21e-01
+[19:33:41]   MVP ll fit -8131.253 vs truth -8138.828
+[19:33:41]   HB-MNL: 20000 iterations (bayesm)
+[19:35:19]   HB done 97 s; loglike drift q3->q4 0.0030
+[19:36:00]   RFC-S tuned sigma_l 1.343, g 0.218, holdout MAE 0.0252, 41 s []
+[19:36:01] rep 11 saved; peak RSS 393 MB
+[19:36:01] rep 12 [G2]: simulate N=600, T=12
+[19:36:02]   none share (training) 0.299
+[19:36:02]   truth raw share sums (before renormalization) [0.9893 0.9859]
+[19:36:02]   MVP (GHK, M=4096, GPU): 26 iters, fit 60 s, max|grad| 1.45e-01
+[19:36:02]   MVP ll fit -8261.796 vs truth -8269.987
+[19:36:02]   HB-MNL: 20000 iterations (bayesm)
+[19:37:39]   HB done 97 s; loglike drift q3->q4 0.0004
+[19:39:14]   RFC-S tuned sigma_l 0.847, g 0.050, holdout MAE 0.0196, 95 s ['param 1 at bound']
+[19:39:15] rep 12 saved; peak RSS 393 MB
+[19:39:15] rep 13 [G2]: simulate N=600, T=12
+[19:39:15]   none share (training) 0.289
+[19:39:15]   truth raw share sums (before renormalization) [0.9893 0.9988]
+[19:39:15]   MVP (GHK, M=4096, GPU): 42 iters, fit 93 s, max|grad| 5.09e-01
+[19:39:15]   MVP ll fit -8079.722 vs truth -8087.091
+[19:39:15]   HB-MNL: 20000 iterations (bayesm)
+[19:40:51]   HB done 96 s; loglike drift q3->q4 0.0007
+[19:41:31]   RFC-S tuned sigma_l 0.840, g 0.697, holdout MAE 0.0170, 40 s []
+[19:41:32] rep 13 saved; peak RSS 393 MB
+[19:41:32] rep 14 [G2]: simulate N=600, T=12
+[19:41:33]   none share (training) 0.297
+[19:41:33]   truth raw share sums (before renormalization) [0.9893 0.9963]
+[19:41:33]   MVP (GHK, M=4096, GPU): 41 iters, fit 85 s, max|grad| 1.14e-01
+[19:41:33]   MVP ll fit -8176.143 vs truth -8188.215
+[19:41:33]   HB-MNL: 20000 iterations (bayesm)
+[19:43:11]   HB done 98 s; loglike drift q3->q4 0.0019
+[19:44:44]   RFC-S tuned sigma_l 1.072, g 0.050, holdout MAE 0.0227, 93 s ['param 1 at bound']
+[19:44:46] rep 14 saved; peak RSS 393 MB
+[19:44:46] rep 15 [G2]: simulate N=600, T=12
+[19:44:46]   none share (training) 0.306
+[19:44:46]   truth raw share sums (before renormalization) [0.9893 0.9954]
+[19:44:46]   MVP (GHK, M=4096, GPU): 50 iters, fit 118 s, max|grad| 4.61e-01
+[19:44:46]   MVP ll fit -8137.555 vs truth -8149.221
+[19:44:46]   HB-MNL: 20000 iterations (bayesm)
+[19:46:22]   HB done 96 s; loglike drift q3->q4 0.0016
+[19:47:47]   RFC-S tuned sigma_l 1.223, g 0.050, holdout MAE 0.0225, 85 s ['param 1 at bound']
+[19:47:48] rep 15 saved; peak RSS 393 MB
+[19:47:48] rep 16 [G2]: simulate N=600, T=12
+[19:47:48]   none share (training) 0.300
+[19:47:48]   truth raw share sums (before renormalization) [0.9893 0.9974]
+[19:47:48]   MVP (GHK, M=4096, GPU): 24 iters, fit 59 s, max|grad| 1.33e-01
+[19:47:48]   MVP ll fit -8068.708 vs truth -8074.111
+[19:47:48]   HB-MNL: 20000 iterations (bayesm)
+[19:49:28]   HB done 99 s; loglike drift q3->q4 0.0003
+[19:50:52]   RFC-S tuned sigma_l 0.010, g 1.446, holdout MAE 0.0226, 84 s ['param 0 at bound']
+[19:50:53] rep 16 saved; peak RSS 393 MB
+[19:50:53] rep 17 [G2]: simulate N=600, T=12
+[19:50:53]   none share (training) 0.312
+[19:50:53]   truth raw share sums (before renormalization) [0.9893 0.9845]
+[19:50:53]   MVP (GHK, M=4096, GPU): 24 iters, fit 57 s, max|grad| 6.80e-02
+[19:50:53]   MVP ll fit -8162.272 vs truth -8173.171
+[19:50:53]   HB-MNL: 20000 iterations (bayesm)
+[19:52:33]   HB done 99 s; loglike drift q3->q4 0.0002
+[19:53:23]   RFC-S tuned sigma_l 0.197, g 1.138, holdout MAE 0.0224, 51 s []
+[19:53:25] rep 17 saved; peak RSS 393 MB
+[19:53:25] rep 18 [G2]: simulate N=600, T=12
+[19:53:25]   none share (training) 0.303
+[19:53:25]   truth raw share sums (before renormalization) [0.9893 0.987 ]
+[19:53:25]   MVP (GHK, M=4096, GPU): 25 iters, fit 60 s, max|grad| 9.97e-02
+[19:53:25]   MVP ll fit -8077.504 vs truth -8081.511
+[19:53:25]   HB-MNL: 20000 iterations (bayesm)
+[19:55:03]   HB done 97 s; loglike drift q3->q4 0.0010
+[19:56:26]   RFC-S tuned sigma_l 1.213, g 0.050, holdout MAE 0.0278, 83 s ['param 1 at bound']
+[19:56:27] rep 18 saved; peak RSS 393 MB
+[19:56:27] rep 19 [G2]: simulate N=600, T=12
+[19:56:27]   none share (training) 0.302
+[19:56:27]   truth raw share sums (before renormalization) [0.9893 0.9931]
+[19:56:27]   MVP (GHK, M=4096, GPU): 28 iters, fit 66 s, max|grad| 1.67e-01
+[19:56:27]   MVP ll fit -8133.460 vs truth -8146.122
+[19:56:27]   HB-MNL: 20000 iterations (bayesm)
+[19:58:03]   HB done 96 s; loglike drift q3->q4 0.0008
+[19:58:50]   RFC-S tuned sigma_l 1.213, g 0.725, holdout MAE 0.0228, 46 s []
+[19:58:51] rep 19 saved; peak RSS 393 MB
+[19:58:51] done

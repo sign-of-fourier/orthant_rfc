@@ -4,6 +4,76 @@ Paused 2026-10-09: the broad test plan narrowed to two active items (PLAN.md: T5
 else lives here. Nothing here runs without the user's go. Each entry: what, why it matters, what it
 depends on, where it came from.
 
+## Next up after T5/T6 (user, 2026-10-09)
+
+Order (user, 2026-10-09): T5 and T6, then the TURF engine-vs-simulator item (below, under Wedges),
+then GPR, then MACML. Kill criteria are blanks for the user in both. Scope is a draft for the
+design step.
+
+### GPR: kernel-parameterised error covariance
+
+- **What.** Σ_ij = k(x_i, x_j): a GP kernel over product attributes in place of the per-attribute
+  variance shares. The current model is the special case of indicator kernels (same brand / flavor
+  / pack) plus a nugget; the kernel adds continuous attributes (pack size, price tier, embeddings)
+  and smooth similarity. Hyperparameters fitted by the probit likelihood (errors are latent; not
+  GP regression on observed data).
+- **Why.** Few parameters at any J; predicts the correlation of an SKU that doesn't exist yet
+  (line extensions, CDT). Does not reduce the integral: each choice is still a (J − 1)-dim orthant
+  (a low-rank kernel is a factor model, i.e. MVP-F, which failed recovery at affordable draws).
+- **Hypothesis.** When similarity runs through a continuous or perceptual attribute, a kernel Σ
+  recovers substitution and decisions (delist, extension, price) better than variance shares and
+  HB-MNL + RFC; under categorical-only similarity it matches variance shares (no loss).
+- **Kill criteria.** ___ (blanks for the user).
+- **Scope.**
+  - In: T1's CBC DGP and GHK GPU fitter (J = 3–6 per task, so the integral stays cheap); truths
+    (a) categorical shares (T1 G1, control), (b) a continuous-attribute kernel truth,
+    (c) `research/similarity_kernel/` "merge" (perceptual merging, kernel misspecified); arms:
+    variance shares, kernel Σ (one kernel family chosen at design), HB-MNL + RFC-S.
+  - OUT: J scaling / J = 60 (compute, not parameters, is the J = 60 limit), real data, SEs,
+    kernel search over many families.
+- **Tests (minimal).** 1. Recovery of the kernel hyperparameters (one dataset, the T1 gate).
+  2. Decisions vs truth (flips, regret) per truth × arm, 20 replicates. 3. New-SKU test: hold
+  one SKU out of fitting, predict its correlation and extension incrementality.
+- **Prior work.** `research/similarity_kernel/` (Laplace kernel on part-worth distance vs a
+  perceptual-merging truth; one replicate run). Finishing it is the cheap first step (local CPU).
+- **Cost (rough).** Same per-fit cost as T1/T5 GHK: 3 truths × 3 arms × 20 reps at N = 600, about
+  $2–4 of T4 GPU plus ~3 h local HB; the similarity_kernel replicates are local only.
+- **Depends on.** T5's `run.py` (--scale total, --no-se); a kernel-Σ option in `ghk_gpu.sig2_of`.
+- **From.** User, 2026-10-09.
+
+### MACML: Bhat's estimator as an incumbent probit arm
+
+- **What.** Maximum approximate composite marginal likelihood (Bhat): pairwise composite
+  likelihood over a respondent's choice tasks, each term by Bhat's analytic MVNCD approximation.
+  The fast analytic incumbent probit; listed as an arm in T2 and T4 but never implemented.
+- **Why.** Our GPU GHK full ML has to beat the best existing probit estimator, not only
+  HB-MNL + RFC and Gibbs. Known risk for MACML: bias at larger J and strong correlation (our
+  near-duplicate regime). The only comparison so far is integrator-level
+  (`multivariate_probit/docs/benchmarks.md`: Bhat OVUS 2–5× more accurate than the engine on a
+  near-singular Σ, 4–7× slower), not a fit.
+- **Hypothesis.** At J = 3–6 MACML matches GHK ML on decisions in less time; in the near-duplicate
+  regime (G2, pair corr .97) and as J grows, its approximation bias moves σ and decisions, and GHK
+  ML wins on decisions at a time the user accepts.
+- **Kill criteria.** ___ (blanks for the user).
+- **Scope.**
+  - In: T1 DGP, truths G0 / G1 / G2, N = 600, 20 replicates; arms: MACML vs MVP (GPU GHK, the T5
+    fit); metrics as T1/T5 (S1, flips, cost regret) plus fit time. J = 20 (T4 shelf, structured Σ)
+    only if the J = 3–6 result leaves it open.
+  - OUT: writing MACML from scratch (see implementation), SEs, real data, new truths.
+- **Implementation (check first).** pybhatlib 0.4.0 (installed in an earlier session's scratch
+  venv, not in this repo's environment): `models.mnp` (MNP with `mix` random coefficients,
+  analytic MVNCD, analytic gradients) and `models.mnpkercp` (panel MNP by MSL over Halton draws with
+  the MVNCD kernel). Whether it does composite marginal likelihood over panel task pairs with a
+  structured Σ is unverified. If it doesn't fit T1's model, stop and ask before writing one
+  (PLAN.md baselines rule).
+- **Tests (minimal).** 1. Recovery on the T1 selftest dataset (one fit, vs the GHK fit).
+  2. G0 / G1 / G2 × 20 replicates, decisions and time vs GHK ML.
+- **Cost (rough).** MACML is CPU: pybhatlib loops over rows in Python, so time per fit is unknown
+  (timed on one dataset first). GPU only for the GHK arm, reusable from T5's N = 600 cells (same
+  seeds) at ~$0.
+- **Depends on.** T5 (its N = 600 GHK fits are the comparison arm); pybhatlib's model coverage.
+- **From.** User, 2026-10-09; T2/T4 designs ("MACML (backlog, no implementation)").
+
 ## Wedges (new, 2026-10-09)
 
 - **Engine vs shared-draw simulator for TURF search.** **FIRST UP after T6 passes.** Greedy and

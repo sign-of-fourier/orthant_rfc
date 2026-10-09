@@ -1,0 +1,32 @@
+{
+ "args": {
+  "selftest": false,
+  "truth": "G0",
+  "reps": 20,
+  "N": 600,
+  "recovery_N": 1000,
+  "msl_R": 0,
+  "recovery_only": false,
+  "no_recovery": false,
+  "mvp": "ghk",
+  "ghk_M": 4096,
+  "scale": "total",
+  "no_se": true,
+  "out_name": "T5_G0_N600"
+ },
+ "git_head": "cee35ffad50fb6c10e5db4fc32bc459b1090acd0",
+ "git_status_T1": "M analysis/T1/ghk_gpu.py\n M analysis/T1/run.py\n?? analysis/T1/out/T5_G0_N150/\n?? analysis/T1/out/T5_G0_N300/\n?? analysis/T1/out/T5_G0_N600/\n?? analysis/T1/out/T5_G1_N150/\n?? analysis/T1/out/T5_G1_N300/\n?? analysis/T1/out/T5_G2_N150/\n?? analysis/T1/out/T5_G2_N300/\n?? analysis/T1/out/step0_G1/",
+ "sha256": {
+  "run.py": "7cd8c0b06b41c9eea0efae6009dfa2196b8b66f463a4f3b55756ae71bd1e6a70",
+  "hb.R": "ef8c6522ba7bbaee55092a6cc6844ef0aa4c8147028c2a818d68e16c100bfc77"
+ },
+ "sha256_rfc_py": "da0ab335faed46de03f690244b10927677e1d02dda08c89d526a63db0f86ffd6",
+ "orthant_backend": "local",
+ "numpy": "2.5.1",
+ "scipy": "1.16.0",
+ "multivariate_probit": "0.2.3",
+ "R": "R version 4.3.3 (2024-02-29) 3.1.6",
+ "python": "3.12.9",
+ "host": "ip-172-31-0-181",
+ "started": "2026-10-09 18:02:35"
+}

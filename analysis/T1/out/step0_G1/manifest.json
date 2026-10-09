@@ -1,0 +1,31 @@
+{
+ "args": {
+  "selftest": false,
+  "truth": "G1",
+  "reps": 3,
+  "N": 600,
+  "recovery_N": 1000,
+  "msl_R": 0,
+  "recovery_only": false,
+  "no_recovery": false,
+  "mvp": "ghk",
+  "ghk_M": 4096,
+  "scale": "total",
+  "out_name": "step0_G1"
+ },
+ "git_head": "cee35ffad50fb6c10e5db4fc32bc459b1090acd0",
+ "git_status_T1": "?? analysis/T1/out/step0_G1/",
+ "sha256": {
+  "run.py": "45e916dced4b73768c6f9d73a5f8fc42f5b55a745a28b6936990c0ef119aee5d",
+  "hb.R": "ef8c6522ba7bbaee55092a6cc6844ef0aa4c8147028c2a818d68e16c100bfc77"
+ },
+ "sha256_rfc_py": "da0ab335faed46de03f690244b10927677e1d02dda08c89d526a63db0f86ffd6",
+ "orthant_backend": "local",
+ "numpy": "2.5.1",
+ "scipy": "1.16.0",
+ "multivariate_probit": "0.2.3",
+ "R": "R version 4.3.3 (2024-02-29) 3.1.6",
+ "python": "3.12.9",
+ "host": "ip-172-31-0-181",
+ "started": "2026-10-09 16:06:25"
+}

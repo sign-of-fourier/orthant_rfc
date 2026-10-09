@@ -86,20 +86,46 @@ machine limits, the orthant backend, and style rules, and still apply.
   σ_ν-pinned path for exact T1 reproduction. Rerun one T1 cell (G1, 3 replicates) with the fix and
   confirm it reproduces the 2026-10-08 refit results (`out/full_G1/results_mvp_total.json`):
   σ, S1, S2, decisions.
+  - *Done 2026-10-09, PASS.* `run.py --truth G1 --reps 3 --out-name step0_G1`: MVP σ, S1, S2,
+    log-likelihood, S4 and all decision fields identical to `results_mvp_total.json` (max |Δ| ≤ 1e-16);
+    RFC-S arm identical to the original `full_G1/results.json` up to float rounding (~1e-15). 3 fits
+    on T4 in 168 s wall; ~11 min total; GPU cost ~$0.10.
 - **Tests (minimal).** For each truth × N × replicate: simulate, fit both methods, score the T1
   decisions (price change, line extension, cost-weighted metric) against the truth.
   - Metrics: decision flips and cost regret against the truth.
   - Result: error-vs-N curves per method, plus N_match = the smallest N at which MVP matches
     RFC-S's error at N = 1,200.
-- **Results.**
+- **Results (2026-10-09).** Full tables: [RESULTS.md](analysis/T5/RESULTS.md). PASS on the kill rules
+  (N_match 150 ≤ 720 for G1 and G2, both metrics); G0 guard fails only at N = 150 (recorded, not a
+  kill). ~$3.40 GPU.
 
-| truth | N | method | flips (price / ext / cost, of 20) | cost regret % (mean) |
-|---|---|---|---|---|
-| | | | | |
+| truth | N | MVP flips (price / ext / cost) | MVP cost regret % | RFC-S flips | RFC-S cost regret % |
+|---|---|---|---|---|---|
+| G0 | 150 | 1 / 0 / 1 | 0.37 | 3 / 0 / 0 | 0.00 |
+| G0 | 300 | 1 / 0 / 0 | 0.00 | 2 / 0 / 0 | 0.00 |
+| G0 | 600 | 0 / 0 / 0 | 0.00 | 0 / 0 / 0 | 0.00 |
+| G0 | 1,200 | 0 / 0 / 0 | 0.00 | 0 / 0 / 0 | 0.00 |
+| G1 | 150 | 0 / 0 / 2 | 0.17 | 3 / 6 / 9 | 3.77 |
+| G1 | 300 | 0 / 0 / 2 | 0.31 | 2 / 9 / 10 | 4.23 |
+| G1 | 600 | 0 / 0 / 0 | 0.00 | 1 / 6 / 8 | 3.69 |
+| G1 | 1,200 | 0 / 0 / 0 | 0.00 | 0 / 9 / 10 | 4.61 |
+| G2 | 150 | 0 / 0 / 1 | 0.10 | 0 / 7 / 10 | 4.11 |
+| G2 | 300 | 0 / 0 / 2 | 0.31 | 1 / 8 / 10 | 3.77 |
+| G2 | 600 | 0 / 0 / 0 | 0.00 | 1 / 6 / 7 | 3.12 |
+| G2 | 1,200 | 0 / 0 / 0 | 0.00 | 0 / 9 / 10 | 4.46 |
 
-| truth | RFC-S error at N = 1,200 | N_match (MVP) |
+| truth | RFC-S error at N = 1,200 (flips per rep / cost regret %) | N_match (MVP), both metrics |
 |---|---|---|
-| | | |
+| G1 | 0.95 / 4.61 | 150 |
+| G2 | 0.95 / 4.46 | 150 |
+
+  - **Reading.** RFC-S does not improve with N (about 4% cost regret from 150 to 1,200): its error is
+    bias from its form, not sampling noise. So the result is "MVP at N = 150 beats RFC-S at any N",
+    not "MVP matches RFC-S with fewer completes". N_match = 150 is the grid floor; the true N_match
+    may be lower.
+  - **G0 guard.** N = 150: MVP cost regret +0.37 vs RFC-S (SE 0.37), one replicate (7.4%); an exact
+    tie with 1 SE, counted as a failure, recorded per the rule. N ≥ 300: ok. No invented similarity.
+  - N = 600 rows reproduce T1 (G1 RFC-S 1 / 6 / 8, 3.69%; G2 14 flips), as expected with the same seeds.
 
 ### T6 · Correlated-reach TURF on public basket data
 

@@ -537,7 +537,7 @@ def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=N
                       S2=(s_hat ** 2 / np.sum(s_hat ** 2)).tolist(),
                       holdout_mae=float(np.abs(mh - obs).mean()),
                       seconds=dict(fit=t_mvp, se=t_se), **score(mdec, tdec))
-    if scale == "total":
+    if scale == "total" and ghk["cov_sandwich"] is not None:
         # delta method, as mvp_refit.py: log sigma_a = (log T_VAR + u_a - logsumexp(u, 0)) / 2
         u = th_hat[2 * P:]
         J = 0.5 * (np.eye(3) - softmax0(u)[None, :3])
@@ -606,7 +606,7 @@ def recovery_check(N, T, truth_name, msl_R):
                 z_sigma=z.tolist(), z_all=zall.tolist(), seconds=t, ok=bool(np.all(np.abs(z) <= 2)))
 
 
-def ghk_fits(reps, truth_name, N, T, M, scale="snu"):
+def ghk_fits(reps, truth_name, N, T, M, scale="snu", se=True):
     """MVP fits for every replicate, in parallel on Modal GPUs (ghk_gpu.fit). The data are the
     replicate's own: make_data on the same r_data stream replicate() uses."""
     import ghk_gpu
@@ -616,6 +616,7 @@ def ghk_fits(reps, truth_name, N, T, M, scale="snu"):
     th_true = theta_true(sig, scale)
     snu = 0.0 if scale == "total" else float(sig[3])  # unused under tvar
     kw = dict(tvar=float(T_VAR)) if scale == "total" else {}
+    kw["se"] = se
     jobs = []
     for rep in reps:
         r_data = np.random.default_rng(np.random.SeedSequence([SEED, rep]).spawn(3)[0])
@@ -666,6 +667,7 @@ def main():
     ap.add_argument("--ghk-M", type=int, default=4096, help="GHK Sobol points per respondent")
     ap.add_argument("--scale", default="total", choices=["total", "snu"],
                     help="GHK normalisation: total error variance fixed (default) or sigma_nu pinned (original T1)")
+    ap.add_argument("--no-se", action="store_true", help="GHK: skip the Hessian / sandwich SE pass (T5)")
     ap.add_argument("--out-name", default="", help="output dir under out/ (default selftest or full_<truth>)")
     args = ap.parse_args()
     if args.mvp == "msl" and args.scale == "total":
@@ -688,7 +690,7 @@ def main():
     reps = range(0 if args.recovery_only else args.reps)
     ghk = {}
     if args.mvp == "ghk" and len(reps):
-        ghk = ghk_fits(reps, args.truth, args.N, T, args.ghk_M, args.scale)
+        ghk = ghk_fits(reps, args.truth, args.N, T, args.ghk_M, args.scale, se=not args.no_se)
     for rep in reps:
         results.append(replicate(rep, args.truth, args.N, T, hb_iters, R_l, msl_R, out, args.selftest,
                                  ghk.get(rep), args.scale if args.mvp == "ghk" else "snu"))

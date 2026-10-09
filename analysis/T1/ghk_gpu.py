@@ -100,8 +100,8 @@ def _ll_rows(th, Xd, G, snu, w, tvar=None):
 
 
 @app.function(image=image, gpu="T4", timeout=3600)
-def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None):
-    """L-BFGS on the summed GHK log-likelihood; Hessian and sandwich SEs at the optimum."""
+def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None, se=True):
+    """L-BFGS on the summed GHK log-likelihood; Hessian and sandwich SEs at the optimum (se=False: skipped)."""
     import torch
 
     dev = torch.device("cuda")
@@ -153,6 +153,10 @@ def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None):
     with torch.no_grad():
         tt = torch.as_tensor(th_true, dtype=f64, device=dev)
         nll_true = sum(float(nll(tt, lo, min(lo + chunk, N))) for lo in range(0, N, chunk))
+    if not se:
+        return dict(theta=th.cpu().numpy().tolist(), nll=final, nll_true=nll_true, n_iter=n_iter, n_evals=nev[0],
+                    grad_max=grad_max, se_sandwich=None, se_hessian=None, cov_sandwich=None, tvar=tvar,
+                    M=M, seed=seed, seconds=dict(fit=t_fit, se=0.0), gpu=torch.cuda.get_device_name())
     for lo in range(0, N, chunk // 2):
         hi = min(lo + chunk // 2, N)
         thr = th.expand(hi - lo, -1).clone().requires_grad_(True)
