@@ -13,6 +13,21 @@ attribute-level components:
   components, K fixed as J grows) vs per-task GHK orthants (J dims) vs Gibbs?
 - **Q3.** Time to fit (and to SEs) against J, per method.
 
+## Claim (reframed 2026-10-09, while paused)
+
+- **Not the claim:** a full joint correlation matrix at J = 60. An unrestricted Σ at J = 60 has
+  1,770 correlations; N = 600 × 12 tasks cannot identify them on any hardware.
+- **The claim:** with the substitution structure practitioners already assume (variance shares
+  on brand / flavor / pack, CDT-shaped, a few parameters), probit recovers that structure at
+  J = 20–60 in practical time and changes delist, line and price decisions relative to
+  HB-MNL + RFC.
+- **Compute, kept separate:** structure reduces the number of parameters, not the integral. Each
+  choice is still a (J − 1)-dimensional orthant unless conditioned on the factors, and the
+  factor-conditioned fit (MVP-F) failed recovery at affordable draws (gate 2026-10-09, PLAN.md).
+  The compute burden at J = 60 is real.
+- **Positioning:** incumbents use logit because it is cheap and avoid large-J non-IIA models
+  because they are expensive. That is a compute constraint, and GPU probit removes it.
+
 ## Non-goals
 
 - Engine-based MLE (the engine is still in progress; it has no gradients). The engine

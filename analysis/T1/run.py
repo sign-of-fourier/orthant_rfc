@@ -12,6 +12,10 @@ and RFC-S (strict Sawtooth). Added 2026-10-07: G0 (logit null) and G2 (pair corr
 with fixed Sobol draws, fitted on Modal GPUs (ghk_gpu.py), all replicates in parallel before
 the CPU arms. --mvp msl: the earlier option-1 MSL fit on CPU.
 
+--scale total (default since 2026-10-09): the GHK fit fixes the total error variance at T_VAR and
+estimates the split, u_a = log(sigma_a^2 / sigma_nu^2), as mvp_refit.py (2026-10-08). --scale snu:
+scale pinned by sigma_nu alone, as the original T1 runs (exact reproduction).
+
 Writes analysis/T1/out/<mode>/: manifest.json (code and package versions), log.txt,
 results.json (one record per replicate).
 """
@@ -181,6 +185,24 @@ def make_data(rng, N, T, sig, logit=False):
 # ---------------------------------------------------------------------------
 def unpack(th, snu):
     return th[:P], np.exp(th[P:2 * P]), np.r_[np.exp(th[2 * P:2 * P + 3]), snu]
+
+
+def softmax0(u):
+    z = np.r_[u, 0.0]
+    e = np.exp(z - z.max())
+    return e / e.sum()
+
+
+def unpack_total(th):
+    """--scale total: u_a = log(sigma_a^2 / sigma_nu^2), total error variance T_VAR (as ghk_gpu.sig2_of)."""
+    return th[:P], np.exp(th[P:2 * P]), np.sqrt(T_VAR * (softmax0(th[2 * P:]) * (1 - 4e-6) + 1e-6))
+
+
+def theta_true(sig, scale):
+    if scale == "total":
+        sh = sig ** 2 / T_VAR
+        return np.r_[B_TRUE, np.log(W_TRUE), np.log(np.maximum(sh[:3], 1e-6) / sh[3])]
+    return np.r_[B_TRUE, np.log(W_TRUE), np.log(np.maximum(sig[:3], SIG_FLOOR))]
 
 
 def pop_shares(prods, b, w, sig):
@@ -447,7 +469,7 @@ def score(dec, truth):
 # ---------------------------------------------------------------------------
 # One replicate
 # ---------------------------------------------------------------------------
-def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=None):
+def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=None, scale="snu"):
     sig = np.sqrt(T_VAR * TRUTHS[truth_name])
     logit = truth_name in LOGIT_TRUTHS
     ss = np.random.SeedSequence([SEED, rep])
@@ -477,7 +499,7 @@ def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=N
     tdec = decisions(truth_fn)
     rec["truth"] = dict(S1=float(pair_corr_probit(sig)), **{k: (np.array(v).tolist()) for k, v in tdec.items()})
 
-    th_true = np.r_[B_TRUE, np.log(W_TRUE), np.log(np.maximum(sig[:3], SIG_FLOOR))]
+    th_true = theta_true(sig, scale)
     if ghk is not None:
         # MVP: exact panel likelihood by GHK, already fitted on GPU (ghk_gpu.fit)
         th_hat = np.array(ghk["theta"])
@@ -498,7 +520,7 @@ def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=N
         se_sand, se_hess = probit_se(panel, res.x, sig[3])
         t_se = time.time() - t0
         del panel
-    b, w, s_hat = unpack(th_hat, sig[3])
+    b, w, s_hat = unpack_total(th_hat) if scale == "total" else unpack(th_hat, sig[3])
     log(f"  MVP ll fit {ll_fit:.3f} vs truth {ll_true:.3f}")
     if selftest and not logit and ll_fit < ll_true - 1e-3:
         fail("MVP log-likelihood at the fit is below the truth's")
@@ -510,10 +532,20 @@ def replicate(rep, truth_name, N, T, hb_iters, R_l, msl_R, work, selftest, ghk=N
                       converged=bool(converged), iters=int(iters),
                       likelihood="ghk" if ghk is not None else f"msl R={msl_R}",
                       ghk_M=ghk["M"] if ghk is not None else None,
+                      normalisation="total error variance = pi^2/6" if scale == "total" else "sigma_nu fixed",
                       S1=float(pair_corr_probit(s_hat)),
                       S2=(s_hat ** 2 / np.sum(s_hat ** 2)).tolist(),
                       holdout_mae=float(np.abs(mh - obs).mean()),
                       seconds=dict(fit=t_mvp, se=t_se), **score(mdec, tdec))
+    if scale == "total":
+        # delta method, as mvp_refit.py: log sigma_a = (log T_VAR + u_a - logsumexp(u, 0)) / 2
+        u = th_hat[2 * P:]
+        J = 0.5 * (np.eye(3) - softmax0(u)[None, :3])
+        V = np.array(ghk["cov_sandwich"])[2 * P:, 2 * P:]
+        se_log_sig = np.sqrt(np.diag(J @ V @ J.T))
+        z_sig = (np.log(s_hat[:3]) - np.log(np.maximum(sig[:3], 1e-300))) / se_log_sig
+        rec["mvp"].update(se_log_sigma=se_log_sig.tolist(), z_sigma=z_sig.tolist(),
+                          S4_cover=(np.abs(z_sig) <= 1.96).tolist() if sig[0] > 0 else None)
 
     # HB-MNL + RFC-S
     log(f"  HB-MNL: {hb_iters} iterations (bayesm)")
@@ -574,24 +606,26 @@ def recovery_check(N, T, truth_name, msl_R):
                 z_sigma=z.tolist(), z_all=zall.tolist(), seconds=t, ok=bool(np.all(np.abs(z) <= 2)))
 
 
-def ghk_fits(reps, truth_name, N, T, M):
+def ghk_fits(reps, truth_name, N, T, M, scale="snu"):
     """MVP fits for every replicate, in parallel on Modal GPUs (ghk_gpu.fit). The data are the
     replicate's own: make_data on the same r_data stream replicate() uses."""
     import ghk_gpu
 
     sig = np.sqrt(T_VAR * TRUTHS[truth_name])
-    th0 = np.r_[np.zeros(P), np.full(P, np.log(.5)), np.full(3, np.log(.5))]
-    th_true = np.r_[B_TRUE, np.log(W_TRUE), np.log(np.maximum(sig[:3], SIG_FLOOR))]
+    th0 = np.r_[np.zeros(P), np.full(P, np.log(.5)), np.zeros(3) if scale == "total" else np.full(3, np.log(.5))]
+    th_true = theta_true(sig, scale)
+    snu = 0.0 if scale == "total" else float(sig[3])  # unused under tvar
+    kw = dict(tvar=float(T_VAR)) if scale == "total" else {}
     jobs = []
     for rep in reps:
         r_data = np.random.default_rng(np.random.SeedSequence([SEED, rep]).spawn(3)[0])
         d = make_data(r_data, N, T, sig, truth_name in LOGIT_TRUTHS)
         Xd, G = ghk_gpu.panel_arrays(d["prods"], d["y"], task_X)
-        jobs.append((Xd, G, float(sig[3]), th0, th_true, M, SEED + rep))
-    log(f"MVP: {len(jobs)} GHK fits on GPU (M={M}), in parallel")
+        jobs.append((Xd, G, snu, th0, th_true, M, SEED + rep))
+    log(f"MVP: {len(jobs)} GHK fits on GPU (M={M}, scale {scale}), in parallel")
     t0 = time.time()
     with ghk_gpu.app.run():
-        res = list(ghk_gpu.fit.starmap(jobs))
+        res = list(ghk_gpu.fit.starmap(jobs, kwargs=kw))
     log(f"MVP GPU fits done: {time.time() - t0:.0f} s wall")
     return {rep: dict(r, max_iter=500) for rep, r in zip(reps, res)}
 
@@ -630,14 +664,19 @@ def main():
     ap.add_argument("--no-recovery", action="store_true", help="selftest: skip the MVP recovery check")
     ap.add_argument("--mvp", default="ghk", choices=["ghk", "msl"], help="MVP likelihood (see module doc)")
     ap.add_argument("--ghk-M", type=int, default=4096, help="GHK Sobol points per respondent")
+    ap.add_argument("--scale", default="total", choices=["total", "snu"],
+                    help="GHK normalisation: total error variance fixed (default) or sigma_nu pinned (original T1)")
+    ap.add_argument("--out-name", default="", help="output dir under out/ (default selftest or full_<truth>)")
     args = ap.parse_args()
+    if args.mvp == "msl" and args.scale == "total":
+        ap.error("--scale total needs --mvp ghk; use --scale snu with --mvp msl")
     if args.selftest:
         args.reps, args.N = 1, 100
     T = 12
     hb_iters = 10000 if args.selftest else 20000
     R_l = 200 if args.selftest else 1000
     msl_R = args.msl_R or (200 if args.selftest else 500)
-    out = HERE / "out" / ("selftest" if args.selftest else f"full_{args.truth}")
+    out = HERE / "out" / (args.out_name or ("selftest" if args.selftest else f"full_{args.truth}"))
     out.mkdir(parents=True, exist_ok=True)
     LOGF = open(out / ("log_recovery.txt" if args.recovery_only else "log.txt"), "w")
     manifest(out, args)
@@ -649,10 +688,10 @@ def main():
     reps = range(0 if args.recovery_only else args.reps)
     ghk = {}
     if args.mvp == "ghk" and len(reps):
-        ghk = ghk_fits(reps, args.truth, args.N, T, args.ghk_M)
+        ghk = ghk_fits(reps, args.truth, args.N, T, args.ghk_M, args.scale)
     for rep in reps:
         results.append(replicate(rep, args.truth, args.N, T, hb_iters, R_l, msl_R, out, args.selftest,
-                                 ghk.get(rep)))
+                                 ghk.get(rep), args.scale if args.mvp == "ghk" else "snu"))
         (out / "results.json").write_text(json.dumps(results, indent=1))
         rss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
         log(f"rep {rep} saved; peak RSS {rss:.0f} MB")

@@ -139,3 +139,5 @@ reproduces the .so's margins to 2e-16 (same computation, merge off).
 - S1 done (PASS). S2 done: for scenario scoring the QMC simulator is ~25x faster than the GPU
   engine at matched (zero) regret. Next: option 1 (warm start); speed of engine screening vs QMC scoring at
   matched accuracy; a harder candidate set (many near-ties) if S1 is to be leaned on.
+- 2026-10-09: paused. The next steps above (warm start, harder screening set, low resolution /
+  float32, bulk-bias fix) moved to [BACKLOG.md](BACKLOG.md#engine-follow-ups).
