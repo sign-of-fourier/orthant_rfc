@@ -1,0 +1,15 @@
+shelf A {"n": 448, "ref_noise_pct": 0.31, "spearman": 1.0, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.25}
+shelf B {"n": 400, "ref_noise_pct": 0.189, "spearman": 1.0, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.303}
+shelf: engine 108s, reference 411s
+neardup A {"n": 448, "ref_noise_pct": 0.338, "spearman": 0.999, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.709}
+neardup B {"n": 400, "ref_noise_pct": 0.195, "spearman": 0.999, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.594}
+neardup: engine 107s, reference 410s
+medium A {"n": 448, "ref_noise_pct": 0.264, "spearman": 1.0, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.197}
+medium B {"n": 400, "ref_noise_pct": 0.164, "spearman": 0.999, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.295}
+medium: engine 108s, reference 412s
+weak A {"n": 448, "ref_noise_pct": 0.25, "spearman": 1.0, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.164}
+weak B {"n": 400, "ref_noise_pct": 0.165, "spearman": 0.999, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.261}
+weak: engine 109s, reference 423s
+g1 A {"n": 448, "ref_noise_pct": 0.359, "spearman": 0.999, "rank_of_best": 2, "engine_pick_regret": 0.501, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.68}
+g1 B {"n": 400, "ref_noise_pct": 0.187, "spearman": 0.999, "rank_of_best": 1, "engine_pick_regret": 0.0, "screen_0.01_regret": 0.0, "screen_0.05_regret": 0.0, "screen_0.10_regret": 0.0, "engine_margin_bias_pct": -1.441}
+g1: engine 107s, reference 413s

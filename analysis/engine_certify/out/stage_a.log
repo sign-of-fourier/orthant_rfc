@@ -1,0 +1,6 @@
+weak     J= 8 r0  D 71.49 (shares 71.49)  rho_E 0.524  calib bias/choice -0.0006  engine 78s/79it  qmc 232s/82it
+medium   J= 8 r0  D 2.56 (shares 2.56)  rho_E 0.629  calib bias/choice -0.0043  engine 45s/43it  qmc 169s/51it
+shelf    J= 8 r0  D 2.54 (shares 2.54)  rho_E 0.688  calib bias/choice -0.0109  engine 58s/56it  qmc 179s/54it
+neardup  J= 8 r0  D 4.94 (shares 1.69)  rho_E 0.875  calib bias/choice -0.0275  engine 56s/48it  qmc 223s/56it
+weak     J=12 r0  D 2.65 (shares 2.65)  rho_E 0.598  calib bias/choice -0.0008  engine 121s/61it  qmc 294s/55it
+medium   J=12 r0  D 3.32 (shares 3.32)  rho_E 0.652  calib bias/choice -0.0068  engine 103s/45it  qmc 298s/52it
