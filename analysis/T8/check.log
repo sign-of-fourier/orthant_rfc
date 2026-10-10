@@ -1,0 +1,15 @@
+[02:24:10] T8 c: 1 reps, N 100; held-out SKU 22; GPU fits for both arms in parallel
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount analysis/T8/t8_gpu.py
+└── 🔨 Created function fit.
+analysis/T8/t8.py:415: DeprecationError: 2025-06-27: Function.starmap currently leaks an internal exception wrapping type (modal.exceptions.UserCodeException) when `return_exceptions=True` is set. In the future, this will change, and the underlying exception will be returned directly.
+To opt into the future behavior and silence this warning, add `wrap_returned_exceptions=False`:
+
+    f.starmap(..., return_exceptions=True, wrap_returned_exceptions=False)
+  res = list(t8_gpu.fit.starmap(jobs, return_exceptions=True))
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+[02:24:43] GPU fits done: 32 s wall; GPU fit-seconds 38
+[02:25:16] rep 0: kernel flips 1 regret 13.03%  varshare flips 1 regret 0.31%  rfc_s flips 2 regret 13.03%
+[02:25:16] done

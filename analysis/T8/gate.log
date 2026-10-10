@@ -1,0 +1,15 @@
+[02:25:23] gate: truth b, N = 1000, kernel arm, SEs on; held-out SKU 22 [2, 1, 1] sweet 0.411
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount analysis/T8/t8_gpu.py
+└── 🔨 Created function fit.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+[02:29:44] fit 132 s + SE 117 s, 36 iters; nll 13691.9 vs truth 13699.9
+[02:29:44]   brand   0.031 vs 0.050 (SE 0.078, z -0.24)
+[02:29:44]   flavor  0.255 vs 0.200 (SE 0.050, z +1.11)
+[02:29:44]   pack    0.216 vs 0.200 (SE 0.057, z +0.28)
+[02:29:44]   rbf     0.370 vs 0.400 (SE 0.068, z -0.45)
+[02:29:44]   nugget  0.128 vs 0.150 (SE 0.083, z -0.27)
+[02:29:44]   l 0.248 (SE 0.042) vs 0.3; corr matrix max |err| 0.085
+[02:29:44] GATE PASS

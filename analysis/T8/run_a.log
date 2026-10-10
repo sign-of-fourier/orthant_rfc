@@ -1,0 +1,34 @@
+[02:30:06] T8 a: 20 reps, N 600; held-out SKU 22; GPU fits for both arms in parallel
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount analysis/T8/t8_gpu.py
+└── 🔨 Created function fit.
+analysis/T8/t8.py:415: DeprecationError: 2025-06-27: Function.starmap currently leaks an internal exception wrapping type (modal.exceptions.UserCodeException) when `return_exceptions=True` is set. In the future, this will change, and the underlying exception will be returned directly.
+To opt into the future behavior and silence this warning, add `wrap_returned_exceptions=False`:
+
+    f.starmap(..., return_exceptions=True, wrap_returned_exceptions=False)
+  res = list(t8_gpu.fit.starmap(jobs, return_exceptions=True))
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+[02:38:41] GPU fits done: 515 s wall; GPU fit-seconds 4069
+[02:41:04] rep 0: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[02:43:35] rep 1: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[02:45:48] rep 2: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 1 regret 10.04%
+[02:48:24] rep 3: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 1 regret 10.04%
+[02:50:41] rep 4: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 1 regret 10.04%
+[02:52:59] rep 5: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[02:55:08] rep 6: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[02:57:39] rep 7: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:00:22] rep 8: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:02:36] rep 9: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:05:03] rep 10: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:07:22] rep 11: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:10:25] rep 12: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:13:22] rep 13: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:16:27] rep 14: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 0 regret 0.00%
+[03:19:32] rep 15: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 0 regret 0.00%
+[03:22:24] rep 16: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:24:56] rep 17: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 2 regret 10.04%
+[03:28:00] rep 18: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 0 regret 0.00%
+[03:30:51] rep 19: kernel flips 0 regret 0.00%  varshare flips 0 regret 0.00%  rfc_s flips 0 regret 0.00%
+[03:30:51] done

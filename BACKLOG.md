@@ -12,6 +12,8 @@ design step.
 
 ### GPR: kernel-parameterised error covariance
 
+**Run as PLAN.md T8 (2026-10-10): FAIL on truth (b); guard PASS. Results there.**
+
 - **What.** Σ_ij = k(x_i, x_j): a GP kernel over product attributes in place of the per-attribute
   variance shares. The current model is the special case of indicator kernels (same brand / flavor
   / pack) plus a nugget; the kernel adds continuous attributes (pack size, price tier, embeddings)
@@ -23,17 +25,46 @@ design step.
 - **Hypothesis.** When similarity runs through a continuous or perceptual attribute, a kernel Σ
   recovers substitution and decisions (delist, extension, price) better than variance shares and
   HB-MNL + RFC; under categorical-only similarity it matches variance shares (no loss).
-- **Kill criteria.** ___ (blanks for the user).
+- **Kernel family (user, 2026-10-10).** k(x, x') = Σ_c w_c·1[x_c = x'_c] + w_rbf·ARD-RBF(continuous
+  attributes) + σ²·δ(x, x'). Nests variance shares (w_rbf = 0). No product or interaction kernels.
+- **Kill criteria (user, 2026-10-10).**
+  - **Recovery gate (truth b, 1 dataset, run first).** Variance weights (w_c, w_rbf, σ²) within 2 SE
+    of the truth AND implied correlation matrix max |error| ≤ 0.1. Report the length-scales ℓ with
+    their SEs; don't gate on ℓ. (The gate fit runs with SEs on.)
+  - **Decisions (20 replicates; all arms on the same datasets; margins on paired differences).**
+    The variance-share arm uses continuous attributes binned into terciles.
+    - (b): kernel regret lower than variance shares AND HB-MNL + RFC-S by > 2 paired-SE; kernel flips
+      ≤ variance-share flips.
+    - (c): kernel regret no worse than the better of the other two by > 1 paired-SE. Failure
+      recorded, not a kill.
+  - **No-loss guard (a).** Kernel regret no worse than variance shares by > 1 paired-SE. Failure
+    BLOCKS (nested model: a loss means w_rbf isn't shrinking): diagnose, fix, rerun.
+  - **New-SKU (report only).** Held-out SKU's correlation MAE lower than the variance-share arm's
+    categorical prediction by > 2 paired-SE; extension decision (add if net brand incremental share >
+    threshold) matches the truth in ≥ 16/20 replicates and ≥ the variance-share arm's count. The
+    threshold is fixed in the design before any run: h = 2 share points (user, 2026-10-10).
+- **Design specifics (user approved as proposed, 2026-10-10).**
+  - Truth (b): one continuous perceptual attribute, sweetness ∈ [0, 1], RBF length-scale 0.3;
+    variance weights brand / flavor / pack / RBF / nugget = .05 / .20 / .20 / .40 / .15. The
+    variance-share arm sees sweetness as terciles.
+  - Truth (c): `similarity_kernel`'s merge rule ported to T1's DGP: two products share one error draw
+    with probability 1 / (1 + exp((d − 0.6) / 0.2)), d = |Δ sweetness| + categorical mismatches.
+  - New-SKU: per replicate, hold out the product nearest another in sweetness; predict its
+    correlations from its attributes.
+  - Estimate: build ~2–3 h; gate 1 fit with SEs (~5 min T4, ~$0.05); main 3 truths × 20 reps × 2 GPU
+    arms at N = 600, no SEs (~2 T4-h, ~$1.20) + HB-MNL ~2.5 h local; total ~$1.30.
 - **Scope.**
   - In: T1's CBC DGP and GHK GPU fitter (J = 3–6 per task, so the integral stays cheap); truths
     (a) categorical shares (T1 G1, control), (b) a continuous-attribute kernel truth,
     (c) `research/similarity_kernel/` "merge" (perceptual merging, kernel misspecified); arms:
-    variance shares, kernel Σ (one kernel family chosen at design), HB-MNL + RFC-S.
+    variance shares (continuous attributes as terciles), kernel Σ (the family above),
+    HB-MNL + RFC-S.
   - OUT: J scaling / J = 60 (compute, not parameters, is the J = 60 limit), real data, SEs,
     kernel search over many families.
-- **Tests (minimal).** 1. Recovery of the kernel hyperparameters (one dataset, the T1 gate).
-  2. Decisions vs truth (flips, regret) per truth × arm, 20 replicates. 3. New-SKU test: hold
-  one SKU out of fitting, predict its correlation and extension incrementality.
+- **Tests (minimal), in order.** 0. Recovery gate (truth b, one dataset). 1. No-loss guard (a)
+  and decisions (b), (c): flips and regret vs truth per truth × arm, 20 replicates, paired.
+  2. New-SKU test (report only): hold one SKU out of fitting, predict its correlations and the
+  extension decision.
 - **Prior work.** `research/similarity_kernel/` (Laplace kernel on part-worth distance vs a
   perceptual-merging truth; one replicate run). Finishing it is the cheap first step (local CPU).
 - **Cost (rough).** Same per-fit cost as T1/T5 GHK: 3 truths × 3 arms × 20 reps at N = 600, about
