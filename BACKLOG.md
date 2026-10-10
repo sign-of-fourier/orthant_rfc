@@ -76,7 +76,7 @@ design step.
 
 ## Wedges (new, 2026-10-09)
 
-- **Engine vs shared-draw simulator for TURF search.** **FIRST UP after T6 passes.** Greedy and
+- **Engine vs shared-draw simulator for TURF search.** **Done as T7 (2026-10-10): FAIL; see PLAN.md.** Greedy and
   branch-and-bound TURF search, including near-tie portfolios, scored by the engine vs a
   shared-draw (common random numbers) simulator.
   - Why: the engine-moat argument depends on it; for scenario scoring the QMC simulator was ~25x

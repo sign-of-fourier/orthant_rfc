@@ -1,0 +1,22 @@
+T6 fit: J = 30, intercept-only (no covariates); rho median +0.217
+✓ Initialized. View run at 
+✓ Created objects.
+└── 🔨 Created function bench.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+wall 302 s (incl. container start); GPU Tesla T4; reference 1.0 s
+exhaustive k= 3 best 37.46%  near-ties   3  engine 0.00pt/0.03s  sim_4096 0.40pt/0.02s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.01s  sim_262144 0.00pt/0.04s  sim_1048576 0.00pt/0.16s  ghk_1024 0.00pt/0.03s  ghk_4096 0.00pt/0.10s  ghk_16384 0.00pt/0.39s  | sim N* 4096 speedup 0.6084649772269515
+exhaustive k= 4 best 42.54%  near-ties   3  engine 0.00pt/0.08s  sim_4096 0.43pt/0.01s  sim_16384 0.00pt/0.03s  sim_65536 0.00pt/0.06s  sim_262144 0.00pt/0.23s  sim_1048576 0.00pt/0.91s  ghk_1024 0.00pt/0.25s  ghk_4096 0.00pt/1.00s  ghk_16384 0.00pt/4.04s  | sim N* 4096 speedup 0.0680220975568022
+exhaustive k= 5 best 46.79%  near-ties   1  engine 0.00pt/0.36s  sim_4096 0.00pt/0.02s  sim_16384 0.00pt/0.08s  sim_65536 0.00pt/0.31s  sim_262144 0.00pt/1.23s  sim_1048576 0.00pt/4.92s  ghk_1024 0.00pt/1.80s  ghk_4096 0.00pt/7.18s  ghk_16384 0.00pt/28.69s  | sim N* 4096 speedup 0.06307660757659693
+exhaustive k= 6 best 49.91%  near-ties   2  engine 0.00pt/1.04s  sim_4096 0.00pt/0.09s  sim_16384 0.00pt/0.35s  sim_65536 0.00pt/1.37s  sim_262144 0.00pt/5.46s  sim_1048576 0.00pt/21.92s  ghk_1024 0.00pt/9.67s  ghk_4096 0.00pt/38.52s  ghk_16384 0.00pt/154.01s  | sim N* 4096 speedup 0.08547153976155712
+greedy     k= 3 best 37.46%  near-ties   2  engine 0.00pt/0.01s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.04s  ghk_1024 0.00pt/0.00s  ghk_4096 0.00pt/0.00s  ghk_16384 0.00pt/0.01s  | sim N* 4096 speedup 0.1878593615755733
+greedy     k= 4 best 42.54%  near-ties   3  engine 0.00pt/0.01s  sim_4096 0.43pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.04s  ghk_1024 0.00pt/0.00s  ghk_4096 0.00pt/0.01s  ghk_16384 0.00pt/0.01s  | sim N* 4096 speedup 0.14683815648445875
+greedy     k= 5 best 46.79%  near-ties   1  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.04s  ghk_1024 0.00pt/0.01s  ghk_4096 0.00pt/0.01s  ghk_16384 0.00pt/0.02s  | sim N* 4096 speedup 0.12352164255268056
+greedy     k= 6 best 49.91%  near-ties   1  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.04s  ghk_1024 0.00pt/0.01s  ghk_4096 0.00pt/0.01s  ghk_16384 0.00pt/0.03s  | sim N* 4096 speedup 0.11588070784512272
+greedy     k= 7 best 52.04%  near-ties   7  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.04s  ghk_1024 0.00pt/0.01s  ghk_4096 0.00pt/0.01s  ghk_16384 0.00pt/0.04s  | sim N* 4096 speedup 0.11148556884601069
+greedy     k= 8 best 53.97%  near-ties   7  engine 0.00pt/0.03s  sim_4096 0.24pt/0.00s  sim_16384 0.09pt/0.00s  sim_65536 0.09pt/0.00s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.05s  ghk_1024 0.00pt/0.01s  ghk_4096 0.00pt/0.02s  ghk_16384 0.00pt/0.05s  | sim N* 4096 speedup 0.1099441283068897
+greedy     k= 9 best 55.67%  near-ties  23  engine 0.00pt/0.03s  sim_4096 0.18pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.01s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.05s  ghk_1024 0.00pt/0.02s  ghk_4096 0.00pt/0.02s  ghk_16384 0.00pt/0.06s  | sim N* 4096 speedup 0.10908118773109624
+greedy     k=10 best 57.19%  near-ties  18  engine 0.06pt/0.04s  sim_4096 0.27pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.06pt/0.01s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.05s  ghk_1024 0.00pt/0.02s  ghk_4096 0.00pt/0.03s  ghk_16384 0.00pt/0.07s  | sim N* 4096 speedup 0.10965015261798544
+greedy     k=11 best 58.64%  near-ties  23  engine 0.00pt/0.04s  sim_4096 0.04pt/0.00s  sim_16384 0.00pt/0.00s  sim_65536 0.00pt/0.01s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.05s  ghk_1024 0.00pt/0.02s  ghk_4096 0.00pt/0.03s  ghk_16384 0.00pt/0.08s  | sim N* 4096 speedup 0.1119090909090909
+greedy     k=12 best 59.95%  near-ties  23  engine 0.00pt/0.04s  sim_4096 0.00pt/0.00s  sim_16384 0.11pt/0.00s  sim_65536 0.00pt/0.01s  sim_262144 0.00pt/0.01s  sim_1048576 0.00pt/0.05s  ghk_1024 0.00pt/0.03s  ghk_4096 0.00pt/0.03s  ghk_16384 0.00pt/0.10s  | sim N* 4096 speedup 0.11423448275862069
+FAIL | greedy k>=6 engine>=5x: 0 of 7

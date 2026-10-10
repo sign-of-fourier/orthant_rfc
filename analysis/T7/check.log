@@ -1,0 +1,15 @@
+T6 fit: J = 30, intercept-only (no covariates); rho median +0.217
+✓ Initialized. View run at 
+✓ Created objects.
+└── 🔨 Created function bench.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+wall 12 s (incl. container start); GPU Tesla T4; reference 0.1 s
+exhaustive k= 3 best 37.46%  near-ties   3  engine 0.00pt/0.04s  sim_4096 0.40pt/0.03s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.05s  | sim N* 4096 speedup 0.7366320691332855
+exhaustive k= 4 best 42.54%  near-ties   3  engine 0.00pt/0.08s  sim_4096 0.43pt/0.01s  sim_16384 0.00pt/0.02s  ghk_1024 0.00pt/0.33s  | sim N* 4096 speedup 0.061749496394094515
+greedy     k= 3 best 37.46%  near-ties   2  engine 0.00pt/0.01s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.00s  | sim N* 4096 speedup 0.16528132033008253
+greedy     k= 4 best 42.54%  near-ties   3  engine 0.00pt/0.01s  sim_4096 0.43pt/0.00s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.00s  | sim N* 4096 speedup 0.13102487562189055
+greedy     k= 5 best 46.79%  near-ties   1  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.01s  | sim N* 4096 speedup 0.11646121667927552
+greedy     k= 6 best 49.91%  near-ties   1  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.01s  | sim N* 4096 speedup 0.11151436339992907
+greedy     k= 7 best 52.04%  near-ties   7  engine 0.00pt/0.02s  sim_4096 0.00pt/0.00s  sim_16384 0.00pt/0.00s  ghk_1024 0.00pt/0.01s  | sim N* 4096 speedup 0.10687419190534028
+FAIL | greedy k>=6 engine>=5x: 0 of 2
