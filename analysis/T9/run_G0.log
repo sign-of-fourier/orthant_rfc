@@ -1,0 +1,23 @@
+[12:18:08] T9 G0: 20 reps, N 600; MACML on GPU in parallel; GHK arm from T5_G0_N600
+[12:20:17] GPU fits done: 124 s wall; GPU fit-seconds 530
+[12:20:17] rep 0: MACML flips 0 regret 0.00% (30 s, 84 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 1: MACML flips 0 regret 0.00% (19 s, 57 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 2: MACML flips 0 regret 0.00% (34 s, 112 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 3: MACML flips 0 regret 0.00% (33 s, 90 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 4: MACML flips 0 regret 0.00% (31 s, 88 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 5: MACML flips 0 regret 0.00% (29 s, 67 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 6: MACML flips 0 regret 0.00% (32 s, 91 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 7: MACML flips 0 regret 0.00% (29 s, 79 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 8: MACML flips 0 regret 0.00% (26 s, 62 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 9: MACML flips 0 regret 0.00% (25 s, 58 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 10: MACML flips 0 regret 0.00% (27 s, 64 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 11: MACML flips 0 regret 0.00% (28 s, 78 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 12: MACML flips 0 regret 0.00% (23 s, 63 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 13: MACML flips 0 regret 0.00% (25 s, 82 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 14: MACML flips 0 regret 0.00% (24 s, 82 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 15: MACML flips 0 regret 0.00% (26 s, 82 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 16: MACML flips 0 regret 0.00% (23 s, 78 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 17: MACML flips 0 regret 0.00% (24 s, 66 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 18: MACML flips 0 regret 0.00% (18 s, 52 it)  GHK flips 0 regret 0.00%
+[12:20:17] rep 19: MACML flips 0 regret 0.00% (24 s, 80 it)  GHK flips 0 regret 0.00%
+[12:20:17] done

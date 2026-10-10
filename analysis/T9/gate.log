@@ -1,0 +1,25 @@
+[12:14:17] gate: G1 rep 0, N = 600, MACML (OVUS pairs) with Godambe SEs, vs step0_G1 rep 0 GHK
+[12:15:18] GPU fits done: 61 s wall; GPU fit-seconds 51
+[12:17:58] GHK rep 0 refit with SEs: 81 s + SE 67 s
+[12:17:58]   corr, shared brand              gap +0.113 (SE 0.083) z +1.35
+[12:17:58]   corr, shared flavor             gap -0.143 (SE 0.098) z -1.46
+[12:17:58]   corr, shared pack               gap +0.030 (SE 0.101) z +0.29
+[12:17:58]   corr, shared brand+flavor       gap -0.030 (SE 0.103) z -0.29
+[12:17:58]   corr, shared brand+pack         gap +0.142 (SE 0.098) z +1.45
+[12:17:58]   corr, shared flavor+pack        gap -0.113 (SE 0.084) z -1.35
+[12:17:58]   fit 34 s + SE 17 s, 97 iters, max|grad| 5.0e+00; ncl 95911.1 vs truth 96070.3; order rounds 3, orthants re-sorted [39558, 3690, 0], iters [62, 34, 1]
+[12:17:58]   b brand1  MACML +0.602 (0.051)  GHK +0.611 (0.048)  z -0.12
+[12:17:58]   b brand2  MACML +0.255 (0.050)  GHK +0.236 (0.049)  z +0.28
+[12:17:58]   b brand3  MACML -0.028 (0.047)  GHK -0.020 (0.045)  z -0.12
+[12:17:58]   b flavor1 MACML +0.344 (0.037)  GHK +0.360 (0.036)  z -0.30
+[12:17:58]   b flavor2 MACML +0.035 (0.036)  GHK +0.026 (0.036)  z +0.17
+[12:17:58]   b pack1   MACML +0.325 (0.037)  GHK +0.325 (0.035)  z +0.00
+[12:17:58]   b pack2   MACML -0.049 (0.035)  GHK -0.049 (0.034)  z -0.00
+[12:17:58]   b price   MACML -0.990 (0.039)  GHK -0.988 (0.037)  z -0.03
+[12:17:58]   b none    MACML +1.032 (0.059)  GHK +1.034 (0.053)  z -0.02
+[12:17:58]   share brand  MACML 0.200  GHK 0.088  z(log sigma) +1.32
+[12:17:58]   share flavor MACML 0.240  GHK 0.383  z(log sigma) -1.34
+[12:17:58]   share pack   MACML 0.518  GHK 0.488  z(log sigma) +0.29
+[12:17:58]   taste sds (reported, not gated): z [-0.12, -0.51, -0.28, 0.63, 0.01, 0.71, -0.54, 0.3, -0.64]
+[12:17:58]   implied error correlation max |diff| 0.143 (reported; gate is |z| <= 2 per correlation)
+[12:17:58] GATE PASS

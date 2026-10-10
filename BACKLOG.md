@@ -74,6 +74,8 @@ design step.
 
 ### MACML: Bhat's estimator as an incumbent probit arm
 
+**Run as PLAN.md T9 (2026-10-10): FAIL, no decision difference (both arms 0 flips, 0 regret). Results there.**
+
 - **What.** Maximum approximate composite marginal likelihood (Bhat): pairwise composite
   likelihood over a respondent's choice tasks, each term by Bhat's analytic MVNCD approximation.
   The fast analytic incumbent probit; listed as an arm in T2 and T4 but never implemented.

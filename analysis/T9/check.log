@@ -1,0 +1,3 @@
+[12:05:45] check (G2 rep 0, 20 respondents x 66 pairs = 1320 orthants, at the GHK fit): composite ll -2996.257448, sum of torch orthants -2996.257605, pybhatlib -2996.254743
+[12:05:45]   no exact tie (1297): max |dlog P| 1.78e-15; exact ties (23): max |dlog P| 1.62e-03
+[12:05:45] CHECK PASS

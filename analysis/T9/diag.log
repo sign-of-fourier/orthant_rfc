@@ -1,0 +1,7 @@
+[12:07:39] GPU fits done: 40 s wall; GPU fit-seconds 151
+[12:07:39] rep 0 start th0: ncl 95911.15 (at GHK theta 95940.53), 97 it, max|grad| 5.0e+00; shares b/f/p MACML [0.2, 0.24, 0.518] GHK [0.088, 0.383, 0.488]; corr diff 0.143
+[12:07:39] rep 0 start ghk: ncl 95911.16 (at GHK theta 95940.53), 55 it, max|grad| 5.3e+00; shares b/f/p MACML [0.2, 0.241, 0.518] GHK [0.088, 0.383, 0.488]; corr diff 0.143
+[12:07:39] rep 1 start th0: ncl 96152.95 (at GHK theta 96169.93), 67 it, max|grad| 5.5e+00; shares b/f/p MACML [0.01, 0.493, 0.479] GHK [0.065, 0.469, 0.447]; corr diff 0.056
+[12:07:39] rep 1 start ghk: ncl 96152.45 (at GHK theta 96169.93), 63 it, max|grad| 4.7e+00; shares b/f/p MACML [0.003, 0.496, 0.482] GHK [0.065, 0.469, 0.447]; corr diff 0.063
+[12:07:39] rep 2 start th0: ncl 96440.28 (at GHK theta 96450.39), 72 it, max|grad| 2.5e+00; shares b/f/p MACML [0.0, 0.469, 0.528] GHK [0.0, 0.492, 0.502]; corr diff 0.026
+[12:07:39] rep 2 start ghk: ncl 96439.96 (at GHK theta 96450.39), 22 it, max|grad| 5.8e+00; shares b/f/p MACML [0.0, 0.468, 0.525] GHK [0.0, 0.492, 0.502]; corr diff 0.023
