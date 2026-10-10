@@ -1,0 +1,18 @@
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+└── 🔨 Created function orthants.
+[00:57:14] data: 2338 households x 30 items; window-1 rates 4.4-22.2%
+[00:57:14] control: independent household vectors with the window-1 marginals, same household count
+[00:57:14] IFM fit: rho off-diagonal median -0.003, range -0.905..+0.198, max|rho| 0.905; PSD projection moved 0.0848
+[00:57:16] 3 bootstrap IFM fits: 2 s (local CPU)
+[00:57:25] GPU reach: 400 orthants, 1.3 GPU-s
+[00:57:25] GPU vs SciPy on the main fit's 100 sets: max |diff| 0.0014 pts (tolerance 0.01)
+[00:57:25] prediction (pts): k=1 ind 0.59 mvp 0.59, k=2 ind 0.99 mvp 1.01, k=3 ind 1.27 mvp 1.31, k=4 ind 1.10 mvp 1.18, k=5 ind 1.26 mvp 1.32, k=6 ind 1.06 mvp 0.95
+[00:57:25] bootstrap 1/3
+[00:57:25] bootstrap 2/3
+[00:57:25] bootstrap 3/3
+[00:57:25] verdict: {"counted_flips": 1, "added_error_pts": 0.01940400266417419, "added_error_limit": 0.2, "max_abs_rho": 0.905169104071915, "PASS": false, "k1_sanity_max_diff_pts": 5.551115123125783e-15, "first_divergence_k": 5}
+[00:57:25] done in 16 s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 

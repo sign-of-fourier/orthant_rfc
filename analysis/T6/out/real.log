@@ -1,0 +1,24 @@
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+└── 🔨 Created function orthants.
+[01:05:47] data: 2338 households x 30 items; window-1 rates 4.4-22.2%
+[01:05:48] IFM fit: rho off-diagonal median +0.217, range -0.225..+0.708, max|rho| 0.708; PSD projection moved 0.0049
+[01:07:31] 200 bootstrap IFM fits: 103 s (local CPU)
+[01:07:53] GPU reach: 191955 orthants, 8.8 GPU-s
+[01:07:59] GPU vs SciPy on the main fit's 1000 sets: max |diff| 0.0030 pts (tolerance 0.01)
+[01:07:59] prediction (pts): k=1 ind 1.81 mvp 1.81, k=2 ind 2.67 mvp 2.40, k=3 ind 3.06 mvp 2.27, k=4 ind 4.45 mvp 2.49, k=5 ind 5.20 mvp 2.24, k=6 ind 7.20 mvp 2.16
+[01:08:00] bootstrap 20/200
+[01:08:01] bootstrap 40/200
+[01:08:02] bootstrap 60/200
+[01:08:03] bootstrap 80/200
+[01:08:04] bootstrap 100/200
+[01:08:05] bootstrap 120/200
+[01:08:05] bootstrap 140/200
+[01:08:06] bootstrap 160/200
+[01:08:07] bootstrap 180/200
+[01:08:08] bootstrap 200/200
+[01:08:08] verdict: {"prediction": {"rel_improvement_pooled": 0.4879934533233249, "rel_improvement_k5_k6": {"5": 0.5695956822571944, "6": 0.6998420674945152}, "worse_by_2se_at": [], "PASS": true}, "decision": {"counted_flips_at": [3, 4, 5, 6], "mvp_wins": 4, "PASS": true}, "k1_sanity_max_diff_pts": 5.551115123125783e-15, "first_divergence_k": 2}
+[01:08:08] done in 146 s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 

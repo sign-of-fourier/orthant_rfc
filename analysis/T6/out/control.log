@@ -1,0 +1,16 @@
+[23:54:37] data: 2338 households x 30 items; window-1 rates 4.4-22.2%
+[23:54:37] control: independent household vectors with the window-1 marginals, same household count
+[23:54:37] IFM fit: rho off-diagonal median -0.003, range -0.905..+0.198, max|rho| 0.905; PSD projection moved 0.0848
+[23:54:41] prediction (pts): k=1 ind 0.65 mvp 0.65, k=2 ind 0.98 mvp 1.00, k=3 ind 1.12 mvp 1.14, k=4 ind 1.37 mvp 1.42, k=5 ind 1.46 mvp 1.44, k=6 ind 1.42 mvp 1.39
+[23:57:09] bootstrap 20/200
+[23:59:42] bootstrap 40/200
+[00:02:15] bootstrap 60/200
+[00:04:50] bootstrap 80/200
+[00:07:18] bootstrap 100/200
+[00:09:49] bootstrap 120/200
+[00:12:28] bootstrap 140/200
+[00:14:59] bootstrap 160/200
+[00:17:35] bootstrap 180/200
+[00:20:11] bootstrap 200/200
+[00:20:11] verdict: {"counted_flips": 1, "added_error_pts": 0.00747155328169824, "added_error_limit": 0.2, "max_abs_rho": 0.905169104071915, "PASS": false, "k1_sanity_max_diff_pts": 5.551115123125783e-15, "first_divergence_k": 5}
+[00:20:11] done in 1539 s
