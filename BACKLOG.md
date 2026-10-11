@@ -75,6 +75,9 @@ design step.
 ### MACML: Bhat's estimator as an incumbent probit arm
 
 **Run as PLAN.md T9 (2026-10-10): FAIL, no decision difference (both arms 0 flips, 0 regret). Results there.**
+Follow-ups (open, 2026-10-11): (a) relabel T9 — the user questioned "FAIL" when the hypothesis was a
+match; offered wording "match confirmed; G2 win inconclusive (decisions saturated)", not applied;
+(b) T10 Part B (J = 20) paused at the GHK size choice (PLAN.md T10).
 
 - **What.** Maximum approximate composite marginal likelihood (Bhat): pairwise composite
   likelihood over a respondent's choice tasks, each term by Bhat's analytic MVNCD approximation.
@@ -259,3 +262,12 @@ say whether it is worth it").
 - **Weak / J = 12 reference check** (open caveat): QMC reference shares (.18/.20/.24/.37) far from
   the truth (.05/.10/.10/.75); check before leaning on that cell.
 - From: ORTHANT_PLAN.md options and status; PLAN.md follow-ups (service) and next steps.
+- **From the T10 side study (2026-10-11; results in PLAN.md T10).**
+  - Deploy the engine's d > 32 GPU fix to the service: committed in the engine repo, not deployed.
+    Deploys are run by the user.
+  - Engine GPU preprocessing cost at d ≤ 32 (~21 µs per orthant at d = 20, most of the engine's
+    time there): candidate speed-up in the engine repo. Est. ~$0.02 per check.
+  - Kernel-launch profile of OVUS at batch 10³ vs 10⁵ (the explanation of its batch scaling is
+    inferred, not measured). ~1 T4-min.
+  - Engine vs OVUS on mixed-sign / structured Σ: OVUS ~5× lower median error on generated two-factor
+    matrices. Whether that matters for any decision in T1–T10 is untested.

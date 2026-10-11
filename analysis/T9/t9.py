@@ -4,6 +4,7 @@
     python analysis/T9/t9.py gate             # G1 rep 0, N = 600, Godambe SEs; vs analysis/T1/out/step0_G1
     python analysis/T9/t9.py run --truth G2   # 20 reps, N = 600, no SEs; GHK arm from T1/out/T5_<truth>_N600
     python analysis/T9/t9.py summary
+    python analysis/T9/t9.py run --truth G1 --N 150   # T10 part A: GHK arm from T5_<truth>_N150
 
 Design and kill criteria: PLAN.md T9. Data per replicate are T1's own (make_data on the replicate's
 r_data stream), so the GHK fits of T5's N = 600 cells are the paired comparison arm.
@@ -224,11 +225,15 @@ def diag(args):
     (HERE / "out" / "diag.json").write_text(json.dumps(out, indent=1))
 
 
+def suffix():
+    return "" if N == 600 else f"_N{N}"
+
+
 def run_truth(args):
     truth = args.truth
     sig = sig_of(truth)
-    ghk = json.loads((T1 / "out" / f"T5_{truth}_N600" / "results.json").read_text())
-    log(f"T9 {truth}: {REPS} reps, N {N}; MACML on GPU in parallel; GHK arm from T5_{truth}_N600")
+    ghk = json.loads((T1 / "out" / f"T5_{truth}_N{N}" / "results.json").read_text())
+    log(f"T9 {truth}: {REPS} reps, N {N}; MACML on GPU in parallel; GHK arm from T5_{truth}_N{N}")
     jobs = [(*data(truth, rep), th0(), run.theta_true(sig, "total"), float(run.T_VAR)) for rep in range(REPS)]
     res = fits(jobs, se=False)
     recs = []
@@ -246,7 +251,7 @@ def run_truth(args):
         recs.append(dict(rep=rep, truth_S1=g["truth"]["S1"], macml=m, ghk=gm))
         log(f"rep {rep}: MACML flips {m['flips']} regret {m['cost_regret_pct']:.2f}% ({r['seconds']['fit']:.0f} s, "
             f"{r['n_iter']} it)  GHK flips {gm['flips']} regret {gm['cost_regret_pct']:.2f}%")
-    out = HERE / "out" / f"full_{truth}"
+    out = HERE / "out" / f"full_{truth}{suffix()}"
     out.mkdir(parents=True, exist_ok=True)
     (out / "results.json").write_text(json.dumps(dict(truth=truth, N=N, records=recs), indent=1))
     log("done")
@@ -255,7 +260,7 @@ def run_truth(args):
 def summary(args):
     out = {}
     for truth in ("G0", "G1", "G2"):
-        p = HERE / "out" / f"full_{truth}" / "results.json"
+        p = HERE / "out" / f"full_{truth}{suffix()}" / "results.json"
         if not p.exists():
             continue
         R = json.loads(p.read_text())["records"]
@@ -280,15 +285,17 @@ def summary(args):
         print(f"  MACML - GHK regret {m:+.2f} (paired SE {se:.2f})"
               + (f"  WIN (GHK better by > 2 SE): {row['WIN']}" if truth == "G2" else "")
               + (f"  FLAG (MACML better by > 2 SE): {row['FLAG_macml_beats_ghk']}" if truth == "G1" else ""))
-    (HERE / "out" / "summary.json").write_text(json.dumps(out, indent=1))
+    (HERE / "out" / f"summary{suffix()}.json").write_text(json.dumps(out, indent=1))
 
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("stage", choices=["check", "gate", "diag", "run", "summary"])
     ap.add_argument("--truth", choices=list(run.TRUTHS), default="G2")
+    ap.add_argument("--N", type=int, default=600, help="run / summary: sample size (T10 part A: 150, 300)")
     a = ap.parse_args()
+    N = a.N
     if a.stage != "summary":
         (HERE / "out").mkdir(exist_ok=True)
-        LOGF = open(HERE / f"{a.stage}{'_' + a.truth if a.stage == 'run' else ''}.log", "w")
+        LOGF = open(HERE / f"{a.stage}{'_' + a.truth if a.stage == 'run' else ''}{suffix()}.log", "w")
     dict(check=check, gate=gate, diag=diag, run=run_truth, summary=summary)[a.stage](a)

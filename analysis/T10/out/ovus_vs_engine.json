@@ -1,0 +1,146 @@
+{
+ "A6 (T9 pair, G2)": {
+  "n": 100,
+  "dim": 6,
+  "median_P": 0.08685049442510656,
+  "ref_seconds": 5.079822063446045,
+  "ref_se_logP_median": 2.0245915484564706e-06,
+  "ref_se_logP_max": 8.808372340335008e-06,
+  "engine high": {
+   "us_per_orthant": 15.358150703832507,
+   "dlogP_median": 0.06225389475847609,
+   "dlogP_max": 1.1730707800361158,
+   "dP_median": 0.006845523377132734,
+   "dP_max": 0.031020414530915502
+  },
+  "engine low": {
+   "us_per_orthant": 10.933600133284926,
+   "dlogP_median": 0.2669364183986823,
+   "dlogP_max": 3.23384310608355,
+   "dP_median": 0.020251890845375903,
+   "dP_max": 0.15077249212715182
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 340.0559804867953,
+   "dlogP_median": 0.00538529260132381,
+   "dlogP_max": 0.060143817700053503,
+   "dP_median": 0.0005219055431424993,
+   "dP_max": 0.0035261221057832012
+  },
+  "OVUS torch batch (T9 port)": {
+   "us_per_orthant": 66.34038989432156,
+   "dlogP_median": 0.005385292601324143,
+   "dlogP_max": 0.060143817700052615,
+   "dP_median": 0.0005219055431425132,
+   "dP_max": 0.0035261221057831457
+  }
+ },
+ "A6g1 (T9 pair, G1)": {
+  "n": 100,
+  "dim": 6,
+  "median_P": 0.08367845252697229,
+  "ref_seconds": 5.051077365875244,
+  "ref_se_logP_median": 2.0601599517957327e-06,
+  "ref_se_logP_max": 1.0396255603211738e-05,
+  "engine high": {
+   "us_per_orthant": 15.951549867168069,
+   "dlogP_median": 0.06461998899157095,
+   "dlogP_max": 1.1514761266458766,
+   "dP_median": 0.006869076644616539,
+   "dP_max": 0.03053489366901127
+  },
+  "engine low": {
+   "us_per_orthant": 10.181460529565811,
+   "dlogP_median": 0.2706040357952022,
+   "dlogP_max": 3.1966640497931573,
+   "dP_median": 0.019076326297240292,
+   "dP_max": 0.14936718435770768
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 344.94126914069057,
+   "dlogP_median": 0.00488119282344468,
+   "dlogP_max": 0.05801559347106444,
+   "dP_median": 0.0005022840289372471,
+   "dP_max": 0.0034166608163677253
+  },
+  "OVUS torch batch (T9 port)": {
+   "us_per_orthant": 86.68688940815628,
+   "dlogP_median": 0.004881192823444458,
+   "dlogP_max": 0.05801559347106444,
+   "dP_median": 0.0005022840289372818,
+   "dP_max": 0.0034166608163677253
+  }
+ },
+ "B20 (J=20 task | tastes)": {
+  "n": 100,
+  "dim": 20,
+  "median_P": 0.1932974000054611,
+  "ref_seconds": 27.667320013046265,
+  "ref_se_logP_median": 5.0960471150331856e-05,
+  "ref_se_logP_max": 0.0007158816550481978,
+  "engine high": {
+   "us_per_orthant": 82.57608045823872,
+   "dlogP_median": 0.01415451377365684,
+   "dlogP_max": 0.082041614877296,
+   "dP_median": 0.002730691156564602,
+   "dP_max": 0.013218405425152735
+  },
+  "engine low": {
+   "us_per_orthant": 59.35369059443474,
+   "dlogP_median": 0.05349158916695629,
+   "dlogP_max": 0.4514360307776206,
+   "dP_median": 0.00985923350656634,
+   "dP_max": 0.039913802291651576
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 3019.699789583683,
+   "dlogP_median": 0.008167729753108532,
+   "dlogP_max": 0.31054738065680443,
+   "dP_median": 0.0021460676419502306,
+   "dP_max": 0.018788599980420845
+  },
+  "OVUS torch batch (T9 port)": {
+   "us_per_orthant": 329.89501021802425,
+   "dlogP_median": 0.008167729753108088,
+   "dlogP_max": 0.3105473806568053,
+   "dP_median": 0.002146067641950397,
+   "dP_max": 0.01878859998042076
+  }
+ },
+ "C40 (J=20 MACML pair)": {
+  "n": 100,
+  "dim": 40,
+  "median_P": 0.008501098359025962,
+  "ref_seconds": 73.09263849258423,
+  "ref_se_logP_median": 0.0013122290190692764,
+  "ref_se_logP_max": 0.010588615188697952,
+  "engine high": {
+   "us_per_orthant": 438.17108031362295,
+   "dlogP_median": 0.3243063789965297,
+   "dlogP_max": 13.853329561507588,
+   "dP_median": 0.0036118340876457817,
+   "dP_max": 0.013896088472433898
+  },
+  "engine low": {
+   "us_per_orthant": 288.2111701183021,
+   "dlogP_median": 0.31636588241687047,
+   "dlogP_max": 18.349615700103868,
+   "dP_median": 0.0028523070983234354,
+   "dP_max": 0.017309867370101387
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 16699.149039341137,
+   "dlogP_median": 0.06244393177809737,
+   "dlogP_max": 0.26958597583297284,
+   "dP_median": 0.0007960074756447151,
+   "dP_max": 0.003143399327106269
+  },
+  "OVUS torch batch (T9 port)": {
+   "us_per_orthant": 752.5881403125823,
+   "dlogP_median": 0.06341447623060237,
+   "dlogP_max": 0.2695859758329737,
+   "dP_median": 0.0007960074756446795,
+   "dP_max": 0.0031433993271062378
+  }
+ }
+}
