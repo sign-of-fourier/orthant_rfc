@@ -309,7 +309,9 @@ def event_counts(dec, opt, Y, hh, n_hh):
 
 
 def adjudicate(pa, pb, Y, hh, n_hh, W):
-    """Where picks differ: holdout values, difference (a - b), household-bootstrap SE; verdict by T6's rule."""
+    """Where picks differ: holdout values, difference (a - b), household-bootstrap SE; verdict by T6's rule.
+    Also (report): 95% percentile CIs of the difference and of the relative lift a / b - 1, two-sided bootstrap p
+    (floor 1 / n_boot), and Holm-adjusted p over the decisions that differ."""
     out = {}
     for k in DECS:
         if pa[k] == pb[k]:
@@ -321,8 +323,17 @@ def adjudicate(pa, pb, Y, hh, n_hh, W):
         boot = (W @ na) / (W @ da) - (W @ nb) / (W @ db)
         se = float(np.std(boot, ddof=1))
         res = abs(diff) >= max(MATERIAL, 2 * se)
+        rel = (W @ na) / (W @ da) / ((W @ nb) / (W @ db)) - 1
+        p = max(2 * min((boot <= 0).mean(), (boot >= 0).mean()), 1 / len(boot))
         out[k] = dict(differ=True, hold_a=float(na.sum() / da.sum()), hold_b=float(nb.sum() / db.sum()),
-                      diff=float(diff), se=se, verdict=("a" if diff > 0 else "b") if res else "unresolved")
+                      diff=float(diff), se=se, verdict=("a" if diff > 0 else "b") if res else "unresolved",
+                      ci=np.percentile(boot, [2.5, 97.5]).tolist(), rel=float(na.sum() / da.sum() / (nb.sum() / db.sum()) - 1),
+                      rel_ci=np.percentile(rel, [2.5, 97.5]).tolist(), p=float(p))
+    ks = sorted((k for k in out if out[k]["differ"]), key=lambda k: out[k]["p"])
+    run = 0.0
+    for i, k in enumerate(ks):                                                 # Holm step-down
+        run = max(run, min(1.0, (len(ks) - i) * out[k]["p"]))
+        out[k]["p_holm"] = run
     return out
 
 
@@ -483,10 +494,16 @@ def summary(mode):
         for k in DECS:
             v = adj[k]
             if v["differ"]:
-                lines.append(f"    {k:7s} IFM {fmt(k, pk['ifm'][k], names)} {v['hold_a']:.4f} vs CS-F "
-                             f"{fmt(k, pk['cs_f'][k], names)} {v['hold_b']:.4f}: diff {100 * v['diff']:+.2f} pts "
-                             f"(SE {100 * v['se']:.2f}) -> {v['verdict']}")
+                lines.append(f"    {k:7s} IFM {fmt(k, pk['ifm'][k], names)} {100 * v['hold_a']:.2f}% vs CS-F "
+                             f"{fmt(k, pk['cs_f'][k], names)} {100 * v['hold_b']:.2f}%: diff {100 * v['diff']:+.2f} pts "
+                             f"[{100 * v['ci'][0]:+.2f}, {100 * v['ci'][1]:+.2f}] (SE {100 * v['se']:.2f}); relative "
+                             f"{100 * v['rel']:+.0f}% [{100 * v['rel_ci'][0]:+.0f}, {100 * v['rel_ci'][1]:+.0f}]; "
+                             f"Holm p {v['p_holm']:.3f} -> {v['verdict']}")
+        sig = [k for k in DECS if adj[k]["differ"] and adj[k]["p_holm"] < .05]
         lines.append(f"Totals {tot}; MVP loses a set decision: {set_loss or 'none'}. Verdict: {verdict}.")
+        lines.append(f"Report: significant at Holm 5%: MVP {sum(adj[k]['diff'] > 0 for k in sig)}, CS-F "
+                     f"{sum(adj[k]['diff'] < 0 for k in sig)}; of those material (>= {100 * MATERIAL:.1f} pts): "
+                     f"{sum(abs(adj[k]['diff']) >= MATERIAL for k in sig)}.")
     for key in ("ml_vs_cs_f", "ml_vs_ifm"):
         a = res["adjudication"].get(key)
         if a:

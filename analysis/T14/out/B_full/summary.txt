@@ -10,13 +10,14 @@ MVP-IFM vs CS-F on the holdout, by decision type (differ / backs MVP / backs CS-
   bundle3    0/1 differ: 0 / 0 / 0
   turf4      0/1 differ: 0 / 0 / 0
   follow-on  5/24 differ: 3 / 0 / 2
-    bundle2 IFM eggs+cream cheese 0.0119 vs CS-F cake mix+frosting 0.0087: diff +0.32 pts (SE 0.08) -> unresolved
-    rec9    IFM chocolate chips->eggs 0.3476 vs CS-F chocolate chips->sugar 0.3670: diff -1.93 pts (SE 2.99) -> unresolved
-    rec11   IFM baking nuts->eggs 0.3279 vs CS-F baking nuts->sugar 0.3008: diff +2.71 pts (SE 2.92) -> unresolved
-    rec16   IFM extracts->sugar 0.4432 vs CS-F extracts->flour 0.2216: diff +22.16 pts (SE 3.95) -> a
-    rec18   IFM pie crust->eggs 0.3272 vs CS-F pie crust->cream cheese 0.2202: diff +10.70 pts (SE 3.37) -> a
-    rec21   IFM graham crackers->eggs 0.2573 vs CS-F graham crackers->marshmallows 0.1165: diff +14.08 pts (SE 3.75) -> a
+    bundle2 IFM eggs+cream cheese 1.19% vs CS-F cake mix+frosting 0.87%: diff +0.32 pts [+0.15, +0.48] (SE 0.08); relative +37% [+17, +61]; Holm p 0.006 -> unresolved
+    rec9    IFM chocolate chips->eggs 34.76% vs CS-F chocolate chips->sugar 36.70%: diff -1.93 pts [-7.97, +3.68] (SE 2.99); relative -5% [-20, +11]; Holm p 0.780 -> unresolved
+    rec11   IFM baking nuts->eggs 32.79% vs CS-F baking nuts->sugar 30.08%: diff +2.71 pts [-3.16, +8.40] (SE 2.92); relative +9% [-10, +31]; Holm p 0.780 -> unresolved
+    rec16   IFM extracts->sugar 44.32% vs CS-F extracts->flour 22.16%: diff +22.16 pts [+14.88, +29.70] (SE 3.95); relative +100% [+57, +171]; Holm p 0.006 -> a
+    rec18   IFM pie crust->eggs 32.72% vs CS-F pie crust->cream cheese 22.02%: diff +10.70 pts [+4.03, +17.33] (SE 3.37); relative +49% [+16, +91]; Holm p 0.006 -> a
+    rec21   IFM graham crackers->eggs 25.73% vs CS-F graham crackers->marshmallows 11.65%: diff +14.08 pts [+6.81, +21.43] (SE 3.75); relative +121% [+46, +247]; Holm p 0.006 -> a
 Totals {'differ': 6, 'mvp': 3, 'cs': 0, 'unresolved': 3}; MVP loses a set decision: none. Verdict: PASS.
+Report: significant at Holm 5%: MVP 4, CS-F 0; of those material (>= 0.5 pts): 3.
 ml_vs_cs_f: differ 5/27; backs first 2, second 0, unresolved 3
 ml_vs_ifm: differ 1/27; backs first 0, second 1, unresolved 0
 Controls (flips of 27 decisions per rep, material > 0.5 pts; holdout LL):

@@ -783,10 +783,20 @@ J = 20. Kill criteria: BLANKS for the user. Nothing runs until they are filled i
 | TURF-4 | 0 / 1 | 0 | 0 | 0 |
 | follow-on | 5 / 24 | 3 | 0 | 2 |
 
-  - Resolved (holdout, MVP − CS-F, household-bootstrap SE): extracts → sugar vs → flour +22.2 pts (4.0); pie crust →
-    eggs vs → cream cheese +10.7 (3.4); graham crackers → eggs vs → marshmallows +14.1 (3.8). Unresolved: best pair
-    eggs + cream cheese 1.19% vs cake mix + frosting 0.87%, +0.32 pts (SE 0.08; under the 0.5-pt bar); chocolate
-    chips → eggs vs → sugar −1.9 (3.0); baking nuts → eggs vs → sugar +2.7 (2.9). MVP loses no set decision.
+  - Where the picks differ (holdout value, MVP − CS-F with 95% household-bootstrap CI, relative lift, Holm-adjusted
+    p over the 6; bootstrap p floors at 0.001):
+
+| decision | MVP pick | CS-F pick | MVP − CS-F, pts [95% CI] | relative [95% CI] | Holm p | rule |
+|---|---|---|---|---|---|---|
+| best pair | eggs + cream cheese 1.19% | cake mix + frosting 0.87% | +0.32 [+0.15, +0.48] | +37% [+17, +61] | 0.006 | unresolved (< 0.5 pts) |
+| extracts → | sugar 44.3% | flour 22.2% | +22.2 [+14.9, +29.7] | +100% [+57, +171] | 0.006 | MVP |
+| graham crackers → | eggs 25.7% | marshmallows 11.7% | +14.1 [+6.8, +21.4] | +121% [+46, +247] | 0.006 | MVP |
+| pie crust → | eggs 32.7% | cream cheese 22.0% | +10.7 [+4.0, +17.3] | +49% [+16, +91] | 0.006 | MVP |
+| baking nuts → | eggs 32.8% | sugar 30.1% | +2.7 [−3.2, +8.4] | +9% [−10, +31] | 0.78 | unresolved |
+| chocolate chips → | eggs 34.8% | sugar 36.7% | −1.9 [−8.0, +3.7] | −5% [−20, +11] | 0.78 | unresolved |
+
+  - Report: significant at Holm 5%, MVP 4, CS-F 0; 3 of the 4 also material (≥ 0.5 pts). The best pair is a real
+    but small gap. The follow-ons share one fit and several hinge on eggs, so the 4 are not 4 independent results.
   - Q2 (report): ML vs IFM differ on 1 of 27 (holdout backs IFM); ML vs CS-F differ on 5: ML 2, CS-F 0, 3 unresolved.
   - Controls (10 reps per truth, flips of 27 / material > 0.5 pts): S-MVP: IFM 21 / 19, CS-F 44 / 34, CS-O 67 / 55,
     IL 40 / 30. S-CS: IFM 37 / 27, CS-F 47 / 34, CS-O 47 / 33, IL 101 / 80. IFM flips least under both truths,
@@ -976,6 +986,11 @@ Caveat: revealed data, not stated MBC data.
   wall-clock time to decision. Never against QMC Sobol alone.
 - If a baseline has no usable implementation, stop and ask before writing
   one.
+- Reporting (user, 2026-10-13; from T14 on): every compared decision gets the absolute difference in points with a
+  95% CI, then the relative lift with its CI, and a multiplicity-adjusted p (Holm over the decisions compared).
+  Points lead; relative lift is never reported alone (small bases inflate it). Statistical significance and
+  materiality (the pre-set point floor) are reported as separate labels. Pre-registered kill rules stay as written;
+  this changes the reporting, not the verdicts.
 - The Sawtooth proxy must be faithful: tuned RFC, own- and cross-effects, and
   coded subsets chosen as an analyst would from counts and lift. Every
   deviation from Sawtooth practice is documented.
