@@ -1,0 +1,15 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-tWpDwt8tBLc825ZZ2AtVbD
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T13/t13.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:macml, 
+│   PythonPackage:t11
+└── 🔨 Created function step0_gpu.
+/root/t13.py:155: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at ../aten/src/ATen/native/ReduceOps.cpp:1823.)
+  P["ghk"], P["ghk_se"] = G.mean(0).cpu().numpy(), (G.std(0) / np.sqrt(len(u_e))).cpu().numpy()
+/root/t13.py:155: UserWarning: std(): degrees of freedom is <= 0. Correction should be strictly less than the reduction factor (input numel divided by output numel). (Triggered internally at ../aten/src/ATen/native/ReduceOps.cpp:1823.)
+  P["ghk"], P["ghk_se"] = G.mean(0).cpu().numpy(), (G.std(0) / np.sqrt(len(u_e))).cpu().numpy()
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-tWpDwt8tBLc825ZZ2AtVbD
+wall 345 s; {'delta': 209.42253732681274, 'orthant_per_t': {'ind': 0.007315832333318895, 'ghk': 37.54930972200001, 'ovus': 0.02784452733336214, 'engine': 0.07747447099999742}}; Tesla T4

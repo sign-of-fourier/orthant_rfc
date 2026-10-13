@@ -99,6 +99,41 @@ def _ll_rows(th, Xd, G, snu, w, tvar=None):
     return _ghk(eta, torch.linalg.cholesky(cov), w)
 
 
+def draws(N, D, M, seed, dev):
+    """The fit's fixed GHK draws: w(lo, hi) -> (hi - lo, M, D - 1) shifted scrambled Sobol."""
+    import torch
+
+    f64 = torch.float64
+    sob = torch.quasirandom.SobolEngine(D - 1, scramble=True, seed=seed).draw(M, dtype=f64).to(dev)
+    gen = torch.Generator(device=dev).manual_seed(seed + 1)
+    shift = torch.rand(N, 1, D - 1, generator=gen, dtype=f64, device=dev)
+
+    def w(lo, hi):
+        return torch.remainder(sob[None] + shift[lo:hi], 1.0)
+    return w
+
+
+def sandwich(th, Xd, G, snu, w, tvar, chunk=100):
+    """Hessian (double backward) and per-respondent scores (theta replicated per row) at th.
+    Returns the sandwich covariance V and the inverse negative Hessian."""
+    import torch
+
+    N, nth = Xd.shape[0], th.numel()
+    H = torch.zeros(nth, nth, dtype=th.dtype, device=th.device)
+    Sc = torch.zeros(N, nth, dtype=th.dtype, device=th.device)
+    for lo in range(0, N, chunk // 2):
+        hi = min(lo + chunk // 2, N)
+        thr = th.expand(hi - lo, -1).clone().requires_grad_(True)
+        ll = _ll_rows(thr, Xd[lo:hi], G[:, lo:hi], snu, w(lo, hi), tvar)
+        g = torch.autograd.grad(ll.sum(), thr, create_graph=True)[0]          # (n, nth)
+        Sc[lo:hi] = g.detach()
+        gs = g.sum(0)
+        for i in range(nth):
+            H[i] += torch.autograd.grad(gs[i], thr, retain_graph=i < nth - 1)[0].sum(0).detach()
+    Hi = torch.linalg.inv(-H)
+    return Hi @ (Sc.T @ Sc) @ Hi, Hi
+
+
 @app.function(image=image, gpu="T4", timeout=3600)
 def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None, se=True):
     """L-BFGS on the summed GHK log-likelihood; Hessian and sandwich SEs at the optimum (se=False: skipped)."""
@@ -110,12 +145,7 @@ def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None, s
     G = torch.as_tensor(G, dtype=f64, device=dev)
     N, T, K, P = Xd.shape
     D = T * K
-    sob = torch.quasirandom.SobolEngine(D - 1, scramble=True, seed=seed).draw(M, dtype=f64).to(dev)
-    gen = torch.Generator(device=dev).manual_seed(seed + 1)
-    shift = torch.rand(N, 1, D - 1, generator=gen, dtype=f64, device=dev)
-
-    def w(lo, hi):
-        return torch.remainder(sob[None] + shift[lo:hi], 1.0)
+    w = draws(N, D, M, seed, dev)
 
     def nll(th, lo, hi):
         return -_ll_rows(th.expand(hi - lo, -1), Xd[lo:hi], G[:, lo:hi], snu, w(lo, hi), tvar).sum()
@@ -144,12 +174,8 @@ def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None, s
     grad_max = float(theta.grad.abs().max() * N)
     n_iter = int(opt.state[opt._params[0]]["n_iter"])
 
-    # Hessian (double backward) and per-respondent scores (theta replicated per row).
     t0 = time.time()
     th = theta.detach()
-    nth = th.numel()
-    H = torch.zeros(nth, nth, dtype=f64, device=dev)
-    Sc = torch.zeros(N, nth, dtype=f64, device=dev)
     with torch.no_grad():
         tt = torch.as_tensor(th_true, dtype=f64, device=dev)
         nll_true = sum(float(nll(tt, lo, min(lo + chunk, N))) for lo in range(0, N, chunk))
@@ -157,17 +183,7 @@ def fit(Xd, G, snu, th0, th_true, M, seed, chunk=100, max_iter=500, tvar=None, s
         return dict(theta=th.cpu().numpy().tolist(), nll=final, nll_true=nll_true, n_iter=n_iter, n_evals=nev[0],
                     grad_max=grad_max, se_sandwich=None, se_hessian=None, cov_sandwich=None, tvar=tvar,
                     M=M, seed=seed, seconds=dict(fit=t_fit, se=0.0), gpu=torch.cuda.get_device_name())
-    for lo in range(0, N, chunk // 2):
-        hi = min(lo + chunk // 2, N)
-        thr = th.expand(hi - lo, -1).clone().requires_grad_(True)
-        ll = _ll_rows(thr, Xd[lo:hi], G[:, lo:hi], snu, w(lo, hi), tvar)
-        g = torch.autograd.grad(ll.sum(), thr, create_graph=True)[0]          # (n, nth)
-        Sc[lo:hi] = g.detach()
-        gs = g.sum(0)
-        for i in range(nth):
-            H[i] += torch.autograd.grad(gs[i], thr, retain_graph=i < nth - 1)[0].sum(0).detach()
-    Hi = torch.linalg.inv(-H)
-    V = Hi @ (Sc.T @ Sc) @ Hi
+    V, Hi = sandwich(th, Xd, G, snu, w, tvar, chunk)
     torch.cuda.synchronize()
     return dict(theta=th.cpu().numpy().tolist(), nll=final, nll_true=nll_true, n_iter=n_iter, n_evals=nev[0],
                 grad_max=grad_max, se_sandwich=V.diagonal().clamp_min(0).sqrt().cpu().numpy().tolist(),

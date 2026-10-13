@@ -1,0 +1,11 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-XSu64UCR9F7lP9J4tnBXWM
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T11/t11.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:macml, 
+│   PythonPackage:ghk_gpu
+├── 🔨 Created function probe_gpu.
+└── 🔨 Created function dataset_gpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-XSu64UCR9F7lP9J4tnBXWM

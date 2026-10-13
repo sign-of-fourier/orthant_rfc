@@ -1,0 +1,14 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-J5HxKtsOTGS4SHcDTWbQ27
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T10/probe_gpu.py
+├── 🔨 Created mount PythonPackage:ghk_gpu, PythonPackage:macml, 
+│   PythonPackage:mvp_gpu, PythonPackage:t4
+├── 🔨 Created function probe_a100.
+└── 🔨 Created function probe_h100.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-J5HxKtsOTGS4SHcDTWbQ27
+A100-80GB {'result': {'method': 'G', 'J': 20, 'Q': 512, 'R': 256, 'chunk': 32, 'seconds_per_eval': 22.384708404541016, 'device': 'NVIDIA A100-SXM4-80GB', 'wall': 69.71396517753601, 'peak_GiB': 64.71253871917725}, 'gpu': 'NVIDIA A100-SXM4-80GB'}
+H100 {'result': {'method': 'G', 'J': 20, 'Q': 512, 'R': 256, 'chunk': 32, 'seconds_per_eval': 12.847869873046875, 'device': 'NVIDIA H100 80GB HBM3', 'wall': 40.74608540534973, 'peak_GiB': 64.75819301605225}, 'gpu': 'NVIDIA H100 80GB HBM3'}
+wall_s 113.02731561660767
