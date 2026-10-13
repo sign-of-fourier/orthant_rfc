@@ -1,0 +1,18 @@
+{
+ "datasets": 80,
+ "decisions": 240,
+ "flips": {
+  "cs_f": 207,
+  "cs_o": 119,
+  "ifm": 50
+ },
+ "flip_gap": 157,
+ "regret_gap_mean": 5.198859634838193,
+ "regret_gap_se": 0.29813487037949554,
+ "verdict": "PASS",
+ "L0": {
+  "rho_median": 0.013122704025478785,
+  "psd_repaired": 0,
+  "n": 40
+ }
+}

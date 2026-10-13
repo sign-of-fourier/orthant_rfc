@@ -1,0 +1,71 @@
+{
+ "sim": {
+  "truth": "L2",
+  "k": 30,
+  "rep": 0,
+  "n_obs": 10000,
+  "n_cov": 30
+ },
+ "real": {
+  "cluster": "baking",
+  "n_hh": 1869,
+  "n_obs": 112319,
+  "n_cov": 47,
+  "names": [
+   "eggs",
+   "sugar",
+   "flour",
+   "butter",
+   "cream cheese",
+   "cake mix",
+   "frosting",
+   "brownie mix",
+   "muffin/cornbread mix",
+   "chocolate chips",
+   "marshmallows",
+   "baking nuts",
+   "oil",
+   "cooking spray",
+   "shortening",
+   "baking powder/soda",
+   "extracts",
+   "pie filling",
+   "pie crust",
+   "whipped topping",
+   "cake decor/icing",
+   "graham crackers",
+   "aluminum foil",
+   "refrig. cookie dough"
+  ],
+  "rate": [
+   0.09486677926950578,
+   0.03014907636742351,
+   0.0075840014954369145,
+   0.017831749994992957,
+   0.029855329830628417,
+   0.012771298292932057,
+   0.011142340225250185,
+   0.008058001588901721,
+   0.010968762726234904,
+   0.006535860443690792,
+   0.006409015348256547,
+   0.00596839554306391,
+   0.01713743999893183,
+   0.005788141986394195,
+   0.00237667652497847,
+   0.0027972681572078057,
+   0.0025302258510304493,
+   0.0031377470975839346,
+   0.005280761604657218,
+   0.014053101362583368,
+   0.003938874016116003,
+   0.0061820293880057945,
+   0.009913945616834346,
+   0.00797121283939408
+  ],
+  "lp_dropped": [
+   "shortening",
+   "baking powder/soda"
+  ]
+ }
+}

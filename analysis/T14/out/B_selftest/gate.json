@@ -1,0 +1,64 @@
+{
+ "passed": true,
+ "linked": [
+  "eggs",
+  "sugar",
+  "flour",
+  "butter",
+  "cream cheese",
+  "cake mix",
+  "frosting",
+  "brownie mix",
+  "muffin/cornbread mix",
+  "chocolate chips",
+  "marshmallows",
+  "baking nuts",
+  "oil",
+  "cooking spray",
+  "shortening",
+  "baking powder/soda",
+  "extracts",
+  "pie filling",
+  "pie crust",
+  "whipped topping",
+  "cake decor/icing",
+  "graham crackers",
+  "aluminum foil",
+  "refrig. cookie dough"
+ ],
+ "size": 24,
+ "staple_pairs": {
+  "median": 0.12175703952177008,
+  "max": 0.46991833806274297,
+  "frac_ge_02": 0.27906976744186046
+ },
+ "nonstaple_pairs": {
+  "median": 0.11430587884375479,
+  "max": 0.9543789331550977,
+  "frac_ge_02": 0.23157894736842105
+ },
+ "linked_without_staples": {
+  "passed": true,
+  "linked": [
+   "flour",
+   "butter",
+   "cream cheese",
+   "cake mix",
+   "frosting",
+   "muffin/cornbread mix",
+   "chocolate chips",
+   "marshmallows",
+   "baking nuts",
+   "cooking spray",
+   "shortening",
+   "baking powder/soda",
+   "extracts",
+   "pie filling",
+   "pie crust",
+   "whipped topping",
+   "cake decor/icing",
+   "graham crackers"
+  ],
+  "size": 18
+ }
+}

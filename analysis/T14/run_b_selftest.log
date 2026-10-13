@@ -1,0 +1,36 @@
+[23:24:41] T14 B selftest: 300 households, 24999 trips (18749 training), X 47 columns
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-8G8wjiSZb7LG38vS5ROqJz
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T14/run_b.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T3/t3.py
+├── 🔨 Created mount PythonPackage:modal_gp_api
+├── 🔨 Created function fit_cpu.
+├── 🔨 Created function fit_ml.
+├── 🔨 Created function cs_score.
+└── 🔨 Created function probit_score.
+[23:24:42] CS-F subsets [['eggs', 'butter', 'cream cheese', 'whipped topping'], ['sugar', 'flour', 'cooking spray', 'shortening', 'extracts'], ['cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'oil'], ['chocolate chips', 'marshmallows', 'baking nuts', 'baking powder/soda', 'pie filling'], ['pie crust', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough']]; gate {'passed': True, 'linked': ['eggs', 'sugar', 'flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'oil', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough'], 'size': 24, 'staple_pairs': {'median': 0.12175703952177008, 'max': 0.46991833806274297, 'frac_ge_02': 0.27906976744186046}, 'nonstaple_pairs': {'median': 0.11430587884375479, 'max': 0.9543789331550977, 'frac_ge_02': 0.23157894736842105}, 'linked_without_staples': {'passed': True, 'linked': ['flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers'], 'size': 18}}
+[23:24:47] score_real_cs_o ok (6 s)
+[23:24:48] score_real_il ok (7 s)
+[23:24:48] score_real_cs_f ok (7 s)
+[23:24:48] truth_S-CS ok (7 s)
+[23:24:56] truth_S-MVP ok (15 s)
+/root/t3.py:229: RuntimeWarning: divide by zero encountered in log
+  cand = [(abs(np.log(lift[i, j])), i, j) for i, j in itertools.combinations(range(M), 2)
+[23:24:56] score_real_ifm ok (15 s)
+[23:24:57] score_real_ml ok (16 s)
+/root/run_b.py:127: UserWarning: margin calibration slope outside [0.5, 2.0] (outcome 14 slope 0.00, outcome 15 slope 0.29, outcome 16 slope 0.21, outcome 17 slope 0.42, outcome 20 slope 0.34); a slope near 1 is expected. This is the Cox calibration slope, a deliberately simple scale check on the fitted indices -- not a full calibration assessment, and not a sign the fit is invalid. It suggests the margins' probabilities may be worth calibrating (scikit-learn's CalibratedClassifierCV, for instance) before reading correlation_ closely, since stage two has no free parameter but the correlation to absorb margin error with. A slope far above 1 usually means the index was scored on rows it was fitted on, which cv= addresses. See calibration_ and docs/limitations.md.
+  mp = MultivariateProbit(inner="linear", dependence="pairwise", cv=5, random_state=0).fit(X, Y.astype(int))
+[23:32:08] ctrl_cpu_S-MVP_0 ok (447 s)
+[23:32:12] score_ctrl_S-CS_0_cs_f ok (451 s)
+[23:32:13] score_ctrl_S-MVP_0_cs_f ok (452 s)
+[23:32:13] score_ctrl_S-CS_0_cs_o ok (452 s)
+[23:32:13] score_ctrl_S-MVP_0_il ok (452 s)
+[23:32:13] score_ctrl_S-CS_0_il ok (452 s)
+[23:32:14] score_ctrl_S-MVP_0_cs_o ok (453 s)
+[23:32:20] score_ctrl_S-CS_0_ifm ok (459 s)
+[23:32:21] score_ctrl_S-MVP_0_ifm ok (460 s)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-8G8wjiSZb7LG38vS5ROqJz
+[23:32:24] done (463 s); summary: python analysis/T14/run_b.py summary selftest

@@ -1,0 +1,57 @@
+baking: 1869 households, 149789 trips (112319 training), X cols 47, rates [9.49, 3.01, 0.76, 1.78, 2.99, 1.28, 1.11, 0.81, 1.1, 0.65, 0.64, 0.6, 1.71, 0.58, 0.24, 0.28, 0.25, 0.31, 0.53, 1.41, 0.39, 0.62, 0.99, 0.8]; trip-size categories ['SOFT DRINKS', 'FLUID MILK PRODUCTS', 'BAKED BREAD/BUNS/ROLLS', 'BAG SNACKS', 'BEEF']...; log prices dropped ['shortening', 'baking powder/soda']
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-KCper39p7bnoN1eDHoQ0Vx
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T14/t14.py
+├── 🔨 Created mount PythonPackage:macml, PythonPackage:t11
+└── 🔨 Created function bench.
+[modal-client] 2026-10-11T05:02:36+0000 Modal Client → Modal Worker Heartbeat attempt failed (attempt_dur=62.16, time_since_heartbeat_success=62.17, error=ConnectionError('Deadline exceeded'))
+Traceback (most recent call last):
+  File "/pkg/modal/_runtime/container_io_manager.py", line 947, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 172, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 225, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/t14.py", line 124, in bench
+    fn()
+  File "/root/t14.py", line 111, in ghk
+    p = t11.ghk_p(a[lo:lo + 2000] * sg[lo:lo + 2000], torch.linalg.cholesky(S[lo:lo + 2000]), u)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/t11.py", line 135, in ghk_p
+    pj = ndtr(c / Lt[:, j, j, None])
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.57 GiB of which 9.62 MiB is free. Process 1 has 14.56 GiB memory in use. Of the allocated memory 11.33 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)
+Stopping app - uncaught exception raised in remote container: OutOfMemoryError('CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.57 GiB of which 9.62 MiB is free. Process 1 has 14.56 GiB memory in use. Of the allocated memory 11.33 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)').
+Traceback (most recent call last):
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T14/t14.py", line 187, in <module>
+    {"step0": step0}[sys.argv[1]]()
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T14/t14.py", line 158, in step0
+    b = bench.remote({20: tp["R"][:20, :20].tolist(), 30: tp["R"].tolist()})
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_object.py", line 46, in wrapped
+    return await method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 1769, in remote
+    return await self._call_function(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 1713, in _call_function
+    return await invocation.run_function()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 496, in run_function
+    return await _process_result(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_utils/function_utils.py", line 527, in _process_result
+    raise exc_with_hints(exc)
+  File "<ta-01M4MN2RHVYB8NAN92DB4CZHPR>:/root/t14.py", line 124, in bench
+    fn()
+^^^^^^^^^
+  File "<ta-01M4MN2RHVYB8NAN92DB4CZHPR>:/root/t14.py", line 111, in ghk
+    p = t11.ghk_p(a[lo:lo + 2000] * sg[lo:lo + 2000], torch.linalg.cholesky(S[lo:lo + 2000]), u)
+^^^^^^^^^^^
+  File "<ta-01M4MN2RHVYB8NAN92DB4CZHPR>:/root/t11.py", line 135, in ghk_p
+    pj = ndtr(c / Lt[:, j, j, None])
+^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 14.57 GiB of which 9.62 MiB is free. Process 1 has 14.56 GiB memory in use. Of the allocated memory 11.33 GiB is allocated by PyTorch, and 3.07 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

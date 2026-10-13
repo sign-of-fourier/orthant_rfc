@@ -1,0 +1,30 @@
+Gate: 22 items linked at rho >= 0.2 (PASS): ['eggs', 'sugar', 'flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'oil', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers']
+  staple pairs (any of ('eggs', 'sugar', 'oil', 'aluminum foil')): {'median': 0.1586736924955982, 'max': 0.48400225478420184, 'frac_ge_02': 0.36046511627906974}
+  non-staple pairs: {'median': 0.1618672485873703, 'max': 0.9180983121649704, 'frac_ge_02': 0.4105263157894737}
+  linked set with staple pairs zeroed: 19 items
+IFM PSD repair: True (min eig raw -0.02, |R - R~|_F 0.024); CS-F subsets [['eggs', 'muffin/cornbread mix', 'cooking spray'], ['sugar', 'chocolate chips', 'marshmallows', 'baking nuts', 'graham crackers'], ['flour', 'shortening', 'baking powder/soda', 'extracts', 'pie filling'], ['butter', 'cream cheese', 'pie crust', 'whipped topping', 'aluminum foil'], ['cake mix', 'frosting', 'brownie mix', 'oil', 'cake decor/icing'], ['refrig. cookie dough']]
+ML: 130 s on NVIDIA H100 80GB HBM3, n_iter 284, converged True, R min eigenvalue 0.036
+Holdout LL per trip: cs_f -1.5689, cs_o -1.5631, il -1.6260, ifm -32.9395, ml -1.5238
+MVP-IFM vs CS-F on the holdout, by decision type (differ / backs MVP / backs CS-F / unresolved):
+  bundle2    1/1 differ: 0 / 0 / 1
+  bundle3    0/1 differ: 0 / 0 / 0
+  turf4      0/1 differ: 0 / 0 / 0
+  follow-on  5/24 differ: 3 / 0 / 2
+    bundle2 IFM eggs+cream cheese 0.0119 vs CS-F cake mix+frosting 0.0087: diff +0.32 pts (SE 0.08) -> unresolved
+    rec9    IFM chocolate chips->eggs 0.3476 vs CS-F chocolate chips->sugar 0.3670: diff -1.93 pts (SE 2.99) -> unresolved
+    rec11   IFM baking nuts->eggs 0.3279 vs CS-F baking nuts->sugar 0.3008: diff +2.71 pts (SE 2.92) -> unresolved
+    rec16   IFM extracts->sugar 0.4432 vs CS-F extracts->flour 0.2216: diff +22.16 pts (SE 3.95) -> a
+    rec18   IFM pie crust->eggs 0.3272 vs CS-F pie crust->cream cheese 0.2202: diff +10.70 pts (SE 3.37) -> a
+    rec21   IFM graham crackers->eggs 0.2573 vs CS-F graham crackers->marshmallows 0.1165: diff +14.08 pts (SE 3.75) -> a
+Totals {'differ': 6, 'mvp': 3, 'cs': 0, 'unresolved': 3}; MVP loses a set decision: none. Verdict: PASS.
+ml_vs_cs_f: differ 5/27; backs first 2, second 0, unresolved 3
+ml_vs_ifm: differ 1/27; backs first 0, second 1, unresolved 0
+Controls (flips of 27 decisions per rep, material > 0.5 pts; holdout LL):
+  S-CS cs_f  reps 10: flips 47 (material 34); LL -1.3137
+  S-CS cs_o  reps 10: flips 47 (material 33); LL -1.3113
+  S-CS ifm   reps 10: flips 37 (material 27); LL -1813.7913
+  S-CS il    reps 10: flips 101 (material 80); LL -1.3533
+  S-MVP cs_f  reps 10: flips 44 (material 34); LL -1.2446
+  S-MVP cs_o  reps 10: flips 67 (material 55); LL -1.2421
+  S-MVP ifm   reps 10: flips 21 (material 19); LL -113.0657
+  S-MVP il    reps 10: flips 40 (material 30); LL -1.2853

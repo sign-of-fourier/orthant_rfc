@@ -1,0 +1,40 @@
+Gate: 22 items linked at rho >= 0.2 (PASS): ['eggs', 'sugar', 'flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'oil', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers']
+  staple pairs (any of ('eggs', 'sugar', 'oil', 'aluminum foil')): {'median': 0.15819956483162814, 'max': 0.4839756176797043, 'frac_ge_02': 0.36046511627906974}
+  non-staple pairs: {'median': 0.16176438252336542, 'max': 0.9186377946979578, 'frac_ge_02': 0.4105263157894737}
+  linked set with staple pairs zeroed: 19 items
+IFM PSD repair: True (min eig raw -0.0186, |R - R~|_F 0.023); CS-F subsets [['eggs', 'butter', 'aluminum foil', 'refrig. cookie dough'], ['sugar', 'chocolate chips', 'marshmallows', 'baking nuts', 'graham crackers'], ['flour', 'shortening', 'baking powder/soda', 'extracts', 'pie filling'], ['cream cheese', 'muffin/cornbread mix', 'cooking spray', 'pie crust', 'whipped topping'], ['cake mix', 'frosting', 'brownie mix', 'oil', 'cake decor/icing']]
+ML: 127 s on NVIDIA H100 80GB HBM3, n_iter 338, converged True, R min eigenvalue 0.037
+Holdout LL per trip: cs_f -517.3768, cs_o -619.3451, il -2428.5833, ifm -2729449664568426.0000, ml -1.8418
+MVP-IFM vs CS-F on the holdout, by decision type (differ / backs MVP / backs CS-F / unresolved):
+  bundle2    1/1 differ: 0 / 1 / 0
+  bundle3    1/1 differ: 0 / 0 / 1
+  turf4      0/1 differ: 0 / 0 / 0
+  follow-on  14/24 differ: 1 / 10 / 3
+    bundle2 IFM butter+pie filling 0.0012 vs CS-F eggs+cream cheese 0.0119: diff -1.07 pts (SE 0.07) -> b
+    bundle3 IFM butter+frosting+pie filling 0.0001 vs CS-F eggs+cake mix+frosting 0.0030: diff -0.29 pts (SE 0.03) -> unresolved
+    rec0    IFM eggs->butter 0.0923 vs CS-F eggs->cream cheese 0.1197: diff -2.74 pts (SE 0.76) -> b
+    rec3    IFM butter->pie filling 0.0472 vs CS-F butter->eggs 0.3691: diff -32.19 pts (SE 1.83) -> b
+    rec6    IFM frosting->butter 0.0845 vs CS-F frosting->cake mix 0.6559: diff -57.14 pts (SE 2.76) -> b
+    rec7    IFM brownie mix->frosting 0.0990 vs CS-F brownie mix->eggs 0.3729: diff -27.39 pts (SE 3.36) -> b
+    rec8    IFM muffin/cornbread mix->butter 0.0989 vs CS-F muffin/cornbread mix->eggs 0.3495: diff -25.05 pts (SE 2.82) -> b
+    rec9    IFM chocolate chips->butter 0.2103 vs CS-F chocolate chips->sugar 0.3670: diff -15.67 pts (SE 2.87) -> b
+    rec10   IFM marshmallows->butter 0.1243 vs CS-F marshmallows->eggs 0.3324: diff -20.81 pts (SE 2.91) -> b
+    rec11   IFM baking nuts->eggs 0.3279 vs CS-F baking nuts->sugar 0.3008: diff +2.71 pts (SE 2.92) -> unresolved
+    rec12   IFM oil->frosting 0.0847 vs CS-F oil->eggs 0.3792: diff -29.44 pts (SE 2.46) -> b
+    rec13   IFM cooking spray->butter 0.1553 vs CS-F cooking spray->eggs 0.3516: diff -19.63 pts (SE 4.16) -> b
+    rec16   IFM extracts->butter 0.1989 vs CS-F extracts->flour 0.2216: diff -2.27 pts (SE 3.68) -> unresolved
+    rec17   IFM pie filling->butter 0.1667 vs CS-F pie filling->eggs 0.3636: diff -19.70 pts (SE 3.46) -> b
+    rec18   IFM pie crust->eggs 0.3272 vs CS-F pie crust->cream cheese 0.2202: diff +10.70 pts (SE 3.37) -> a
+    rec21   IFM graham crackers->butter 0.0825 vs CS-F graham crackers->marshmallows 0.1165: diff -3.40 pts (SE 2.58) -> unresolved
+Totals {'differ': 16, 'mvp': 1, 'cs': 11, 'unresolved': 4}; MVP loses a set decision: ['bundle2']. Verdict: KILL.
+ml_vs_cs_f: differ 11/27; backs first 1, second 7, unresolved 3
+ml_vs_ifm: differ 16/27; backs first 7, second 6, unresolved 3
+Controls (flips of 27 decisions per rep, material > 0.5 pts; holdout LL):
+  S-CS cs_f  reps 10: flips 54 (material 7); LL -1.2185
+  S-CS cs_o  reps 10: flips 53 (material 6); LL -1.2208
+  S-CS ifm   reps 10: flips 170 (material 90); LL -72436343639053.9062
+  S-CS il    reps 10: flips 92 (material 30); LL -1.2567
+  S-MVP cs_f  reps 10: flips 112 (material 106); LL -526.6654
+  S-MVP cs_o  reps 10: flips 130 (material 124); LL -527.3694
+  S-MVP ifm   reps 10: flips 187 (material 186); LL -591600388733827.7500
+  S-MVP il    reps 10: flips 111 (material 111); LL -2348.5321

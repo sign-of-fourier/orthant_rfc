@@ -1,0 +1,17 @@
+[22:20:41] T14 A selftest: 2 datasets, 1 ML fits; data built
+[22:20:49] truths LC_30_0 ok (8 s)
+[22:21:05] T14 A selftest: 2 datasets, 1 ML fits; data built
+[22:21:26] fits LC_30_0 ok (45 s)
+[22:21:48] fits LC_30_0 ok (43 s)
+[22:21:49] ml L1_30_0 ok (44 s)
+[22:22:10] fits L1_30_0 ok (89 s)
+[22:23:23] fits L1_30_0 ok (138 s)
+[22:29:54] truths L1_30_0 ok (553 s)
+[22:36:50] truths L1_30_0 ok (945 s)
+[22:39:54] scores LC_30_0 ok (1129 s)
+[22:43:23] scores L1_30_0 ok (1338 s)
+[22:43:25] done (1340 s)
+[22:44:57] T14 A selftest: 2 datasets, 1 ML fits; data built
+[22:45:23] scores LC_30_0 ok (26 s)
+[22:45:32] scores L1_30_0 ok (35 s)
+[22:45:34] done (36 s)

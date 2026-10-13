@@ -1,0 +1,13 @@
+{
+ "datasets": 1,
+ "decisions": 3,
+ "flips": {
+  "cs_f": 3,
+  "cs_o": 2,
+  "ifm": 1
+ },
+ "flip_gap": 2,
+ "regret_gap_mean": 11.161256733528399,
+ "regret_gap_se": NaN,
+ "verdict": "KILL"
+}

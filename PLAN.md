@@ -3,7 +3,8 @@
 Status 2026-10-10: T5 PASS, T6 PASS, T7 FAIL (engine vs simulator for TURF), T8 FAIL (GPR kernel Σ,
 primary criterion), T9 FAIL (MACML ties GHK: both at zero regret at N = 600). 2026-10-11: T10 Part A
 inconclusive (as labelled); T10 Part B PAUSED (user, 2026-10-10) at the step-0 stop-and-ask; side
-study OVUS vs the engine done (T10, below). Backlog: BACKLOG.md. T1–T3 completed, T4 paused. Everything else is in
+study OVUS vs the engine done (T10, below). T11 FAIL (joint chance constraint = independent product on every
+decision). T13 KILL (6 of 20: Joint = Independent on all 18 decisions). 2026-10-13: T14 PASS (A: CS-F 207 vs MVP-IFM 50 flips at k = 20/30; B, 24-item baking cluster: holdout backs MVP 3, CS-F 0). Model catalog: [MODELS.md](MODELS.md). Backlog: BACKLOG.md. T1–T3 completed, T4 paused. Everything else is in
 [BACKLOG.md](BACKLOG.md). Kill criteria are set by the user; nothing runs until they are filled in. Scope is
 strict: if a test suggests expanding it, stop and ask (no new arms, truths or metrics).
 The earlier product and working notes moved to `PRODUCT_NOTES.md`. They cover
@@ -471,6 +472,10 @@ J = 20. Kill criteria: BLANKS for the user. Nothing runs until they are filled i
   - Stopped and asked (kill rule) 2026-10-10. Options put to the user: (1) gate GHK at 256 × 128
     (in the cap, known share under-recovery); (2) an intermediate 320 × 160; (3) stop Part B.
   - **PAUSED (user, 2026-10-10: "Lets pause on this") with that choice open.** No Part B fits run.
+  - **Bigger-GPU probe (user, 2026-10-12, cap $1).** `probe_gpu.py`, `out/probe_gpu.json`, `probe_gpu.log`. Same
+    512 × 256 evaluation as above, chunk 32 (peak 65 GiB): A100-80GB 22.4 s / eval (7.2× the T4), H100 12.8 s (12.5×).
+    At ~78 evaluations: A100 ~29 min, H100 ~17 min per fit (SEs not timed), under the 90-min cap. At list prices
+    (T4 $0.59/h, A100-80GB $2.50/h, H100 $3.95/h) about $2.10 / $1.20 / $1.10 per fit. Probe ~2 min wall, ~$0.15.
 
 - **Side study: OVUS vs the engine (user, 2026-10-10, while Part B is paused).** Not a kill-criteria
   test; measurements only. Accuracy by |ΔP| (absolute, user: ratios alone mislead), by dimension.
@@ -498,6 +503,301 @@ J = 20. Kill criteria: BLANKS for the user. Nothing runs until they are filled i
     engine high 5.6e-3 (4.9e-2) / 4.1e-3 (3.6e-2) / 2.3e-4 (7.0e-3). Cost at 10⁵ about equal at d = 40,
     OVUS cheaper at d ≤ 20. On T10's positive-leaning orthants the gap is smaller (d = 20 about equal).
   - GPU ~25 T4-min in all (~$0.25).
+
+### T11 · Joint chance-constrained product line (FAIL 2026-10-11)
+
+- **Hypothesis.** A joint chance constraint on line survival, P(every kept SKU's share ≥ t) ≥ 1 − α,
+  evaluated as one d-dim orthant under a delta-method normal share distribution, (1) selects
+  different assortment/price decisions than point-estimate or independent-product constraints,
+  (2) those decisions are backed by realized survival across replicates, (3) orthant evaluation
+  reaches the same decisions as nested MC materially faster.
+- **Setup (proposed concretions, user to confirm).**
+  - Fits: T5's MVP GHK fits, G1 and G2, N = 150 and 600, 20 reps (80 datasets, same seeds). No refits.
+  - Market: competitors B, D, E fixed. Owned (J = 6): A, C (T1's owned pair) + A′, A″, F, G (T1's
+    candidates). Price grid on A: {4.50, 5.00, 5.50} (A″ stays at 4.70). 127 lines (32 subsets with
+    A × 3 prices + 31 without). d = kept SKUs, 1–6. Objective Σ_kept (p − 1.80)·ŝ_j (T1 economics).
+  - Shares ŝ(θ̂): population shares by T1's GPU GHK share simulator with fixed draws, so ŝ is
+    deterministic in θ and ∂ŝ/∂θ comes by autograd. Σ_s = J V Jᵀ.
+  - t and α: α = 0.10; t picked from {2, 3, 5, 8, 10}% as the value whose binding rate under D is
+    nearest 50% on G1 N = 600 reps 0–4 (fitted models only, never the truth), then fixed for all
+    cells. "Binds" = arm A's line is infeasible under R.
+  - R: θ_b ~ N(θ̂, V), B = 2,000 (MC SE of P_R ≤ 0.007 at P = 0.9); report B and P_R's MC SE.
+    Same share simulator per draw.
+  - F: OVUS GPU port from T9, variable order fixed per orthant at evaluation (order frozen across
+    the price grid in the probe).
+- **Step 0 (needed: T5 stored θ̂ only, no V).** Sandwich V at the stored θ̂ (Hessian + scores at
+  the fit; no optimisation). Step0_G1 timing: 72 s at N = 600. Estimate 40 × ~72 s + 40 × ~20 s
+  ≈ 60 T4-min ≈ $0.60. Then a 1-dataset timing probe of R (~$0.05) before the full run.
+- **Estimate (before the probe).** Build ~half a day. D/E/F searches seconds per dataset. R:
+  80 × 189 lines × 2,000 draws of a 10-alternative share simulation, rough 1–3 T4-h ($0.60–1.80).
+  Total paid ≈ $1.30–2.50.
+- **Kill criteria (proposed, approved by user 2026-10-11).**
+  - Binding gate: if the constraint binds in < 20% or > 80% of the 80 dataset searches, stop and
+    ask before scoring.
+  - (1) Different decisions: PASS if, among binding searches, D's line ≠ B's in ≥ 15% and
+    D ≠ C in ≥ 10%. KILL if D ≠ C in < 5% (joint adds nothing over independence).
+  - (2) Survival: PASS if D's realized survival ≥ (1 − α) − 2 binomial SE pooled per truth × N,
+    AND D's survival exceeds B's by > 2 paired SE, AND D's profit regret ≤ C's + 2 paired SE.
+    KILL if D's realized survival < (1 − α) − 2 SE at N = 600.
+  - (3) Speed: PASS if the fastest of D/E/F has decision agreement with R ≥ 95% and full-search wall
+    time ≤ R/10. D vs E and D vs F reported, no gate (at d ≤ 6 all three are microsecond-scale; the
+    gap to R is the delta method, not the integrator).
+  - Normality flag (not a kill): median |P_delta − P_R| > 0.05 in a cell → that cell's (2) is
+    reported with the caveat; N = 150 expected to be the weak cell.
+  - Overall: PASS = (1) and (2) PASS; (3) separate. INCONCLUSIVE if (1) passes and (2) is within 2 SE.
+- **Report-only probe.** One assortment (all six kept, d = 6), A's price on a 41-point grid
+  4.50–5.50: P from D, E, F; max step jump / local slope; finite differences vs the Plackett
+  gradient (∂P/∂a and ∂P/∂ρ chained through ∂Σ_s/∂p), per integrator. No price search built.
+- **Out of scope.** J ≥ 20, posterior draws, gradient search, new truths, real data, G0.
+- **Approved as drafted (user, 2026-10-11).** Code: `analysis/T11/t11.py` (ghk_gpu.py: sandwich and
+  draws factored out, fit unchanged). Local wiring check OK.
+- **Pilot (2026-10-11), G1 N = 600 rep 0, one T4: 147 s wall** (V 67 s, R 62 s at B = 2,000, delta step
+  1.4 s, orthant arms < 1 s). nll at T5's θ̂ reproduces T5 (Δ 2e-4); V positive definite. D/E/F agree
+  to ≤ 1.3e-3; |P_R − P_E| ≤ 0.016. Projected full run ≈ 2.5 T4-h ≈ $1.50 (in the estimate).
+  - **Binding gate trips by construction (stop-and-ask).** With no per-SKU fixed cost, arm A keeps all
+    six SKUs, and C's share is ~1.5% (fit and truth), below every t in {2..10}%: A's line is infeasible
+    at every t, so binding ≈ 100% (> 80%). Full run not launched; awaiting user.
+  - **User (2026-10-11): option 1, t grid extended with 0.5%, 1%, 1.5%;** same 50% selection rule. Arm names
+    in results: Unconstrained (A), Point (B), Independent (C), Joint-engine (D), Joint-GHK (E), Joint-OVUS (F),
+    Nested MC (R).
+  - **User (2026-10-11): binding is not a gate** (Unconstrained failing the hurdle is its expected behaviour; a
+    different test). **Every t scored, no selection**; overall PASS needs (1) and (2) at a majority of the 8 t.
+- **Results (2026-10-11): FAIL. (1) KILL at all 8 t: the joint rule never picks a different line from
+  Independent (0 of 640 searches).** `analysis/T11/out/summary.json`, `out/G*_N*/rep*.json`, `out/price_probe.json`,
+  `run.log`. GPU: 80 jobs 973 s wall, ~2.5 T4-h (~$1.50); pilot + probe ~$0.10.
+
+| t | NMC ≠ Point | Joint ≠ Point | Joint ≠ Independent | (1) | (2) | (3): agree with NMC (D = E = F) | speed vs NMC |
+|---|---|---|---|---|---|---|---|
+| 0.5% | 0.07 | 0.15 | 0.00 | KILL | fail | 0.90 | 45× |
+| 1% | 0.25 | 0.33 | 0.00 | KILL | fail | 0.80 | 45× |
+| 1.5% | 0.64 | 0.65 | 0.00 | KILL | fail | 0.78 | 45× |
+| 2% | 0.36 | 0.36 | 0.00 | KILL | fail | 0.88 | 45× |
+| 3% | 0.33 | 0.34 | 0.00 | KILL | fail | 0.79 | 45× |
+| 5% | 0.81 | 0.80 | 0.00 | KILL | PASS | 0.76 | 45× |
+| 8% | 0.44 | 0.44 | 0.00 | KILL | fail | 0.95 | 45× |
+| 10% | 0.69 | 0.70 | 0.00 | KILL | PASS | 0.89 | 45× |
+
+  - **Why joint = independent.** Near the 90% boundary, risk sits in one SKU: at t = 5%, 350 of 399 borderline
+    lines have exactly one SKU with z < 2.5. With one risky SKU, the joint probability equals the product
+    whatever the correlations (here −0.95 to 0.91; 68% of Σ_s mixed-sign). Joint vs Independent feasibility
+    differs on ≤ 3 of 9,520 lines per t (max |ΔP| 0.01–0.11).
+  - **Integrators.** Joint-engine, Joint-GHK and Joint-OVUS make identical decisions at every t;
+    |P − P_NMC| medians identical to 4 digits by d.
+  - **Survival (2).** The uncertainty-aware rules (Independent = Joint) keep realized survival 0.80–1.00
+    (floor 0.77) in every cell; Point 0.30–1.00. Gain over Point > 2 SE at 5% and 10% in all cells, and
+    in some cells at 2% and 8%. Price: regret 0.2–11% vs Point's −0.5 to 6% (Point lines often break the
+    hurdle in truth); conservative at N = 150 (survival 0.95–1.00, regret up to 11%).
+  - **Speed (3).** Full search ~1.4 s (delta step 1.35 s, orthants ≤ 0.06 s) vs NMC 62 s at B = 2,000: 45×,
+    from the delta method, not the integrator (Independent costs the same). Agreement with NMC 0.76–0.95;
+    passes only at 8%.
+  - **Normality.** Median |P_delta − P_NMC| ≤ 0.03 (N = 150, t 1–2%), ~0 at N = 600 for t ≥ 3%; max 0.10–0.34
+    in every cell. Joint max = marginal max: the gap is non-normal marginal shares near zero, not dependence.
+  - **Price probe (report only)**, all six kept, G1 N = 600 rep 0, 41 prices: informative only at t ≤ 2%
+    (C at ~1.5% puts P ≈ 0 above). Max step jump vs E's local slope: D 0.03 / 0.10 / 0.05 / 0.20 at
+    0.5 / 1 / 1.5 / 2%, E and F ≤ 0.15 (curvature, not roughness). FD vs Plackett (max |Δ| / max |g|):
+    E, F ≤ 2.3e-5; D 3e-6 / 2e-4 / 1.7e-3 / 1.5e-2, growing as P falls.
+  - **Reading.** The hypothesis fails at its core: on this DGP joint and independent chance constraints
+    make the same decisions. What helps is the uncertainty-aware constraint itself (vs Point), and any
+    product-of-marginals version gets that.
+
+### T13 · Cardinality-constrained line with joint survival, 6 of 20 (KILL 2026-10-11)
+
+- **Model (fixed).** T4 recovery-gate fit: J = 20 shelf, MVP-G 512×256, N = 1,000, S1 truth dataset
+  (`analysis/T4/out/gate_g/fit_512x256.json`: θ (25) and sandwich covariance). No new fits. Caveat: pack0 is
+  ~−3.4 SE in every T4 fit (likely this dataset).
+- **Decision.** Exactly 6 of 20 SKUs, C(20,6) = 38,760 lines; prices fixed at T4's base prices; cost $3.00
+  (T4). Shelf = the 6 kept SKUs + "none" (no other alternatives). Shares are exact population orthants
+  (normal tastes and errors), 7 per line, d = 6. Log-share delta method: Σ_log = J V Jᵀ, J = ∂log ŝ/∂θ.
+- **Proposed t (from the fitted model, engine on CPU, no cost).** Unconstrained optimum: SKUs 3, 4, 6, 11, 15, 18,
+  shares 6.5 / 7.6 / 8.7 / 4.7 / 16.6 / 7.9%, none 48%; log-share SDs 0.044–0.075; pair correlations −0.28 to 0.50.
+  "Within reach" = 1% < P(miss) < 99%:
+
+  | t | P(miss) per kept SKU | in reach | certain miss |
+  |---|---|---|---|
+  | 6.5% | .47 / .01 / 0 / 1.0 / 0 / 0 | 2 | 1 |
+  | 7.0% | .83 / .11 / 0 / 1.0 / 0 / .03 | 3 | 1 |
+  | 7.5% | .97 / .40 / .03 / 1.0 / 0 / .20 | 4 | 1 |
+
+  The 4.7% SKU misses for certain at every t with 2+ in reach (SDs are tight at N = 1,000), so the unconstrained
+  optimum is infeasible at every α; the constrained optimum is a different line.
+- **Proposed floors for (2):** 90%, 95%, 98% of the unconstrained max expected profit (top lines are within
+  ~2% of each other, so 98% is tight).
+- **Arms.** Point, Independent, Joint-OVUS, Joint-GHK (reference integrator, scrambled Sobol 2^14 × 4),
+  Joint-engine, Nested MC (θ ~ N(θ̂, V), shares per draw by GHK with fixed draws). Cells: (1) 3 t × 3 α = 9,
+  (2) 3 t × 3 floors = 9.
+- **Search.** Exhaustive (reference). Greedy: (1) add the SKU with the highest expected profit whose partial
+  line meets the constraint, else the highest P; (2) profit-greedy to 6. Then best-improvement 1-swap
+  (6 × 14 = 84 neighbours per step) on the cell's objective among feasible neighbours ((1): if infeasible,
+  ascend P first). Report whether each reaches the exhaustive optimum, per arm.
+- **Step 0 (run first, stop and report).** Delta step for all 38,760 lines, Independent and Joint (all three
+  integrators) for all lines and t. Metrics as specified: kept SKUs with P(miss) > 1% at each arm's optimum and
+  their shared brand / flavor / pack; Joint vs Independent feasibility disagreement under (1); top-20 rank
+  changes under (2); pairwise excess Σ_{i<j}[P(miss_i ∩ miss_j) − p_i p_j] at the optimum by sign of the pair
+  correlation (exact bivariate normal on log shares).
+  - Cost: ~10–15 T4-min (delta step ~7 min, Joint-GHK on 116k orthants ~2 min) ≈ $0.15.
+- **After Step 0.** Nested MC on all lines, B = 10,000 (MC SE 0.001 at 1 − α = 0.99, 0.002 at 0.95), GHK M = 256
+  per draw. Estimate from T11's throughput: 2.5–5 T4-h ≈ $1.50–3.00, split across T4s; a 1-line-batch timing
+  probe (~$0.05) first. If the probe projects > $5: stop and ask (fallback: Nested MC on the top 2,000 lines
+  per cell). Local search timed per arm, with orthant batch sizes (exhaustive 38,760 × 3 t; greedy 20 − k;
+  swap 84). True shares (T4 S1 truth) of each chosen line: reported, not scored.
+- **Kill criteria (approved 2026-10-11).**
+  - Step 0 stop: in every (1) cell Joint and Independent disagree on feasibility for < 0.5% of lines and pick
+    the same line, AND in every (2) cell the top 20 lines have ≤ 1 rank change → STOP (report, no Nested MC).
+  - H1 (decisions differ): Joint-GHK's line ≠ Independent's in ≥ 2 of the 9 cells of (1) or ≥ 2 of the 9 of (2).
+  - H2 (backed by Nested MC): in the cells where they differ, Nested MC agrees with Joint in a majority;
+    under (1) Joint's line has P_NMC ≥ 1 − α − 2 MC SE; under (2) Joint's P_NMC exceeds Independent's by
+    > 2 MC SE.
+  - PASS = H1 and H2. KILL = Joint = Independent in all 18 cells. Otherwise INCONCLUSIVE (one dataset, no
+    replication).
+  - Integrators: report agreement of Joint-engine and Joint-OVUS with Joint-GHK; flag any cell where an
+    integrator alone changes the decision.
+  - Speed and search: report only (T11: the time saving vs Nested MC is the delta step).
+- **Out of scope.** Prices as decisions, new fits, other J, gradients, P(π ≥ L), replication over datasets.
+- **Approved as drafted (user, 2026-10-11).** Code: `analysis/T13/t13.py`.
+- **Step 0 (2026-10-11): one T4, 345 s wall (~$0.06).** `out/step0.npz`, `out/step0_report.json`. Delta step 209 s
+  for all 38,760 lines (51 share evaluations each, GHK M = 1,024; checked against M = 2^15: ≤ 1.7e-4 abs). Orthant
+  time per t over all lines: Independent 0.007 s, Joint-engine 0.08 s, Joint-OVUS 0.03 s, Joint-GHK 37.5 s.
+  - Unconstrained optimum on GHK shares: SKUs 3, 4, 6, 11, 15, 18 (as sized; the CPU engine shares used for sizing
+    were off by up to 0.009 abs, 17% rel on a small share, without changing the optimum).
+  - **(1): Joint and Independent disagree on feasibility for 0 of 38,760 lines in all 9 cells (all three
+    integrators), and pick the same line in all 9.** The constraint is near-deterministic: only 0–6 lines per
+    cell have P within ±0.01 of 1 − α (log-share SDs 0.04–0.08 at N = 1,000). Joint and Independent differ by up
+    to 0.12 on single lines, but only on lines far from the boundary (low P). t = 7.5%, α = 1%: no feasible line.
+  - **(2): the chosen line is the same for Joint and Independent in all 9 cells.** Top-20 ranks do change at
+    floors 90% and 95% (7–18 positions, 0–4 lines swapped into the top 20); at 98% only 4 lines qualify, no change.
+  - At the optima: Joint/Independent optima keep 0–2 SKUs with P(miss) > 1% under (1) and 3–4 under (2), sharing
+    pack 2 at most. Pairwise excess at the (2) optimum (t = 7%): +0.014 (positive pairs), −0.071 (negative pairs):
+    negative pairs dominate, so Joint < Independent there (0.257 vs 0.300), without moving the argmax.
+  - **Against the criteria.** Step 0 stop rule as written is not met (top-20 changes at 90% / 95% floors), but
+    H1 is 0 of 18 cells: Joint = Independent on every decision, i.e. the KILL condition, which Nested MC cannot
+    change. Stopped and asked whether to run Nested MC (~$1.50–3) for the reference agreement anyway.
+  - **User (2026-10-11): stop, KILL.** No Nested MC. Total T13 GPU ~$0.06.
+
+### T14 · MBC linked sets at k > 12 (approved 2026-10-11; Part A PASS 2026-10-12, Part B PASS 2026-10-13)
+
+- **Part A, simulated (T2 extension).** T2's DGP and truths (L0 null, L1 factor, L2 two-cluster, LC
+  complementarity) at k = 20 and 30, menu M = k (T2's k = 12 cell was M = k), 3 price levels, own-price effects
+  only, no heterogeneity; N = 1,000 × 10 menus + 4 holdout menus; 20 replicates per (truth, k) = 160 datasets.
+  L2 splits the linked set in halves (10 + 10, 15 + 15). LC: T2's two pairs + one triple.
+  - Arms: CS-F (analyst lift rule, cap 5), CS-O (oracle blocks), IL, MVP-IFM (`multivariate_probit`, margins in all
+    M log prices; nearest-PSD repair of R: rate, ‖R − R̃‖_F, min eigenvalue before), MVP-ML (GPU GHK, the `mvp_fit`
+    service as in T2, time-capped).
+  - Decisions as T2, scored against the truth by GHK-QMC: best pair, best triple, TURF-4 (C(20,4) = 4,845 /
+    C(30,4) = 27,405 sets), D-price errors. Holdout pattern LL by per-observation GHK (2^k enumeration is out).
+- **Part B, real (T3 extension).** Proposed cluster: **home baking, 24 items** (eggs, sugar, flour, butter, cream
+  cheese, cake mix, frosting, brownie mix, muffin/cornbread mix, chocolate chips, marshmallows, baking nuts, oil,
+  cooking spray, shortening, baking powder/soda, extracts, pie filling, pie crust, whipped topping, cake decor/icing,
+  graham crackers, aluminum foil, refrigerated cookie dough). Basket rates 0.25–9.5%; raw lifts median 4.8, 98% of
+  276 pairs > 2 (raw lifts are inflated by trip size; T3's gate decides). Same households, covariates and
+  time-split holdout as T3.
+  - Arms: CS-F, CS-O, IL, MVP-IFM, MVP-ML if within the cap. Decisions: best pair, best triple, TURF-4, and the
+    recommendation A → B for each of the 24 items (27 decisions). Holdout adjudication as T3 (household bootstrap).
+  - Build change: T3 enumerates all 2^M patterns; at M = 24 decisions use 2–4-dim marginals and the holdout LL uses
+    per-trip GHK on GPU.
+- **Report only.** Per-observation likelihood cost (value + gradient) at d = 20 / 30, GHK (M draws as used) vs OVUS
+  (T9's GPU port), one T4.
+- **ML time cap (proposed).** 60 T4-min per fit. Step 0 times one ML fit at k = 30 (L2) and at M = 24 (real); if
+  either projects > 60 min: stop and ask.
+- **Kill criteria (approved 2026-10-11, adjusted below).**
+  - A, Q1: pool L1 + L2 at k = 20, 30 (80 datasets × 3 decisions = 240). PASS if CS-F flips exceed MVP-IFM's by
+    ≥ 48 (20 pts) and CS-F's mean regret exceeds MVP-IFM's by > 2 paired SE. KILL if CS-F is within 24 flips (10 pts)
+    of MVP-IFM. Else INCONCLUSIVE.
+  - A, guards (caveats, not kills): L0 median |ρ̂| ≤ 0.05; LC reported.
+  - A, Q2 (report): IFM-vs-ML decision agreement; PSD repair rate and size, and whether repaired datasets flip more.
+  - B gate (as T3): ≥ 6 items connected at ρ ≥ 0.2 after covariates; fail → stop and ask.
+  - B: PASS if, on decisions where CS-F and MVP-IFM disagree, the holdout backs MVP on ≥ 3 more than CS-F and on a
+    majority of the resolved ones. KILL if the holdout backs CS-F at least as often as MVP.
+  - B controls: T3's two simulated controls, IFM only.
+- **Estimate.** Build ~1 day. Step 0 (two capped ML timing fits + the OVUS/GHK microbench): ≤ 2 T4-h, ≤ $1.20.
+  A without ML (CPU containers, as T2): ~$2. A with ML: all 160 fits at 20–60 min ≈ $30–95; or **ML on the kill
+  pool only (L1, L2 × k 20, 30), 10 reps = 40 fits ≈ $8–24 (proposed)**. B: CPU ~$0.50, one ML fit ≤ $0.60, holdout
+  LL on GPU ~$0.10.
+- **Out of scope.** Engine in the likelihood, Gibbs, new truths.
+- **Approved with adjustments (user, 2026-10-11).**
+  - Baking cluster approved. Staples (eggs, sugar, oil, foil) test false linking: trip size must be a covariate
+    (T3's trip-size covariate kept, alongside household propensity); post-covariate ρ for staple pairs reported
+    separately, so a pass cannot rest on staple links.
+  - M = k approved (partial menus are a separate question).
+  - 60-min ML cap approved. If ML projects over the cap at a k: IFM only there, IFM-vs-ML agreement recorded as
+    unanswered at that k (ML is not in the kill criteria).
+  - ML on L1/L2, 10 reps (40 fits) approved.
+  - Part A: the 240 decisions are best pair, best triple, TURF-4 (80 datasets × 3); price-change errors reported
+    separately. CS-O reported alongside CS-F (if oracle subsets also lose, the claim is about the method).
+  - L0 guard: also report max |ρ̂| and whether PSD repair ever triggers under L0 (it should not; if it does, a red
+    flag on the pairwise step).
+  - Part B: results by decision type (pair, triple, TURF-4, follow-ons). "Resolved" = held-out difference
+    ≥ max(0.5 pts, 2 SE) under the household bootstrap (T6's rule), fixed up front. PASS also requires MVP not to
+    lose on any of the 3 set decisions (pair, triple, TURF-4). Follow-ons are not independent tests (under
+    independence CS-F tends to pick the most popular item for every follow-on).
+- **Step 0, first attempt (2026-10-11): lost.** The bench OOM'd (one autograd graph over all chunks) and the error
+  discarded both ML results after ~63 min wall (~$1.20, T4 mvp_fit service); ≥ 1 fit ran to the 60-min T4 cap.
+- **Step 0 rerun (user 2026-10-12: ML on an H100 via mvp_fit's own code in an ephemeral app; ≤ ~$0.40).**
+  `t14.py step0`, `out/step0/*.json`, `step0_rerun.log`; each part saved as it arrives. 130 s wall, ~$0.15.
+  - ML on one H100 (512 draws, float32 GHK, no SEs), max_iter 1 then 5 in one container (the 5-iteration call ran
+    3 joint iterations: L-BFGS's eval cap is 1.25 × max_iter):
+    sim L2 k = 30 (10,000 obs, 30 covariates): 4.2 s (incl. CUDA start) / 0.69 s, 5.1 GiB peak;
+    baking (112,319 obs, 24 items, 47 covariates): 6.9 s / 5.1 s, 19 GiB peak.
+    Upper bound per likelihood + gradient: ~0.1 s (sim), ~0.85 s (baking). Even at L-BFGS's 625-eval limit:
+    ≤ ~1 min (sim), ≤ ~9 min (baking) per fit, well under the 60-min cap. T4 would be ~7–12× slower, so the lost
+    T4 run's cap hit was most likely the baking fit.
+  - Bench (report only, one T4, value + gradient, 512 draws): GHK 137 / 347 µs per obs at d = 20 / 30; OVUS
+    48 / 80 (2.8× / 4.3× cheaper). Cost only; accuracy not measured here.
+- **Part A results (2026-10-12): PASS.** `run_a.py`, `out/A_full/` (summary.txt, summary.json, per-job JSON), 160
+  datasets, 0 errors, ~20 min wall, ~$4. Truth decisions GHK-QMC 2^16 (CPU); arms' probit scoring GHK-QMC 2^14 on a T4
+  (checked identical to the CPU path on the selftest); ML (mvp_fit's code) on H100s, 5–8 s per fit, 40/40 converged.
+  - Kill pool (L1 + L2, k 20/30, 240 decisions): flips CS-F 207, CS-O 119, MVP-IFM 50; gap 157 (PASS ≥ 48). Mean
+    regret gap CS-F − IFM 5.2% of the best per decision, paired SE 0.30 over 80 datasets. In absolute points: flips
+    with regret > 0.5 pts CS-F 185, CS-O 115, IL 235, IFM 2, ML 1; mean absolute regret CS-F 1.90 pts (max 10.1),
+    CS-O 0.89 (max 3.6), IFM 0.037 (max 0.87), ML 0.033 (max 0.53). Oracle blocks also lose: the cap of 5 cannot
+    hold a 20–30-item linked set.
+  - L0 guard: IFM |ρ̂| median 0.013, max 0.091; PSD repair never triggered (0/40, nor on any truth). IFM flips 34 of
+    120 under L0, 2 with regret > 0.5 pts (max 0.78 pts); CS 19, none > 0.5 pts.
+  - LC (reported): CS-F / CS-O 0 flips > 0.5 pts (max 0.33); IFM 3 (max 0.71); IL 81.
+  - Q2: IFM and ML pick the same set on 115/120 decisions (flips IFM 24, ML 23 on those datasets).
+  - Price-change errors (reported separately): marginal-change MAE IFM / ML 0.34–0.42 pts vs CS-F 0.05–0.11 at every
+    truth: the MVP margins carry all k log prices (spurious cross-price slopes); CS fits own + screened in-subset
+    cross terms. A margin-specification effect, not the correlation.
+- **Part B selftest (2026-10-12, 300 households, ~$0.40).** `run_b.py`, `out/B_selftest/`. Pipeline runs end to end
+  (probit set quantities via a 2^24 latent-draw histogram on a T4, checked against brute force; coded-subset set
+  quantities checked against simulation, max |Δ| 4e-3 at MC noise). Results not meaningful at this size: holdout
+  covariates sit far from training (log-price columns at +1.35 / −1.31 training SDs on the later weeks), so predicted
+  holdout rates are 2–13× the observed for every arm (eggs IL: 0.23 vs 0.10); raw IFM R min eigenvalue −1.50 (repair
+  ‖R − R̃‖_F 2.28); ML hit its 500-iteration cap with a singular R. Fixes: IFM fit with the library's repair on and
+  the raw pairwise R recomputed for the record; correlation matrices shrunk 1e-6 toward I when singular (scoring only).
+- **Part B results (2026-10-13): PASS, at the threshold (3 − 0 = 3).** `run_b.py`, `out/B_full/` (gate.json,
+  per-job JSON), `run_b_full.log`. 1,869 households, 149,789 trips (112,319 training), 45 covariates. ML 130 s on one
+  H100 (284 iterations, converged, R min eigenvalue 0.036). Fits and controls on Modal CPU (2 vCPU, 8 GiB), scoring on
+  T4s; 93 min wall.
+  - Gate: PASS, 22 of 24 items linked at ρ ≥ 0.2; 19 with staple pairs zeroed. Post-covariate ρ, staple pairs median
+    0.16 (max 0.48, 36% ≥ 0.2); non-staple median 0.16 (max 0.92, 41% ≥ 0.2). The pass does not rest on staples.
+    Raw IFM R min eigenvalue −0.020, repair ‖R − R̃‖_F 0.024.
+  - CS-F subsets: {eggs, muffin/cornbread mix, cooking spray}, {sugar, chocolate chips, marshmallows, baking nuts,
+    graham crackers}, {flour, shortening, baking powder/soda, extracts, pie filling}, {butter, cream cheese, pie
+    crust, whipped topping, aluminum foil}, {cake mix, frosting, brownie mix, oil, cake decor/icing},
+    {refrig. cookie dough}.
+
+| decision type | differ | backs MVP | backs CS-F | unresolved |
+|---|---|---|---|---|
+| best pair | 1 / 1 | 0 | 0 | 1 |
+| best triple | 0 / 1 | 0 | 0 | 0 |
+| TURF-4 | 0 / 1 | 0 | 0 | 0 |
+| follow-on | 5 / 24 | 3 | 0 | 2 |
+
+  - Resolved (holdout, MVP − CS-F, household-bootstrap SE): extracts → sugar vs → flour +22.2 pts (4.0); pie crust →
+    eggs vs → cream cheese +10.7 (3.4); graham crackers → eggs vs → marshmallows +14.1 (3.8). Unresolved: best pair
+    eggs + cream cheese 1.19% vs cake mix + frosting 0.87%, +0.32 pts (SE 0.08; under the 0.5-pt bar); chocolate
+    chips → eggs vs → sugar −1.9 (3.0); baking nuts → eggs vs → sugar +2.7 (2.9). MVP loses no set decision.
+  - Q2 (report): ML vs IFM differ on 1 of 27 (holdout backs IFM); ML vs CS-F differ on 5: ML 2, CS-F 0, 3 unresolved.
+  - Controls (10 reps per truth, flips of 27 / material > 0.5 pts): S-MVP: IFM 21 / 19, CS-F 44 / 34, CS-O 67 / 55,
+    IL 40 / 30. S-CS: IFM 37 / 27, CS-F 47 / 34, CS-O 47 / 33, IL 101 / 80. IFM flips least under both truths,
+    including CS-F's own.
+  - Holdout LL per trip: ML −1.524, CS-O −1.563, CS-F −1.569, IL −1.626. IFM −32.9 (S-CS controls −1,814): a few
+    holdout patterns get near-zero probability under the repaired, near-singular IFM R. Not in the criteria; IFM's
+    LL is not quoted until checked.
+  - Invalid first run (kept as `out/B_full_badprice/`, `run_b_full_badprice.log`): `t3.load` dropped constant price
+    columns by full-period SD, so prices constant in training (pie filling, extracts) were standardised by ~1e-15 and
+    reached 2.8e13 on 5,598 holdout trips. Fixed: the SD rule uses training rows. T3's taco data is unchanged by the
+    fix (same 16 columns, holdout max |z| 3.3).
 
 ## Paused
 

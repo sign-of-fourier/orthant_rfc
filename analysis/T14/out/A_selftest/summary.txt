@@ -1,0 +1,14 @@
+truth k method n | flips b2/b3/turf4 (material >0.5%) | mean regret % b2/b3/turf4 | dMarg MAE pts | dAny |err| pts | holdout LL | t_med s
+L1 30 cs_f   1 | 1(1)/1(1)/1(1)           | 6.14/24.66/2.71  | 0.05 | 0.16 | -14.506 | 42
+L1 30 cs_o   1 | 0(0)/1(1)/1(1)           | 0.00/24.06/0.91  | 0.06 | 0.16 | -14.517 | 55
+L1 30 il     1 | 1(1)/1(1)/1(1)           | 6.11/11.00/0.91  | 0.00 | 0.18 | -15.536 | 3
+L1 30 ifm    1 | 1(0)/0(0)/0(0)           | 0.03/0.00/0.00   | 0.40 | 0.11 | -13.184 | 212 | |rho| med 0.389 max 0.597 | PSD repair 0/1, |R - R~|_F max 0.000
+L1 30 ml     1 | 1(0)/0(0)/0(0)           | 0.03/0.00/0.00   | 0.37 | 0.08 | -13.185 | 175 | |rho| med 0.393 max 0.595 | conv 1/1
+
+LC 30 cs_f   1 | 0(0)/0(0)/1(0)           | 0.00/0.00/0.16   | 0.07 | 0.00 | -17.131 | 4
+LC 30 cs_o   1 | 0(0)/0(0)/1(0)           | 0.00/0.00/0.16   | 0.07 | 0.00 | -17.125 | 5
+LC 30 il     1 | 1(1)/0(0)/1(1)           | 20.18/0.00/1.92  | 0.15 | 0.00 | -17.459 | 2
+LC 30 ifm    1 | 0(0)/0(0)/1(0)           | 0.00/0.00/0.16   | 0.40 | 0.00 | -17.172 | 178 | |rho| med 0.013 max 0.365 | PSD repair 0/1, |R - R~|_F max 0.000
+
+Kill pool (L1 + L2, k 20/30): 1 datasets x 3 = 3 decisions. Flips CS-F 3, CS-O 2, MVP-IFM 1; gap 2 (PASS >= 48, KILL <= 24). Mean regret gap CS-F - IFM 11.161 pts per decision (paired SE over datasets nan). Verdict: KILL.
+Q2: ML on 1 datasets; IFM and ML pick the same set on 3/3 decisions (flips IFM 1, ML 1); decisions; ML fit seconds median 7, max 7.

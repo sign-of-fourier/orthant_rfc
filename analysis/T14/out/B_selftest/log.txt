@@ -1,0 +1,26 @@
+[23:06:16] T14 B selftest: 300 households, 24999 trips (18749 training), X 47 columns
+[23:07:23] real_ml ok (74 s)
+[23:10:17] real_cpu ERROR ValueError: the fitted correlation matrix is not positive definite (smallest eigenvalue -1.497). Pairwise estimates are fitted independently and need not be jointly coherent, so this is expected with project_correlation=False. Set project_correlation=True to project onto the nearest valid correlatio (248 s)
+[23:10:30] T14 B selftest: 300 households, 24999 trips (18749 training), X 47 columns
+[23:18:08] real_cpu ok (458 s)
+[23:18:08] CS-F subsets [['eggs', 'butter', 'cream cheese', 'whipped topping'], ['sugar', 'flour', 'cooking spray', 'shortening', 'extracts'], ['cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'oil'], ['chocolate chips', 'marshmallows', 'baking nuts', 'baking powder/soda', 'pie filling'], ['pie crust', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough']]; gate {'passed': True, 'linked': ['eggs', 'sugar', 'flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'oil', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough'], 'size': 24, 'staple_pairs': {'median': 0.12175703952177008, 'max': 0.46991833806274297, 'frac_ge_02': 0.27906976744186046}, 'nonstaple_pairs': {'median': 0.11430587884375479, 'max': 0.9543789331550977, 'frac_ge_02': 0.23157894736842105}, 'linked_without_staples': {'passed': True, 'linked': ['flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers'], 'size': 18}}
+[23:24:18] ctrl_cpu_S-CS_0 ok (828 s)
+[23:24:41] T14 B selftest: 300 households, 24999 trips (18749 training), X 47 columns
+[23:24:42] CS-F subsets [['eggs', 'butter', 'cream cheese', 'whipped topping'], ['sugar', 'flour', 'cooking spray', 'shortening', 'extracts'], ['cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'oil'], ['chocolate chips', 'marshmallows', 'baking nuts', 'baking powder/soda', 'pie filling'], ['pie crust', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough']]; gate {'passed': True, 'linked': ['eggs', 'sugar', 'flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'brownie mix', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'oil', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers', 'aluminum foil', 'refrig. cookie dough'], 'size': 24, 'staple_pairs': {'median': 0.12175703952177008, 'max': 0.46991833806274297, 'frac_ge_02': 0.27906976744186046}, 'nonstaple_pairs': {'median': 0.11430587884375479, 'max': 0.9543789331550977, 'frac_ge_02': 0.23157894736842105}, 'linked_without_staples': {'passed': True, 'linked': ['flour', 'butter', 'cream cheese', 'cake mix', 'frosting', 'muffin/cornbread mix', 'chocolate chips', 'marshmallows', 'baking nuts', 'cooking spray', 'shortening', 'baking powder/soda', 'extracts', 'pie filling', 'pie crust', 'whipped topping', 'cake decor/icing', 'graham crackers'], 'size': 18}}
+[23:24:47] score_real_cs_o ok (6 s)
+[23:24:48] score_real_il ok (7 s)
+[23:24:48] score_real_cs_f ok (7 s)
+[23:24:48] truth_S-CS ok (7 s)
+[23:24:56] truth_S-MVP ok (15 s)
+[23:24:56] score_real_ifm ok (15 s)
+[23:24:57] score_real_ml ok (16 s)
+[23:32:08] ctrl_cpu_S-MVP_0 ok (447 s)
+[23:32:12] score_ctrl_S-CS_0_cs_f ok (451 s)
+[23:32:13] score_ctrl_S-MVP_0_cs_f ok (452 s)
+[23:32:13] score_ctrl_S-CS_0_cs_o ok (452 s)
+[23:32:13] score_ctrl_S-MVP_0_il ok (452 s)
+[23:32:13] score_ctrl_S-CS_0_il ok (452 s)
+[23:32:14] score_ctrl_S-MVP_0_cs_o ok (453 s)
+[23:32:20] score_ctrl_S-CS_0_ifm ok (459 s)
+[23:32:21] score_ctrl_S-MVP_0_ifm ok (460 s)
+[23:32:24] done (463 s); summary: python analysis/T14/run_b.py summary selftest

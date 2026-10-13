@@ -131,7 +131,7 @@ def load(cluster, data_dir, n_hh=None):
     prop = logit(num / den) - logit(pbar)
 
     week = (trips.week - weeks[0]).values
-    lp_keep = [m for m in range(M) if LP[:, m].std() >= MIN_PRICE_SD]
+    lp_keep = [m for m in range(M) if LP[week[train], m].std() >= MIN_PRICE_SD]   # must vary on the training rows
     X = np.column_stack([LP[week][:, lp_keep], np.log1p(trips.nH.values), prop])
     cols = [f"log price: {names[m]}" for m in lp_keep] + ["trip size"] + [f"propensity: {n}" for n in names]
     mu, sd = X[train].mean(0), X[train].std(0)

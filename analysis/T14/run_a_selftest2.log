@@ -1,0 +1,17 @@
+[22:44:57] T14 A selftest: 2 datasets, 1 ML fits; data built
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-cENUCPI3fKs9mZ2pIU3sos
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T14/run_a.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T2/t2.py
+├── 🔨 Created mount PythonPackage:modal_gp_api
+├── 🔨 Created function fit_ml.
+├── 🔨 Created function truth_job.
+├── 🔨 Created function fit_cpu.
+└── 🔨 Created function score_job.
+[22:45:23] scores LC_30_0 ok (26 s)
+[22:45:32] scores L1_30_0 ok (35 s)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-cENUCPI3fKs9mZ2pIU3sos
+[22:45:34] done (36 s)
