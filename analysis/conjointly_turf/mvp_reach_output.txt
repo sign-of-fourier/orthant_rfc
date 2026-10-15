@@ -1,0 +1,29 @@
+Split-half MVP reach vs counting. N = 202, R = 200 splits of 101/101, GHK M = 4096, seed 20261015
+CIs: corrected resampled t-test (Nadeau & Bengio 2003), Holm across k. Materiality 1.0 pt.
+
+k = 2 done (40 s)
+k = 3 done (84 s)
+k = 4 done (129 s)
+
+Prediction: mean absolute error vs held-out reach over all 364 triples, reach points
+   k   Count     MVP  Indep.   Count - MVP             95% CI rel. lift             95% CI   Holm p
+   2    5.16    5.36    5.50         -0.20 [ -0.89,  +0.50]     -4.6% [ -19.6,  +10.4]%    0.682
+   3    5.17    5.55    6.41         -0.38 [ -0.99,  +0.24]     -8.2% [ -21.9,   +5.6]%    0.682
+   4    4.83    5.12    6.50         -0.29 [ -0.82,  +0.25]     -6.4% [ -18.5,   +5.7]%    0.682
+
+Decision: each arm's top triple on the training half, scored by held-out reach (points)
+   k picks differ Count pick  MVP pick   MVP - Count             95% CI   Holm p
+   2    91/200         72.09     68.85         -3.24 [-13.16,  +6.68]        1
+   3    82/200         85.23     84.64         -0.59 [ -8.97,  +7.80]        1
+   4    91/200         91.21     92.09         +0.88 [ -5.41,  +7.17]        1
+
+Fit diagnostics (IFM on training halves)
+  k = 2: PSD repair max move median 0.891 (max 0.982); raw pairwise rho at the +-0.99 bound: 10294 pairs over 200 fits; split 0 rho median -0.16, range -0.42..+0.65
+  k = 3: PSD repair max move median 0.770 (max 0.927); raw pairwise rho at the +-0.99 bound: 4636 pairs over 200 fits; split 0 rho median -0.11, range -0.66..+0.63
+  k = 4: PSD repair max move median 0.568 (max 0.792); raw pairwise rho at the +-0.99 bound: 1932 pairs over 200 fits; split 0 rho median -0.10, range -0.64..+0.65
+
+Prediction outcome per k: {2: 'tie', 3: 'tie', 4: 'tie'}
+Decision outcome per k:   {2: 'ok', 3: 'ok', 4: 'ok'}
+VERDICT (pass rule fixed in the design): INCONCLUSIVE
+
+wall time 129 s

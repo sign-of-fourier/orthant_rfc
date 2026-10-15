@@ -11,3 +11,6 @@ analysis/*/out/**/hb_*.csv
 analysis/*/out/**/phase_*.json
 analysis/*/out/**/*.pkl
 analysis/*/out/**/stdout*.txt
+
+# Conjointly export: keep out of the public repo
+conjointly_experiment_7.json
