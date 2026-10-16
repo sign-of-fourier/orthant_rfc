@@ -75,10 +75,10 @@ All MVP arms use the same fitted θ̂ and the same search code; only the stage-1
 | Arm | Stage 1 | Stage 2 |
 |---|---|---|
 | (a) HB-MNL + tuned RFC-S, incumbent | Sawtooth-style scenario search on the RFC simulator (see Search) | — |
-| (b) MVP + engine pipeline | Engine (service default settings, float64, as T7), on a large candidate stream | GHK-QMC at M_acc rescores the top K, then local search |
-| (c) MVP + accurate-only | GHK-QMC at M_acc on the stream, at the same wall-clock budget as (b) | Same local search |
-| (d) MVP + shared-draw simulator | Common-draw first-choice simulator on the stream | Same as (b) |
-| (e) MVP + low-M GHK stage 1 (user, 2026-10-16) | GHK-QMC at its adequacy M (below M_acc) on the stream | Same as (b) |
+| (b) M*P + engine pipeline | Engine (service default settings, float64, as T7), on a large candidate stream | GHK-QMC at M_acc rescores the top K, then local search |
+| (c) M*P + accurate-only | GHK-QMC at M_acc on the stream, at the same wall-clock budget as (b) | Same local search |
+| (d) M*P + shared-draw simulator | Common-draw first-choice simulator on the stream | Same as (b) |
+| (e) M*P + low-M GHK stage 1 (user, 2026-10-16) | GHK-QMC at its adequacy M (below M_acc) on the stream | Same as (b) |
 
 - **(a) Incumbent.**
   - HB-MNL is `bayesm::rhierMnlRwMixture` with T1/T4's prior and 20k iterations, fitted on the gate dataset's 12

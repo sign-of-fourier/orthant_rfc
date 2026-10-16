@@ -62,7 +62,8 @@ def model():
     th_true = np.r_[t4.b_true(20), np.log(t4.W_TRUE), np.log(s2[:3] / s2[3])]
     th_hat = np.array(json.loads(FIT.read_text())["theta"])
     return dict(Xb=Xb, SA=SA, mem=mem, levels=np.array(t4.LEVELS), lev=lev, P=P, pcol=P - 2, ref=t4.PRICE_REF,
-                tvar=t4.T_VAR, th_hat=th_hat, th_true=th_true)
+                tvar=t4.T_VAR, th_hat=th_hat, th_true=th_true,
+                b_true=t4.b_true(20), w_true=t4.W_TRUE.copy())
 
 
 def instances(J=20):

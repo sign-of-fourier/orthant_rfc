@@ -127,8 +127,107 @@ Moved verbatim from PLAN.md on 2026-10-16 (links re-rooted). Summary and current
     - The simulator and low-M GHK screen faster than the engine. That is not the engine's claim (user: its
       competitor is OVUS).
   - **Not run.**
-    - The main question: the GPU MVP pipeline vs HB-MNL + RFC (logit IIA), regret against the truth.
+    - The main question: the GPU M*P pipeline vs HB-MNL + RFC (logit IIA), regret against the truth.
     - (b) vs (c), pipeline value.
     - The S0 guard.
   - **Open.** Revised kill criteria for those (blank, user). The screening rules are provisional (private notes).
   - **Cost so far:** about $1.70 of GPU.
+
+## Main comparison: GPU M*P pipeline vs HB-MNL + RFC-S (logit IIA) (criteria set by the user, 2026-10-16)
+
+**Arms.**
+- **Incumbent.** HB-MNL (bayesm, 20k iterations) + RFC-S tuned on the 6 holdout tasks (T4's `tune_rfc`), RFC draws
+  R = 200 per respondent. Scenario search on CPU in the style of Sawtooth ASM: exhaustive if the space is ≤ 50,000,
+  otherwise best-improvement hill-climbing from 20 random starts. Same neighbourhoods as below.
+- **M*P pipeline.** The fitted probit (MVP-G 512 × 256) on an H100.
+  - Naming (2026-10-16): the model is a mixed multinomial probit (MNP); "MVP-G" is T4's name for it. The
+    pipeline is called M*P because the same rules serve MNP and MVP.
+  - Stage 1: the engine screen to a top 100, over D1 and D3 exhaustive and 10⁶ random candidates for D2 and D4.
+  - Stage 2: GHK M = 4,096 rescoring, then best-improvement local search.
+- **Accurate-only (secondary, report only).** GHK M = 4,096 for 80% of the pipeline's wall time, then the same
+  local search.
+
+**Truth and regret.**
+- **True profit:** each pick is scored at the true parameters, with GHK M = 65,536 (S1). S0's truth is a mixed
+  logit, scored by simulation.
+- **True best:**
+  - D1 and D3: exhaustive at the truth.
+  - D2 and D4: the best of a 10⁷-candidate screen plus local search at the truth, together with every arm's pick.
+    Assumption: the true best is in that set.
+- **Regret** = (true best − true profit of the pick) / true best, in % of best profit.
+- **Also reported:** each arm's regret under its own model (its search error), separately from regret against the
+  truth.
+
+**Replication.**
+- 5 S1 datasets (T4's DGP, reps 0–4, N = 1,000, 12 tasks). Rep 0 is the T4 gate fit; reps 1–4 are H100 refits.
+- One S0 dataset (logit truth) for the guard.
+- Pilot: rep 0 end to end, then stop and report.
+
+**Verdict (graded; materiality m = 0.5% of best profit; user 2026-10-16).**
+- **The statistic.** Per decision: Δ = incumbent regret − MVP regret, in points (positive = MVP better), with a 95%
+  CI. The CI is a t-interval over the 5 per-dataset means (each the mean of the 3 instances).
+
+| label | condition |
+|---|---|
+| PASS | lo > 0 and Δ ≥ m |
+| SOFT FAIL (small lift) | lo > 0 and Δ < m |
+| INCONCLUSIVE | lo ≤ 0 and hi ≥ m |
+| HARD FAIL (no value) | hi < m and lo ≤ 0 |
+| HARD FAIL + harm | hi < 0 |
+
+- **Primary:** D1 and D4.
+  - Overall PASS needs PASS on both; overall HARD FAIL needs HARD FAIL on both.
+  - Otherwise the overall label is the better of the two, with the other stated.
+- **Controls:** D2 and D3 are reported with the same labels and don't count.
+- **Reporting rule (2026-10-13):** points with the CI first, then relative lift with its CI, then the Holm-adjusted
+  p over D1–D4.
+- **Wall time** to decision: report only.
+- **S0 guard:** record only; MVP's regret should be no worse than the incumbent's by more than m.
+- **Cost estimate:** about $12–14 for 5 datasets plus S0.
+
+### Results, S1 (2026-10-16): D1 PASS, D4 SOFT FAIL; controls D2 SOFT FAIL, D3 INCONCLUSIVE
+
+**Files.** `main.py`; `out/main/S1_rep{0..4}.json`, `truth_best_S1.json`, `summary.json`.
+
+**Statistics.** 5 datasets × 12 instances. Δ = incumbent regret − M*P regret, in points of % best profit (positive
+= M*P better). The 95% CI is a t-interval over the 5 per-dataset means; Holm is over D1–D4.
+
+| decision | incumbent regret | Δ [95% CI] | relative lift | Holm p | label |
+|---|---|---|---|---|---|
+| D1 (primary) | 1.85% | +1.85 [+1.30, +2.40] | 100% | 0.003 | **PASS** |
+| D4 (primary) | 0.25% | +0.20 [+0.13, +0.27] | 82% | 0.004 | **SOFT FAIL** |
+| D2 (control) | 0.14% | +0.11 [+0.03, +0.19] | 79% | 0.03 | SOFT FAIL |
+| D3 (control) | 0.37% | +0.32 [−0.19, +0.83] | 86% | 0.16 | INCONCLUSIVE |
+
+- **Per-dataset Δ.** D1 1.20 / 1.79 / 2.40 / 2.07 / 1.79. D4 0.20 / 0.15 / 0.21 / 0.29 / 0.16.
+- **Overall, by the pre-set rule.** PASS (D1), with D4 SOFT FAIL stated.
+- **Model vs search error.**
+  - The incumbent's D1 k = 6 and D3 searches were exhaustive under its own model, and it still lost up to 2.9%
+    (D1 k = 6). That is model error.
+  - M*P's regret is about 0 apart from a few instances (at most 0.41%).
+- **Pipeline vs accurate-only (b vs c): tie.**
+  - Identical picks on reps 1–4. The one difference in 60 instances: rep 0, D4 cost+20, where the pipeline's local
+    search stopped 0.35% short under its own model (0.41% against the truth) and accurate-only did not.
+  - The escalation rule (accurate-only fails to match on D4) is not triggered.
+- **Incumbent fit.**
+  - HB converged on every rep (drift ≤ 0.0007).
+  - RFC-S holdout MAE 0.46–0.52 pts.
+  - Rep 3: RFC-S σ_l at the lower bound (0.01, plain logit), flagged.
+- **Time and cost.**
+  - M*P fits on H100: 19–27 min (45–53 iterations; rep 0 is T4's L4 fit, 4.5 h).
+  - HB-MNL: 3–4 min on CPU.
+  - Searches: seconds per instance (M*P, H100) vs 2–12 min (incumbent, 4-core CPU). That is different hardware,
+    so not comparable as speed.
+  - Cost per dataset: about $1.50–2 for M*P (mostly the fit) vs about $0.30 for the incumbent.
+  - Total for S1: about $8.50.
+
+### Results, S0 guard (2026-10-16): pass
+
+- **Setup.** Logit truth (mixed logit, iid Gumbel), one dataset; M*P is the misspecified model here.
+  `out/main/S0_rep0.json`, `truth_best_S0.json`.
+- **Regret, M*P − incumbent, in points.** D1 +0.00, D2 −0.06, D3 −0.11, D4 −0.03. M*P is never worse by more than
+  m = 0.5 (it ties or is slightly better), so the guard passes.
+- **No invented similarity.** The M*P fit put 0.88 of the error variance on the SKU's own term (brand 0.05,
+  flavor 0.07, pack 0.003): the probit did not invent substitution structure under a logit truth.
+- **Time.** Fit 27 min on H100 (61 iterations); HB 4 min on CPU.
+- **Cost.** About $11 for T15's main comparison in all (S1 + S0).

@@ -1,7 +1,7 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
 Status 2026-10-16: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
-paused. T4 paused. T15 partial.
+paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass.
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -73,12 +73,14 @@ paused. T4 paused. T15 partial.
 
 ### Open
 
-- **T15 · Engine pipeline on the shelf, J = 20–60: partial (2026-10-16).**
-  - Done: as the stage-1 screener, the engine scores 3.6–20× more candidates per second than OVUS at equal
-    adequacy, on an H100 and a T4. The gap grows with orthant size.
-  - Not run: the main question, the GPU MVP pipeline vs HB-MNL + RFC (logit IIA) on regret against the truth;
-    also pipeline value and the S0 guard.
-  - Next: revised kill criteria (user). About $1.70 so far.
+- **T15 · Engine pipeline on the shelf, J = 20–60 (2026-10-16): D1 PASS, D4 SOFT FAIL; S0 guard pass.**
+  - **Main question (MNP via the M*P pipeline vs HB-MNL + RFC-S, regret against the truth, 5 datasets).**
+    - D1 PASS: assortment, Δ +1.85 pts [+1.30, +2.40].
+    - D4 SOFT FAIL: joint line + extension + price, +0.20 [+0.13, +0.27], reliably better but below the 0.5 floor.
+  - **Pipeline vs accurate-only search:** a tie at J = 20.
+  - **Engine vs OVUS as the screener:** 3.6–20× faster.
+  - **S0 guard:** under a logit truth M*P ties or slightly beats the incumbent, with no invented similarity.
+  - **Cost:** M*P costs more per decision (H100 fit about 20–27 min vs HB 3–4 min on CPU). About $13 in all.
   - [Full write-up](analysis/T15/TEST.md), [design](analysis/T15/DESIGN.md).
 - **T10 · MACML vs GHK follow-up: Part A inconclusive, Part B paused (2026-10-10).**
   - Part A: at N = 150 / 300, MACML and GHK made nearly the same decisions, as labelled in advance.
