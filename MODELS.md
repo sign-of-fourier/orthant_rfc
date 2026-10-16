@@ -1,7 +1,8 @@
 # Model catalog
 
-As of 2026-10-13. Every tool tested or built in this repo, what it's for, and how it did. Test details and numbers
-live in [PLAN.md](PLAN.md); open items in [BACKLOG.md](BACKLOG.md).
+As of 2026-10-13. Every tool tested or built in this repo, what it's for, and how it did. Test summaries are in
+[PLAN.md](PLAN.md), full write-ups in `analysis/T<n>/TEST.md`; open items in [BACKLOG.md](BACKLOG.md). How we search large decision spaces and judge
+error against speed: [SEARCH.md](SEARCH.md).
 
 ## Tasks
 

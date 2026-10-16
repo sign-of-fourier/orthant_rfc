@@ -19,7 +19,7 @@ whose choices are dependent (the linked set) number k ≥ 6:
 - CBC / single choice (T1, T4). Real data (T3).
 - Engine accuracy or speed sweeps (settled).
 - Flexible margins. The DGP is linear, so linear margins are correctly specified for every
-  method (PLAN.md, "Margin model").
+  method (HISTORY.md, "Margin model").
 - Building MACML (see open point B).
 
 ## DGP
@@ -154,7 +154,7 @@ On truths L1 and L2, pooled over k ≥ 8 and replicates.
 
 Approved as proposed: A without heterogeneity (follow-up), B MACML to backlog, C engine in
 the decision layer only (an engine fitter is a follow-up; the hypothesis under test is full
-MLE in general), D–G as proposed. Kill blanks unset. Follow-ups tracked in PLAN.md.
+MLE in general), D–G as proposed. Kill blanks unset. Follow-ups tracked in HISTORY.md.
 
 ## Open points (as drafted)
 

@@ -57,7 +57,7 @@ MVP S2 (mean): 0.105 / 0.425 / 0.452 / 0.018 vs true 0.08 / 0.45 / 0.45 / 0.02.
 S4 (MVP, 95% CI on log σ_a): coverage 0.90 / 0.90 / 0.95 (brand, flavor, pack).
 Raw σ_a mean 0.67 / 1.34 / 1.36 vs 0.36 / 0.86 / 0.86. Mean z over replicates is ≈ +1.1
 for every ω and σ (≈ 0 for b), so the overall scale is biased upward by ~1 SE in finite
-samples. That is the scale direction, pinned only by σ_ν = 0.18 (see PLAN.md); it does
+samples. That is the scale direction, pinned only by σ_ν = 0.18 (see HISTORY.md); it does
 not reach S1, S2, shares or decisions.
 
 ## Decisions (hurdle h = 0.5 placeholder; costs placeholder)

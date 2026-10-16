@@ -1,0 +1,541 @@
+{
+ "gpu": "NVIDIA H200",
+ "inst": {
+  "D1_k6": {
+   "n_cand": 38760,
+   "best": 1.2790938717091702,
+   "n_within": 1,
+   "ref_seconds": 7.055432196
+  },
+  "D1_k8": {
+   "n_cand": 125970,
+   "best": 1.3140905336198014,
+   "n_within": 4,
+   "ref_seconds": 43.124726624
+  },
+  "D1_k10": {
+   "n_cand": 184756,
+   "best": 1.3266711140030498,
+   "n_within": 10,
+   "ref_seconds": 113.89251759300001
+  },
+  "D2_base": {
+   "n_cand": 20000,
+   "best": 0.6450586528676351,
+   "n_within": 1,
+   "ref_seconds": 28.858798800000017,
+   "n_pairs_material": 17259
+  },
+  "D2_cost+20": {
+   "n_cand": 20000,
+   "best": 0.44717974905599017,
+   "n_within": 2,
+   "ref_seconds": 28.86177708300002,
+   "n_pairs_material": 18508
+  },
+  "D2_cost-20": {
+   "n_cand": 20000,
+   "best": 0.8933602942122378,
+   "n_within": 2,
+   "ref_seconds": 28.85992676799998,
+   "n_pairs_material": 16214
+  },
+  "D3_base": {
+   "n_cand": 7776,
+   "best": 0.5609331570082748,
+   "n_within": 10,
+   "ref_seconds": 25.54489612900005
+  },
+  "D3_cost+20": {
+   "n_cand": 7776,
+   "best": 0.23395141668960273,
+   "n_within": 2,
+   "ref_seconds": 25.45752514199995
+  },
+  "D3_F2": {
+   "n_cand": 7776,
+   "best": 0.540417385561819,
+   "n_within": 3,
+   "ref_seconds": 25.4589421
+  },
+  "D4_base": {
+   "n_cand": 20000,
+   "best": 0.6950122638929453,
+   "n_within": 1,
+   "ref_seconds": 54.195272028999966
+  },
+  "D4_cost+20": {
+   "n_cand": 20000,
+   "best": 0.46205636311370246,
+   "n_within": 1,
+   "ref_seconds": 54.08399745600002
+  },
+  "D4_F2": {
+   "n_cand": 20000,
+   "best": 0.6314358153378011,
+   "n_within": 3,
+   "ref_seconds": 54.015985451000006
+  }
+ },
+ "dec": {
+  "D4": {
+   "engine": {
+    "setting": "engine",
+    "rate": 1.0,
+    "streams": 3,
+    "streams_per_inst": 1,
+    "per_s": 32773.80287507315,
+    "err_p95_frac_best": 0.026045670728165216
+   },
+   "ghk": [
+    {
+     "setting": "ghk_64",
+     "rate": 0.9,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 61640.326128697685,
+     "err_p95_frac_best": 0.04440343756693502
+    },
+    {
+     "setting": "ghk_128",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 61342.181719485845,
+     "err_p95_frac_best": 0.02208327225423892
+    },
+    {
+     "setting": "ghk_256",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 51373.22844398167,
+     "err_p95_frac_best": 0.014857406221793741
+    },
+    {
+     "setting": "ghk_512",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 34945.962126872764,
+     "err_p95_frac_best": 0.008876129732517926
+    },
+    {
+     "setting": "ghk_1024",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 20220.4333848121,
+     "err_p95_frac_best": 0.007120684288878995
+    },
+    {
+     "setting": "ghk_2048",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 11061.727664678196,
+     "err_p95_frac_best": 0.004258445429510681
+    },
+    {
+     "setting": "ghk_4096",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 5801.144746834986,
+     "err_p95_frac_best": 0.0027830997392583887
+    },
+    {
+     "setting": "ghk_16384",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 1477.717035717153,
+     "err_p95_frac_best": 0.0010921159580986363
+    }
+   ],
+   "ghk_adequate": {
+    "setting": "ghk_128",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 61342.181719485845,
+    "err_p95_frac_best": 0.02208327225423892
+   },
+   "M_acc": null,
+   "sim": [
+    {
+     "setting": "sim_1024",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 803811.8472605002
+    }
+   ],
+   "sim_adequate": {
+    "setting": "sim_1024",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 803811.8472605002
+   }
+  },
+  "D1": {
+   "engine": {
+    "setting": "engine",
+    "rate": 1.0,
+    "streams": 3,
+    "streams_per_inst": 1,
+    "per_s": 697033.9848315,
+    "err_p95_frac_best": 0.010882251057812459
+   },
+   "ghk": [
+    {
+     "setting": "ghk_64",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 1325085.9360231156,
+     "err_p95_frac_best": 0.018335741627110172
+    },
+    {
+     "setting": "ghk_128",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 847943.4957313929,
+     "err_p95_frac_best": 0.0033409418698467233
+    },
+    {
+     "setting": "ghk_256",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 491941.1297170118,
+     "err_p95_frac_best": 0.0027538788024980758
+    },
+    {
+     "setting": "ghk_512",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 260221.1350547733,
+     "err_p95_frac_best": 0.0015101046286379082
+    },
+    {
+     "setting": "ghk_1024",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 134734.5229740511,
+     "err_p95_frac_best": 0.0006694772432901063
+    },
+    {
+     "setting": "ghk_2048",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 68215.02452144912,
+     "err_p95_frac_best": 0.0004845853163763516
+    }
+   ],
+   "ghk_adequate": {
+    "setting": "ghk_64",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 1325085.9360231156,
+    "err_p95_frac_best": 0.018335741627110172
+   },
+   "M_acc": "ghk_2048",
+   "sim": [
+    {
+     "setting": "sim_1024",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 6650995.570205874
+    }
+   ],
+   "sim_adequate": {
+    "setting": "sim_1024",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 6650995.570205874
+   }
+  },
+  "D2": {
+   "engine": {
+    "setting": "engine",
+    "rate": 1.0,
+    "streams": 3,
+    "streams_per_inst": 1,
+    "per_s": 224595.69882551234,
+    "err_p95_frac_best": 0.02660114983773978
+   },
+   "ghk": [
+    {
+     "setting": "ghk_64",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 483835.2653811592,
+     "err_p95_frac_best": 0.028794090583495004
+    },
+    {
+     "setting": "ghk_128",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 284398.83681439364,
+     "err_p95_frac_best": 0.006975538287255901
+    },
+    {
+     "setting": "ghk_256",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 165102.8378109685,
+     "err_p95_frac_best": 0.016999281761901037
+    },
+    {
+     "setting": "ghk_512",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 85919.33835235501,
+     "err_p95_frac_best": 0.007781117591338226
+    },
+    {
+     "setting": "ghk_1024",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 43980.26000272034,
+     "err_p95_frac_best": 0.002140392963240418
+    },
+    {
+     "setting": "ghk_2048",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 22331.71499302746,
+     "err_p95_frac_best": 0.0016940619881845931
+    },
+    {
+     "setting": "ghk_4096",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 11227.337553187961,
+     "err_p95_frac_best": 0.001291506175963253
+    },
+    {
+     "setting": "ghk_16384",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 2784.96215250756,
+     "err_p95_frac_best": 0.00031118802382211236
+    }
+   ],
+   "ghk_adequate": {
+    "setting": "ghk_64",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 483835.2653811592,
+    "err_p95_frac_best": 0.028794090583495004
+   },
+   "M_acc": "ghk_16384",
+   "sim": [
+    {
+     "setting": "sim_1024",
+     "rate": 0.9833333333333333,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 3612626.9258900364,
+     "order_rate": 0.9378263211558069
+    },
+    {
+     "setting": "sim_2048",
+     "rate": 1.0,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 519569.6830363731,
+     "order_rate": 0.972646736307497
+    }
+   ],
+   "sim_adequate": {
+    "setting": "sim_1024",
+    "rate": 0.9833333333333333,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 3612626.9258900364,
+    "order_rate": 0.9378263211558069
+   },
+   "sim_order": {
+    "setting": "sim_2048",
+    "rate": 1.0,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 519569.6830363731,
+    "order_rate": 0.972646736307497
+   }
+  },
+  "D3": {
+   "engine": {
+    "setting": "engine",
+    "rate": 1.0,
+    "streams": 3,
+    "streams_per_inst": 1,
+    "per_s": 79657.17611127486,
+    "err_p95_frac_best": 0.03976862125440937
+   },
+   "ghk": [
+    {
+     "setting": "ghk_64",
+     "rate": 0.75,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 78815.51071819378,
+     "err_p95_frac_best": 0.0364198726509712
+    },
+    {
+     "setting": "ghk_128",
+     "rate": 0.9333333333333333,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 68866.62631654265,
+     "err_p95_frac_best": 0.02579835587900685
+    },
+    {
+     "setting": "ghk_256",
+     "rate": 0.9833333333333333,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 49952.96727275193,
+     "err_p95_frac_best": 0.013005603011789749
+    },
+    {
+     "setting": "ghk_512",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 31228.250296070208,
+     "err_p95_frac_best": 0.00603385525864189
+    },
+    {
+     "setting": "ghk_1024",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 17709.91127076222,
+     "err_p95_frac_best": 0.006983895814410134
+    },
+    {
+     "setting": "ghk_2048",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 9395.219650541048,
+     "err_p95_frac_best": 0.0055963558270962855
+    },
+    {
+     "setting": "ghk_4096",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 4855.318465520819,
+     "err_p95_frac_best": 0.002957911738935804
+    },
+    {
+     "setting": "ghk_16384",
+     "rate": 1.0,
+     "streams": 3,
+     "streams_per_inst": 1,
+     "per_s": 1223.5478444838504,
+     "err_p95_frac_best": 0.0013452789643891442
+    }
+   ],
+   "ghk_adequate": {
+    "setting": "ghk_256",
+    "rate": 0.9833333333333333,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 49952.96727275193,
+    "err_p95_frac_best": 0.013005603011789749
+   },
+   "M_acc": null,
+   "sim": [
+    {
+     "setting": "sim_1024",
+     "rate": 0.95,
+     "streams": 60,
+     "streams_per_inst": 20,
+     "per_s": 1177085.642314915
+    }
+   ],
+   "sim_adequate": {
+    "setting": "sim_1024",
+    "rate": 0.95,
+    "streams": 60,
+    "streams_per_inst": 20,
+    "per_s": 1177085.642314915
+   }
+  }
+ },
+ "stopped": null,
+ "spent": 1.0871285219124167,
+ "seconds": 808.522195844,
+ "gate": {
+  "D4": {
+   "engine_per_s": 32773.80287507315,
+   "engine_adequate": true,
+   "engine_rate": 1.0,
+   "ghk": "ghk_128",
+   "ghk_per_s": 61342.181719485845,
+   "sim": "sim_2048",
+   "sim_per_s": null,
+   "best": "ghk_128",
+   "ratio": 0.5342784028280214,
+   "M_acc": null
+  },
+  "D1": {
+   "engine_per_s": 697033.9848315,
+   "engine_adequate": true,
+   "engine_rate": 1.0,
+   "ghk": "ghk_64",
+   "ghk_per_s": 1325085.9360231156,
+   "sim": "sim_2048",
+   "sim_per_s": null,
+   "best": "ghk_64",
+   "ratio": 0.5260292679005089,
+   "M_acc": "ghk_2048"
+  },
+  "D2": {
+   "engine_per_s": 224595.69882551234,
+   "engine_adequate": true,
+   "engine_rate": 1.0,
+   "ghk": "ghk_64",
+   "ghk_per_s": 483835.2653811592,
+   "sim": "sim_2048",
+   "sim_per_s": 519569.6830363731,
+   "best": "sim_2048",
+   "ratio": 0.43227252504990604,
+   "M_acc": "ghk_16384"
+  },
+  "D3": {
+   "engine_per_s": 79657.17611127486,
+   "engine_adequate": true,
+   "engine_rate": 1.0,
+   "ghk": "ghk_256",
+   "ghk_per_s": 49952.96727275193,
+   "sim": "sim_2048",
+   "sim_per_s": null,
+   "best": "ghk_256",
+   "ratio": 1.5946435309104416,
+   "M_acc": null
+  }
+ }
+}

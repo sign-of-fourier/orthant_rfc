@@ -1,4 +1,4 @@
-"""T7. Engine vs shared-draw simulator for TURF search (design: PLAN.md T7).
+"""T7. Engine vs shared-draw simulator for TURF search (design: analysis/T7/TEST.md).
 
     python analysis/T7/t7.py            # full run (one Modal T4)
     python analysis/T7/t7.py --check    # small wiring check

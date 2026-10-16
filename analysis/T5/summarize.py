@@ -2,7 +2,7 @@
 
 Reads analysis/T1/out/T5_<truth>_N<N>/results.json (run.py --no-se). Per truth x N x method:
 flips (price / ext at the placeholder hurdle / cost, of R) and mean regret with replicate SE.
-Kill rules (PLAN.md T5, user 2026-10-09):
+Kill rules (analysis/T5/TEST.md, user 2026-10-09):
   N_match: smallest N at which MVP's mean (flips per replicate, or cost regret) is within one
            replicate-SE of RFC-S's at N = 1,200 (SE of RFC-S's mean at 1,200).
   G0 guard: at every N, MVP's cost regret no worse than RFC-S's by more than one SE (SE of the

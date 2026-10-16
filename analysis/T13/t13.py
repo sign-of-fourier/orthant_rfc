@@ -1,4 +1,4 @@
-"""T13: cardinality-constrained line (6 of 20) with joint survival (PLAN.md, T13).
+"""T13: cardinality-constrained line (6 of 20) with joint survival (analysis/T13/TEST.md).
 
 Fixed model: T4's recovery-gate fit (J = 20, MVP-G 512x256, N = 1,000) and its sandwich covariance.
 Every line = 6 kept SKUs + "none"; population shares are exact 6-dim orthants (normal tastes and errors),

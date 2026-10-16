@@ -1,5 +1,5 @@
 """T8 (GPR): kernel-parameterised error covariance vs variance shares vs HB-MNL + RFC-S.
-Design and kill rules: BACKLOG.md "GPR" (user, 2026-10-10); PLAN.md T8.
+Design and kill rules: BACKLOG.md "GPR" (user, 2026-10-10); analysis/T8/TEST.md.
 
     python analysis/T8/t8.py gate                 # recovery gate (truth b, N = 1,000, SEs on); run first
     python analysis/T8/t8.py run --truth b        # 20 replicates of one truth (a, b, c); gate must pass

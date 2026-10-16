@@ -1,4 +1,4 @@
-"""T6. Correlated-reach TURF on household-level basket data (design: PLAN.md T6).
+"""T6. Correlated-reach TURF on household-level basket data (design: analysis/T6/TEST.md).
 
     python analysis/T6/t6.py control     # GATE: simulated independent truth; run first
     python analysis/T6/t6.py real        # only after the control passes
@@ -6,7 +6,7 @@
 
 MVP reach by GHK on one Modal T4 (ephemeral app), checked against SciPy on the main fit.
 
-Data: dunnhumby Complete Journey, SOFT DRINKS, the 30 product IDs fixed in PLAN.md. Observation =
+Data: dunnhumby Complete Journey, SOFT DRINKS, the 30 product IDs fixed in analysis/T6/TEST.md. Observation =
 household x window binary vector (bought the item at least once in the window); windows are weeks
 1-27 and 28-53; households active in both windows. Marginals and Sigma by IFM on window 1
 (intercept-only probit margins, pairwise correlation from each 2x2 table, nearest valid correlation
@@ -17,7 +17,7 @@ Reach estimators for a set S (both from the same fitted marginals mu = Phi^-1(p)
   MVP:          1 - Phi_k(-mu_S; Sigma_S)          (SciPy MVN CDF, k <= 6)
 
 SEs: household bootstrap (B resamples; prediction refits and rescores; decision rescoring of the
-fixed portfolios). Kill rules: PLAN.md T6. Writes analysis/T6/out/<stage>.json.
+fixed portfolios). Kill rules: analysis/T6/TEST.md. Writes analysis/T6/out/<stage>.json.
 """
 import argparse
 import json
@@ -349,7 +349,7 @@ def run(stage, B, nsets):
                       reach_mvp=100 * reach_obs(Y2, gm[k - 1]), reach_ind=100 * reach_obs(Y2, gi[k - 1]),
                       diff=d, se=sd, counted_flip=counted, winner=("MVP" if d > 0 else "IND") if counted else None)
 
-    # verdicts (PLAN.md T6)
+    # verdicts (analysis/T6/TEST.md)
     P, D = pred["pooled_2_6"], dec
     flips = [k for k in K_DEC if D[k]["counted_flip"]]
     v = {}
@@ -391,14 +391,14 @@ if __name__ == "__main__":
     ap.add_argument("--B", type=int, default=200)
     ap.add_argument("--sets", type=int, default=200, help="random candidate sets per k")
     ap.add_argument("--control-waived", action="store_true",
-                    help="user waived the failed control gate (2026-10-10, PLAN.md T6)")
+                    help="user waived the failed control gate (2026-10-10, analysis/T6/TEST.md)")
     a = ap.parse_args()
     gate = HERE / "out" / "control_gpu.json"
     if a.control_waived and not gate.exists():
         gate = HERE / "out" / "control.json"  # the SciPy control run (failed, waived)
     if a.stage == "real" and not gate.exists():
-        sys.exit("run the control gate first (PLAN.md T6)")
+        sys.exit("run the control gate first (analysis/T6/TEST.md)")
     if a.stage == "real" and not json.loads(gate.read_text())["verdict"]["PASS"] and not a.control_waived:
-        sys.exit("control gate failed: stop and report (PLAN.md T6)")
+        sys.exit("control gate failed: stop and report (analysis/T6/TEST.md)")
     with modal.enable_output(), app.run():
         run(a.stage, a.B, a.sets)

@@ -23,7 +23,7 @@ attribute-level components:
   HB-MNL + RFC.
 - **Compute, kept separate:** structure reduces the number of parameters, not the integral. Each
   choice is still a (J − 1)-dimensional orthant unless conditioned on the factors, and the
-  factor-conditioned fit (MVP-F) failed recovery at affordable draws (gate 2026-10-09, PLAN.md).
+  factor-conditioned fit (MVP-F) failed recovery at affordable draws (gate 2026-10-09, [TEST.md](TEST.md)).
   The compute burden at J = 60 is real.
 - **Positioning:** incumbents use logit because it is cheap and avoid large-J non-IIA models
   because they are expensive. That is a compute constraint, and GPU probit removes it.

@@ -6,7 +6,7 @@
     python analysis/T9/t9.py summary
     python analysis/T9/t9.py run --truth G1 --N 150   # T10 part A: GHK arm from T5_<truth>_N150
 
-Design and kill criteria: PLAN.md T9. Data per replicate are T1's own (make_data on the replicate's
+Design and kill criteria: analysis/T9/TEST.md. Data per replicate are T1's own (make_data on the replicate's
 r_data stream), so the GHK fits of T5's N = 600 cells are the paired comparison arm.
 """
 import argparse

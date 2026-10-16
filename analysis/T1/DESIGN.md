@@ -1,7 +1,7 @@
 # T1. σ recovery: design (approved 2026-10-06, reduced scope)
 
 **Approved scope:** truth G1 only (σ values as below; max pair correlation 0.90
-accepted) and RFC-S only. G0, G2 and RFC-G are next steps, tracked in `PLAN.md`.
+accepted) and RFC-S only. G0, G2 and RFC-G are next steps, tracked in `PLAN.md` (now `HISTORY.md`).
 
 Items 3 and 5. No analysis code has been written for this test.
 

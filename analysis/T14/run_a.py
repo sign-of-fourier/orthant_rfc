@@ -1,4 +1,4 @@
-"""T14 Part A: T2's simulated MBC at k = 20 / 30 with the menu M = k (PLAN.md, T14).
+"""T14 Part A: T2's simulated MBC at k = 20 / 30 with the menu M = k (analysis/T14/TEST.md).
 
     python analysis/T14/run_a.py selftest     # L1 and LC at k = 30, rep 0, all arms
     python analysis/T14/run_a.py full         # 4 truths x k {20, 30} x 20 reps; ML on L1/L2, reps 0-9

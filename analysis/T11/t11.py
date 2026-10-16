@@ -1,4 +1,4 @@
-"""T11: joint chance-constrained product line (PLAN.md, T11).
+"""T11: joint chance-constrained product line (analysis/T11/TEST.md).
 
 Per dataset (T5's MVP GHK fits, G1/G2 x N = 150/600 x 20 reps), one T4 job:
   1. sandwich V at T5's stored theta-hat (the fit's own GHK draws; no optimisation);

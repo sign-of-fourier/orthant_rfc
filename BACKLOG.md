@@ -4,6 +4,40 @@ Paused 2026-10-09: the broad test plan narrowed to two active items (PLAN.md: T5
 else lives here. Nothing here runs without the user's go. Each entry: what, why it matters, what it
 depends on, where it came from.
 
+## On deck (user, 2026-10-16)
+
+### Screening rules: resolve or tune (from T15)
+
+- **What.** The engine screening settings and the rules that choose them per problem and hardware are provisional
+  and ad hoc (user: "one of our secret sauces").
+- **Where.** Private notes: `analysis/T15/private/NOTES.md`, not in the public repository.
+- **To do.** Resolve or tune them, and cache calibration by device and orthant dimension.
+- **Depends on.** More problem shapes than T15's shelf (e.g. the HB-MVP item below).
+- **From.** User, 2026-10-16.
+
+
+### HB-MVP (respondent random effects) for stated MBC with the engine pipeline
+
+Add to backlog only; no design yet.
+
+- **Why.** The T2 and T14 wins came from aggregate MVP or MVP with household covariates. Respondent heterogeneity
+  is untested. Per-respondent μ with a shared Σ is the regime where, by the user's reasoning, one shared draw set
+  can't score every candidate. That makes it the engine pipeline's best remaining case.
+  - Open point to check at design: a per-respondent shared-draw simulator (R draws per respondent, reused across
+    candidates) can still score every candidate from one draw set. Per candidate it costs N_resp × R × d, against
+    N_resp orthants for the engine.
+- **Data.** Simulated stated MBC: T2/T14's DGP plus respondent tastes.
+  - No public stated MBC dataset found in a quick search (2026-10-16).
+  - Sawtooth's MBC papers (Orme 2010) describe a study dataset; whether it can be downloaded is unverified.
+- **Estimators to evaluate at design time:**
+  - Panel GHK mixed-MVP on GPU.
+  - IFM with respondent effects, if feasible.
+  - Gibbs (bayesm) as the baseline.
+  - The engine stays out of the likelihood.
+- **Decisions.** Menu or bundle configuration, TURF over respondent draws, follow-ons.
+- **Depends on.** T15's pipeline code (stage-1/stage-2 search, budgets, reference on the union) and its results.
+- **From.** User, 2026-10-16.
+
 ## Next up after T5/T6 (user, 2026-10-09)
 
 Order (user, 2026-10-09): T5 and T6, then the TURF engine-vs-simulator item (below, under Wedges),
@@ -12,7 +46,7 @@ design step.
 
 ### GPR: kernel-parameterised error covariance
 
-**Run as PLAN.md T8 (2026-10-10): FAIL on truth (b); guard PASS. Results there.**
+**Run as T8 (2026-10-10): FAIL on truth (b); guard PASS. Results: [T8](analysis/T8/TEST.md).**
 
 - **What.** Σ_ij = k(x_i, x_j): a GP kernel over product attributes in place of the per-attribute
   variance shares. The current model is the special case of indicator kernels (same brand / flavor
@@ -74,10 +108,10 @@ design step.
 
 ### MACML: Bhat's estimator as an incumbent probit arm
 
-**Run as PLAN.md T9 (2026-10-10): FAIL, no decision difference (both arms 0 flips, 0 regret). Results there.**
+**Run as T9 (2026-10-10): FAIL, no decision difference (both arms 0 flips, 0 regret). Results: [T9](analysis/T9/TEST.md).**
 Follow-ups (open, 2026-10-11): (a) relabel T9 — the user questioned "FAIL" when the hypothesis was a
 match; offered wording "match confirmed; G2 win inconclusive (decisions saturated)", not applied;
-(b) T10 Part B (J = 20) paused at the GHK size choice (PLAN.md T10).
+(b) T10 Part B (J = 20) paused at the GHK size choice ([T10](analysis/T10/TEST.md)).
 
 - **What.** Maximum approximate composite marginal likelihood (Bhat): pairwise composite
   likelihood over a respondent's choice tasks, each term by Bhat's analytic MVNCD approximation.
@@ -112,7 +146,7 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
 
 ## Wedges (new, 2026-10-09)
 
-- **Engine vs shared-draw simulator for TURF search.** **Done as T7 (2026-10-10): FAIL; see PLAN.md.** Greedy and
+- **Engine vs shared-draw simulator for TURF search.** **Done as T7 (2026-10-10): FAIL; see [T7](analysis/T7/TEST.md).** Greedy and
   branch-and-bound TURF search, including near-tie portfolios, scored by the engine vs a
   shared-draw (common random numbers) simulator.
   - Why: the engine-moat argument depends on it; for scenario scoring the QMC simulator was ~25x
@@ -154,25 +188,25 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
   simulated dataset separates the dataset from the fitter.
   - Why: the gate is strictly FAIL on the 2-SE and 1-SE rules; this decides whether that is real.
   - Depends on: T4 un-paused (cost: ~$6 at 256×128, ~$45 at 512×256 for J = 20).
-  - From: PLAN.md T4 status, 2026-10-09; [T4 design](analysis/T4/DESIGN.md).
+  - From: [T4](analysis/T4/TEST.md) status, 2026-10-09; [T4 design](analysis/T4/DESIGN.md).
 - **Draw setting.** 256×128 vs 512×256 (taste × inner draws): 512×256 recovers shares (.13/.35/
   .29/.23) but fit 4.5 h + SE 3.6 h on L4; 256×128 fit 34 min + SE 29 min.
   - Why: sets the cost of every T4 fit.
   - Depends on: T4 un-paused.
-  - From: PLAN.md T4 status, 2026-10-09.
+  - From: [T4](analysis/T4/TEST.md) status, 2026-10-09.
 - **Cheaper SEs.** "SEs not needed for decisions (move S4 to the SE test)".
   - Why: SE time ≈ fit time at J = 20; "`mvp_fit`'s SE step took ~18 of ~20 min per fit at
     d = 12, 222 parameters (T2 ran with `se=False`)."
 
   - Depends on: the SE value-proposition test below.
-  - From: PLAN.md T4 status, 2026-10-09.
+  - From: [T4](analysis/T4/TEST.md) status, 2026-10-09.
 - **Panel probit fitter in the library.** "A proper panel probit fitter (MixedProbit: QMC over
   tastes, exact per-task orthant) in the library or API rather than a one-off; the engine as its
   inner integrator."
   - Why: T4's `mvp_gpu.py` is a one-off.
   - Depends on: engine fitting accuracy (ORTHANT_PLAN: not accurate enough for fitting yet; GHK
     meanwhile).
-  - From: PLAN.md follow-ups (T4).
+  - From: PLAN.md follow-ups (T4), now [HISTORY.md](HISTORY.md).
 
 ### D1, SE test, unit economics
 
@@ -180,7 +214,7 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
   correlation matrix mapped to a cost-weighted decision. Presentation, not science."
   - Why: the sales artifact for item 5.
   - Depends on: T1 (done, PASS with caveats).
-  - From: PLAN.md tests.
+  - From: PLAN.md tests (now [HISTORY.md](HISTORY.md)).
 - **SE value proposition (user, 2026-10-08; after T3/T4).** "Time-to-SE and 95% coverage, ours vs
   best practice, on T2 L1/L2 k = 12 (40 datasets). Arms: deployed `mvp_fit` SEs (T4, float64
   Hessian); fast variants (per-row gradients only, Hessian on A100, float32 Hessian); bayesm Gibbs
@@ -190,7 +224,7 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
   claiming it."
   - Why: SEs were ~18 of ~20 min per `mvp_fit` at d = 12; also feeds decision uncertainty.
   - Depends on: T2 datasets (exist).
-  - From: PLAN.md follow-ups.
+  - From: PLAN.md follow-ups (now [HISTORY.md](HISTORY.md)).
 - **Unit economics (user, 2026-10-09).** "Run-time stats per fit to price a fit. Every T4 fit
   already records seconds per likelihood evaluation, evaluations, fit and SE time, GPU. Add a
   short benchmark (`mvp_gpu.time_eval`, one evaluation + gradient) on L4 vs 2 x H100 (and A100) at
@@ -198,7 +232,7 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
   of GPU; not run yet (H100 deferred on cost)."
   - Why: pricing a fit.
   - Depends on: nothing (H100 deferred on cost).
-  - From: PLAN.md follow-ups.
+  - From: PLAN.md follow-ups (now [HISTORY.md](HISTORY.md)).
 
 ### Kill-rule blanks for T1–T4
 
@@ -209,7 +243,7 @@ match; offered wording "match confirmed; G2 win inconclusive (decisions saturate
   flip allowance).
   - Why: the verdicts so far rest on large gaps, not pre-registered tolerances.
   - Depends on: the user (decision-layer tradeoffs).
-  - From: PLAN.md status; T1–T4 DESIGN.md.
+  - From: PLAN.md status (now [HISTORY.md](HISTORY.md)); T1–T4 DESIGN.md.
 
 ### T1–T3 follow-ups
 
@@ -220,22 +254,22 @@ Decided 2026-10-08: get through T1–T4 first; each test's follow-ups wait. (The
   `run.py`; an engine-based fitter for the panel likelihood (engine still in progress)." Open code
   item: "`run.py` still fits MVP with σ_ν pinned; the total-variance version is in `mvp_refit.py` /
   `ghk_gpu.sig2_of(tvar=...)`. Fold it into `run.py` before reuse in T4." (T5 reuses T1; see T5.)
-  - From: PLAN.md follow-ups and next steps; [T1 results](analysis/T1/RESULTS.md).
+  - From: PLAN.md follow-ups and next steps (now [HISTORY.md](HISTORY.md)); [T1 results](analysis/T1/RESULTS.md).
 - **T2:** "respondent heterogeneity (random intercepts; panel methods for every arm); MACML
   (backlog, no implementation); engine-based full MLE; decision search over many scenarios (where
   the engine's ~500× decision speed matters)."
-  - From: PLAN.md follow-ups; [T2 results](analysis/T2/RESULTS.md).
+  - From: PLAN.md follow-ups (now [HISTORY.md](HISTORY.md)); [T2 results](analysis/T2/RESULTS.md).
 - **T3:** "cookout cluster (fallback, unused); random household effects; engine for many-trip
   decisions is slower than one simulated pattern distribution (44 s vs 5–7 s), so a
   batched/aggregated path if the engine is to be used there."
-  - From: PLAN.md follow-ups; [T3 results](analysis/T3/RESULTS.md).
-- **Margin model / flexible-margin regime (candidate, not approved).** As in PLAN.md next steps
+  - From: PLAN.md follow-ups (now [HISTORY.md](HISTORY.md)); [T3 results](analysis/T3/RESULTS.md).
+- **Margin model / flexible-margin regime (candidate, not approved).** As in PLAN.md next steps (now HISTORY.md)
   (2026-10-06): one fixed margin model for MVP and incumbents, or linear and flexible reported
   separately; a linear-vs-flexible variant in T3 or a new test on a dataset you choose.
-  - From: PLAN.md next steps.
+  - From: PLAN.md next steps (now [HISTORY.md](HISTORY.md)).
 - **multivariate-probit 0.3.0 `fitter="modal"`** as a GHK/full-ML arm for T2/T3 (noted
   2026-10-06, not adopted).
-  - From: PLAN.md next steps.
+  - From: PLAN.md next steps (now [HISTORY.md](HISTORY.md)).
 
 ### Engine follow-ups
 
@@ -262,7 +296,7 @@ say whether it is worth it").
 - **Weak / J = 12 reference check** (open caveat): QMC reference shares (.18/.20/.24/.37) far from
   the truth (.05/.10/.10/.75); check before leaning on that cell.
 - From: ORTHANT_PLAN.md options and status; PLAN.md follow-ups (service) and next steps.
-- **From the T10 side study (2026-10-11; results in PLAN.md T10).**
+- **From the T10 side study (2026-10-11; results in [T10](analysis/T10/TEST.md)).**
   - Deploy the engine's d > 32 GPU fix to the service: committed in the engine repo, not deployed.
     Deploys are run by the user.
   - Engine GPU preprocessing cost at d ≤ 32 (~21 µs per orthant at d = 20, most of the engine's

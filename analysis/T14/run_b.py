@@ -1,4 +1,4 @@
-"""T14 Part B: T3 on the 24-item home-baking cluster (PLAN.md, T14).
+"""T14 Part B: T3 on the 24-item home-baking cluster (analysis/T14/TEST.md).
 
     python analysis/T14/run_b.py selftest     # 300 households, 1 control rep per truth
     python analysis/T14/run_b.py full         # all 1,869 households, 10 control reps per truth

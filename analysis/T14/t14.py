@@ -1,4 +1,4 @@
-"""T14: MBC linked sets at k > 12 (PLAN.md, T14).
+"""T14: MBC linked sets at k > 12 (analysis/T14/TEST.md).
 
 Part A reuses T2's DGP with the menu size M = k; Part B reuses T3's loader and covariates on a 24-item
 home-baking cluster.
