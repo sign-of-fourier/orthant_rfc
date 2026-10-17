@@ -1,0 +1,47 @@
+17:23:37 split 40 canon+pixels: test 2505 tasks, 266 s; LL/task P-XGB -1.2548, P-XGB-I -1.2435, P-XGB-1 -1.2322, P-LIN -1.2217, P-LIN-I -1.2255, L-RFC -1.2216, HB-RFC -0.8523
+17:30:32 split 41 canon+pixels (random): test 2505 tasks, 416 s; LL/task P-XGB -1.2252, P-XGB-I -1.2265, P-XGB-1 -1.2116, P-LIN -1.2140, P-LIN-I -1.2195, L-RFC -1.2193, HB-RFC -0.8398
+17:37:21 split 52 sony+zoom: test 2657 tasks, 409 s; LL/task P-XGB -1.2169, P-XGB-I -1.2151, P-XGB-1 -1.2042, P-LIN -1.2029, P-LIN-I -1.2090, L-RFC -1.2051, HB-RFC -0.8448
+17:41:42 split 53 sony+zoom (random): test 2657 tasks, 261 s; LL/task P-XGB -1.2222, P-XGB-I -1.2230, P-XGB-1 -1.2182, P-LIN -1.2171, P-LIN-I -1.2208, L-RFC -1.2196, HB-RFC -0.8593
+17:48:13 split 68 nikon+wifi: test 2664 tasks, 392 s; LL/task P-XGB -1.3215, P-XGB-I -1.2431, P-XGB-1 -1.6057, P-LIN -1.2257, P-LIN-I -1.2310, L-RFC -1.2282, HB-RFC -0.8512
+17:53:55 split 69 nikon+wifi (random): test 2664 tasks, 342 s; LL/task P-XGB -1.2163, P-XGB-I -1.2201, P-XGB-1 -1.2071, P-LIN -1.2129, P-LIN-I -1.2150, L-RFC -1.2135, HB-RFC -0.8531
+Traceback (most recent call last):
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/x1.py", line 216, in <module>
+    main()
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/x1.py", line 212, in main
+    run_split(data, i, splits[i])
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/x1.py", line 122, in run_split
+    P, info, tm = fit_all(train, val, test, f"s{i:02d}", seed=SEED + i)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/x1.py", line 84, in fit_all
+    w1 = fit_shares(tune_val, xgb_V(bst, tune_val, rounds), w0=w0)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/core.py", line 237, in fit_shares
+    opt.step(closure)
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/optim/optimizer.py", line 533, in wrapper
+    out = func(*args, **kwargs)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/optim/lbfgs.py", line 478, in step
+    loss, flat_grad, t, ls_func_evals = _strong_wolfe(
+                                        ^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/optim/lbfgs.py", line 47, in _strong_wolfe
+    f_new, g_new = obj_func(x, t, d)
+                   ^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/optim/lbfgs.py", line 476, in obj_func
+    return self._directional_evaluate(closure, x, t, d)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/optim/lbfgs.py", line 327, in _directional_evaluate
+    loss = float(closure())
+                 ^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/core.py", line 233, in closure
+    loss = -pr.loglik(V, shares_from_logits(w)).sum()
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/projects/orthant_rfc/analysis/X1/core.py", line 171, in loglik
+    L = torch.linalg.cholesky(Om)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+torch._C._LinAlgError: linalg.cholesky: (Batch element 7): The factorization could not be completed because the input is not positive-definite (the leading minor of order 2 is not positive-definite).

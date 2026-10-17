@@ -1,0 +1,13 @@
+15:47:28 split 0 canon@0.79: test 978 tasks, 300 s; LL/task P-XGB -1.2237, P-XGB-I -1.2241, P-XGB-1 -1.2089, P-LIN -1.2131, P-LIN-I -1.2124, L-RFC -1.2124, HB-RFC -0.7728
+15:55:57 split 1 canon@0.79 (random): test 978 tasks, 509 s; LL/task P-XGB -1.2782, P-XGB-I -1.2605, P-XGB-1 -1.2819, P-LIN -1.2552, P-LIN-I -1.2587, L-RFC -1.2633, HB-RFC -0.8013
+16:04:18 split 2 canon@1.29: test 1021 tasks, 501 s; LL/task P-XGB -1.2645, P-XGB-I -1.2760, P-XGB-1 -1.2591, P-LIN -1.2534, P-LIN-I -1.2607, L-RFC -1.2560, HB-RFC -0.8108
+16:09:36 split 3 canon@1.29 (random): test 1021 tasks, 318 s; LL/task P-XGB -1.2516, P-XGB-I -1.2536, P-XGB-1 -1.2491, P-LIN -1.2509, P-LIN-I -1.2543, L-RFC -1.2512, HB-RFC -0.8171
+16:17:43 split 4 canon@1.79: test 1037 tasks, 487 s; LL/task P-XGB -1.2075, P-XGB-I -1.2091, P-XGB-1 -1.1979, P-LIN -1.2031, P-LIN-I -1.2083, L-RFC -1.2006, HB-RFC -0.7541
+16:23:53 split 5 canon@1.79 (random): test 1037 tasks, 370 s; LL/task P-XGB -1.2358, P-XGB-I -1.2356, P-XGB-1 -1.2410, P-LIN -1.2426, P-LIN-I -1.2428, L-RFC -1.2391, HB-RFC -0.7762
+16:32:11 split 6 canon@2.29: test 971 tasks, 498 s; LL/task P-XGB -1.2276, P-XGB-I -1.2231, P-XGB-1 -1.2119, P-LIN -1.2070, P-LIN-I -1.2087, L-RFC -1.2060, HB-RFC -0.7762
+16:41:12 split 7 canon@2.29 (random): test 971 tasks, 541 s; LL/task P-XGB -1.2404, P-XGB-I -1.2445, P-XGB-1 -1.2395, P-LIN -1.2421, P-LIN-I -1.2485, L-RFC -1.2522, HB-RFC -0.7868
+16:47:28 split 8 canon@2.79: test 941 tasks, 376 s; LL/task P-XGB -1.2767, P-XGB-I -1.2879, P-XGB-1 -1.2664, P-LIN -1.2755, P-LIN-I -1.2870, L-RFC -1.2832, HB-RFC -0.7995
+16:55:21 split 9 canon@2.79 (random): test 941 tasks, 472 s; LL/task P-XGB -1.2436, P-XGB-I -1.2380, P-XGB-1 -1.2426, P-LIN -1.2464, P-LIN-I -1.2437, L-RFC -1.2460, HB-RFC -0.8014
+17:02:29 split 10 sony@0.79: test 1053 tasks, 428 s; LL/task P-XGB -1.2559, P-XGB-I -1.2511, P-XGB-1 -1.2356, P-LIN -1.2414, P-LIN-I -1.2451, L-RFC -1.2370, HB-RFC -0.7954
+17:10:40 split 11 sony@0.79 (random): test 1053 tasks, 491 s; LL/task P-XGB -1.2202, P-XGB-I -1.2187, P-XGB-1 -1.2253, P-LIN -1.2274, P-LIN-I -1.2297, L-RFC -1.2291, HB-RFC -0.7680
+17:18:12 split 12 sony@1.29: test 1127 tasks, 452 s; LL/task P-XGB -1.2377, P-XGB-I -1.2409, P-XGB-1 -1.2237, P-LIN -1.2256, P-LIN-I -1.2336, L-RFC -1.2263, HB-RFC -0.7662

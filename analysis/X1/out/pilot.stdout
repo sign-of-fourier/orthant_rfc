@@ -1,0 +1,8 @@
+14:59:16 split 0 canon@0.79: test 978 tasks, 306 s; LL/task P-XGB -1.2237, P-XGB-I -1.2241, P-XGB-1 -1.2089, P-LIN -1.2131, P-LIN-I -1.2124, L-RFC -1.2124, HB-RFC -0.7728
+15:06:07 split 1 canon@0.79 (random): test 978 tasks, 411 s; LL/task P-XGB -1.2782, P-XGB-I -1.2605, P-XGB-1 -1.2850, P-LIN -1.2552, P-LIN-I -1.2587, L-RFC -1.2633, HB-RFC -0.8013
+15:13:11 split 2 canon@1.29: test 1021 tasks, 424 s; LL/task P-XGB -1.2645, P-XGB-I -1.2760, P-XGB-1 -1.2592, P-LIN -1.2534, P-LIN-I -1.2607, L-RFC -1.2560, HB-RFC -0.8108
+15:18:28 split 3 canon@1.29 (random): test 1021 tasks, 318 s; LL/task P-XGB -1.2516, P-XGB-I -1.2536, P-XGB-1 -1.2491, P-LIN -1.2509, P-LIN-I -1.2543, L-RFC -1.2512, HB-RFC -0.8171
+15:22:29 split 40 canon+pixels: test 2505 tasks, 240 s; LL/task P-XGB -1.2548, P-XGB-I -1.2435, P-XGB-1 -1.2322, P-LIN -1.2217, P-LIN-I -1.2255, L-RFC -1.2216, HB-RFC -0.8523
+15:27:59 split 41 canon+pixels (random): test 2505 tasks, 330 s; LL/task P-XGB -1.2252, P-XGB-I -1.2265, P-XGB-1 -1.2116, P-LIN -1.2140, P-LIN-I -1.2195, L-RFC -1.2193, HB-RFC -0.8398
+15:33:44 split 42 canon+zoom: test 2304 tasks, 345 s; LL/task P-XGB -1.2491, P-XGB-I -1.2494, P-XGB-1 -1.2288, P-LIN -1.2291, P-LIN-I -1.2332, L-RFC -1.2348, HB-RFC -0.8344
+15:39:35 split 43 canon+zoom (random): test 2304 tasks, 351 s; LL/task P-XGB -1.2316, P-XGB-I -1.2296, P-XGB-1 -1.2232, P-LIN -1.2239, P-LIN-I -1.2275, L-RFC -1.2297, HB-RFC -0.8346

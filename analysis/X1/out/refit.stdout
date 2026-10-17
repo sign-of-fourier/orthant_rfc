@@ -1,0 +1,21 @@
+18:04:46 split 0 canon@0.79: refitted P-XGB -1.2240, P-XGB-1 -1.2084
+18:09:47 split 1 canon@0.79 (random): refitted P-XGB -1.2583, P-XGB-1 -1.2529
+18:14:26 split 2 canon@1.29: refitted P-XGB -1.2671, P-XGB-1 -1.2570
+18:15:58 split 3 canon@1.29 (random): refitted P-XGB -1.2491, P-XGB-1 -1.2459
+18:20:31 split 4 canon@1.79: refitted P-XGB -1.2058, P-XGB-1 -1.1969
+18:23:01 split 5 canon@1.79 (random): refitted P-XGB -1.2339, P-XGB-1 -1.2382
+18:27:43 split 6 canon@2.29: refitted P-XGB -1.2236, P-XGB-1 -1.2054
+18:32:46 split 7 canon@2.29 (random): refitted P-XGB -1.2407, P-XGB-1 -1.2375
+18:35:42 split 8 canon@2.79: refitted P-XGB -1.2729, P-XGB-1 -1.2638
+18:39:41 split 9 canon@2.79 (random): refitted P-XGB -1.2389, P-XGB-1 -1.2383
+18:42:40 split 10 sony@0.79: refitted P-XGB -1.2561, P-XGB-1 -1.2326
+18:47:11 split 11 sony@0.79 (random): refitted P-XGB -1.2177, P-XGB-1 -1.2236
+18:50:57 split 12 sony@1.29: refitted P-XGB -1.2331, P-XGB-1 -1.2213
+18:51:53 split 40 canon+pixels: refitted P-XGB -1.2471, P-XGB-1 -1.2262
+18:55:03 split 41 canon+pixels (random): refitted P-XGB -1.2209, P-XGB-1 -1.2093
+18:58:20 split 52 sony+zoom: refitted P-XGB -1.2112, P-XGB-1 -1.1984
+18:59:22 split 53 sony+zoom (random): refitted P-XGB -1.2211, P-XGB-1 -1.2170
+19:02:26 split 68 nikon+wifi: refitted P-XGB -1.2363, P-XGB-1 -1.2242
+19:04:47 split 69 nikon+wifi (random): refitted P-XGB -1.2183, P-XGB-1 -1.2082
+19:10:38 split 76 panasonic+swivel: test 2735 tasks, 349 s; LL/task P-XGB -1.2270, P-XGB-I -1.2333, P-XGB-1 -1.2108, P-LIN -1.2167, P-LIN-I -1.2167, L-RFC -1.2210, HB-RFC -0.8467
+19:16:49 split 77 panasonic+swivel (random): test 2735 tasks, 370 s; LL/task P-XGB -1.2326, P-XGB-I -1.2355, P-XGB-1 -1.2222, P-LIN -1.2271, P-LIN-I -1.2308, L-RFC -1.2307, HB-RFC -0.8576

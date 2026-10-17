@@ -1,0 +1,7 @@
+19:18:37 guard 1a: LC-P-LIN K=1 ll -6481.44 vs P-LIN -6481.44 (|diff| 0.00) -> PASS
+19:19:02 guard 1b: LC-P-XGB K=1 ll -6431.97 vs pooled P-XGB -6437.28 (|diff| 5.32; the K=1 run also refits the shares) -> FAIL
+19:19:08 timing: LC-L K=3 x 3 starts 6 s, pi [0.348, 0.378, 0.274], ll -5420.1
+19:20:14 timing: LC-P-LIN K=3 66 s (5 EM iters), pi [0.358, 0.359, 0.283], ll -5417.8
+19:20:14 guard 2: LC-L vs LC-P-LIN classes: beta corr 0.991, same class 0.96, pi [0.348, 0.378, 0.274] vs [0.358, 0.359, 0.283] -> PASS
+19:21:32 timing: LC-P-XGB K=3, 60 rounds, 2 EM iters 78 s, ll -5405.3
+02:01:28 lc split 0 canon@0.79: K=4, 335 s (LC-L-RFC 60, LC-P-LIN 195, LC-P-XGB 80); LL/task LC-L-RFC -0.9596, LC-P-LIN -0.9682, LC-P-XGB -1.0144, HB-RFC -0.7728; LC-L vs LC-P-LIN beta corr 0.99, same class 0.95
