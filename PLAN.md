@@ -1,7 +1,7 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
 Status 2026-10-16: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
-paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass.
+paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity).
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -95,6 +95,11 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass.
 
 ### Closed
 
+- **T16 · T6 against per-household independence (practitioner TURF): FAIL (2026-10-17).**
+  - HB per-household independence closes 94% of T6's gap: pooled reach error MVP 2.25 vs HB-IND 2.38 pts (Δ +0.13,
+    95% CI [−0.06, +0.32]); greedy portfolios identical at every k. Control gate passed. About $0.16.
+  - T6's PASS was against pooled independence; it is not an advantage over Sawtooth-style TURF.
+  - [Full write-up](analysis/T16/TEST.md).
 - **T14 · MBC linked sets at k > 12: PASS (2026-10-12 / 13).**
   - Part A (simulated, k = 20 / 30): coded subsets flipped 207 of 240 decisions, MVP-IFM 50.
   - Part B (24-item baking cluster, real): the holdout backs MVP on 3 disagreements, coded subsets on 0, at
@@ -113,7 +118,7 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass.
 - **T7 · Engine vs shared-draw simulator for TURF search: FAIL (2026-10-10).** At matched regret the simulator
   was 9–16× faster than the engine at every k. The engine's picks had essentially zero regret. About $0.05.
   [Full write-up](analysis/T7/TEST.md).
-- **T6 · Correlated-reach TURF on public basket data: PASS (2026-10-10).**
+- **T6 · Correlated-reach TURF on public basket data: PASS (2026-10-10).** Against pooled independence only; T16 shows the gain is household heterogeneity.
   - MVP's held-out reach error was 49% lower than the independence formula's.
   - Greedy portfolios flipped at k = 3–6, and MVP won all 4 on held-out reach.
   - About $0.01. [Full write-up](analysis/T6/TEST.md).

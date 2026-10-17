@@ -1,0 +1,22 @@
+[03:56:31] data: 2338 households x 30 products; block rates 0.9-7.1%, window-1 4.4-22.2%
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-CGgHhgV2Jbir1HMMQa8QtE
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/t16.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/hb_bin.R
+└── 🔨 Created function hb_remote.
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-W0Y0evZA46F58QodbaGTae
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+└── 🔨 Created function orthants.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-W0Y0evZA46F58QodbaGTae
+[03:59:16] pooled 2-6: {"ind": 4.541474640587154, "mvp": 2.2495474199855647, "hb": 2.3774801897662834, "bb": 3.646099227901695, "se_hb_minus_mvp": 0.09618045866041985}
+[03:59:16] verdict: {"k1_sanity_max_diff_pts": 3.2632140600785675e-07, "prediction": {"rel_improvement": 0.05381023586711564, "label": "FAIL", "gap_closed_by_hb": 0.9441811377644275, "mostly_heterogeneity": true}, "decision": {"counted_flips_at": [], "mvp_wins": 0, "PASS": false}}
+[03:59:16] done in 169 s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-CGgHhgV2Jbir1HMMQa8QtE

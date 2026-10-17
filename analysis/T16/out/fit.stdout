@@ -1,0 +1,38 @@
+[02:07:26] data: 2338 households x 30 products; block rates 0.9-7.1%, window-1 4.4-22.2%
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-U8SKlnc5lnbEbhZF2jbIGv
+Building image im-rIcy38nhaHHfFMpRZH56kF
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install numpy scipy
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting numpy
+  Downloading http://pypi-mirror.modal.local:5555/simple/numpy/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scipy
+  Downloading http://pypi-mirror.modal.local:5555/simple/scipy/scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/numpy/numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 490.2 MB/s  0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/scipy/scipy-1.17.1-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 455.8 MB/s  0:00:00
+Installing collected packages: numpy, scipy
+
+Successfully installed numpy-2.4.6 scipy-1.17.1
+
+[notice] A new release of pip is available: 25.2 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
+Saving image...
+Image saved, took 818.74ms
+
+Built image im-rIcy38nhaHHfFMpRZH56kF in 8.52s
+
+
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/t16.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/hb_bin.R
+└── 🔨 Created function hb_remote.
+[02:56:32] HB real fit: {'seconds': 2927.906293153763, 'loglike_last': -25508.98826454062, 'drift_q3_q4': 0.0008326811276076939}
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-U8SKlnc5lnbEbhZF2jbIGv

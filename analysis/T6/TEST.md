@@ -107,3 +107,7 @@ Moved verbatim from PLAN.md on 2026-10-16 (links re-rooted). Summary and current
   manufacturer 103 12-pack cans) whose buyers overlap; MVP sees the correlation and takes a
   different format (844165, manufacturer 103 2 L) that reaches new households. Caveat (as noted
   above): formats are partly occasion-driven, so "near-duplicate" here mixes taste and occasion.
+
+- **Follow-up (2026-10-17): [T16](../T16/TEST.md) FAIL.** Against per-household independence (the practitioner TURF incumbent)
+  MVP gains 0.13 pts (95% CI [−0.06, +0.32]) and picks the same portfolios; HB per-household independence closes 94%
+  of this test's gap. The PASS above holds against pooled independence only.

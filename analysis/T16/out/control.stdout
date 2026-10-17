@@ -1,0 +1,23 @@
+[02:56:39] data: 2338 households x 30 products; block rates 0.9-7.1%, window-1 4.4-22.2%
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-xcCaXw1XlAgoJLTxZz7Vpg
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/t16.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T16/hb_bin.R
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+└── 🔨 Created function hb_remote.
+[03:41:15] HB control fit: {'seconds': 2665.932193994522, 'loglike_last': -25295.82271079898, 'drift_q3_q4': 0.0008930110426819362}
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-QMrN21SZnDQ07FRqQlAcxH
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T6/t6.py
+└── 🔨 Created function orthants.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-QMrN21SZnDQ07FRqQlAcxH
+[03:44:11] pooled 2-6: {"ind": 2.6224551879077183, "mvp": 0.5794855664366012, "hb": 0.5287555841007956, "bb": 1.6618950607462584, "se_hb_minus_mvp": 0.0818639015045386}
+[03:44:11] verdict: {"k1_sanity_max_diff_pts": 3.63924848589825e-07, "mvp_edge_pts": -0.05072998233580561, "edge_limit": 0.2, "recovery_vs_oracle_pts": 0.18766784440491135, "recovery_limit": 0.2, "raw_vs_true_reach_pts": 0.3162950230446118, "oracle_vs_true_reach_pts": 0.31670276011748777, "recovery_corr_q": 0.8168341546636112, "recovery_corr_q_bb": 0.7560682510064214, "PASS": true}
+[03:44:11] done in 2857 s
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-xcCaXw1XlAgoJLTxZz7Vpg
