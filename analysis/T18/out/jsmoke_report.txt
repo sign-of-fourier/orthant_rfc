@@ -1,0 +1,15 @@
+
+J = 20: d = 240, NVIDIA H100 80GB HBM3, Genz order 1.1 s; ref ESS/M median 0.00487
+  M   1024:   0.56 s/eval (peak 6.3 GiB); ESS/M median 0.0145 (min 2); |err| median 0.2384 p90 0.6645, signed mean -0.1529 nats/resp; 40-eval fit ~0.4 min
+  M   4096:   1.01 s/eval (peak 22.0 GiB); ESS/M median 0.01 (min 5); |err| median 0.1168 p90 0.2933, signed mean -0.0766 nats/resp; 40-eval fit ~0.7 min
+  M  16384:   3.38 s/eval (peak 75.4 GiB); ESS/M median 0.00694 (min 2); |err| median 0.0561 p90 0.1611, signed mean -0.0285 nats/resp; 40-eval fit ~2.3 min
+
+J = 40: d = 480, NVIDIA H100 80GB HBM3, Genz order 3.8 s; ref ESS/M median 0.00068
+  M   1024:   2.10 s/eval (peak 17.9 GiB); ESS/M median 0.00583 (min 1); |err| median 0.5104 p90 1.1585, signed mean -0.3413 nats/resp; 40-eval fit ~1.4 min
+  M   4096:   3.28 s/eval (peak 59.9 GiB); ESS/M median 0.00288 (min 1); |err| median 0.3199 p90 0.7160, signed mean -0.1602 nats/resp; 40-eval fit ~2.2 min
+  M  16384:   9.80 s/eval (peak 77.2 GiB); ESS/M median 0.00162 (min 2); |err| median 0.1787 p90 0.4919, signed mean -0.0890 nats/resp; 40-eval fit ~6.5 min
+
+J = 60: d = 720, NVIDIA H100 80GB HBM3, Genz order 10.9 s; ref ESS/M median 0.000358
+  M   1024:   5.58 s/eval (peak 34.8 GiB); ESS/M median 0.00475 (min 1); |err| median 0.8265 p90 1.6642, signed mean -0.5743 nats/resp; 40-eval fit ~3.7 min
+  M   4096:   8.27 s/eval (peak 77.6 GiB); ESS/M median 0.00212 (min 1); |err| median 0.4916 p90 1.1676, signed mean -0.3053 nats/resp; 40-eval fit ~5.5 min
+  M  16384:  20.52 s/eval (peak 78.1 GiB); ESS/M median 0.00101 (min 1); |err| median 0.2573 p90 0.7705, signed mean -0.1372 nats/resp; 40-eval fit ~13.7 min

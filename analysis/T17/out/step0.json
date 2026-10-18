@@ -1,0 +1,214 @@
+{
+ "single_sku_trips": 15152,
+ "holdout_choices": 3673,
+ "missing": {
+  "episodes": 323,
+  "choices": 1194,
+  "groups": 19,
+  "manufacturers": 4,
+  "mean_twin_share_pts": 45.22613065326633,
+  "ci_halfwidth_pts": 2.823158980417478,
+  "choices_per_episode_median": 3.0
+ },
+ "price_cut": {
+  "episodes": 56,
+  "choices": 238,
+  "groups": 10,
+  "manufacturers": 3,
+  "mean_twin_share_pts": 26.47058823529412,
+  "ci_halfwidth_pts": 5.605055727186363,
+  "choices_per_episode_median": 4.0
+ },
+ "all": {
+  "episodes": 379,
+  "choices": 1432,
+  "groups": 20,
+  "manufacturers": 4,
+  "mean_twin_share_pts": 42.108938547486034,
+  "ci_halfwidth_pts": 2.5572751929386794,
+  "choices_per_episode_median": 3.0
+ },
+ "gate": {
+  "groups_ok": true,
+  "episodes_ok": true,
+  "choices_ok": true,
+  "power_ok": "False",
+  "PASS": false
+ },
+ "per_sku": [
+  {
+   "sku": "1037894",
+   "kind": "missing",
+   "count": 8,
+   "sum": 36
+  },
+  {
+   "sku": "1053690",
+   "kind": "missing",
+   "count": 31,
+   "sum": 120
+  },
+  {
+   "sku": "1053690",
+   "kind": "price_cut",
+   "count": 11,
+   "sum": 44
+  },
+  {
+   "sku": "1076875",
+   "kind": "price_cut",
+   "count": 2,
+   "sum": 6
+  },
+  {
+   "sku": "1085604",
+   "kind": "missing",
+   "count": 35,
+   "sum": 132
+  },
+  {
+   "sku": "1092026",
+   "kind": "missing",
+   "count": 1,
+   "sum": 2
+  },
+  {
+   "sku": "1092026",
+   "kind": "price_cut",
+   "count": 3,
+   "sum": 13
+  },
+  {
+   "sku": "1107553",
+   "kind": "missing",
+   "count": 7,
+   "sum": 21
+  },
+  {
+   "sku": "1110572",
+   "kind": "missing",
+   "count": 8,
+   "sum": 31
+  },
+  {
+   "sku": "1132770",
+   "kind": "missing",
+   "count": 4,
+   "sum": 8
+  },
+  {
+   "sku": "1138189",
+   "kind": "missing",
+   "count": 3,
+   "sum": 20
+  },
+  {
+   "sku": "13511722",
+   "kind": "missing",
+   "count": 10,
+   "sum": 67
+  },
+  {
+   "sku": "5569230",
+   "kind": "missing",
+   "count": 115,
+   "sum": 418
+  },
+  {
+   "sku": "5569230",
+   "kind": "price_cut",
+   "count": 2,
+   "sum": 12
+  },
+  {
+   "sku": "5569471",
+   "kind": "missing",
+   "count": 32,
+   "sum": 129
+  },
+  {
+   "sku": "5569471",
+   "kind": "price_cut",
+   "count": 1,
+   "sum": 1
+  },
+  {
+   "sku": "8090521",
+   "kind": "missing",
+   "count": 15,
+   "sum": 46
+  },
+  {
+   "sku": "8090521",
+   "kind": "price_cut",
+   "count": 4,
+   "sum": 27
+  },
+  {
+   "sku": "8090537",
+   "kind": "missing",
+   "count": 8,
+   "sum": 29
+  },
+  {
+   "sku": "8090537",
+   "kind": "price_cut",
+   "count": 2,
+   "sum": 8
+  },
+  {
+   "sku": "844165",
+   "kind": "missing",
+   "count": 15,
+   "sum": 52
+  },
+  {
+   "sku": "844165",
+   "kind": "price_cut",
+   "count": 12,
+   "sum": 46
+  },
+  {
+   "sku": "868764",
+   "kind": "missing",
+   "count": 11,
+   "sum": 24
+  },
+  {
+   "sku": "868764",
+   "kind": "price_cut",
+   "count": 12,
+   "sum": 59
+  },
+  {
+   "sku": "879755",
+   "kind": "missing",
+   "count": 10,
+   "sum": 30
+  },
+  {
+   "sku": "882441",
+   "kind": "missing",
+   "count": 3,
+   "sum": 10
+  },
+  {
+   "sku": "916381",
+   "kind": "missing",
+   "count": 5,
+   "sum": 13
+  },
+  {
+   "sku": "916381",
+   "kind": "price_cut",
+   "count": 7,
+   "sum": 22
+  },
+  {
+   "sku": "947798",
+   "kind": "missing",
+   "count": 2,
+   "sum": 6
+  }
+ ]
+}

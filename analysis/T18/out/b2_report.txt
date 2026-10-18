@@ -1,0 +1,26 @@
+
+== LN (truth shares 12 s)
+  copula  fit 2.6 min, 37 iter / 50 evals, grad max 1.29e-01, nll 26298.7 (truth 26311.0)
+          share error 0.147 pts (max scenario 0.160); regret mean 0.000% (max 0.000); flips 0/13; ext |incr err| mean 0.007
+          theta - truth: brand0 +0.039, price_m +0.015, price_logs -0.044, u_brand +0.225, u_flavor +0.023, u_pack -0.402
+          error shares b/f/p/product [0.137 0.39  0.255 0.218] (truth [0.1  0.35 0.35 0.2 ])
+  exact   fit 12.8 min, 40 iter / 49 evals, grad max 1.73e-02, nll 26296.0 (truth 26307.8)
+          share error 0.133 pts (max scenario 0.145); regret mean 0.000% (max 0.000); flips 0/13; ext |incr err| mean 0.005
+          theta - truth: brand0 +0.037, price_m +0.012, price_logs +0.058, u_brand +0.161, u_flavor +0.003, u_pack -0.353
+          error shares b/f/p/product [0.129 0.384 0.269 0.219] (truth [0.1  0.35 0.35 0.2 ])
+
+== MIX (truth shares 12 s)
+  copula  fit 2.2 min, 36 iter / 43 evals, grad max 5.92e-01, nll 25968.6 (truth 25983.7)
+          share error 0.251 pts (max scenario 0.274); regret mean 0.000% (max 0.000); flips 0/13; ext |incr err| mean 0.022
+          theta - truth: brand0 -0.072, price +0.101, logsd_price -0.193, u_brand +0.710, u_flavor +0.107, u_pack +0.189, delta_brand0 -0.248, delta_price -0.060, logit_pi +0.367
+          error shares b/f/p/product [0.167 0.32  0.348 0.165] (truth [0.1  0.35 0.35 0.2 ])
+  exact   fit 6.3 min, 45 iter / 61 evals, grad max 1.88e-01, nll 25964.1 (truth 25979.9)
+          share error 0.259 pts (max scenario 0.289); regret mean 0.000% (max 0.000); flips 0/13; ext |incr err| mean 0.019
+          theta - truth: brand0 -0.054, price +0.038, logsd_price -0.149, u_brand +0.668, u_flavor +0.112, u_pack +0.189, delta_brand0 -0.135, delta_price -0.033, logit_pi +0.094
+          error shares b/f/p/product [0.161 0.324 0.35  0.165] (truth [0.1  0.35 0.35 0.2 ])
+
+Copula vs exact orthant arm (Δ = exact − copula, + = copula better; Holm over the 4 comparisons)
+  LN  share error Δ -0.014 [-0.015, -0.013] pts, Holm p 5.8e-28 -> SOFT FAIL (worse, immaterial)
+  LN  regret      Δ +0.000 [+0.000, +0.000] pts, Holm p 1 -> PASS (no worse)
+  MIX share error Δ +0.008 [+0.008, +0.009] pts, Holm p 9.9e-28 -> PASS (better)
+  MIX regret      Δ +0.000 [+0.000, +0.000] pts, Holm p 1 -> PASS (no worse)

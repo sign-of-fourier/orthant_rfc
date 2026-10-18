@@ -1,7 +1,7 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
 Status 2026-10-16: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
-paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity).
+paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B).
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -73,6 +73,23 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Open
 
+- **T18 · One panel orthant per respondent vs the nested simulated likelihood (2026-10-17): Part A PASS; Part B (lean):
+  copula ≈ exact; PASS (relabelled by the user).**
+  - With the Genz variable order, one 240-dim GHK orthant per respondent beats T4's nested 512 × 256 likelihood on
+    log-lik error (median 0.08–0.29 vs 0.67 nats) and predicted parameter bias (0.7–2.8 vs 5.2 SE), at 3.6–20× the
+    speed. It is smooth. Natural order is a HARD FAIL (heavy-tailed weights).
+  - A2 fits: 21 s (1k) and 2.2 min (16k) on an H100 against 4.5 h for the nested fit on an L4. No parameter is
+    significantly off the truth (joint Wald p 0.88 / 0.85; nested 1.6e-13). The rule's agreement-with-nested test
+    failed because nested is the biased one; relabelled PASS by the user.
+  - Part B (lean, non-normal tastes): one Gaussian-copula orthant per respondent matches the exact orthant arm
+    on shares (within 0.014 pts; LN SOFT FAIL as immaterial, MIX PASS) and decisions (0 flips, 0% regret both;
+    saturated), fitting 3–5× faster. About $7.55 in all for T18.
+  - [Full write-up](analysis/T18/TEST.md).
+- **Further interest (paused 2026-10-17, not designed): twin-strength sweep on synthetic data.** T15-style shelf,
+  heterogeneous tastes plus within-person twin correlation swept from 0 (IIA) to strong; MNP vs HB-MNL + RFC.
+  Question: how strong must twin substitution be before MNP's edge is material? Gives a threshold to compare
+  real data against (T17's soft-drink shelf sits near zero). A nested-logit arm was considered and set aside
+  (rare in conjoint practice; RFC is the real incumbent). No kill criteria yet.
 - **T15 · Engine pipeline on the shelf, J = 20–60 (2026-10-16): D1 PASS, D4 SOFT FAIL; S0 guard pass.**
   - **Main question (MNP via the M*P pipeline vs HB-MNL + RFC-S, regret against the truth, 5 datasets).**
     - D1 PASS: assortment, Δ +1.85 pts [+1.30, +2.40].
@@ -95,6 +112,12 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Closed
 
+- **T17 · Within-person substitution on dunnhumby soft drinks: stopped, power check FAIL (2026-10-17).**
+  - Even with a nested-logit truth, the twin test can't separate NL from MNL: Δ +0.02 pts, 95% CI [−0.07, +0.10]
+    (materiality 1.0). Pooled nesting by manufacturer is weak (λ 0.82–1.0) and the price coefficient is
+    positive (promotions endogenous). About $0.01.
+  - The C4 question (twin substitution given heterogeneous tastes) stays open; this shelf can't answer it.
+  - [Full write-up](analysis/T17/TEST.md).
 - **T16 · T6 against per-household independence (practitioner TURF): FAIL (2026-10-17).**
   - HB per-household independence closes 94% of T6's gap: pooled reach error MVP 2.25 vs HB-IND 2.38 pts (Δ +0.13,
     95% CI [−0.06, +0.32]); greedy portfolios identical at every k. Control gate passed. About $0.16.
