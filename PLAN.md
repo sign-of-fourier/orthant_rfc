@@ -73,6 +73,16 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Open
 
+- **T20 · Sample-size curves, small CBC (2026-10-19): HB-MNL + RFC-S has a ~5% cost-regret floor at every N from
+  50 to 1,500; MVP at N = 50 is already below it. No crossing, so N_RFC-S / N_MVP is unbounded (model-free > 30 at
+  N_MVP = 50).**
+  - T5's generator, models and metric; R = 10. RFC-S at all 11 N; MVP at 50 / 100 / 200 only (binary search).
+  - G1 / G2: RFC-S − MVP +3.1 to +5.1 cost-regret points at N = 50–200, every CI above 0. G0 logit control: no
+    MVP advantage.
+  - Caveat: RFC-S tuning hits a bound in about 40% of fits (same as T5). The floor partly reflects T5's tuning
+    box and the 6-holdout tuning.
+  - Replaces the "N ≥ 720 vs 150" reading of T5, where 720 was the pass threshold, not a measurement.
+  - About $2 compute. [Full write-up](analysis/T20/TEST.md).
 - **T19 · MVP on real takeaway baskets: bundle cannibalization (2026-10-19): MVP ≫ independence; MVP ≈ MBC-style
   cross-effects logit, and the logit is better on small orders.**
   - Kaggle UK Indian takeaways (2 restaurants, 13k and 20k orders, 2016–2019), 21 item groups, date split 75/25.
