@@ -1,7 +1,7 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
 Status 2026-10-16: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
-paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B).
+paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B). T19: MVP ≫ independence, ≈ cross-effects logit (no win).
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -73,6 +73,18 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Open
 
+- **T19 · MVP on real takeaway baskets: bundle cannibalization (2026-10-19): MVP ≫ independence; MVP ≈ MBC-style
+  cross-effects logit, and the logit is better on small orders.**
+  - Kaggle UK Indian takeaways (2 restaurants, 13k and 20k orders, 2016–2019), 21 item groups, date split 75/25.
+    No price ever changed (the multi-price items are protein variants sold side by side), so the bundle math is
+    at current prices only.
+  - Decision test (546 entrée + side bundles, full-bundle rate): MVP beats independent logits by 0.08–0.19 pts
+    over all bundles and 0.35–1.6 pts on the 10 most common. Against M1 (chained cross-effects logits, the same
+    210 dependence parameters) the gap is +0.007/+0.008 pts on all orders (immaterial) and −0.03 to −0.06 pts on
+    small orders and with the size covariate. The top-10 ranking is the same for both. Joint holdout log-lik: M1
+    is ahead of MVP by 0.05 nats per order on all orders and 0.4 on small orders.
+  - The pairwise-IFM correlation lands on the PD boundary; s = 0.05 shrinkage was needed for 21-dim GHK.
+  - [Full write-up](analysis/T19/TEST.md).
 - **T18 · One panel orthant per respondent vs the nested simulated likelihood (2026-10-17): Part A PASS; Part B (lean):
   copula ≈ exact; PASS (relabelled by the user).**
   - With the Genz variable order, one 240-dim GHK orthant per respondent beats T4's nested 512 × 256 likelihood on

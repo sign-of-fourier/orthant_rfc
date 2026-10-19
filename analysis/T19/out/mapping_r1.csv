@@ -1,0 +1,244 @@
+item,orders,price,group
+Chicken Biryani,651,9.95,BIRYANI
+Lamb Biryani,515,9.95,BIRYANI
+Chicken Tikka Biryani,464,10.95,BIRYANI
+Vegetable Biryani,320,9.95,BIRYANI
+Lamb Tikka Biryani,147,10.95,BIRYANI
+Persian Chicken Biryani,93,10.95,BIRYANI
+Prawn Biryani,74,10.95,BIRYANI
+King Prawn Biryani,64,12.95,BIRYANI
+Persian Lamb Biryani,45,10.95,BIRYANI
+Bengal Fish Biryani,38,12.95,BIRYANI
+Chapati,1170,1.95,BREAD_OTHER
+Tandoori Roti,454,2.6,BREAD_OTHER
+Paratha,371,2.95,BREAD_OTHER
+Puree,172,1.95,BREAD_OTHER
+Stuffed Paratha,144,3.95,BREAD_OTHER
+Egg Paratha,53,3.95,BREAD_OTHER
+Mango Chutney,2069,0.5,CONDIMENT
+Mint Sauce,1462,0.5,CONDIMENT
+Onion Chutney,1031,0.5,CONDIMENT
+Red Sauce,665,0.5,CONDIMENT
+Lime Pickle,364,0.5,CONDIMENT
+Raitha,271,2.95,CONDIMENT
+Coke 1.5 ltr,168,2.95,DRINK
+Bottle Coke,150,2.95,DRINK
+COBRA (660ML),132,5.95,DRINK
+Lemonade 1.5 ltr,101,2.95,DRINK
+Diet Coke 1.5 ltr,95,2.95,DRINK
+COBRA (330ML),84,3.95,DRINK
+House Red wine 75cl,84,17.95,DRINK
+Bottle Diet Coke,56,2.95,DRINK
+House white wine 75cl,46,17.95,DRINK
+Still Water (750ml),42,3.95,DRINK
+COBRA ( LARGE ),34,5.95,DRINK
+Perrier Water (750ml),14,3.95,DRINK
+Prier Water (750ml),11,3.95,DRINK
+French Fries,524,3.95,FRIES
+Madras,788,7.95,HOT_CURRY
+Madras - Chicken,484,7.95,HOT_CURRY
+Chicken Tikka Jalfrezi,466,8.95,HOT_CURRY
+Chicken Tikka Chilli Masala,300,8.95,HOT_CURRY
+Vindaloo,248,7.95,HOT_CURRY
+Chicken Chilli Garlic,172,9.95,HOT_CURRY
+Madras - Lamb,156,7.95,HOT_CURRY
+Vindaloo - Chicken,137,7.95,HOT_CURRY
+Lamb Tikka Jalfrezi,133,8.95,HOT_CURRY
+Chicken Hari Mirch,129,9.95,HOT_CURRY
+Madras - Chicken Tikka,102,7.95,HOT_CURRY
+Lamb Tikka Chilli Masala,84,8.95,HOT_CURRY
+Lal Mirch Chicken,82,9.95,HOT_CURRY
+King Prawn Hari Mirch,72,12.95,HOT_CURRY
+Lamb Chilli Garlic,67,9.95,HOT_CURRY
+Hazary Lamb Chilli Garlic,64,12.95,HOT_CURRY
+Lal Mirch Lamb,63,9.95,HOT_CURRY
+Lamb Hari Mirch,61,9.95,HOT_CURRY
+Vindaloo - Lamb,54,7.95,HOT_CURRY
+Madras - King Prawn,36,11.95,HOT_CURRY
+Vindaloo - King Prawn,23,11.95,HOT_CURRY
+Madras - Prawn,20,8.95,HOT_CURRY
+Vindaloo - Chicken Tikka,17,7.95,HOT_CURRY
+Vindaloo - Prawn,10,8.95,HOT_CURRY
+Chicken Balti,374,9.95,HOUSE_SPECIAL
+Chicken Tikka Balti,279,10.95,HOUSE_SPECIAL
+Chicken Karahi,211,8.95,HOUSE_SPECIAL
+Chicken Tikka Garlic,201,8.95,HOUSE_SPECIAL
+Lamb Balti,183,9.95,HOUSE_SPECIAL
+Lamb Karahi,150,8.95,HOUSE_SPECIAL
+Chicken Shashlick Curry,137,12.95,HOUSE_SPECIAL
+Tandoori King Prawn Garlic,121,12.95,HOUSE_SPECIAL
+Chicken Tikka Karahi,114,9.95,HOUSE_SPECIAL
+Hazary Lamb,112,12.95,HOUSE_SPECIAL
+Paneer Tikka Karahi,103,9.95,HOUSE_SPECIAL
+Bengal King Prawn,101,12.95,HOUSE_SPECIAL
+Chicken Mysore,91,9.95,HOUSE_SPECIAL
+Paneer Tikka Balti,87,10.95,HOUSE_SPECIAL
+Chicken Rezala,83,9.95,HOUSE_SPECIAL
+Vegetable Balti,73,9.95,HOUSE_SPECIAL
+Chicken Haryali,69,9.95,HOUSE_SPECIAL
+Lamb Tikka Balti,68,10.95,HOUSE_SPECIAL
+Vegetable Karahi,68,8.95,HOUSE_SPECIAL
+Lamb Mysore,67,9.95,HOUSE_SPECIAL
+Lamb Shashlick Curry,63,12.95,HOUSE_SPECIAL
+Lamb Haryali,62,9.95,HOUSE_SPECIAL
+Prawn Karahi,61,9.95,HOUSE_SPECIAL
+Lamb Rezala,59,9.95,HOUSE_SPECIAL
+Chicken Roshni,55,9.95,HOUSE_SPECIAL
+Lamb Tikka Karahi,51,9.95,HOUSE_SPECIAL
+Chicken Sylhet,50,9.95,HOUSE_SPECIAL
+Lamb Sylhet,43,9.95,HOUSE_SPECIAL
+Lamb Tikka Garlic,40,8.95,HOUSE_SPECIAL
+Chicken Achar,37,9.95,HOUSE_SPECIAL
+Prawn Balti,36,10.95,HOUSE_SPECIAL
+King Prawn Karahi,29,12.95,HOUSE_SPECIAL
+Lamb Roshni,29,9.95,HOUSE_SPECIAL
+Lamb Achar,25,9.95,HOUSE_SPECIAL
+Bengal Fry Fish,23,12.95,HOUSE_SPECIAL
+King Prawn Balti,21,12.95,HOUSE_SPECIAL
+Bengal Fish Karahi,18,12.95,HOUSE_SPECIAL
+Chicken Chaat Main,1,7.9,HOUSE_SPECIAL
+Curry,501,7.95,MEDIUM_CURRY
+Bhuna,466,8.95,MEDIUM_CURRY
+Dhansak,376,8.95,MEDIUM_CURRY
+Curry - Chicken,360,7.95,MEDIUM_CURRY
+Saag,224,8.95,MEDIUM_CURRY
+Dupiaza - Chicken,199,8.95,MEDIUM_CURRY
+Bhuna - Chicken,198,8.95,MEDIUM_CURRY
+Dhansak - Chicken,192,8.95,MEDIUM_CURRY
+Dupiaza,184,8.95,MEDIUM_CURRY
+Pathia,174,8.95,MEDIUM_CURRY
+Rogon,173,8.95,MEDIUM_CURRY
+Curry - Lamb,157,7.95,MEDIUM_CURRY
+Bhuna - Chicken Tikka,128,8.95,MEDIUM_CURRY
+Bhuna - Lamb,122,8.95,MEDIUM_CURRY
+Saag - Chicken,86,8.95,MEDIUM_CURRY
+Rogon - Lamb,85,8.95,MEDIUM_CURRY
+Saag - Lamb,73,8.95,MEDIUM_CURRY
+Pathia - Chicken,71,8.95,MEDIUM_CURRY
+Dhansak - Chicken Tikka,70,8.95,MEDIUM_CURRY
+Curry - Chicken Tikka,69,7.95,MEDIUM_CURRY
+Dhansak - Lamb,58,8.95,MEDIUM_CURRY
+Rogon - Chicken,49,8.95,MEDIUM_CURRY
+Methi,46,8.95,MEDIUM_CURRY
+Curry - Prawn,43,8.95,MEDIUM_CURRY
+Dupiaza - Lamb,37,8.95,MEDIUM_CURRY
+Mushroom,35,8.95,MEDIUM_CURRY
+Pathia - Chicken Tikka,33,8.95,MEDIUM_CURRY
+Dupiaza - Chicken Tikka,26,8.95,MEDIUM_CURRY
+Dhansak - King Prawn,25,12.95,MEDIUM_CURRY
+Saag - Chicken Tikka,25,8.95,MEDIUM_CURRY
+Bhuna - Prawn,24,9.95,MEDIUM_CURRY
+Pathia - Lamb,22,8.95,MEDIUM_CURRY
+Saag - King Prawn,21,12.95,MEDIUM_CURRY
+Bhuna - King Prawn,19,12.95,MEDIUM_CURRY
+Mushroom - Chicken,18,8.95,MEDIUM_CURRY
+Dhansak - Prawn,17,9.95,MEDIUM_CURRY
+Methi - Chicken,17,8.95,MEDIUM_CURRY
+Methi - Lamb,15,8.95,MEDIUM_CURRY
+Curry - King Prawn,14,11.95,MEDIUM_CURRY
+Dupiaza - Prawn,12,9.95,MEDIUM_CURRY
+Rogon - Chicken Tikka,11,8.95,MEDIUM_CURRY
+Dupiaza - King Prawn,10,12.95,MEDIUM_CURRY
+Saag - Prawn,10,9.95,MEDIUM_CURRY
+Mushroom - Chicken Tikka,8,8.95,MEDIUM_CURRY
+Pathia - King Prawn,8,12.95,MEDIUM_CURRY
+Mushroom - Lamb,7,8.95,MEDIUM_CURRY
+Pathia - Prawn,6,9.95,MEDIUM_CURRY
+Methi - Chicken Tikka,5,8.95,MEDIUM_CURRY
+Rogon - King Prawn,5,12.95,MEDIUM_CURRY
+Mushroom - King Prawn,4,12.95,MEDIUM_CURRY
+Methi - King Prawn,2,12.95,MEDIUM_CURRY
+Methi - Prawn,2,9.95,MEDIUM_CURRY
+Rogon - Prawn,2,9.95,MEDIUM_CURRY
+Mushroom - Prawn,1,9.95,MEDIUM_CURRY
+Chicken Tikka Masala,2133,8.95,MILD_CURRY
+Korma,1172,8.95,MILD_CURRY
+Butter Chicken,980,9.95,MILD_CURRY
+Korma - Chicken,943,8.95,MILD_CURRY
+Paneer Tikka Masala,231,8.95,MILD_CURRY
+Chicken Tikka Pasanda,218,8.95,MILD_CURRY
+Tandoori Chicken Masala,207,8.95,MILD_CURRY
+Lamb Tikka Masala,180,8.95,MILD_CURRY
+Tandoori King Prawn Masala,95,12.95,MILD_CURRY
+Lamb Tikka Pasanda,94,8.95,MILD_CURRY
+Korma - Chicken Tikka,57,8.95,MILD_CURRY
+Korma - Lamb,57,8.95,MILD_CURRY
+Korma - Prawn,23,9.95,MILD_CURRY
+Korma - King Prawn,20,12.95,MILD_CURRY
+Garlic Naan,2628,2.95,NAAN_FLAV
+Peshwari Naan,1535,2.95,NAAN_FLAV
+Keema Naan,1362,2.95,NAAN_FLAV
+Onion Naan,196,2.95,NAAN_FLAV
+Kulcha Naan,152,2.95,NAAN_FLAV
+Plain Naan,3752,2.6,NAAN_PLAIN
+Plain Papadum,3596,0.8,PAPADUM
+Spicy Papadum,456,0.8,PAPADUM
+Pilau Rice,4721,2.95,RICE_PILAU
+Plain Rice,2369,2.95,RICE_PLAIN
+Mushroom Rice,1452,3.95,RICE_SPECIAL
+Special Fried Rice,646,3.95,RICE_SPECIAL
+Vegetable Rice,387,3.95,RICE_SPECIAL
+Keema Rice,366,3.95,RICE_SPECIAL
+Egg Rice,307,3.95,RICE_SPECIAL
+Onion Rice,241,3.95,RICE_SPECIAL
+Saag Rice,229,3.95,RICE_SPECIAL
+Garlic Rice,218,3.95,RICE_SPECIAL
+Lemon Rice,201,3.95,RICE_SPECIAL
+Korma Sauce,216,3.95,SAUCE
+Masala Sauce,210,3.95,SAUCE
+Madras Sauce,133,3.95,SAUCE
+Curry Sauce,102,3.95,SAUCE
+Vindaloo Sauce,89,3.95,SAUCE
+Dhansak Sauce,84,3.95,SAUCE
+Onion Bhajee,2401,3.95,STARTER_FRIED
+Meat Samosa,1192,3.95,STARTER_FRIED
+Chicken Pakora,307,5.95,STARTER_FRIED
+Vegetable Roll,286,4.95,STARTER_FRIED
+King Prawn Butterfly,111,5.95,STARTER_FRIED
+Chicken Tikka,691,4.95,STARTER_GRILL
+Sheek Kebab,542,4.95,STARTER_GRILL
+Mixed Starter,541,5.95,STARTER_GRILL
+Lamb Tikka,240,4.95,STARTER_GRILL
+Tandoori Chicken (1/4),201,4.95,STARTER_GRILL
+Tandoori Fish,165,5.95,STARTER_GRILL
+Sheek Kehab,4,4.95,STARTER_GRILL
+Prawn Puree,374,4.95,STARTER_OTHER
+Chicken Chaat,337,4.95,STARTER_OTHER
+Aloo Chaat,284,4.95,STARTER_OTHER
+King Prawn Puree,179,5.95,STARTER_OTHER
+Chicken Tikka (Main),805,8.95,TANDOORI_MAIN
+Tandoori Mixed Grill,665,11.95,TANDOORI_MAIN
+Chicken Shashlick,353,9.95,TANDOORI_MAIN
+Tandoori Chicken (Main),347,8.95,TANDOORI_MAIN
+King Prawn Shaslick,164,12.95,TANDOORI_MAIN
+Lamb Tikka (Main),150,8.95,TANDOORI_MAIN
+Sheek Kebab (Main),136,8.95,TANDOORI_MAIN
+Chicken Tikka Sizzler,127,9.95,TANDOORI_MAIN
+Paneer Shaslick,119,9.95,TANDOORI_MAIN
+Lamb Shashlick,81,9.95,TANDOORI_MAIN
+Paneer Tikka Sizzler,67,9.95,TANDOORI_MAIN
+Tandoori Fish (Main),62,11.95,TANDOORI_MAIN
+Chicken Tikka Jeera,37,8.95,TANDOORI_MAIN
+Lamb Tikka Sizzler,23,9.95,TANDOORI_MAIN
+Lamb Tikka Jeera,13,8.95,TANDOORI_MAIN
+Bombay Aloo,1752,5.95,VEG_SIDE
+Saag Aloo,1194,5.95,VEG_SIDE
+Aloo Gobi,615,5.95,VEG_SIDE
+Tarka Dall,523,5.95,VEG_SIDE
+Saag Paneer,505,5.95,VEG_SIDE
+Chana Masala,379,5.95,VEG_SIDE
+Royal Paneer,351,5.95,VEG_SIDE
+Mushroom Bhajee,331,5.95,VEG_SIDE
+Mixed Vegetable Curry,261,5.95,VEG_SIDE
+Bhindi Bhajee,234,5.95,VEG_SIDE
+Saag Bhajee,232,5.95,VEG_SIDE
+Cauliflower Bhajee,211,5.95,VEG_SIDE
+Baingan Hari Mirch,196,5.95,VEG_SIDE
+Muttar Paneer,178,5.95,VEG_SIDE
+Green Salad,150,2.95,VEG_SIDE
+Saag Dall,138,5.95,VEG_SIDE
+Brinjal Bhajee,134,5.95,VEG_SIDE
+Dall Samba,82,5.95,VEG_SIDE
+Vegetable Mysore,80,5.95,VEG_SIDE
+Bengal Salad,69,3.95,VEG_SIDE
+Aloo Methi,44,5.95,VEG_SIDE
