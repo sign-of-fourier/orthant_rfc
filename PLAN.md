@@ -73,6 +73,16 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Open
 
+- **T24 · Trivago hotel shelves, a real panel with ~150 properties (2026-10-20): no error correlation beyond tastes;
+  on 24-dimensional shelf-share orthants the engine is faster and more accurate than OVUS.**
+  - 24,879 users with 2–8 sessions (59,176 last-clickout choices, 25 hotels per shelf); 64 coefficients (position,
+    price, stars, rating, type, 54 amenities); 20% of users held out.
+  - A: MVP's five shared error components (type, star, rating, price tertile, amenity cluster) are all 0 at full N;
+    iid takes 0.999. MVP − MXL: +0.005 [+0.004, +0.007] nats per choice for a new user, −0.007 [−0.010, −0.005]
+    per user's sequence: a tie in substance. The mixed models beat MNL by 0.08–0.09 only on a user's sequence.
+  - B: engine "high" 95 µs per orthant vs batched OVUS 225 µs; median |ΔP| 0.0011 vs 0.0036 (clicked hotel,
+    median P 0.096). Only "highest" (300 µs) keeps the max share error under 0.005. No zeros.
+  - About $2 of Modal time (MVP 48 min on an A100). [Full write-up](analysis/T24/TEST.md).
 - **T20 · Sample-size curves, small CBC (2026-10-19): HB-MNL + RFC-S has a ~5% cost-regret floor at every N from
   50 to 1,500; MVP at N = 50 is already below it. No crossing, so N_RFC-S / N_MVP is unbounded (model-free > 30 at
   N_MVP = 50).**

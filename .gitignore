@@ -14,3 +14,5 @@ analysis/*/out/**/stdout*.txt
 
 # Conjointly export: keep out of the public repo
 conjointly_experiment_7.json
+analysis/T24/out/*.parquet
+analysis/T24/out/*.npz

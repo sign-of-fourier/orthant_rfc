@@ -1,0 +1,89 @@
+{
+ "params": "mvp_full.json",
+ "clicked": {
+  "dim": 24,
+  "median_P": 0.09633759145529197,
+  "ref_se_logP_median": 2.890592748110526e-05,
+  "engine highest": {
+   "us_per_orthant": 304.8449649941176,
+   "dP_median": 0.0002414360270067712,
+   "dP_max": 0.010175268505525081,
+   "n_nonfinite": 0,
+   "n_zero": 0
+  },
+  "engine high": {
+   "us_per_orthant": 95.34750017337501,
+   "dP_median": 0.0011394358417569474,
+   "dP_max": 0.0193153145931525,
+   "n_nonfinite": 0,
+   "n_zero": 0
+  },
+  "engine low": {
+   "us_per_orthant": 30.952325323596597,
+   "dP_median": 0.0030645680287617726,
+   "dP_max": 0.03961384371850002,
+   "n_nonfinite": 0,
+   "n_zero": 0
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 225.12890049256384,
+   "dP_median": 0.0035652897833250083,
+   "dP_max": 0.02057093035606139,
+   "n_nonfinite": 0,
+   "n_zero": 0
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 461.0471799969673,
+   "dP_median": 0.0035652897833249944,
+   "dP_max": 0.02057093035606128,
+   "n_nonfinite": 0,
+   "n_zero": 0
+  }
+ },
+ "shares": {
+  "dim": 24,
+  "median_P": 0.02015032032690419,
+  "ref_se_logP_median": 3.57884307768522e-05,
+  "ref_sum_dev_max": 2.7931956707583083e-05,
+  "engine highest": {
+   "us_per_orthant": 300.20402977243066,
+   "dP_median": 8.089696555747816e-05,
+   "dP_max": 0.0016042397273204057,
+   "n_nonfinite": 0,
+   "n_zero": 0,
+   "sum_dev_max": 0.0038454378648336007
+  },
+  "engine high": {
+   "us_per_orthant": 91.72182995826006,
+   "dP_median": 0.0002932018917784669,
+   "dP_max": 0.006495933444056579,
+   "n_nonfinite": 0,
+   "n_zero": 0,
+   "sum_dev_max": 0.009750782861436047
+  },
+  "engine low": {
+   "us_per_orthant": 29.36834003776312,
+   "dP_median": 0.0012588221520587715,
+   "dP_max": 0.014571898268829583,
+   "n_nonfinite": 0,
+   "n_zero": 0,
+   "sum_dev_max": 0.051911323820190036
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 231.25842912122607,
+   "dP_median": 0.0015368191841237102,
+   "dP_max": 0.015868720420214477,
+   "n_nonfinite": 0,
+   "n_zero": 0,
+   "sum_dev_max": 0.015854571345311874
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 459.51056061312556,
+   "dP_median": 0.0015368191841236964,
+   "dP_max": 0.015868720420214477,
+   "n_nonfinite": 0,
+   "n_zero": 0,
+   "sum_dev_max": 0.01585457134531132
+  }
+ }
+}
