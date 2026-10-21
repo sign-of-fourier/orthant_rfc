@@ -1,7 +1,9 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
-Status 2026-10-16: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
-paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B). T19: MVP ≫ independence, ≈ cross-effects logit (no win).
+Status 2026-10-21: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
+paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B). T19: MVP ≫ independence, ≈ cross-effects logit (no win). T20–T22, T24:
+see Open. T23 has no write-up yet. T25: MNP evaluators beat logit and RFC. T26: the simulator screen beats the
+engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; near-1 nests need a fix.
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -73,6 +75,30 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
 
 ### Open
 
+- **T27 · The engine as an MNP likelihood (2026-10-21, exploratory): on one CPU core it is faster and more accurate
+  than OVUS at d = 4–64; an engine fit lands within 0.33 SE of the GHK MLE; near-substitute nests need a fix.**
+  - Speed: "highest" 1.5–2.1× OVUS up to d = 32, equal at 64, with lower |ΔP| at every d (OVUS 5e-4 → 2.4e-3).
+    GHK needs 6–23× the engine's time for matched accuracy from d = 16; SciPy reaches 1.9 s per row at d = 64.
+  - Fit (J = 5, N = 1,000): L-BFGS converges in 35–36 iterations; 0.28–0.33 SE from the GHK MLE.
+  - Near-1 nests: the release engine's fixed near-duplicate cutoff makes the likelihood jump, and a 3-alternative
+    nest at r = 0.97 gives 5 SE bias. A private prototype (smooth) plus an exact rewrite of analyst-declared nests
+    brings every case to 0.06–0.21 SE; OVUS reaches 5.35 SE on the 3-alternative nest at r = 0.9.
+  - Ornery matrices: the engine returns P ≤ 0 on sign-frustrated / low-rank small-P rows where OVUS and GHK do not;
+    OVUS breaks on AR(1) chains.
+  - $0, local. [Full write-up](analysis/T27/TEST.md).
+- **T26 · Tiered screens on an exactly enumerable assortment problem (2026-10-21): the shared-draw simulator reaches
+  the exact optimum in 68–75 s (dense) on one core; the engine screen needs about 200 s (rho 0.8) or never (rho 0.5).**
+  - T25 decision 2, enumerated exactly (108,885 shelves). Same core, same enumeration; only the scorer differs.
+  - The engine's cheapest tier over all shelves (150–200 s) costs more than the simulator's whole screen. Competitor
+    collapse makes the simulator faster still (20–35 s), but that is a shortcut, not the algorithm.
+  - About $0.80, CPU only. [Full write-up](analysis/T26/TEST.md).
+- **T25 · Brand-side line and build-and-place on dunnhumby soft drinks (2026-10-20): the same GA with six share
+  evaluators; MNP evaluators beat logit and RFC; the engine leads GHK early and ends at least as good as the
+  simulator.**
+  - Estimated Σ = I in all 7 clusters; a stress truth (ρ 0.5 near-duplicates) is assumed. 2 seeds.
+  - Decision 2 regret at 300 s (est / stress): engine 0.35 / 0.75%, simulator 0.35 / 1.45% (stalls on sampling
+    noise), GHK CPU 0.35 / 1.52%, logit 0.91 / 2.32%, RFC CPU 2.49 / 3.60%. All gaps under 3 $ per 1,000 trips.
+  - $2.44 (GPU 152 min under a 160-min cap). [Summary](analysis/T25/SUMMARY.md), [design](analysis/T25/TEST.md).
 - **T24 · Trivago hotel shelves, a real panel with ~150 properties (2026-10-20): no error correlation beyond tastes;
   on 24-dimensional shelf-share orthants the engine is faster and more accurate than OVUS.**
   - 24,879 users with 2–8 sessions (59,176 last-clickout choices, 25 hotels per shelf); 64 coefficients (position,
@@ -83,14 +109,31 @@ paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's wi
   - B: engine "high" 95 µs per orthant vs batched OVUS 225 µs; median |ΔP| 0.0011 vs 0.0036 (clicked hotel,
     median P 0.096). Only "highest" (300 µs) keeps the max share error under 0.005. No zeros.
   - About $2 of Modal time (MVP 48 min on an A100). [Full write-up](analysis/T24/TEST.md).
+- **T22 · Swissmetro, real stated choice (2026-10-19): MVP has the best holdout log-likelihood at every training
+  size (100–468), but by little; the rail error correlation is 0 once random tastes are in; no T20-style floor.**
+  - 623 respondents × 9 tasks, J = 3 (train, SM, car); 25% of respondents held out, population predictions.
+  - MVP − RFC-S: +0.001 to +0.043 nats per choice (5 of 7 CIs above 0). Binned shares: MVP beats RFC-S by
+    0.4–2.4 pts (5 of 7 above 0), and ties plain HB-MNL (HB lower in 6 of 7, 1 CI excludes 0). Pooled MNL and NL
+    are worst; NL's λ is unstable at N = 100.
+  - The RFC tuning (σ_l 1.6–2.8) worsens share calibration vs plain HB in all 7 fits.
+  - Under $0.05 of T4 time. [Full write-up](analysis/T22/TEST.md).
+- **T21 · T19's takeaway baskets vs the real incumbents (2026-10-19): MVP beats coded subsets over all 21 groups
+  in every cell; the engine is 3× OVUS on real d = 21 patterns but fails the accuracy guard.**
+  - A: coded subsets (T3's analyst rule, and blocks chosen from MVP's R), at most 5 groups per block. M3 − CS: +0.11
+    to +0.36 nats per order. On pairs that span blocks MVP is 0.13–0.27 pts better; inside a block CS is 0.03–0.24
+    better. On the observed top-10 bundles, mostly spanning blocks, MVP is 0.16–1.31 pts better. M1 still ties MVP.
+  - B: 200 holdout basket patterns at d = 21, raw (min eig 1e-8) and shrunk R. Engine "high" is 3× faster than
+    batched OVUS, but its |ΔP| is about 10× OVUS's and it returns P = 0 on 4 of 200 (reference P 1e-11 to 7e-6).
+    The near-singularity is not the cause.
+  - $0, local. [Full write-up](analysis/T21/TEST.md).
 - **T20 · Sample-size curves, small CBC (2026-10-19): HB-MNL + RFC-S has a ~5% cost-regret floor at every N from
   50 to 1,500; MVP at N = 50 is already below it. No crossing, so N_RFC-S / N_MVP is unbounded (model-free > 30 at
   N_MVP = 50).**
   - T5's generator, models and metric; R = 10. RFC-S at all 11 N; MVP at 50 / 100 / 200 only (binary search).
   - G1 / G2: RFC-S − MVP +3.1 to +5.1 cost-regret points at N = 50–200, every CI above 0. G0 logit control: no
     MVP advantage.
-  - Caveat: RFC-S tuning hits a bound in about 40% of fits (same as T5). The floor partly reflects T5's tuning
-    box and the 6-holdout tuning.
+  - RFC-S tuning hits a bound in about 40% of fits (same as T5). The floor check (wide box, RFC-G, tuning on true
+    shares) shows the floor is not a tuning artefact.
   - Replaces the "N ≥ 720 vs 150" reading of T5, where 720 was the pass threshold, not a measurement.
   - About $2 compute. [Full write-up](analysis/T20/TEST.md).
 - **T19 · MVP on real takeaway baskets: bundle cannibalization (2026-10-19): MVP ≫ independence; MVP ≈ MBC-style

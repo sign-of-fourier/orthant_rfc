@@ -1,0 +1,23 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-29n3XPLPNFHP45jqzUACvL
+✓ Created objects.
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T26/out/pilot_high_summary.json
+├── 🔨 Created mount /home/ubuntu/projects/boaz/modal/orthant.py
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T26/out/pilot_moderate_summary.js
+│   on
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T26/t26.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created function main_run.<locals>.screen_small.
+├── 🔨 Created function main_run.<locals>.screen_dense.
+├── 🔨 Created function main_run.<locals>.ref.
+└── 🔨 Created function main_run.<locals>.truevals.
+[00:10:31] spawned 126 screen runs + 2 references
+[00:14:16] screens collected (248 s)
+[00:14:16] reference moderate: best 58.442, sim best 58.382, sim at ranks 1/2/10/50/100/500 [58.382, 58.252, 57.417, 56.409, 55.483, 53.618]
+[00:14:16] reference high: best 57.943, sim best 57.876, sim at ranks 1/2/10/50/100/500 [57.876, 57.331, 56.738, 55.815, 55.256, 53.337]
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-29n3XPLPNFHP45jqzUACvL
+[00:14:29] main run done in 261 s; spend ~$0.33

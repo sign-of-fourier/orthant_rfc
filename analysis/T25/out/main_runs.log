@@ -1,0 +1,229 @@
+plan: 9 containers; GPU used 6.5 min + reserved (runs + 0 scoring calls) -> total 81.5 min of 90 ($0.80); D 300 s dropped: True
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-Zldea5pK2p6WlkDbMw5XJj
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+A d1_c0 b60 s1: gens 5707 evals 455 best est 513.850 elapsed 60.0
+B d1_c0 b60 s1: gens 5486 evals 455 best est 539.182 elapsed 60.0
+F d1_c0 b60 s1: gens 2915 evals 455 best est 545.786 elapsed 60.0
+D d1_c0 b60 s1: gens 2793 evals 455 best est 501.996 elapsed 60.0
+F d1_c0 b60 s1: gens 2968 evals 455 best est 481.139 elapsed 60.0
+C d1_c0 b60 s1: gens 3079 evals 455 best est 465.874 elapsed 60.0
+B d1_c0 b60 s1: gens 2696 evals 455 best est 471.225 elapsed 60.0
+C d1_c0 b60 s1: gens 3026 evals 455 best est 537.948 elapsed 60.0
+E d1_c0 b60 s1: gens 2807 evals 455 best est 501.996 elapsed 60.0
+A d1_c0 b60 s2: gens 5244 evals 455 best est 513.850 elapsed 60.0
+B d1_c0 b60 s2: gens 5624 evals 455 best est 539.182 elapsed 60.0
+F d1_c0 b60 s2: gens 2880 evals 455 best est 545.786 elapsed 60.0
+D d1_c0 b60 s2: gens 2810 evals 455 best est 501.996 elapsed 60.0F d1_c0 b60 s2: gens 2994 evals 455 best est 481.139 elapsed 60.0
+
+C d1_c0 b60 s2: gens 3103 evals 455 best est 465.874 elapsed 60.1
+B d1_c0 b60 s2: gens 2711 evals 455 best est 471.225 elapsed 60.0
+C d1_c0 b60 s2: gens 3022 evals 455 best est 537.948 elapsed 60.0
+E d1_c0 b60 s2: gens 2602 evals 455 best est 501.996 elapsed 60.0
+A d1_c1 b60 s1: gens 4777 evals 455 best est 415.599 elapsed 60.0
+B d1_c1 b60 s1: gens 5649 evals 455 best est 437.828 elapsed 60.0
+F d1_c1 b60 s1: gens 2906 evals 455 best est 435.598 elapsed 60.0D d1_c1 b60 s1: gens 2881 evals 455 best est 411.610 elapsed 60.0
+
+F d1_c1 b60 s1: gens 3132 evals 455 best est 440.580 elapsed 60.0
+C d1_c1 b60 s1: gens 3118 evals 455 best est 435.693 elapsed 60.0
+C d1_c1 b60 s1: gens 3019 evals 455 best est 437.384 elapsed 60.0
+B d1_c1 b60 s1: gens 2707 evals 455 best est 436.562 elapsed 60.0
+E d1_c1 b60 s1: gens 2655 evals 455 best est 411.610 elapsed 60.0
+A d1_c1 b60 s2: gens 5158 evals 455 best est 415.599 elapsed 60.0
+B d1_c1 b60 s2: gens 5674 evals 455 best est 437.828 elapsed 60.0
+F d1_c1 b60 s2: gens 2970 evals 455 best est 435.598 elapsed 60.0
+D d1_c1 b60 s2: gens 2934 evals 455 best est 411.610 elapsed 60.0
+F d1_c1 b60 s2: gens 2958 evals 455 best est 440.580 elapsed 60.0
+C d1_c1 b60 s2: gens 3088 evals 455 best est 435.693 elapsed 60.0
+C d1_c1 b60 s2: gens 3056 evals 455 best est 437.384 elapsed 60.0
+B d1_c1 b60 s2: gens 2699 evals 455 best est 436.562 elapsed 60.0
+E d1_c1 b60 s2: gens 2691 evals 455 best est 411.610 elapsed 60.0
+A d2 b60 s1: gens 2050 evals 16026 best est 250.564 elapsed 60.0
+F d2 b60 s1: gens 985 evals 13940 best est 246.385 elapsed 60.0
+D d2 b60 s1: gens 1057 evals 12783 best est 256.388 elapsed 60.0
+F d2 b60 s1: gens 1164 evals 14125 best est 229.973 elapsed 60.0
+C d2 b60 s1: gens 712 evals 12612 best est 229.095 elapsed 60.0
+C d2 b60 s1: gens 661 evals 12113 best est 246.978 elapsed 60.0
+E d2 b60 s1: gens 738 evals 11403 best est 256.357 elapsed 60.0
+B d2 b60 s1: gens 157 evals 8912 best est 247.384 elapsed 60.0
+B d2 b60 s1: gens 80 evals 7481 best est 229.943 elapsed 60.0
+A d2 b60 s2: gens 1954 evals 15594 best est 250.564 elapsed 60.0
+F d2 b60 s2: gens 1070 evals 13729 best est 246.272 elapsed 60.0
+F d2 b60 s2: gens 1150 evals 14490 best est 229.973 elapsed 60.0
+D d2 b60 s2: gens 1078 evals 13294 best est 256.357 elapsed 60.1
+C d2 b60 s2: gens 699 evals 13386 best est 229.088 elapsed 60.0
+C d2 b60 s2: gens 715 evals 13226 best est 246.978 elapsed 60.0
+E d2 b60 s2: gens 716 evals 12396 best est 256.357 elapsed 60.0
+B d2 b60 s2: gens 150 evals 9373 best est 247.129 elapsed 60.0
+B d2 b60 s2: gens 79 evals 7866 best est 229.676 elapsed 60.0
+A d2 b300 s1: gens 10521 evals 21668 best est 250.564 elapsed 300.0
+F d2 b300 s1: gens 5764 evals 21978 best est 246.925 elapsed 300.0
+F d2 b300 s1: gens 6356 evals 18512 best est 229.973 elapsed 300.0
+C d2 b300 s1: gens 5422 evals 17547 best est 229.095 elapsed 300.0
+C d2 b300 s1: gens 4918 evals 20033 best est 247.298 elapsed 300.0
+E d2 b300 s1: gens 4790 evals 18672 best est 256.388 elapsed 300.0
+B d2 b300 s1: gens 3410 evals 16307 best est 247.415 elapsed 300.0
+B d2 b300 s1: gens 1299 evals 14198 best est 230.198 elapsed 300.0
+Process ForkPoolWorker-24:
+Process ForkPoolWorker-19:
+Process ForkPoolWorker-23:
+Process ForkPoolWorker-17:
+Process ForkPoolWorker-21:
+Process ForkPoolWorker-20:
+Process ForkPoolWorker-18:
+Process ForkPoolWorker-22:
+Traceback (most recent call last):
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+KeyboardInterrupt
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+KeyboardInterrupt
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 365, in get
+    res = self._reader.recv_bytes()
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/connection.py", line 216, in recv_bytes
+    buf = self._recv_bytes(maxlength)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/connection.py", line 430, in _recv_bytes
+    buf = self._recv(4)
+          ^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/connection.py", line 395, in _recv
+    chunk = read(handle, remaining)
+            ^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 314, in _bootstrap
+    self.run()
+  File "/usr/local/lib/python3.11/multiprocessing/process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+  File "/usr/local/lib/python3.11/multiprocessing/pool.py", line 114, in worker
+    task = get()
+           ^^^^^
+  File "/usr/local/lib/python3.11/multiprocessing/queues.py", line 364, in get
+    with self._rlock:
+  File "/usr/local/lib/python3.11/multiprocessing/synchronize.py", line 95, in __enter__
+    return self._semlock.__enter__()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Container terminated due to preemption. Your Function will be restarted with the same input. For more details, see https://modal.com/docs/guide/preemption
+A d2 b300 s2: gens 10955 evals 21500 best est 250.564 elapsed 300.0
+F d2 b300 s2: gens 6026 evals 18367 best est 246.272 elapsed 300.0
+F d2 b300 s2: gens 6377 evals 18961 best est 229.973 elapsed 300.0
+C d2 b300 s2: gens 5528 evals 18469 best est 229.095 elapsed 300.0
+C d2 b300 s2: gens 5382 evals 18147 best est 246.978 elapsed 300.1
+B d2 b300 s2: gens 3311 evals 16817 best est 247.415 elapsed 300.0
+B d2 b300 s2: gens 1249 evals 14496 best est 230.198 elapsed 300.0
+A x: wall 979 s (container 962 s), $0.101
+E d1_c0 b60 s1: gens 3462 evals 455 best est 501.996 elapsed 60.0
+B est: wall 983 s (container 969 s), $0.102
+B stress: wall 985 s (container 972 s), $0.102
+C est: wall 990 s (container 965 s), $0.162
+C stress: wall 995 s (container 965 s), $0.163
+D x: wall 997 s (container 364 s), $0.163
+E d1_c0 b60 s2: gens 3471 evals 455 best est 501.996 elapsed 60.0
+E d1_c1 b60 s1: gens 3426 evals 455 best est 411.610 elapsed 60.0
+E d1_c1 b60 s2: gens 3252 evals 455 best est 411.610 elapsed 60.0
+E d2 b60 s1: gens 1030 evals 12645 best est 256.388 elapsed 60.0
+E d2 b60 s2: gens 957 evals 13847 best est 256.357 elapsed 60.0
+E d2 b300 s1: gens 6449 evals 19784 best est 256.388 elapsed 300.0
+E d2 b300 s2: gens 6609 evals 19865 best est 256.388 elapsed 300.0
+E x: wall 1895 s (container 963 s), $0.101
+F est: wall 1901 s (container 963 s), $0.312
+F stress: wall 1906 s (container 963 s), $0.312
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-Zldea5pK2p6WlkDbMw5XJj
+ledger: GPU measured 119.6 min; spend $1.60

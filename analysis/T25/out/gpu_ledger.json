@@ -1,0 +1,705 @@
+{
+ "entries": [
+  {
+   "tag": "smoke-failed",
+   "arm": "C",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 180,
+   "measured_s": 120,
+   "budget_sum": 30,
+   "usd": 0.019666666666666666,
+   "note": "crashed at warm-up (device bug); wall not captured, 120 s booked"
+  },
+  {
+   "tag": "smoke-failed",
+   "arm": "D",
+   "truth": "x",
+   "gpu": true,
+   "reserved_s": 180,
+   "measured_s": 120,
+   "budget_sum": 30,
+   "usd": 0.019666666666666666,
+   "note": "finished but not collected (launcher stopped at C); 120 s booked"
+  },
+  {
+   "tag": "smoke-failed",
+   "arm": "A+B+E",
+   "truth": "-",
+   "gpu": false,
+   "measured_s": 0,
+   "usd": 0.012,
+   "note": "first smoke CPU containers (A 33 s, B 42 s, E ~40 s at 8 cores), results discarded"
+  },
+  {
+   "tag": "smoke",
+   "arm": "A",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 30,
+   "measured_s": 0,
+   "container_s": 32.91032910346985,
+   "budget_sum": 30,
+   "usd": 0.0034490024900436403,
+   "setup_s": {
+    "d1_c0": 0.0,
+    "d2": 0.0
+   }
+  },
+  {
+   "tag": "smoke",
+   "arm": "B",
+   "truth": "est",
+   "gpu": false,
+   "reserved_s": 30,
+   "measured_s": 0,
+   "container_s": 41.41793179512024,
+   "budget_sum": 30,
+   "usd": 0.004340599252128601,
+   "setup_s": {
+    "d1_c0": 0.7,
+    "d2": 0.8
+   }
+  },
+  {
+   "tag": "smoke",
+   "arm": "C",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 180,
+   "measured_s": 45.89727234840393,
+   "container_s": 34.80642127990723,
+   "budget_sum": 30,
+   "usd": 0.007522052968210644,
+   "setup_s": {
+    "d1_c0": 4.7,
+    "d2": 0.0
+   }
+  },
+  {
+   "tag": "smoke",
+   "arm": "D",
+   "truth": "x",
+   "gpu": true,
+   "reserved_s": 180,
+   "measured_s": 46.323811054229736,
+   "container_s": 33.410218477249146,
+   "budget_sum": 30,
+   "usd": 0.007591957922776539,
+   "setup_s": {
+    "d1_c0": 3.2,
+    "d2": 0.1
+   }
+  },
+  {
+   "tag": "smoke",
+   "arm": "E",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 30,
+   "measured_s": 0,
+   "container_s": 33.91316246986389,
+   "budget_sum": 30,
+   "usd": 0.003554099426841736,
+   "setup_s": {
+    "d1_c0": 0.3,
+    "d2": 0.6
+   }
+  },
+  {
+   "tag": "smoke",
+   "arm": "score",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 900,
+   "measured_s": 18.20547080039978,
+   "container_s": 4.226638317108154,
+   "n_keys": 34,
+   "usd": 0.00298367438117663
+  },
+  {
+   "tag": "smoke",
+   "arm": "F",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 90.0,
+   "measured_s": 38.441033124923706,
+   "container_s": 32.99343156814575,
+   "budget_sum": 30,
+   "usd": 0.006300058206584719,
+   "setup_s": {
+    "d1_c0": 2.9,
+    "d2": 0.1
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "A",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 962.2766673564911,
+   "budget_sum": 960,
+   "usd": 0.10084659473896027,
+   "setup_s": {
+    "d1_c0": 0.0,
+    "d1_c1": 0.0,
+    "d2": 0.0
+   },
+   "wall_s_collection_order": 0
+  },
+  {
+   "tag": "main",
+   "arm": "B",
+   "truth": "est",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 968.8494942188263,
+   "budget_sum": 960,
+   "usd": 0.101535426994133,
+   "setup_s": {
+    "d1_c0": 0.5,
+    "d1_c1": 0.4,
+    "d2": 0.5
+   },
+   "wall_s_collection_order": 0
+  },
+  {
+   "tag": "main",
+   "arm": "B",
+   "truth": "stress",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 971.6770527362823,
+   "budget_sum": 960,
+   "usd": 0.10183175512676239,
+   "setup_s": {
+    "d1_c0": 0.6,
+    "d1_c1": 0.5,
+    "d2": 0.6
+   },
+   "wall_s_collection_order": 0
+  },
+  {
+   "tag": "main",
+   "arm": "C",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 995.4587669372559,
+   "container_s": 965.4587669372559,
+   "budget_sum": 960,
+   "usd": 0.16314463124805023,
+   "setup_s": {
+    "d1_c0": 5.2,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   },
+   "wall_s_collection_order": 990.1653044223785,
+   "note": "measured_s = container time + 30 s start (wall from spawn to sequential .get() overstated it)"
+  },
+  {
+   "tag": "main",
+   "arm": "C",
+   "truth": "stress",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 994.9304583072662,
+   "container_s": 964.9304583072662,
+   "budget_sum": 960,
+   "usd": 0.16305804733369084,
+   "setup_s": {
+    "d1_c0": 4.6,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   },
+   "wall_s_collection_order": 994.9327988624573,
+   "note": "measured_s = container time + 30 s start (wall from spawn to sequential .get() overstated it)"
+  },
+  {
+   "tag": "main",
+   "arm": "D",
+   "truth": "x",
+   "gpu": true,
+   "reserved_s": 420.0,
+   "measured_s": 393.62325072288513,
+   "container_s": 363.62325072288513,
+   "budget_sum": 360,
+   "usd": 0.06451047720180617,
+   "setup_s": {
+    "d1_c0": 3.4,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   },
+   "wall_s_collection_order": 997.0264320373535,
+   "note": "measured_s = container time + 30 s start (wall from spawn to sequential .get() overstated it)"
+  },
+  {
+   "tag": "main",
+   "arm": "E",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 963.4666705131531,
+   "budget_sum": 960,
+   "usd": 0.2019426141395569,
+   "setup_s": {
+    "d1_c0": 0.3,
+    "d1_c1": 0.3,
+    "d2": 0.5
+   },
+   "wall_s_collection_order": 0,
+   "note": "preempted once by Modal and restarted: two container runs billed"
+  },
+  {
+   "tag": "main",
+   "arm": "F",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 993.4956648349762,
+   "container_s": 963.4956648349762,
+   "budget_sum": 960,
+   "usd": 0.1628229006257322,
+   "setup_s": {
+    "d1_c0": 3.2,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   },
+   "wall_s_collection_order": 1900.7297801971436,
+   "note": "measured_s = container time + 30 s start (wall from spawn to sequential .get() overstated it)"
+  },
+  {
+   "tag": "main",
+   "arm": "F",
+   "truth": "stress",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 993.4397523403168,
+   "container_s": 963.4397523403168,
+   "budget_sum": 960,
+   "usd": 0.16281373718910744,
+   "setup_s": {
+    "d1_c0": 3.2,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   },
+   "wall_s_collection_order": 1906.346538066864,
+   "note": "measured_s = container time + 30 s start (wall from spawn to sequential .get() overstated it)"
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.446998357772827,
+   "n_keys": 455,
+   "usd": 0.00025644542789459226
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 4.390763998031616,
+   "n_keys": 16,
+   "usd": 0.0004601520669937134
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.0478832721710205,
+   "n_keys": 455,
+   "usd": 0.00021461816692352296
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.8373124599456787,
+   "n_keys": 16,
+   "usd": 0.00040215034580230713
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.312316417694092,
+   "n_keys": 455,
+   "usd": 0.00024233076057434083
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.0224826335906982,
+   "n_keys": 16,
+   "usd": 0.00031675618000030515
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 1.884148359298706,
+   "n_keys": 455,
+   "usd": 0.0001974587480545044
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.1012308597564697,
+   "n_keys": 16,
+   "usd": 0.000325008994102478
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 8.396815299987793,
+   "n_keys": 63,
+   "usd": 0.0008799862434387207
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.3886311054229736,
+   "n_keys": 4,
+   "usd": 0.0003551285398483276
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 8.973140478134155,
+   "n_keys": 80,
+   "usd": 0.0009403851221084595
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.4512627124786377,
+   "n_keys": 2,
+   "usd": 0.0003616923322677612
+  },
+  {
+   "tag": "main",
+   "arm": "A",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 962.2266499996185,
+   "budget_sum": 960,
+   "usd": 0.10084135291996002,
+   "setup_s": {
+    "d1_c0": 0.0,
+    "d1_c1": 0.0,
+    "d2": 0.0
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "B",
+   "truth": "est",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 971.515843629837,
+   "budget_sum": 960,
+   "usd": 0.10181486041240692,
+   "setup_s": {
+    "d1_c0": 0.7,
+    "d1_c1": 0.5,
+    "d2": 0.6
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "B",
+   "truth": "stress",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 973.9812729358673,
+   "budget_sum": 960,
+   "usd": 0.1020732374036789,
+   "setup_s": {
+    "d1_c0": 1.3,
+    "d1_c1": 0.4,
+    "d2": 0.6
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "C",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 995.0871605873108,
+   "container_s": 965.0871605873108,
+   "budget_sum": 960,
+   "usd": 0.1630837290962537,
+   "setup_s": {
+    "d1_c0": 4.8,
+    "d1_c1": 0.0,
+    "d2": 0.0
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "C",
+   "truth": "stress",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 996.4522271156311,
+   "container_s": 966.4522271156311,
+   "budget_sum": 960,
+   "usd": 0.16330744833283953,
+   "setup_s": {
+    "d1_c0": 6.1,
+    "d1_c1": 0.0,
+    "d2": 0.0
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "D",
+   "truth": "x",
+   "gpu": true,
+   "reserved_s": 420.0,
+   "measured_s": 393.1009097099304,
+   "container_s": 363.1009097099304,
+   "budget_sum": 360,
+   "usd": 0.06442487131357193,
+   "setup_s": {
+    "d1_c0": 2.9,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "E",
+   "truth": "x",
+   "gpu": false,
+   "reserved_s": 960,
+   "measured_s": 0,
+   "container_s": 963.8739173412323,
+   "budget_sum": 960,
+   "usd": 0.10101398653736114,
+   "setup_s": {
+    "d1_c0": 0.3,
+    "d1_c1": 0.4,
+    "d2": 0.5
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "F",
+   "truth": "est",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 993.6530132293701,
+   "container_s": 963.6530132293701,
+   "budget_sum": 960,
+   "usd": 0.16284868827925786,
+   "setup_s": {
+    "d1_c0": 3.4,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   }
+  },
+  {
+   "tag": "main",
+   "arm": "F",
+   "truth": "stress",
+   "gpu": true,
+   "reserved_s": 1020.0,
+   "measured_s": 993.248831987381,
+   "container_s": 963.248831987381,
+   "budget_sum": 960,
+   "usd": 0.16278244746459855,
+   "setup_s": {
+    "d1_c0": 3.0,
+    "d1_c1": 0.0,
+    "d2": 0.1
+   }
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 1.806992769241333,
+   "n_keys": 455,
+   "usd": 0.00018937284221649169
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 4.063459157943726,
+   "n_keys": 18,
+   "usd": 0.00042585051975250245
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.232285976409912,
+   "n_keys": 455,
+   "usd": 0.00023394357032775878
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c0",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 5.817927837371826,
+   "n_keys": 18,
+   "usd": 0.0006097188373565674
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 1.7118449211120605,
+   "n_keys": 455,
+   "usd": 0.00017940134773254394
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.012066602706909,
+   "n_keys": 16,
+   "usd": 0.00031566457996368407
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.2906434535980225,
+   "n_keys": 455,
+   "usd": 0.00024005943393707276
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d1_c1",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.8604583740234375,
+   "n_keys": 16,
+   "usd": 0.00040457603759765624
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 12.25449013710022,
+   "n_keys": 105,
+   "usd": 0.001284270566368103
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "est",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 2.9167919158935547,
+   "n_keys": 1,
+   "usd": 0.00030567979278564453
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 13.310117721557617,
+   "n_keys": 148,
+   "usd": 0.0013949003372192383
+  },
+  {
+   "tag": "score",
+   "arm": "score",
+   "truth": "stress",
+   "problem": "d2",
+   "gpu": false,
+   "measured_s": 0,
+   "container_s": 3.1283421516418457,
+   "n_keys": 6,
+   "usd": 0.0003278502574920654
+  }
+ ],
+ "gpu_s_measured": 9131.35762310028,
+ "usd_measured": 2.4426349853895823
+}

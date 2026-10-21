@@ -1,0 +1,71 @@
+## Final pick: true regret % (mean [min, max] over 3 seeds), single-core seconds, picks with the optimal build set
+high     C   B=    10s  regret  6.552 [6.233, 7.080]  $3.796  sec   11.0  optimal build 1/3
+high     C   B=    20s  regret  5.930 [5.086, 6.658]  $3.436  sec   21.3  optimal build 1/3
+high     C   B=    40s  regret  3.701 [2.958, 4.445]  $2.144  sec   41.1  optimal build 2/3
+high     C   B=    80s  regret  2.861 [2.435, 3.332]  $1.658  sec   68.6  optimal build 2/3
+high     C   B=   160s  regret  1.284 [0.705, 1.788]  $0.744  sec   93.0  optimal build 2/3
+high     C   B=   320s  regret  0.357 [0.000, 0.849]  $0.207  sec  158.1  optimal build 3/3
+high     C   B=   640s  regret  0.000 [0.000, 0.000]  $0.000  sec  202.5  optimal build 3/3
+high     Fc  B=    10s  regret  0.752 [0.000, 1.898]  $0.436  sec   10.6  optimal build 3/3
+high     Fc  B=    20s  regret  0.116 [0.000, 0.349]  $0.067  sec   20.8  optimal build 3/3
+high     Fc  B=    40s  regret  0.000 [0.000, 0.000]  $0.000  sec   33.3  optimal build 3/3
+high     Fc  B=    80s  regret  0.000 [0.000, 0.000]  $0.000  sec   38.5  optimal build 3/3
+high     Fc  B=   160s  regret  0.000 [0.000, 0.000]  $0.000  sec   36.9  optimal build 3/3
+high     Fc  B=   320s  regret  0.000 [0.000, 0.000]  $0.000  sec   36.7  optimal build 3/3
+high     Fc  B=   640s  regret  0.000 [0.000, 0.000]  $0.000  sec   36.9  optimal build 3/3
+high     Fd  B=    10s  regret  4.125 [2.435, 5.555]  $2.390  sec   10.8  optimal build 2/3
+high     Fd  B=    20s  regret  3.190 [1.788, 4.226]  $1.849  sec   20.9  optimal build 1/3
+high     Fd  B=    40s  regret  0.896 [0.705, 1.133]  $0.519  sec   40.7  optimal build 2/3
+high     Fd  B=    80s  regret  0.000 [0.000, 0.000]  $0.000  sec   67.9  optimal build 3/3
+high     Fd  B=   160s  regret  0.000 [0.000, 0.000]  $0.000  sec   66.8  optimal build 3/3
+high     Fd  B=   320s  regret  0.000 [0.000, 0.000]  $0.000  sec   67.9  optimal build 3/3
+high     Fd  B=   640s  regret  0.000 [0.000, 0.000]  $0.000  sec   67.2  optimal build 3/3
+moderate C   B=    10s  regret  8.056 [7.390, 8.518]  $4.708  sec   12.0  optimal build 0/3
+moderate C   B=    20s  regret  5.695 [5.426, 6.029]  $3.328  sec   20.8  optimal build 1/3
+moderate C   B=    40s  regret  3.826 [3.401, 4.524]  $2.236  sec   41.2  optimal build 1/3
+moderate C   B=    80s  regret  2.058 [1.195, 3.552]  $1.203  sec   60.9  optimal build 2/3
+moderate C   B=   160s  regret  1.065 [0.571, 1.427]  $0.622  sec   93.7  optimal build 1/3
+moderate C   B=   320s  regret  0.384 [0.264, 0.571]  $0.225  sec  160.2  optimal build 0/3
+moderate C   B=   640s  regret  0.264 [0.264, 0.264]  $0.154  sec  219.9  optimal build 0/3
+moderate Fc  B=    10s  regret  1.674 [1.518, 1.936]  $0.978  sec   11.6  optimal build 1/3
+moderate Fc  B=    20s  regret  0.000 [0.000, 0.000]  $0.000  sec   20.3  optimal build 3/3
+moderate Fc  B=    40s  regret  0.000 [0.000, 0.000]  $0.000  sec   34.6  optimal build 3/3
+moderate Fc  B=    80s  regret  0.000 [0.000, 0.000]  $0.000  sec   44.8  optimal build 3/3
+moderate Fc  B=   160s  regret  0.000 [0.000, 0.000]  $0.000  sec   39.7  optimal build 3/3
+moderate Fc  B=   320s  regret  0.000 [0.000, 0.000]  $0.000  sec   52.2  optimal build 3/3
+moderate Fc  B=   640s  regret  0.000 [0.000, 0.000]  $0.000  sec   48.4  optimal build 3/3
+moderate Fd  B=    10s  regret  4.048 [2.592, 5.230]  $2.366  sec   10.6  optimal build 1/3
+moderate Fd  B=    20s  regret  1.753 [1.195, 2.636]  $1.024  sec   20.4  optimal build 1/3
+moderate Fd  B=    40s  regret  0.537 [0.399, 0.809]  $0.314  sec   40.5  optimal build 2/3
+moderate Fd  B=    80s  regret  0.000 [0.000, 0.000]  $0.000  sec   73.5  optimal build 3/3
+moderate Fd  B=   160s  regret  0.000 [0.000, 0.000]  $0.000  sec   77.4  optimal build 3/3
+moderate Fd  B=   320s  regret  0.000 [0.000, 0.000]  $0.000  sec   78.1  optimal build 3/3
+moderate Fd  B=   640s  regret  0.000 [0.000, 0.000]  $0.000  sec   78.7  optimal build 3/3
+
+## Per tier (budgets >= 80 s): regret % of the tier's pick, cumulative seconds
+                                    regret   rmax      sec      scored
+truth    screen tier_idx tier                                         
+high     C      0        engine_low   3.157  4.666   98.936   64827.833
+                1        engine_high   1.135  3.452  102.885     329.333
+                2        engine_highest   1.168  3.332  105.743      25.833
+                3        ghk_final   1.126  3.332  130.556      15.750
+         Fc     0        sim_256     1.028  1.792    6.896  108885.000
+                1        sim_4096    0.171  0.376    9.331     561.000
+                2        sim_65536   0.000  0.000   11.688      28.667
+                3        ghk_final   0.000  0.000   37.240      15.000
+         Fd     0        sim_256     1.028  1.792   31.134  108763.000
+                1        sim_4096    0.171  0.376   36.314     560.500
+                2        sim_65536   0.000  0.000   42.956      28.667
+                3        ghk_final   0.000  0.000   67.454      15.000
+moderate C      0        engine_low   1.367  4.472  100.030   66452.583
+                1        engine_high   0.943  3.552  103.115     148.917
+                2        engine_highest   0.943  3.552  105.734      21.167
+                3        ghk_final   0.943  3.552  133.693      18.333
+         Fc     0        sim_256     0.529  1.150    7.234  108885.000
+                1        sim_4096    0.106  0.318    9.680     391.833
+                2        sim_65536   0.000  0.000   12.105      35.333
+                3        ghk_final   0.000  0.000   46.282      21.000
+         Fd     0        sim_256     0.529  1.150   31.182  108591.417
+                1        sim_4096    0.106  0.318   35.540     391.667
+                2        sim_65536   0.000  0.000   43.802      35.333
+                3        ghk_final   0.000  0.000   76.929      20.417

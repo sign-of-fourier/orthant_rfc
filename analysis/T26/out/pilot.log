@@ -1,0 +1,54 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-KwiuocXnlcViT7AIDx0CLR
+Building image im-e1vP4O9yEu2mekSEQWG4GX
+
+=> Step 0: FROM base
+
+=> Step 1: RUN python -m pip install numpy scipy threadpoolctl
+Looking in indexes: http://pypi-mirror.modal.local:5555/simple
+Collecting numpy
+  Downloading http://pypi-mirror.modal.local:5555/simple/numpy/numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting scipy
+  Downloading http://pypi-mirror.modal.local:5555/simple/scipy/scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting threadpoolctl
+  Downloading http://pypi-mirror.modal.local:5555/simple/threadpoolctl/threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+Downloading http://pypi-mirror.modal.local:5555/simple/numpy/numpy-2.5.4-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 163.0 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/scipy/scipy-1.18.1-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 309.9 MB/s eta 0:00:00
+Downloading http://pypi-mirror.modal.local:5555/simple/threadpoolctl/threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+Installing collected packages: threadpoolctl, numpy, scipy
+
+Successfully installed numpy-2.5.4 scipy-1.18.1 threadpoolctl-3.7.0
+
+[notice] A new release of pip is available: 25.1.1 -> 26.2.2
+[notice] To update, run: pip install --upgrade pip
+Saving image...
+Image saved, took 1.77s
+
+Built image im-e1vP4O9yEu2mekSEQWG4GX in 17.45s
+
+
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/boaz/modal/orthant.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T26/t26.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+└── 🔨 Created function pilot.<locals>.run.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-KwiuocXnlcViT7AIDx0CLR
+[22:14:06] pilot wall 68 s
+[22:14:07] moderate: 445 genomes, 1543 shelves, reference best 56.330
+[22:14:07]   engine_low  sigma_top 0.7077  bias +3.8063  spearman50 0.970  ref-best rank 0  4.38 ms/shelf  full pass 7.9 min  setup 0.6 s
+[22:14:07]   engine_high  sigma_top 0.0827  bias +0.0929  spearman50 0.998  ref-best rank 0  8.70 ms/shelf  full pass 15.8 min  setup 0.0 s
+[22:14:07]   engine_highest  sigma_top 0.0236  bias +0.0344  spearman50 1.000  ref-best rank 0  16.47 ms/shelf  full pass 29.9 min  setup 0.0 s
+[22:14:07]   sim_256    sigma_top 1.2520  bias +0.6454  spearman50 0.910  ref-best rank 0  0.04 ms/shelf  full pass 0.1 min  setup 0.0 s
+[22:14:07]   sim_4096   sigma_top 0.2270  bias +0.4708  spearman50 0.995  ref-best rank 0  0.22 ms/shelf  full pass 0.4 min  setup 0.2 s
+[22:14:07]   sim_65536  sigma_top 0.0721  bias +0.0754  spearman50 0.998  ref-best rank 0  3.56 ms/shelf  full pass 6.5 min  setup 3.4 s
+[22:14:07] high: 445 genomes, 1543 shelves, reference best 54.744
+[22:14:07]   engine_low  sigma_top 1.0396  bias +4.2300  spearman50 0.952  ref-best rank 0  4.78 ms/shelf  full pass 8.7 min  setup 0.6 s
+[22:14:07]   engine_high  sigma_top 0.1837  bias -0.1188  spearman50 0.994  ref-best rank 0  10.12 ms/shelf  full pass 18.4 min  setup 0.0 s
+[22:14:07]   engine_highest  sigma_top 0.0503  bias -0.0228  spearman50 0.999  ref-best rank 0  18.65 ms/shelf  full pass 33.8 min  setup 0.0 s
+[22:14:07]   sim_256    sigma_top 1.3407  bias +0.6205  spearman50 0.904  ref-best rank 0  0.04 ms/shelf  full pass 0.1 min  setup 0.0 s
+[22:14:07]   sim_4096   sigma_top 0.2118  bias +0.7973  spearman50 0.994  ref-best rank 0  0.23 ms/shelf  full pass 0.4 min  setup 0.2 s
+[22:14:07]   sim_65536  sigma_top 0.0548  bias +0.1883  spearman50 0.999  ref-best rank 0  3.36 ms/shelf  full pass 6.1 min  setup 3.6 s

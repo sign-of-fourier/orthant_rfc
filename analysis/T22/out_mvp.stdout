@@ -1,0 +1,8 @@
+7 MVP fits
+100_s1: fit 4 s + se 1 s, 31 iters, grad 1.7e-02, Tesla T4
+100_s0: fit 5 s + se 1 s, 37 iters, grad 1.5e-02, Tesla T4
+100_s2: fit 5 s + se 1 s, 41 iters, grad 2.1e-03, Tesla T4
+200_s0: fit 8 s + se 2 s, 36 iters, grad 1.2e-02, Tesla T4
+200_s1: fit 9 s + se 3 s, 36 iters, grad 7.1e-03, Tesla T4
+200_s2: fit 9 s + se 3 s, 40 iters, grad 6.4e-03, Tesla T4
+all_s0: fit 14 s + se 6 s, 34 iters, grad 1.9e-02, Tesla T4

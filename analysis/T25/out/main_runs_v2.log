@@ -1,0 +1,94 @@
+plan: 9 containers; GPU used 79.3 min + reserved (runs + 0 scoring calls) -> total 154.3 min of 160 ($1.52); D 300 s dropped: True
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-ZYR9ZfO0SjyCGS90jeerDr
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+A d1_c0 b60 s1: gens 5668 evals 455 best est 59.077 elapsed 60.0
+B d1_c0 b60 s1: gens 2861 evals 455 best est 40.932 elapsed 60.0
+C d1_c0 b60 s1: gens 3149 evals 455 best est 40.865 elapsed 60.0
+B d1_c0 b60 s1: gens 2674 evals 455 best est 39.224 elapsed 60.0
+E d1_c0 b60 s1: gens 3215 evals 455 best est 70.849 elapsed 60.0
+D d1_c0 b60 s1: gens 2976 evals 455 best est 70.849 elapsed 60.0
+F d1_c0 b60 s1: gens 3121 evals 455 best est 39.444 elapsed 60.0
+C d1_c0 b60 s1: gens 2624 evals 455 best est 39.223 elapsed 60.0
+F d1_c0 b60 s1: gens 3075 evals 455 best est 37.174 elapsed 60.0
+A d1_c0 b60 s2: gens 5545 evals 455 best est 59.077 elapsed 60.0
+B d1_c0 b60 s2: gens 2832 evals 455 best est 40.932 elapsed 60.0
+C d1_c0 b60 s2: gens 3149 evals 455 best est 40.865 elapsed 60.1
+B d1_c0 b60 s2: gens 2877 evals 455 best est 39.224 elapsed 60.0
+E d1_c0 b60 s2: gens 3199 evals 455 best est 70.849 elapsed 60.0
+D d1_c0 b60 s2: gens 3081 evals 455 best est 70.849 elapsed 60.0
+F d1_c0 b60 s2: gens 3141 evals 455 best est 39.444 elapsed 60.0
+C d1_c0 b60 s2: gens 2616 evals 455 best est 39.223 elapsed 60.0
+F d1_c0 b60 s2: gens 3123 evals 455 best est 37.174 elapsed 60.0
+A d1_c1 b60 s1: gens 4982 evals 455 best est 44.636 elapsed 60.0
+B d1_c1 b60 s1: gens 2859 evals 455 best est 31.828 elapsed 60.0
+C d1_c1 b60 s1: gens 3151 evals 455 best est 31.783 elapsed 60.0
+B d1_c1 b60 s1: gens 2929 evals 455 best est 30.076 elapsed 60.0
+D d1_c1 b60 s1: gens 3131 evals 455 best est 55.347 elapsed 60.0
+E d1_c1 b60 s1: gens 3187 evals 455 best est 55.347 elapsed 60.0
+F d1_c1 b60 s1: gens 3124 evals 455 best est 31.268 elapsed 60.0
+C d1_c1 b60 s1: gens 2605 evals 455 best est 30.095 elapsed 60.0
+F d1_c1 b60 s1: gens 3095 evals 455 best est 29.294 elapsed 60.0
+A d1_c1 b60 s2: gens 4962 evals 455 best est 44.636 elapsed 60.0
+B d1_c1 b60 s2: gens 2890 evals 455 best est 31.828 elapsed 60.0
+C d1_c1 b60 s2: gens 3131 evals 455 best est 31.783 elapsed 60.0
+B d1_c1 b60 s2: gens 2930 evals 455 best est 30.076 elapsed 60.0
+D d1_c1 b60 s2: gens 3088 evals 455 best est 55.347 elapsed 60.0
+E d1_c1 b60 s2: gens 3232 evals 455 best est 55.347 elapsed 60.0
+F d1_c1 b60 s2: gens 3136 evals 455 best est 31.268 elapsed 60.0
+C d1_c1 b60 s2: gens 2617 evals 455 best est 30.095 elapsed 60.0
+F d1_c1 b60 s2: gens 3080 evals 455 best est 29.294 elapsed 60.0
+A d2 b60 s1: gens 1959 evals 16872 best est 77.611 elapsed 60.0
+C d2 b60 s1: gens 631 evals 14920 best est 61.144 elapsed 60.0
+D d2 b60 s1: gens 1181 evals 18409 best est 92.453 elapsed 60.0
+F d2 b60 s1: gens 1141 evals 16378 best est 61.390 elapsed 60.0
+E d2 b60 s1: gens 870 evals 17649 best est 92.453 elapsed 60.0
+C d2 b60 s1: gens 591 evals 15896 best est 57.254 elapsed 60.0
+F d2 b60 s1: gens 1158 evals 17794 best est 57.909 elapsed 60.0
+B d2 b60 s1: gens 54 evals 9990 best est 60.387 elapsed 60.0
+B d2 b60 s1: gens 48 evals 10229 best est 56.500 elapsed 60.0
+A d2 b60 s2: gens 1916 evals 24786 best est 77.995 elapsed 60.0
+C d2 b60 s2: gens 617 evals 20192 best est 60.713 elapsed 60.0
+D d2 b60 s2: gens 1144 evals 24785 best est 91.696 elapsed 60.0
+F d2 b60 s2: gens 1099 evals 21573 best est 61.402 elapsed 60.0
+E d2 b60 s2: gens 780 evals 24230 best est 91.688 elapsed 60.0
+C d2 b60 s2: gens 528 evals 19913 best est 57.352 elapsed 60.1
+F d2 b60 s2: gens 1063 evals 23848 best est 57.909 elapsed 60.0
+B d2 b60 s2: gens 43 evals 11376 best est 59.513 elapsed 60.0
+B d2 b60 s2: gens 42 evals 10921 best est 55.348 elapsed 60.0
+A d2 b300 s1: gens 11190 evals 24702 best est 78.483 elapsed 300.0
+C d2 b300 s1: gens 5198 evals 19653 best est 61.144 elapsed 300.0
+F d2 b300 s1: gens 6423 evals 20495 best est 61.390 elapsed 300.0
+E d2 b300 s1: gens 6172 evals 22114 best est 92.453 elapsed 300.0
+C d2 b300 s1: gens 4220 evals 22085 best est 58.466 elapsed 300.0
+F d2 b300 s1: gens 6291 evals 21540 best est 57.909 elapsed 300.0
+B d2 b300 s1: gens 1418 evals 16224 best est 61.228 elapsed 300.0
+B d2 b300 s1: gens 1256 evals 17758 best est 57.612 elapsed 300.0
+A d2 b300 s2: gens 11134 evals 28258 best est 77.995 elapsed 300.0
+C d2 b300 s2: gens 5485 evals 23938 best est 60.713 elapsed 300.0
+F d2 b300 s2: gens 6354 evals 24660 best est 61.402 elapsed 300.0
+E d2 b300 s2: gens 6175 evals 27852 best est 92.099 elapsed 300.0
+C d2 b300 s2: gens 4460 evals 23369 best est 57.602 elapsed 300.0
+F d2 b300 s2: gens 6264 evals 26824 best est 57.909 elapsed 300.0
+B d2 b300 s2: gens 1320 evals 22111 best est 60.799 elapsed 300.0
+A x: wall 978 s (container 962 s), $0.101
+B d2 b300 s2: gens 1175 evals 22841 best est 57.711 elapsed 300.0
+B est: wall 982 s (container 972 s), $0.102
+B stress: wall 984 s (container 974 s), $0.102
+C est: wall 988 s (container 965 s), $0.163
+C stress: wall 992 s (container 966 s), $0.163
+D x: wall 995 s (container 363 s), $0.064
+E x: wall 1000 s (container 964 s), $0.101
+F est: wall 1005 s (container 964 s), $0.163
+F stress: wall 1010 s (container 963 s), $0.163
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-ZYR9ZfO0SjyCGS90jeerDr
+ledger: GPU measured 152.2 min; spend $2.44

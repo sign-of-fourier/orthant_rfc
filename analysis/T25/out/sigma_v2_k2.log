@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-CwK62njvlnV4B5oGZfbdsU
+✓ Created objects.
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_c1.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_c0.json
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/out/prep.npz
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25.py
+└── 🔨 Created function sigma_mle_modal.<locals>.run.
+[19:26:33] cluster 0: 141 store-month groups, 1915 (group, choice) cells, dims 6-28, K = 9
+[19:26:34] cluster 1: 636 store-month groups, 9534 (group, choice) cells, dims 5-39, K = 8
+[19:26:35] cluster 0: LL at Sigma = I -14311.7 (2.1 s per evaluation)
+[19:26:45] cluster 1: LL at Sigma = I -77491.2 (11.0 s per evaluation)
+[19:30:32] k=2 cluster 0: [0.0, 0.0, 0.0] LR vs I 0.00
+[19:30:32] cluster 0: {"cluster": 0, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -14311.697817421838, "ll_identity": -14311.697817421838, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+Container terminated due to preemption. Your Function will be restarted with the same input. For more details, see https://modal.com/docs/guide/preemption
+[19:37:36] cluster 1: 636 store-month groups, 9534 (group, choice) cells, dims 5-39, K = 8
+[19:37:44] cluster 1: LL at Sigma = I -77491.2 (7.9 s per evaluation)
+[19:52:28] cluster 1: {"cluster": 1, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -77491.16365081181, "ll_identity": -77491.16365081181, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:52:28] k=2 cluster 1: [0.0, 0.0, 0.0] LR vs I 0.00
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x780ebc9b7ca0>
+asyncgen: <async_generator object async_merge at 0x780ebc9b7ca0>
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 807, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-CwK62njvlnV4B5oGZfbdsU

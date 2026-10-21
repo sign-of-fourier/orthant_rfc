@@ -1,0 +1,51 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-5u6QIljjHcmtnAb0cDZ6vm
+✓ Created objects.
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_k5_c4.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_k5_c3.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_k5_c2.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_k5_c1.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_k5_c0.json
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/prep_k5.npz
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25.py
+└── 🔨 Created function sigma_mle_modal.<locals>.run.
+[19:26:32] cluster 0: 36 store-month groups, 485 (group, choice) cells, dims 8-22, K = 8
+[19:26:32] cluster 2: 117 store-month groups, 1628 (group, choice) cells, dims 6-28, K = 10
+[19:26:33] cluster 0: LL at Sigma = I -3762.0 (0.5 s per evaluation)
+[19:26:33] cluster 3: 168 store-month groups, 2500 (group, choice) cells, dims 5-34, K = 9
+[19:26:33] cluster 1: 204 store-month groups, 3040 (group, choice) cells, dims 6-39, K = 9
+[19:26:34] cluster 2: LL at Sigma = I -11848.3 (1.5 s per evaluation)
+[19:26:35] cluster 4: 252 store-month groups, 3796 (group, choice) cells, dims 6-32, K = 9
+[19:26:35] cluster 3: LL at Sigma = I -18812.2 (2.5 s per evaluation)
+[19:26:37] cluster 1: LL at Sigma = I -22831.8 (4.1 s per evaluation)
+[19:26:41] cluster 4: LL at Sigma = I -30496.1 (6.5 s per evaluation)
+[19:27:23] cluster 0: {"cluster": 0, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -3761.9557356245095, "ll_identity": -3761.9557356245095, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:27:23] k=5 cluster 0: [0.0, 0.0, 0.0] LR vs I 0.00
+[19:29:34] cluster 2: {"cluster": 2, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -11848.326052040436, "ll_identity": -11848.326052040436, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:31:12] cluster 3: {"cluster": 3, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -18812.220388963055, "ll_identity": -18812.220388963055, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:34:45] cluster 1: {"cluster": 1, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -22831.808339956573, "ll_identity": -22831.808339956573, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:34:45] k=5 cluster 1: [0.0, 0.0, 0.0] LR vs I 0.00
+[19:34:45] k=5 cluster 2: [0.0, 0.0, 0.0] LR vs I 0.00
+[19:34:45] k=5 cluster 3: [0.0, 0.0, 0.0] LR vs I 0.00
+[19:38:58] cluster 4: {"cluster": 4, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -30496.130096482688, "ll_identity": -30496.130096482688, "lr_vs_identity": 0.0, "evals": 105, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": 0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[19:38:58] k=5 cluster 4: [0.0, 0.0, 0.0] LR vs I 0.00
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x79000ad4fca0>
+asyncgen: <async_generator object async_merge at 0x79000ad4fca0>
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 807, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-5u6QIljjHcmtnAb0cDZ6vm

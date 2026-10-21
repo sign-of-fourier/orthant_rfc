@@ -1,0 +1,158 @@
+{
+ "r1 raw": {
+  "dim": 21,
+  "min_eig": 1.0000000252342874e-08,
+  "median_P": 8.354872899260576e-05,
+  "ref_se_logP_median": 0.001134445864451673,
+  "ref_se_logP_max": 0.2768878526645436,
+  "engine high": {
+   "us_per_orthant": 104.74837850779295,
+   "dP_median": 1.5495280711130545e-05,
+   "dP_max": 0.0005912390969434864,
+   "dlogP_median": 0.27251270377902514,
+   "dlogP_max": 678.3954957503049,
+   "n_nonfinite": 0
+  },
+  "engine low": {
+   "us_per_orthant": 71.89314812421799,
+   "dP_median": 3.256326968230166e-05,
+   "dP_max": 0.0016380490547118628,
+   "dlogP_median": 0.7467212831404568,
+   "dlogP_max": 21.814407571548283,
+   "n_nonfinite": 0
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 312.0635589584708,
+   "dP_median": 1.5264525572702538e-06,
+   "dP_max": 7.718489522604271e-05,
+   "dlogP_median": 0.022650917017496663,
+   "dlogP_max": 9.974578786643665,
+   "n_nonfinite": 0
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 396.4034700766206,
+   "dP_median": 1.5264525572701945e-06,
+   "dP_max": 7.718489522605052e-05,
+   "dlogP_median": 0.02265091701749622,
+   "dlogP_max": 9.974578786643729,
+   "n_nonfinite": 0
+  }
+ },
+ "r1 shrunk": {
+  "dim": 21,
+  "min_eig": 0.05000000950000156,
+  "median_P": 9.228018651671344e-05,
+  "ref_se_logP_median": 0.0002466375969001433,
+  "ref_se_logP_max": 0.010016646454934193,
+  "engine high": {
+   "us_per_orthant": 101.04317916557193,
+   "dP_median": 1.3624591007930075e-05,
+   "dP_max": 0.0005038897859848735,
+   "dlogP_median": 0.24455708189184389,
+   "dlogP_max": 678.9080398244206,
+   "n_nonfinite": 0
+  },
+  "engine low": {
+   "us_per_orthant": 71.9094998203218,
+   "dP_median": 3.01837192419697e-05,
+   "dP_max": 0.0015298471367520018,
+   "dlogP_median": 0.6715701379910035,
+   "dlogP_max": 12.38120019247625,
+   "n_nonfinite": 0
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 324.31859988719225,
+   "dP_median": 1.1227788074971782e-06,
+   "dP_max": 6.365430101900119e-05,
+   "dlogP_median": 0.01622753634640084,
+   "dlogP_max": 3.1351065328416077,
+   "n_nonfinite": 0
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 405.63941933214664,
+   "dP_median": 1.1227788074964193e-06,
+   "dP_max": 6.365430101900119e-05,
+   "dlogP_median": 0.01622753634640084,
+   "dlogP_max": 3.135106532841643,
+   "n_nonfinite": 0
+  }
+ },
+ "r2 raw": {
+  "dim": 21,
+  "min_eig": 1.0000000060386738e-08,
+  "median_P": 4.028966083347123e-05,
+  "ref_se_logP_median": 0.0009188168041201651,
+  "ref_se_logP_max": 0.02223007736524665,
+  "engine high": {
+   "us_per_orthant": 102.13023982942104,
+   "dP_median": 1.4126923135176187e-05,
+   "dP_max": 0.00034779370682689876,
+   "dlogP_median": 0.29910364783021937,
+   "dlogP_max": 675.6132626136723,
+   "n_nonfinite": 0
+  },
+  "engine low": {
+   "us_per_orthant": 68.06375924497843,
+   "dP_median": 1.7169215890428088e-05,
+   "dP_max": 0.0010610639687185146,
+   "dlogP_median": 0.7590079222598289,
+   "dlogP_max": 4.7279393639488525,
+   "n_nonfinite": 0
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 289.17156159877777,
+   "dP_median": 4.7447283550120475e-07,
+   "dP_max": 2.8681563098699632e-05,
+   "dlogP_median": 0.02101377312582997,
+   "dlogP_max": 0.42173584453193236,
+   "n_nonfinite": 0
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 397.9517496190965,
+   "dP_median": 4.744728355012132e-07,
+   "dP_max": 2.8681563098695295e-05,
+   "dlogP_median": 0.021013773125828195,
+   "dlogP_max": 0.42173584453193413,
+   "n_nonfinite": 0
+  }
+ },
+ "r2 shrunk": {
+  "dim": 21,
+  "min_eig": 0.05000000949999898,
+  "median_P": 4.356262348719286e-05,
+  "ref_se_logP_median": 0.00028403415255273283,
+  "ref_se_logP_max": 0.0048129650264467135,
+  "engine high": {
+   "us_per_orthant": 100.59197898954153,
+   "dP_median": 1.2003470015377028e-05,
+   "dP_max": 0.00029832134538482273,
+   "dlogP_median": 0.2555303258512822,
+   "dlogP_max": 676.2718308782638,
+   "n_nonfinite": 0
+  },
+  "engine low": {
+   "us_per_orthant": 69.12836804986,
+   "dP_median": 1.6383446598104634e-05,
+   "dP_max": 0.0009689215603977861,
+   "dlogP_median": 0.7338227604506233,
+   "dlogP_max": 4.046895200506807,
+   "n_nonfinite": 0
+  },
+  "OVUS torch batch": {
+   "us_per_orthant": 287.9079803824425,
+   "dP_median": 3.9126259136749064e-07,
+   "dP_max": 2.1195525606696082e-05,
+   "dlogP_median": 0.01627977837827288,
+   "dlogP_max": 0.2703899096896176,
+   "n_nonfinite": 0
+  },
+  "OVUS pybhatlib (row loop)": {
+   "us_per_orthant": 392.68504129722714,
+   "dP_median": 3.912625913674991e-07,
+   "dP_max": 2.1195525606696082e-05,
+   "dlogP_median": 0.01627977837827288,
+   "dlogP_max": 0.27038990968961585,
+   "n_nonfinite": 0
+  }
+ }
+}

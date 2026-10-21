@@ -1,0 +1,28 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-v47CRMUaLh1qfuhvuEYMj0
+✓ Created objects.
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T25/out/lc_c1.json
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/out/prep.npz
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25.py
+└── 🔨 Created function sigma_mle_modal.<locals>.run.
+[17:42:22] cluster 1: 636 store-month groups, 9534 (group, choice) cells, dims 5-39, K = 8
+[17:42:33] cluster 1: LL at Sigma = I -77010.8 (11.3 s per evaluation)
+[18:02:08] cluster 1: {"cluster": 1, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -77010.7598447167, "ll_identity": -77010.7598447167, "lr_vs_identity": 0.0, "evals": 102, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": 0.0, "mfrx0.5": 0.0, "mfrx2.0": -0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}
+[18:02:08] k=2 cluster 1: [0.0, 0.0, 0.0] LR vs I 0.00
+an error occurred during closing of asynchronous generator <async_generator object async_merge at 0x78d211207b30>
+asyncgen: <async_generator object async_merge at 0x78d211207b30>
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_utils/async_utils.py", line 807, in __iter__
+    yield from run_async_gen(runner, self._async_iterable)
+GeneratorExit
+
+During handling of the above exception, another exception occurred:
+
+RuntimeError: aclose(): asynchronous generator is already running
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-v47CRMUaLh1qfuhvuEYMj0
+Task was destroyed but it is pending!
+task: <Task pending name='Task-4152' coro=<Synchronizer._run_function_async() done, defined at /home/ubuntu/miniconda3/lib/python3.12/site-packages/synchronicity/synchronizer.py:413> wait_for=<Future pending cb=[shield.<locals>._outer_done_callback() at /home/ubuntu/miniconda3/lib/python3.12/asyncio/tasks.py:922, Task.task_wakeup()]>>

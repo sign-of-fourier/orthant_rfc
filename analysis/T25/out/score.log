@@ -1,0 +1,176 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-nU78Rrwf7ohXJVV3eLu5fs
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-nU78Rrwf7ohXJVV3eLu5fs
+  scored 455 shelves (2 with GHK) in 2 s (wall 8 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-5k1AWjMzUH5q5OcnIcbCNL
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-5k1AWjMzUH5q5OcnIcbCNL
+  scored 16 shelves (16 with GHK) in 4 s (wall 10 s)
+d1_c0 est: 457 solutions, 455 shelves; best 537.948 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 0.3541; GHK argmax at engine rank 0
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-z2JVqu7sh6ip2DqBgiyTwE
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function score_cpu.
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function run_gpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-z2JVqu7sh6ip2DqBgiyTwE
+  scored 455 shelves (2 with GHK) in 2 s (wall 6 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-34UxRECeMQbclzpDuCDWIW
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function score_gpu.
+├── 🔨 Created function score_cpu.
+└── 🔨 Created function run_gpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-34UxRECeMQbclzpDuCDWIW
+  scored 16 shelves (16 with GHK) in 4 s (wall 9 s)
+d1_c0 stress: 457 solutions, 455 shelves; best 471.518 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 1.1242; GHK argmax at engine rank 0
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-pyKr6cMizk1roTtzETayYc
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function score_gpu.
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-pyKr6cMizk1roTtzETayYc
+  scored 455 shelves (2 with GHK) in 2 s (wall 7 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-7BeilWDAo8lAosHAnLH94t
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function score_gpu.
+├── 🔨 Created function run_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-7BeilWDAo8lAosHAnLH94t
+  scored 16 shelves (16 with GHK) in 3 s (wall 7 s)
+d1_c1 est: 457 solutions, 455 shelves; best 437.384 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 0.0382; GHK argmax at engine rank 0
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-JcoayBX9jvoLZgUppr7tF4
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-JcoayBX9jvoLZgUppr7tF4
+  scored 455 shelves (2 with GHK) in 2 s (wall 5 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-Gf0QdVqIHYXlxBzWnrzwPL
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-Gf0QdVqIHYXlxBzWnrzwPL
+  scored 16 shelves (16 with GHK) in 3 s (wall 7 s)
+d1_c1 stress: 457 solutions, 455 shelves; best 436.062 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 0.0460; GHK argmax at engine rank 0
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-lNS3s2P2J6OH6KQuLVkaVX
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-lNS3s2P2J6OH6KQuLVkaVX
+  scored 63 shelves (26 with GHK) in 8 s (wall 13 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-IOzbewMrkh7Bu6KI6bVgY6
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-IOzbewMrkh7Bu6KI6bVgY6
+  scored 4 shelves (4 with GHK) in 3 s (wall 9 s)
+d2 est: 81 solutions, 63 shelves; best 247.298 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 0.1160; GHK argmax at engine rank 0
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-Lax4FALOZNiEp3nBZbjjju
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function score_gpu.
+├── 🔨 Created function run_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+Runner terminated.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-Lax4FALOZNiEp3nBZbjjju
+  scored 80 shelves (31 with GHK) in 9 s (wall 24 s)
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-4eRa1SxJ41zqojyQjoW3ow
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/t25_modal.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount PythonPackage:modal_gp_api, PythonPackage:orthant
+├── 🔨 Created function run_cpu.
+├── 🔨 Created function run_gpu.
+├── 🔨 Created function score_gpu.
+└── 🔨 Created function score_cpu.
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-4eRa1SxJ41zqojyQjoW3ow
+  scored 2 shelves (2 with GHK) in 3 s (wall 8 s)
+d2 stress: 99 solutions, 80 shelves; best 230.066 $/1k trips; engine2 vs GHK20k on top 20: max |diff| 0.1770; GHK argmax at engine rank 0
+results.csv: 408 rows

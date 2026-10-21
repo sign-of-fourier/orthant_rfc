@@ -1,0 +1,163 @@
+/home/ubuntu/projects/orthant_rfc/analysis/T21/t21.py:67: UserWarning: margin calibration slope outside [0.5, 2.0] (outcome 2 slope 0.31, outcome 3 slope 0.15, outcome 4 slope 0.31, outcome 12 slope 0.33); a slope near 1 is expected. This is the Cox calibration slope, a deliberately simple scale check on the fitted indices -- not a full calibration assessment, and not a sign the fit is invalid. It suggests the margins' probabilities may be worth calibrating (scikit-learn's CalibratedClassifierCV, for instance) before reading correlation_ closely, since stage two has no free parameter but the correlation to absorb margin error with. A slope far above 1 usually means the index was scored on rows it was fitted on, which cv= addresses. See calibration_ and docs/limitations.md.
+  m3 = MultivariateProbit(inner="linear", dependence="pairwise", cv=5, random_state=t19.SEED).fit(Xtr, Ytr)
+r1 all: CS-A [['MILD_CURRY', 'HOUSE_SPECIAL', 'TANDOORI_MAIN', 'FRIES', 'SAUCE'], ['MEDIUM_CURRY', 'HOT_CURRY', 'PAPADUM', 'DRINK', 'CONDIMENT'], ['BIRYANI', 'RICE_PILAU', 'RICE_PLAIN', 'RICE_SPECIAL', 'STARTER_OTHER'], ['VEG_SIDE', 'NAAN_PLAIN', 'NAAN_FLAV', 'BREAD_OTHER'], ['STARTER_FRIED'], ['STARTER_GRILL']]
+  ll M0 -10.483, M1 -9.929, M3 -9.977, M3-M0 0.505, M3-M1 -0.049, M3-CS-A 0.178, M3-CS-R 0.149
+/home/ubuntu/projects/orthant_rfc/analysis/T21/t21.py:67: UserWarning: margin calibration slope outside [0.5, 2.0] (outcome 3 slope 0.41, outcome 4 slope 0.46, outcome 5 slope -0.09, outcome 6 slope 0.17, outcome 14 slope -0.84, outcome 16 slope 0.44, outcome 20 slope -1.04); a slope near 1 is expected. This is the Cox calibration slope, a deliberately simple scale check on the fitted indices -- not a full calibration assessment, and not a sign the fit is invalid. It suggests the margins' probabilities may be worth calibrating (scikit-learn's CalibratedClassifierCV, for instance) before reading correlation_ closely, since stage two has no free parameter but the correlation to absorb margin error with. A slope far above 1 usually means the index was scored on rows it was fitted on, which cv= addresses. See calibration_ and docs/limitations.md.
+  m3 = MultivariateProbit(inner="linear", dependence="pairwise", cv=5, random_state=t19.SEED).fit(Xtr, Ytr)
+/home/ubuntu/projects/orthant_rfc/analysis/T3/t3.py:229: RuntimeWarning: divide by zero encountered in log
+  cand = [(abs(np.log(lift[i, j])), i, j) for i, j in itertools.combinations(range(M), 2)
+r1 small: CS-A [['MILD_CURRY', 'MEDIUM_CURRY', 'NAAN_PLAIN', 'NAAN_FLAV', 'BREAD_OTHER'], ['HOT_CURRY', 'BIRYANI', 'RICE_PILAU', 'RICE_PLAIN', 'RICE_SPECIAL'], ['HOUSE_SPECIAL', 'TANDOORI_MAIN', 'FRIES', 'STARTER_OTHER', 'SAUCE'], ['VEG_SIDE', 'STARTER_FRIED', 'STARTER_GRILL', 'DRINK'], ['PAPADUM', 'CONDIMENT']]
+  ll M0 -8.525, M1 -7.485, M3 -7.907, M3-M0 0.617, M3-M1 -0.422, M3-CS-A 0.107, M3-CS-R 0.225
+r1 all_size: CS-A [['MILD_CURRY', 'HOUSE_SPECIAL', 'FRIES', 'STARTER_OTHER', 'SAUCE'], ['MEDIUM_CURRY', 'HOT_CURRY', 'TANDOORI_MAIN', 'VEG_SIDE', 'DRINK'], ['BIRYANI', 'RICE_PILAU', 'RICE_PLAIN', 'RICE_SPECIAL'], ['NAAN_PLAIN', 'NAAN_FLAV', 'BREAD_OTHER', 'PAPADUM', 'CONDIMENT'], ['STARTER_FRIED'], ['STARTER_GRILL']]
+  ll M0 -9.925, M1 -9.290, M3 -9.398, M3-M0 0.527, M3-M1 -0.109, M3-CS-A 0.170, M3-CS-R 0.181
+/home/ubuntu/projects/orthant_rfc/analysis/T21/t21.py:67: UserWarning: margin calibration slope outside [0.5, 2.0] (outcome 4 slope 0.35); a slope near 1 is expected. This is the Cox calibration slope, a deliberately simple scale check on the fitted indices -- not a full calibration assessment, and not a sign the fit is invalid. It suggests the margins' probabilities may be worth calibrating (scikit-learn's CalibratedClassifierCV, for instance) before reading correlation_ closely, since stage two has no free parameter but the correlation to absorb margin error with. A slope far above 1 usually means the index was scored on rows it was fitted on, which cv= addresses. See calibration_ and docs/limitations.md.
+  m3 = MultivariateProbit(inner="linear", dependence="pairwise", cv=5, random_state=t19.SEED).fit(Xtr, Ytr)
+r2 all: CS-A [['MILD_CURRY', 'HOT_CURRY', 'HOUSE_SPECIAL', 'TANDOORI_MAIN'], ['MEDIUM_CURRY', 'BIRYANI', 'RICE_SPECIAL', 'FRIES', 'SAUCE'], ['VEG_SIDE'], ['RICE_PILAU', 'RICE_PLAIN', 'NAAN_PLAIN', 'NAAN_FLAV', 'BREAD_OTHER'], ['PAPADUM', 'STARTER_FRIED', 'STARTER_OTHER', 'DRINK', 'CONDIMENT'], ['STARTER_GRILL']]
+  ll M0 -10.653, M1 -10.033, M3 -10.078, M3-M0 0.574, M3-M1 -0.045, M3-CS-A 0.262, M3-CS-R 0.176
+/home/ubuntu/projects/orthant_rfc/analysis/T21/t21.py:67: UserWarning: margin calibration slope outside [0.5, 2.0] (outcome 3 slope -0.00, outcome 12 slope 0.45, outcome 17 slope 0.37, outcome 18 slope 0.31, outcome 20 slope -1.40); a slope near 1 is expected. This is the Cox calibration slope, a deliberately simple scale check on the fitted indices -- not a full calibration assessment, and not a sign the fit is invalid. It suggests the margins' probabilities may be worth calibrating (scikit-learn's CalibratedClassifierCV, for instance) before reading correlation_ closely, since stage two has no free parameter but the correlation to absorb margin error with. A slope far above 1 usually means the index was scored on rows it was fitted on, which cv= addresses. See calibration_ and docs/limitations.md.
+  m3 = MultivariateProbit(inner="linear", dependence="pairwise", cv=5, random_state=t19.SEED).fit(Xtr, Ytr)
+/home/ubuntu/projects/orthant_rfc/analysis/T3/t3.py:229: RuntimeWarning: divide by zero encountered in log
+  cand = [(abs(np.log(lift[i, j])), i, j) for i, j in itertools.combinations(range(M), 2)
+r2 small: CS-A [['MILD_CURRY', 'MEDIUM_CURRY', 'HOT_CURRY', 'HOUSE_SPECIAL', 'SAUCE'], ['BIRYANI', 'RICE_PILAU', 'RICE_PLAIN', 'RICE_SPECIAL', 'BREAD_OTHER'], ['TANDOORI_MAIN', 'VEG_SIDE', 'FRIES', 'STARTER_FRIED', 'STARTER_OTHER'], ['NAAN_PLAIN', 'NAAN_FLAV', 'STARTER_GRILL', 'DRINK'], ['PAPADUM', 'CONDIMENT']]
+  ll M0 -7.828, M1 -6.883, M3 -7.282, M3-M0 0.545, M3-M1 -0.399, M3-CS-A 0.254, M3-CS-R 0.356
+r2 all_size: CS-A [['MILD_CURRY', 'MEDIUM_CURRY', 'HOUSE_SPECIAL', 'TANDOORI_MAIN', 'SAUCE'], ['HOT_CURRY', 'VEG_SIDE', 'STARTER_OTHER', 'DRINK'], ['BIRYANI', 'RICE_PILAU', 'RICE_PLAIN', 'RICE_SPECIAL', 'FRIES'], ['NAAN_PLAIN', 'NAAN_FLAV', 'BREAD_OTHER', 'PAPADUM', 'CONDIMENT'], ['STARTER_FRIED'], ['STARTER_GRILL']]
+  ll M0 -10.066, M1 -9.357, M3 -9.451, M3-M0 0.614, M3-M1 -0.095, M3-CS-A 0.208, M3-CS-R 0.233
+# T21 A · coded subsets on T19's holdout (generated by t21.py report)
+
+Errors are absolute, in percentage points of holdout orders. Differences: positive = M3 better.
+
+## Blocks
+
+| r | variant | CS-A (analyst lift rule) | CS-R (from M3's R) |
+|---|---|---|---|
+| 1 | all | mild_curry+house_special+tandoori_main+fries+sauce; medium_curry+hot_curry+papadum+drink+condiment; biryani+rice_pilau+rice_plain+rice_special+starter_other; veg_side+naan_plain+naan_flav+bread_other | mild_curry+biryani+rice_pilau+rice_plain+rice_special; medium_curry+hot_curry+house_special+papadum+condiment; tandoori_main+naan_plain+naan_flav+fries+sauce; veg_side+bread_other+starter_grill+starter_other+drink |
+| 1 | small | mild_curry+medium_curry+naan_plain+naan_flav+bread_other; hot_curry+biryani+rice_pilau+rice_plain+rice_special; house_special+tandoori_main+fries+starter_other+sauce; veg_side+starter_fried+starter_grill+drink; papadum+condiment | mild_curry+medium_curry; hot_curry+biryani+rice_plain+papadum+condiment; house_special+tandoori_main+fries+starter_other+sauce; veg_side+starter_fried+starter_grill+drink; rice_pilau+rice_special+naan_plain+naan_flav+bread_other |
+| 1 | all_size | mild_curry+house_special+fries+starter_other+sauce; medium_curry+hot_curry+tandoori_main+veg_side+drink; biryani+rice_pilau+rice_plain+rice_special; naan_plain+naan_flav+bread_other+papadum+condiment | mild_curry+house_special+tandoori_main+fries+sauce; medium_curry+hot_curry+veg_side+papadum+condiment; biryani+rice_pilau+rice_plain+rice_special+drink; naan_plain+naan_flav+bread_other+starter_grill+starter_other |
+| 2 | all | mild_curry+hot_curry+house_special+tandoori_main; medium_curry+biryani+rice_special+fries+sauce; rice_pilau+rice_plain+naan_plain+naan_flav+bread_other; papadum+starter_fried+starter_other+drink+condiment | mild_curry+biryani+rice_pilau+rice_plain+rice_special; medium_curry+hot_curry+house_special+tandoori_main+sauce; veg_side+naan_plain+naan_flav+bread_other+drink; papadum+fries+starter_fried+starter_grill+condiment |
+| 2 | small | mild_curry+medium_curry+hot_curry+house_special+sauce; biryani+rice_pilau+rice_plain+rice_special+bread_other; tandoori_main+veg_side+fries+starter_fried+starter_other; naan_plain+naan_flav+starter_grill+drink; papadum+condiment | mild_curry+medium_curry+papadum+drink+condiment; hot_curry+house_special+rice_pilau+rice_special+sauce; biryani+rice_plain+naan_plain+naan_flav+starter_grill; tandoori_main+veg_side+fries+starter_fried+starter_other |
+| 2 | all_size | mild_curry+medium_curry+house_special+tandoori_main+sauce; hot_curry+veg_side+starter_other+drink; biryani+rice_pilau+rice_plain+rice_special+fries; naan_plain+naan_flav+bread_other+papadum+condiment | mild_curry+rice_pilau+rice_plain+rice_special+sauce; medium_curry+hot_curry+house_special+tandoori_main+starter_fried; biryani+veg_side+fries+starter_grill+drink; naan_plain+naan_flav+bread_other+papadum+condiment |
+
+## Joint log-likelihood (nats per order, 21 groups)
+
+| r | variant | M0 | M1 | CS-A | CS-R | M3 | M3 − CS-A | M3 − CS-R | M3 − M1 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | all | -10.483 | -9.929 | -10.156 | -10.126 | -9.977 | +0.178 [+0.154, +0.201] | +0.149 [+0.125, +0.173] | -0.049 [-0.057, -0.041] |
+| 1 | small | -8.525 | -7.485 | -8.015 | -8.133 | -7.907 | +0.107 [+0.037, +0.174] | +0.225 [+0.170, +0.284] | -0.422 [-0.477, -0.365] |
+| 1 | all_size | -9.925 | -9.290 | -9.568 | -9.580 | -9.398 | +0.170 [+0.135, +0.196] | +0.181 [+0.147, +0.210] | -0.109 [-0.127, -0.093] |
+| 2 | all | -10.653 | -10.033 | -10.340 | -10.254 | -10.078 | +0.262 [+0.239, +0.283] | +0.176 [+0.156, +0.194] | -0.045 [-0.052, -0.039] |
+| 2 | small | -7.828 | -6.883 | -7.536 | -7.639 | -7.282 | +0.254 [+0.184, +0.325] | +0.356 [+0.298, +0.416] | -0.399 [-0.457, -0.344] |
+| 2 | all_size | -10.066 | -9.357 | -9.660 | -9.684 | -9.451 | +0.208 [+0.191, +0.227] | +0.233 [+0.214, +0.252] | -0.095 [-0.107, -0.082] |
+
+## pairs: co-occurrence MAE, pts
+
+| r | variant | events | n | M0 | M1 | CS-A | CS-R | M3 | CS-A − M3 | CS-R − M3 | M1 − M3 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | all | all | 210 | 0.936 | 0.543 | 0.731 | 0.729 | 0.551 | +0.180 [+0.110, +0.232] | +0.178 [+0.120, +0.223] | -0.008 [-0.017, -0.000] |
+| 1 | all | CS-A span | 174 | 0.763 | 0.536 | 0.763 | 0.706 | 0.530 | +0.232 [+0.148, +0.297] | +0.176 [+0.105, +0.229] | +0.006 [-0.003, +0.016] |
+| 1 | all | CS-A within | 36 | 1.770 | 0.576 | 0.576 | 0.842 | 0.650 | -0.073 [-0.103, -0.060] | +0.193 [+0.149, +0.220] | -0.074 [-0.108, -0.057] |
+| 1 | all | CS-R span | 170 | 0.765 | 0.534 | 0.708 | 0.765 | 0.537 | +0.171 [+0.099, +0.228] | +0.228 [+0.156, +0.283] | -0.003 [-0.011, +0.007] |
+| 1 | all | CS-R within | 40 | 1.662 | 0.581 | 0.826 | 0.578 | 0.609 | +0.218 [+0.118, +0.276] | -0.031 [-0.064, -0.008] | -0.028 [-0.065, -0.007] |
+| 1 | small | all | 210 | 0.977 | 0.559 | 0.782 | 0.746 | 0.663 | +0.118 [+0.052, +0.170] | +0.083 [+0.040, +0.136] | -0.105 [-0.114, -0.071] |
+| 1 | small | CS-A span | 173 | 0.838 | 0.565 | 0.838 | 0.743 | 0.645 | +0.194 [+0.105, +0.246] | +0.098 [+0.043, +0.148] | -0.080 [-0.094, -0.049] |
+| 1 | small | CS-A within | 37 | 1.627 | 0.530 | 0.517 | 0.760 | 0.750 | -0.233 [-0.272, -0.130] | +0.009 [-0.025, +0.143] | -0.220 [-0.258, -0.117] |
+| 1 | small | CS-R span | 173 | 0.803 | 0.571 | 0.751 | 0.803 | 0.675 | +0.076 [+0.017, +0.124] | +0.128 [+0.067, +0.183] | -0.104 [-0.117, -0.072] |
+| 1 | small | CS-R within | 37 | 1.792 | 0.502 | 0.925 | 0.480 | 0.609 | +0.317 [+0.153, +0.425] | -0.129 [-0.166, -0.001] | -0.107 [-0.146, +0.008] |
+| 1 | all_size | all | 210 | 0.929 | 0.541 | 0.715 | 0.728 | 0.587 | +0.128 [+0.079, +0.169] | +0.141 [+0.093, +0.180] | -0.046 [-0.065, -0.022] |
+| 1 | all_size | CS-A span | 174 | 0.764 | 0.554 | 0.766 | 0.756 | 0.578 | +0.187 [+0.127, +0.233] | +0.177 [+0.123, +0.214] | -0.024 [-0.043, -0.005] |
+| 1 | all_size | CS-A within | 36 | 1.728 | 0.475 | 0.471 | 0.592 | 0.626 | -0.156 [-0.210, -0.074] | -0.034 [-0.111, +0.098] | -0.151 [-0.206, -0.077] |
+| 1 | all_size | CS-R span | 170 | 0.766 | 0.537 | 0.739 | 0.765 | 0.564 | +0.175 [+0.120, +0.213] | +0.201 [+0.143, +0.244] | -0.027 [-0.048, -0.008] |
+| 1 | all_size | CS-R within | 40 | 1.624 | 0.555 | 0.611 | 0.567 | 0.682 | -0.071 [-0.154, +0.037] | -0.115 [-0.150, -0.047] | -0.127 [-0.160, -0.060] |
+| 2 | all | all | 210 | 1.014 | 0.646 | 0.825 | 0.810 | 0.656 | +0.169 [+0.116, +0.225] | +0.153 [+0.102, +0.204] | -0.010 [-0.015, +0.003] |
+| 2 | all | CS-A span | 174 | 0.886 | 0.671 | 0.886 | 0.806 | 0.671 | +0.215 [+0.148, +0.280] | +0.135 [+0.080, +0.185] | -0.000 [-0.006, +0.011] |
+| 2 | all | CS-A within | 36 | 1.632 | 0.524 | 0.531 | 0.826 | 0.585 | -0.054 [-0.068, -0.003] | +0.241 [+0.153, +0.335] | -0.060 [-0.075, -0.008] |
+| 2 | all | CS-R span | 170 | 0.859 | 0.656 | 0.797 | 0.859 | 0.663 | +0.134 [+0.074, +0.185] | +0.196 [+0.125, +0.257] | -0.007 [-0.013, +0.003] |
+| 2 | all | CS-R within | 40 | 1.672 | 0.604 | 0.947 | 0.599 | 0.629 | +0.318 [+0.246, +0.432] | -0.030 [-0.043, +0.024] | -0.025 [-0.042, +0.026] |
+| 2 | small | all | 210 | 1.086 | 0.657 | 0.920 | 0.956 | 0.769 | +0.151 [+0.080, +0.181] | +0.187 [+0.123, +0.209] | -0.112 [-0.136, -0.097] |
+| 2 | small | CS-A span | 173 | 1.018 | 0.698 | 1.018 | 0.990 | 0.785 | +0.234 [+0.153, +0.271] | +0.206 [+0.136, +0.236] | -0.086 [-0.110, -0.067] |
+| 2 | small | CS-A within | 37 | 1.406 | 0.462 | 0.461 | 0.795 | 0.695 | -0.235 [-0.317, -0.197] | +0.100 [+0.018, +0.125] | -0.233 [-0.311, -0.189] |
+| 2 | small | CS-R span | 170 | 1.039 | 0.664 | 0.966 | 1.038 | 0.785 | +0.181 [+0.109, +0.213] | +0.253 [+0.182, +0.285] | -0.121 [-0.143, -0.100] |
+| 2 | small | CS-R within | 40 | 1.289 | 0.627 | 0.724 | 0.606 | 0.702 | +0.023 [-0.090, +0.098] | -0.095 [-0.175, -0.044] | -0.075 [-0.159, -0.022] |
+| 2 | all_size | all | 210 | 1.066 | 0.622 | 0.853 | 0.868 | 0.673 | +0.179 [+0.132, +0.223] | +0.195 [+0.149, +0.230] | -0.051 [-0.065, -0.028] |
+| 2 | all_size | CS-A span | 174 | 0.919 | 0.635 | 0.918 | 0.881 | 0.677 | +0.241 [+0.187, +0.286] | +0.203 [+0.149, +0.242] | -0.042 [-0.057, -0.021] |
+| 2 | all_size | CS-A within | 36 | 1.776 | 0.560 | 0.535 | 0.805 | 0.653 | -0.118 [-0.160, -0.046] | +0.152 [+0.094, +0.214] | -0.093 [-0.127, -0.033] |
+| 2 | all_size | CS-R span | 170 | 0.905 | 0.594 | 0.847 | 0.904 | 0.633 | +0.214 [+0.156, +0.255] | +0.270 [+0.212, +0.308] | -0.040 [-0.056, -0.017] |
+| 2 | all_size | CS-R within | 40 | 1.750 | 0.744 | 0.877 | 0.715 | 0.843 | +0.034 [-0.023, +0.124] | -0.128 [-0.157, -0.075] | -0.098 [-0.125, -0.054] |
+
+## triples: co-occurrence MAE, pts
+
+| r | variant | events | n | M0 | M1 | CS-A | CS-R | M3 | CS-A − M3 | CS-R − M3 | M1 − M3 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | all | all | 50 | 1.787 | 0.640 | 1.169 | 0.998 | 0.582 | +0.586 [+0.218, +0.856] | +0.416 [+0.086, +0.653] | +0.058 [-0.023, +0.101] |
+| 1 | all | CS-A span | 49 | 1.727 | 0.637 | 1.178 | 1.004 | 0.571 | +0.608 [+0.232, +0.883] | +0.433 [+0.097, +0.676] | +0.066 [-0.016, +0.110] |
+| 1 | all | CS-A within | 1 | 4.732 | 0.792 | 0.684 | 0.687 | 1.147 | -0.463 [-0.467, -0.442] | -0.460 [-0.463, -0.445] | -0.355 [-0.388, -0.316] |
+| 1 | all | CS-R span | 49 | 1.727 | 0.637 | 1.178 | 1.004 | 0.571 | +0.608 [+0.232, +0.883] | +0.433 [+0.097, +0.676] | +0.066 [-0.016, +0.110] |
+| 1 | all | CS-R within | 1 | 4.732 | 0.792 | 0.684 | 0.687 | 1.147 | -0.463 [-0.467, -0.442] | -0.460 [-0.463, -0.445] | -0.355 [-0.388, -0.316] |
+| 1 | small | all | 50 | 1.315 | 0.597 | 0.981 | 0.556 | 0.618 | +0.363 [+0.150, +0.500] | -0.062 [-0.193, +0.092] | -0.021 [-0.047, +0.023] |
+| 1 | small | CS-A span | 50 | 1.315 | 0.597 | 0.981 | 0.556 | 0.618 | +0.363 [+0.150, +0.500] | -0.062 [-0.193, +0.092] | -0.021 [-0.047, +0.023] |
+| 1 | small | CS-R span | 46 | 0.979 | 0.547 | 0.717 | 0.569 | 0.532 | +0.185 [-0.034, +0.333] | +0.037 [-0.141, +0.181] | +0.015 [-0.016, +0.035] |
+| 1 | small | CS-R within | 4 | 5.177 | 1.173 | 4.011 | 0.407 | 1.600 | +2.411 [+2.219, +2.471] | -1.193 [-1.247, +0.569] | -0.427 [-0.488, +0.051] |
+| 1 | all_size | all | 50 | 1.035 | 0.540 | 0.799 | 0.696 | 0.649 | +0.150 [-0.002, +0.271] | +0.047 [-0.090, +0.174] | -0.109 [-0.145, -0.035] |
+| 1 | all_size | CS-A span | 48 | 1.018 | 0.533 | 0.796 | 0.694 | 0.643 | +0.153 [-0.001, +0.282] | +0.051 [-0.082, +0.178] | -0.110 [-0.146, -0.034] |
+| 1 | all_size | CS-A within | 2 | 1.438 | 0.692 | 0.862 | 0.736 | 0.776 | +0.086 [-0.274, +0.098] | -0.039 [-0.738, +0.668] | -0.083 [-0.145, -0.024] |
+| 1 | all_size | CS-R span | 48 | 0.987 | 0.520 | 0.795 | 0.681 | 0.633 | +0.163 [+0.019, +0.280] | +0.049 [-0.095, +0.180] | -0.113 [-0.150, -0.035] |
+| 1 | all_size | CS-R within | 2 | 2.184 | 1.002 | 0.886 | 1.045 | 1.028 | -0.142 [-0.848, +0.597] | +0.017 [+0.002, +0.032] | -0.027 [-0.056, +0.080] |
+| 2 | all | all | 50 | 2.402 | 0.713 | 1.284 | 1.163 | 0.654 | +0.630 [+0.245, +0.930] | +0.509 [+0.171, +0.789] | +0.059 [+0.001, +0.109] |
+| 2 | all | CS-A span | 49 | 2.320 | 0.724 | 1.300 | 1.177 | 0.660 | +0.640 [+0.250, +0.953] | +0.517 [+0.164, +0.806] | +0.064 [+0.009, +0.105] |
+| 2 | all | CS-A within | 1 | 6.426 | 0.163 | 0.494 | 0.494 | 0.335 | +0.160 [-0.831, +0.832] | +0.160 [-0.831, +0.832] | -0.172 [-0.526, +0.518] |
+| 2 | all | CS-R span | 49 | 2.320 | 0.724 | 1.300 | 1.177 | 0.660 | +0.640 [+0.250, +0.953] | +0.517 [+0.164, +0.806] | +0.064 [+0.009, +0.105] |
+| 2 | all | CS-R within | 1 | 6.426 | 0.163 | 0.494 | 0.494 | 0.335 | +0.160 [-0.831, +0.832] | +0.160 [-0.831, +0.832] | -0.172 [-0.526, +0.518] |
+| 2 | small | all | 50 | 1.151 | 0.791 | 0.992 | 0.899 | 0.809 | +0.182 [+0.032, +0.260] | +0.089 [-0.046, +0.167] | -0.019 [-0.036, +0.018] |
+| 2 | small | CS-A span | 50 | 1.151 | 0.791 | 0.992 | 0.899 | 0.809 | +0.182 [+0.032, +0.260] | +0.089 [-0.046, +0.167] | -0.019 [-0.036, +0.018] |
+| 2 | small | CS-R span | 47 | 1.133 | 0.805 | 1.000 | 0.919 | 0.823 | +0.177 [+0.018, +0.258] | +0.096 [-0.046, +0.180] | -0.018 [-0.038, +0.018] |
+| 2 | small | CS-R within | 3 | 1.433 | 0.566 | 0.868 | 0.581 | 0.601 | +0.268 [+0.046, +0.399] | -0.020 [-0.252, +0.125] | -0.035 [-0.056, +0.138] |
+| 2 | all_size | all | 50 | 1.292 | 0.642 | 0.951 | 0.984 | 0.739 | +0.212 [+0.041, +0.401] | +0.246 [+0.096, +0.430] | -0.097 [-0.134, -0.029] |
+| 2 | all_size | CS-A span | 48 | 1.324 | 0.634 | 0.953 | 0.988 | 0.738 | +0.215 [+0.038, +0.412] | +0.250 [+0.095, +0.443] | -0.104 [-0.143, -0.033] |
+| 2 | all_size | CS-A within | 2 | 0.532 | 0.831 | 0.890 | 0.890 | 0.755 | +0.135 [+0.102, +0.160] | +0.135 [+0.102, +0.160] | +0.076 [+0.043, +0.112] |
+| 2 | all_size | CS-R span | 48 | 1.324 | 0.634 | 0.953 | 0.988 | 0.738 | +0.215 [+0.038, +0.412] | +0.250 [+0.095, +0.443] | -0.104 [-0.143, -0.033] |
+| 2 | all_size | CS-R within | 2 | 0.532 | 0.831 | 0.890 | 0.890 | 0.755 | +0.135 [+0.102, +0.160] | +0.135 [+0.102, +0.160] | +0.076 [+0.043, +0.112] |
+
+## bundles: co-occurrence MAE, pts
+
+| r | variant | events | n | M0 | M1 | CS-A | CS-R | M3 | CS-A − M3 | CS-R − M3 | M1 − M3 |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 1 | all | all | 546 | 0.439 | 0.297 | 0.377 | 0.366 | 0.288 | +0.089 [+0.042, +0.123] | +0.077 [+0.038, +0.104] | +0.008 [+0.002, +0.014] |
+| 1 | all | CS-A span | 527 | 0.424 | 0.294 | 0.379 | 0.366 | 0.286 | +0.093 [+0.045, +0.129] | +0.080 [+0.039, +0.108] | +0.009 [+0.002, +0.015] |
+| 1 | all | CS-A within | 19 | 0.855 | 0.364 | 0.322 | 0.368 | 0.363 | -0.042 [-0.059, -0.023] | +0.005 [-0.035, +0.044] | +0.001 [-0.031, +0.010] |
+| 1 | all | CS-R span | 525 | 0.410 | 0.286 | 0.364 | 0.359 | 0.278 | +0.086 [+0.042, +0.119] | +0.080 [+0.039, +0.109] | +0.007 [+0.001, +0.012] |
+| 1 | all | CS-R within | 21 | 1.166 | 0.579 | 0.699 | 0.546 | 0.538 | +0.161 [-0.052, +0.309] | +0.008 [-0.043, +0.046] | +0.041 [-0.008, +0.068] |
+| 1 | small | all | 546 | 0.351 | 0.232 | 0.284 | 0.285 | 0.267 | +0.017 [-0.003, +0.030] | +0.018 [+0.000, +0.035] | -0.035 [-0.044, -0.028] |
+| 1 | small | CS-A span | 516 | 0.320 | 0.218 | 0.274 | 0.264 | 0.247 | +0.027 [+0.004, +0.039] | +0.018 [-0.001, +0.031] | -0.029 [-0.039, -0.024] |
+| 1 | small | CS-A within | 30 | 0.880 | 0.477 | 0.462 | 0.638 | 0.614 | -0.152 [-0.189, -0.076] | +0.025 [-0.007, +0.160] | -0.137 [-0.161, -0.062] |
+| 1 | small | CS-R span | 534 | 0.323 | 0.228 | 0.265 | 0.284 | 0.261 | +0.005 [-0.016, +0.017] | +0.023 [+0.005, +0.040] | -0.033 [-0.043, -0.027] |
+| 1 | small | CS-R within | 12 | 1.571 | 0.420 | 1.103 | 0.311 | 0.530 | +0.573 [+0.455, +0.653] | -0.218 [-0.246, -0.014] | -0.110 [-0.137, -0.020] |
+| 1 | all_size | all | 546 | 0.463 | 0.286 | 0.367 | 0.369 | 0.311 | +0.056 [+0.027, +0.078] | +0.059 [+0.032, +0.081] | -0.025 [-0.039, -0.005] |
+| 1 | all_size | CS-A span | 525 | 0.458 | 0.287 | 0.373 | 0.374 | 0.310 | +0.062 [+0.030, +0.084] | +0.064 [+0.033, +0.085] | -0.023 [-0.039, -0.005] |
+| 1 | all_size | CS-A within | 21 | 0.607 | 0.253 | 0.227 | 0.259 | 0.324 | -0.097 [-0.122, +0.014] | -0.064 [-0.081, +0.079] | -0.071 [-0.099, +0.032] |
+| 1 | all_size | CS-R span | 527 | 0.453 | 0.281 | 0.368 | 0.367 | 0.307 | +0.061 [+0.029, +0.082] | +0.060 [+0.031, +0.082] | -0.025 [-0.041, -0.008] |
+| 1 | all_size | CS-R within | 19 | 0.757 | 0.408 | 0.343 | 0.439 | 0.424 | -0.081 [-0.123, +0.028] | +0.015 [-0.050, +0.140] | -0.016 [-0.052, +0.114] |
+| 2 | all | all | 546 | 0.461 | 0.326 | 0.428 | 0.403 | 0.316 | +0.112 [+0.066, +0.150] | +0.087 [+0.043, +0.120] | +0.009 [+0.004, +0.015] |
+| 2 | all | CS-A span | 540 | 0.458 | 0.324 | 0.427 | 0.401 | 0.315 | +0.112 [+0.066, +0.151] | +0.086 [+0.043, +0.119] | +0.009 [+0.003, +0.014] |
+| 2 | all | CS-A within | 6 | 0.720 | 0.483 | 0.454 | 0.546 | 0.389 | +0.065 [-0.006, +0.066] | +0.157 [-0.109, +0.354] | +0.094 [+0.020, +0.103] |
+| 2 | all | CS-R span | 534 | 0.445 | 0.319 | 0.419 | 0.399 | 0.311 | +0.108 [+0.065, +0.143] | +0.088 [+0.044, +0.123] | +0.008 [+0.003, +0.012] |
+| 2 | all | CS-R within | 12 | 1.142 | 0.606 | 0.832 | 0.548 | 0.539 | +0.293 [+0.035, +0.539] | +0.009 [-0.046, +0.099] | +0.068 [+0.056, +0.147] |
+| 2 | small | all | 546 | 0.397 | 0.218 | 0.339 | 0.349 | 0.275 | +0.064 [+0.034, +0.070] | +0.074 [+0.046, +0.078] | -0.057 [-0.066, -0.050] |
+| 2 | small | CS-A span | 526 | 0.382 | 0.217 | 0.343 | 0.345 | 0.270 | +0.073 [+0.042, +0.079] | +0.075 [+0.047, +0.079] | -0.053 [-0.062, -0.046] |
+| 2 | small | CS-A within | 20 | 0.793 | 0.249 | 0.220 | 0.441 | 0.400 | -0.179 [-0.265, -0.137] | +0.042 [-0.041, +0.069] | -0.151 [-0.241, -0.105] |
+| 2 | small | CS-R span | 514 | 0.370 | 0.206 | 0.324 | 0.347 | 0.259 | +0.065 [+0.035, +0.071] | +0.088 [+0.059, +0.093] | -0.053 [-0.061, -0.046] |
+| 2 | small | CS-R within | 32 | 0.835 | 0.414 | 0.568 | 0.373 | 0.531 | +0.038 [-0.047, +0.088] | -0.158 [-0.218, -0.091] | -0.117 [-0.181, -0.057] |
+| 2 | all_size | all | 546 | 0.538 | 0.308 | 0.466 | 0.462 | 0.345 | +0.121 [+0.090, +0.140] | +0.117 [+0.093, +0.134] | -0.037 [-0.049, -0.017] |
+| 2 | all_size | CS-A span | 530 | 0.542 | 0.309 | 0.472 | 0.467 | 0.350 | +0.123 [+0.093, +0.142] | +0.117 [+0.093, +0.135] | -0.041 [-0.052, -0.020] |
+| 2 | all_size | CS-A within | 16 | 0.395 | 0.272 | 0.242 | 0.314 | 0.191 | +0.052 [-0.007, +0.095] | +0.123 [-0.024, +0.254] | +0.081 [+0.030, +0.122] |
+| 2 | all_size | CS-R span | 526 | 0.532 | 0.300 | 0.459 | 0.461 | 0.338 | +0.120 [+0.093, +0.137] | +0.123 [+0.098, +0.141] | -0.038 [-0.050, -0.018] |
+| 2 | all_size | CS-R within | 20 | 0.694 | 0.507 | 0.653 | 0.497 | 0.523 | +0.130 [-0.020, +0.280] | -0.027 [-0.088, +0.030] | -0.016 [-0.068, +0.031] |
+
+## Observed top-10 bundles: MAE, pts
+
+| r | variant | top 10 spanning CS-A / CS-R blocks | M1 | CS-A | CS-R | M3 | CS-A − M3 | CS-R − M3 | M1 − M3 |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | all | 10 / 8 | 0.65 | 1.92 | 1.64 | 0.62 | +1.31 [+0.64, +1.67] | +1.02 [+0.57, +1.26] | +0.04 [-0.02, +0.17] |
+| 1 | small | 6 / 7 | 1.29 | 2.19 | 1.70 | 1.40 | +0.79 [+0.43, +0.87] | +0.30 [-0.06, +0.51] | -0.10 [-0.21, -0.02] |
+| 1 | all_size | 9 / 9 | 0.69 | 1.22 | 1.22 | 0.63 | +0.59 [+0.12, +0.96] | +0.60 [+0.12, +0.96] | +0.06 [-0.09, +0.17] |
+| 2 | all | 10 / 8 | 1.24 | 1.72 | 1.36 | 1.20 | +0.53 [+0.02, +1.03] | +0.16 [-0.15, +0.53] | +0.04 [+0.02, +0.18] |
+| 2 | small | 9 / 7 | 1.42 | 2.56 | 2.08 | 1.29 | +1.27 [+0.71, +1.45] | +0.79 [+0.24, +1.01] | +0.13 [-0.17, +0.26] |
+| 2 | all_size | 9 / 8 | 1.16 | 1.54 | 1.41 | 1.18 | +0.36 [+0.02, +0.72] | +0.23 [+0.02, +0.47] | -0.02 [-0.13, +0.05] |

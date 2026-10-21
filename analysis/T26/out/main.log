@@ -1,0 +1,22 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-BZ3Ny8nMvN2eK0QZjvVrvR
+✓ Created objects.
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T26/out/pilot_high_summary.json
+├── 🔨 Created mount /home/ubuntu/projects/boaz/modal/orthant.py
+├── 🔨 Created mount 
+│   /home/ubuntu/projects/orthant_rfc/analysis/T26/out/pilot_moderate_summary.js
+│   on
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T25/ga.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T26/t26.py
+├── 🔨 Created function main_run.<locals>.screen_small.
+├── 🔨 Created function main_run.<locals>.screen_dense.
+├── 🔨 Created function main_run.<locals>.ref.
+└── 🔨 Created function main_run.<locals>.truevals.
+[00:59:40] spawned 126 screen runs + 0 references
+Container terminated due to preemption. For more details, see https://modal.com/docs/guide/preemption
+[01:03:37] screens collected (260 s)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-BZ3Ny8nMvN2eK0QZjvVrvR
+[01:03:52] main run done in 275 s; spend ~$0.21

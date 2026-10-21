@@ -1,0 +1,27 @@
+{
+ "truth": "stress",
+ "cluster": 3,
+ "label": "assumed",
+ "weights": {
+  "near_dup": 0.5,
+  "mfr": 0.25
+ },
+ "share_pairs_rho_gt_0p3": 0.08248587570621468,
+ "n_near_dup_pairs": 146,
+ "rho_near_dup_median": 0.5,
+ "rho_median": 0.0,
+ "rho_max": 0.5,
+ "cond": 14.821825380496502,
+ "K": 9,
+ "w": [
+  0.1057,
+  0.5133,
+  0.1075,
+  0.0361,
+  0.0588,
+  0.0338,
+  0.0366,
+  0.0775,
+  0.0307
+ ]
+}

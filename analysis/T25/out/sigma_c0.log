@@ -1,0 +1,3 @@
+[17:20:27] cluster 0: 141 store-month groups, 1915 (group, choice) cells, dims 6-28, K = 10
+[17:20:31] cluster 0: LL at Sigma = I -13519.0 (3.4 s per evaluation)
+[17:28:55] cluster 0: {"cluster": 0, "factors": ["near_dup", "mfr", "sub"], "weights": [0.0, 0.0, 0.0], "ll": -13518.990083385814, "ll_identity": -13518.990083385816, "lr_vs_identity": 3.637978807091713e-12, "evals": 107, "profile_dLL": {"near_dupx0.0": 0.0, "near_dupx0.5": 0.0, "near_dupx2.0": 0.0, "mfrx0.0": -0.0, "mfrx0.5": 0.0, "mfrx2.0": -0.0, "subx0.0": 0.0, "subx0.5": 0.0, "subx2.0": 0.0}}

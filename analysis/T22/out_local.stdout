@@ -1,0 +1,7 @@
+all_s0: n 468, NL lambda 0.75, HB 43 s, RFC-S sigma_l 2.769 g 0.940 []
+100_s0: n 100, NL lambda 1.00, HB 10 s, RFC-S sigma_l 2.296 g 1.377 []
+100_s1: n 100, NL lambda 0.41, HB 10 s, RFC-S sigma_l 2.064 g 0.451 []
+100_s2: n 100, NL lambda 0.22, HB 10 s, RFC-S sigma_l 1.889 g 0.869 []
+200_s0: n 200, NL lambda 0.61, HB 19 s, RFC-S sigma_l 2.069 g 1.815 []
+200_s1: n 200, NL lambda 0.85, HB 19 s, RFC-S sigma_l 1.567 g 1.391 []
+200_s2: n 200, NL lambda 0.66, HB 19 s, RFC-S sigma_l 1.749 g 2.292 []

@@ -1,6 +1,6 @@
 # Where the advantage is
 
-Last updated 2026-10-19 (through T20). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
+Last updated 2026-10-21 (through T27). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
 `analysis/T<n>/TEST.md`.
 
 The project is about scale: unlocking problems that are too big or too slow for the incumbents, (1) with the
@@ -17,19 +17,22 @@ method) and is now practical, and it beats the incumbent at something.
 - **Model**: the probit model itself (MVP for pick-any, MNP for single choice), whose correlated errors represent
   near-duplicates and linked items that logit IIA and coded subsets cannot.
 - **GPU**: the probit fit on a GPU (GHK likelihood in torch on Modal), which makes a slow fit practical.
-- **Engine**: the analytic orthant approximation, used for scoring and screening decisions, not for fitting.
+- **Engine**: the analytic orthant approximation, used for scoring and screening decisions, and (exploratory, T27)
+  as the likelihood of a cross-sectional MNP fit. Panel likelihoods with respondent random effects stay with GHK.
 
 ## At a glance
 
 | problem | source | incumbent: time / error | ours: time / error | enabled | beats the incumbent at |
 |---|---|---|---|---|---|
-| **MBC beyond the coded-subset cap**, k = 6–30 linked items | Model | coded subsets: combinations grow as 2^k, capped near k = 5. Flips 146 of 240 decisions at k = 6–12 (T2), 207 of 240 at k = 20–30 (T14) | MVP by IFM, CPU, seconds. Flips 28 of 240 (T2), 50 of 240 (T14) | **yes** | decisions: 118–157 fewer flips of 240 (sim); real holdouts back MVP 4–0 (T3, 8 items) and 3–0 (T14, 24 items) |
+| **MBC beyond the coded-subset cap**, k = 6–30 linked items | Model | coded subsets: combinations grow as 2^k, capped near k = 5. Flips 146 of 240 decisions at k = 6–12 (T2), 207 of 240 at k = 20–30 (T14) | MVP by IFM, CPU, seconds. Flips 28 of 240 (T2), 50 of 240 (T14) | **yes** | decisions: 118–157 fewer flips of 240 (sim); real holdouts back MVP 4–0 (T3, 8 items) and 3–0 (T14, 24 items); real takeaway baskets, 21 groups vs coded subsets over all of them: +0.11 to +0.36 nats per order, top-10 bundles 0.16–1.31 pts closer (T21) |
 | **Shelf CBC, multinomial probit**, J = 20, N = 1,000, 12 tasks | Model + GPU; engine screens the decision search | HB-MNL + RFC-S, CPU: 3–4 min | MNP before T18: 4.5 h (L4), 19–27 min (H100). After T18: **0.35–2.2 min on an H100**, $0.02–0.15 per fit | **yes** (T18) | assortment regret 1.85 pts lower, 95% CI [1.30, 2.40] (T15, sim, 5 datasets). Real shelves (Trivago, J = 25, 20k-user panel, T24): no error correlation beyond tastes; MVP ties a panel mixed logit (±0.007 nats per choice) |
-| **Small CBC**, J ≤ 6, mixed MNP | Model | HB-MNL + RFC-S: about 5% cost regret at every N from 50 to 1,500, a bias floor that more respondents do not lower | MVP fit 10–30 s on a T4 at N = 50–200; 0.2–1.6% cost regret already at **N = 50** | — | decisions at any sample size: RFC-S at N = 1,500 is still worse than MVP at N = 50, so the sample-size ratio is unbounded (> 30× at N = 50, grid-limited) (T20, sim); recovers σ and the error correlation that RFC gets wrong by construction (T1) |
-| **Dependence across subsets in decision search** (choose m of N: baskets in MBC, assortments in shelf CBC) | Model + engine | the analyst declares groups before the fit (coded subsets in MBC; nests, or RFC's attribute errors, in CBC) and independence across them; each candidate is then a cheap closed form | the full error correlation is estimated, so no grouping is declared; each candidate is one orthant per item or pattern, and the engine makes brute-force search over candidates practical (3.6–20× OVUS, T15; about 500× QMC, T2) | — | decisions on candidates that span groups: MBC T2/T14 (118–157 fewer flips of 240); CBC vs RFC T15/T20. Not vs a structural nested logit (untested); a cross-effects logit that estimates every pair tied MVP (T19) |
+| **Small CBC**, J ≤ 6, mixed MNP | Model | HB-MNL + RFC-S: about 5% cost regret at every N from 50 to 1,500, a bias floor that more respondents do not lower | MVP fit 10–30 s on a T4 at N = 50–200; 0.2–1.6% cost regret already at **N = 50** | — | decisions at any sample size: RFC-S at N = 1,500 is still worse than MVP at N = 50, so the sample-size ratio is unbounded (> 30× at N = 50, grid-limited) (T20, sim); recovers σ and the error correlation that RFC gets wrong by construction (T1). Real stated choice (Swissmetro, J = 3, T22): MVP best holdout log-likelihood at N = 100–468 but by only 0.001–0.043 nats per choice over RFC-S; no error correlation in that data, so no floor |
+| **Dependence across subsets in decision search** (choose m of N: baskets in MBC, assortments in shelf CBC) | Model + engine | the analyst declares groups before the fit (coded subsets in MBC; nests, or RFC's attribute errors, in CBC) and independence across them; each candidate is then a cheap closed form | the full error correlation is estimated, so no grouping is declared; each candidate is one orthant per item or pattern, and the engine makes brute-force search over candidates practical (3.6–20× OVUS, T15; about 500× QMC, T2) | — | decisions on candidates that span groups: MBC T2/T14 (118–157 fewer flips of 240); real MBC (T21, takeaway baskets): coded subsets equal independence on pairs that span blocks, where MVP is 0.13–0.27 pts better; inside a block coded subsets are 0.03–0.24 pts better. CBC vs RFC T15/T20. Not vs a structural nested logit (untested); a cross-effects logit that estimates every pair tied MVP (T19) |
 | **Orthant screening in decision search** (population shares, dim = shelf size) | Engine | OVUS | engine **3.6–20× faster** at equal decision adequacy, gap growing with dimension (T15) | — | speed. Real d = 24 shelf shares (Trivago, T24): "high" 2.4× OVUS with lower median \|ΔP\| (0.0011 vs 0.0036); "highest" 0.00024, the only method with max share error under 0.005 |
-| **Scoring pattern probabilities** on a near-singular Σ, d = 8–16 | Engine | OVUS: 1.8–3.2e-4 s/row, median \|ΔP\| 0.0007–0.0015. SciPy: 1.1–1.8 s/row | engine "high": **3–6e-5 s/row**, median \|ΔP\| 0.0034–0.0048; "highest": 0.9–2.0e-4 s/row, 0.0022–0.0029 | — | speed: 5–6× OVUS, 28,000–37,000× SciPy ([mvprobit benchmarks](https://github.com/sign-of-fourier/multivariate-probit/blob/main/docs/benchmarks.md); engine times remeasured 2026-10-19) |
+| **Scoring pattern probabilities** on a near-singular Σ, d = 8–16 | Engine | OVUS: 1.8–3.2e-4 s/row, median \|ΔP\| 0.0007–0.0015. SciPy: 1.1–1.8 s/row | engine "high": **3–6e-5 s/row**, median \|ΔP\| 0.0034–0.0048; "highest": 0.9–2.0e-4 s/row, 0.0022–0.0029 | — | speed: 5–6× OVUS, 28,000–37,000× SciPy ([mvprobit benchmarks](https://github.com/sign-of-fourier/multivariate-probit/blob/main/docs/benchmarks.md); engine times remeasured 2026-10-19). **Real d = 21 (T21, takeaway basket patterns, median P 5e-5): 3× OVUS, but median \|ΔP\| 1.2–1.5e-5 vs OVUS 0.4–1.5e-6, and "high" returns P = 0 on 4 of 200: fails the accuracy guard for likelihood scoring** |
 | **Few high-dimensional decision queries** (MBC) | Engine | QMC | engine about **500× faster** (T2) | — | speed |
+| **Brand-side line and build-and-place search** (GA over lines of up to 6 in 5 store clusters; orthants of d = 18–31) | Model; engine as the GA's evaluator | logit (LC-MNL share of preference): 0.91 / 2.32% regret at 300 s (est / stress truth). RFC on 8 CPU cores: 2.49 / 3.60% | MNP, engine on a T4: **0.35 / 0.75%** at 300 s; 0.35 / 1.87% already at 60 s, where GHK on 8 cores is at 2.08 / 4.50% | — | decisions (T25, dunnhumby soft drinks, 2 seeds, every gap under 3 $ per 1,000 trips). Logit keeps more near-duplicate client SKUs on the same shelf: cannibalization 15–31% vs 13–25% under the stress truth |
+| **MNP likelihood evaluation** (one choice orthant per row, d = J − 1 = 4–64) | Engine | OVUS (MACML's approximation), same CPU core: 104 µs → 1.4 ms per row, median \|ΔP\| 5e-4 → 2.4e-3 | engine "highest": **49 µs → 1.4 ms**, median \|ΔP\| 2e-4 → 4e-5 | — | speed 1.5–2.1× OVUS up to d = 32 (equal at 64) and lower error at every d; GHK needs 6–23× the engine's time for the same accuracy from d = 16; SciPy 1.9 s per row at d = 64. An engine fit (J = 5) is within 0.28–0.33 SE of the GHK MLE (T27, sim, exploratory). Near-substitute nests need a prototype fix, below |
 
 ## CBC
 
@@ -57,6 +60,19 @@ method) and is now practical, and it beats the incumbent at something.
 - **Why it should win.** More SKUs mean more near-duplicates for IIA to mishandle, and the search space grows
   combinatorially, which is where the engine's 3.6–20× screening speed over OVUS pays.
 - **Open.** One J = 60 recovery miss, likely that dataset; a second dataset settles it before the T4 run.
+
+### Brand-side line and build-and-place search (T25)
+
+- **Source.** Model; the engine is the GA's evaluator.
+- **Speed/scale.** Same GA, same wall-clock budget, only the share evaluator differs. Shelves of 17–25 competitors
+  plus a line of up to 6 give orthants of d = 18–31. In 60 s the engine (T4) completes about 18k shelf evaluations
+  and 600 generations; GHK on 8 CPU cores completes 11k and about 50.
+- **Win.** Regret at 300 s, estimated / stress truth: engine 0.35 / 0.75%, logit 0.91 / 2.32%, RFC (CPU) 2.49 /
+  3.60%. The engine leads GHK early (0.35 vs 2.08% at 60 s on the estimated truth); GHK ties by 300 s on the
+  estimated truth and is still behind on stress (1.52%). Logit and RFC are limited by the model, not the hardware:
+  RFC on a T4 lands where RFC on CPU does.
+- **Caveats.** Two seeds (ranges, no CIs). Every gap is under 3 $ per 1,000 trips. The estimated truth has Σ = I,
+  so its probit-vs-logit gap is the error distribution only; the stress truth is assumed.
 
 ### Small CBC, J ≤ 6
 
@@ -124,8 +140,24 @@ method) and is now practical, and it beats the incumbent at something.
   0.9–2.0e-4 s/row (0.0022–0.0029), OVUS 1.8–3.2e-4 s/row (0.0007–0.0015), SciPy 1.1–1.8 s/row. All three
   approximations sit inside a 0.005 decision floor at the median.
 - **High-dimensional queries.** About 500× faster than QMC for a few high-dimensional MBC decision queries (T2).
+- **MNP likelihood (T27, exploratory).** On one CPU core, "highest" costs 49 µs → 1.4 ms per choice row at
+  d = 4–64, against OVUS 104 µs → 1.4 ms, with lower |ΔP| at every d (2e-4 → 4e-5 vs 5e-4 → 2.4e-3). Matching its
+  accuracy costs GHK 6–23× the time from d = 16. An L-BFGS fit converges in 35–36 iterations and lands within
+  0.28–0.33 SE of the GHK MLE (J = 5, N = 1,000).
+  - Near-substitute nests (correlation near 1) are the weak case for the release engine: up to 5 SE bias on a
+    3-alternative nest at r = 0.97. A private prototype with an exact rewrite of analyst-declared nests brings every
+    case tested to 0.06–0.21 SE, where OVUS reaches 5.35 SE on a 3-alternative nest at r = 0.9. Each rewritten term
+    is a within-nest winner's probability, so near-substitutes stay in the model rather than being dropped.
 - **Its niche.** Many high-dimensional queries in a huge search space, where speed is a sample-size multiplier at a
-  fixed budget. Decision scoring, not likelihoods: panel likelihoods stay with GHK.
+  fixed budget, and cross-sectional MNP likelihoods (T27). Panel likelihoods with respondent random effects stay
+  with GHK (T18).
+- **Boundary.**
+  - Against a shared-draw simulator on an exactly enumerable shelf problem, on one core, the simulator's screen
+    reaches the exact optimum in 68–75 s; the engine's screen takes about 200 s or stalls 0.26% short (T26). In a
+    GA under a fixed wall-clock budget on a T4, the engine ended at least as good as the simulator, which stalls
+    on sampling noise (T25).
+  - Sign-frustrated and low-rank small-P matrices (MVP-like patterns) can come back at P ≤ 0, where OVUS and GHK do
+    not (T21, T27). MNP choice orthants are mostly positive.
 
 ## Candidates (untested)
 
@@ -137,6 +169,7 @@ higher.
 | **HB-MVP for stated MBC** (respondent random effects) | Model + GPU | Medium–high. The T2/T14 wins should carry over, and individual pick-any patterns are no longer pooled. The per-respondent panel likelihood is the same compute problem T18 solved for MNP (one orthant per respondent, tastes integrated analytically) | T14-style simulation with respondent heterogeneity, against HB coded subsets |
 | **Real stated MBC** (designed menus, not baskets) | Model | Likely the T14 pattern. Menus are designed and prices randomised, so cleaner evidence than revealed baskets | a real stated MBC dataset with a holdout |
 | **Shelf CBC vs an estimated nested / cross-nested logit** | Model | Medium. A single nest tree cannot hold similarity on crossed attributes; a cross-nested logit can, but its allocations are declared by hand, which is the across-subsets problem again. The T19 tie says an incumbent that estimates the dependence can match MVP | T20 or T15 data with a nested logit (one tree per attribute) and a cross-nested logit fitted to the choices |
+| **MNP fit with the engine as the likelihood**, large J, declared nests | Engine | Medium. T27 beats OVUS on one CPU core at d = 4–64 and lands within 0.3 SE of the GHK MLE at J = 5; the nest prototype handles near-substitutes. Untested at scale, on a GPU, on real data, or against a full MACML fit's wall time | a T27-style fit at J = 20–60 against MACML (OVUS) and GHK, time to the same SE-level accuracy |
 | **HB-MNP / HB-MVP by Gibbs** (fully Bayesian) | GPU | Medium. Gibbs data augmentation is truncated-normal draws, which parallelise on a GPU; the model case is the same as the frequentist fits above | timing against a CPU Gibbs sampler at J = 20 |
 
 ## The common thread
