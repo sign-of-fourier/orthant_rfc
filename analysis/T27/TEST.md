@@ -1,6 +1,7 @@
 # T27 · The engine as an MNP likelihood: fitting, same-hardware speed, near-substitute nests
 
-Status 2026-10-21: exploratory (no kill criteria; user-directed quick checks). All runs local, one CPU core, $0.
+Status 2026-10-21, follow-up 2026-10-22: exploratory (no kill criteria; user-directed quick checks). All runs local,
+one CPU core, $0.
 
 ## Question
 
@@ -25,6 +26,8 @@ Can the engine replace simulation inside a multinomial probit (MNP) fit? Three p
 - Reference: GHK with 2^14–2^16 scrambled-Sobol draws.
 - Engine resolutions: "low", "high", "highest" (the public names). A prototype setting with smooth near-duplicate
   handling, and an exact rewrite of analyst-declared nests, were also tested (both private, not in any release).
+  From the 2026-10-22 follow-up on, the prototype is called **the fast engine** and "highest" **the release
+  engine**.
 - Bias metric: the score-implied first-order bias of θ̂, −I⁻¹ (mean engine score − mean GHK score) at the true θ,
   in units of the GHK SE at N = 1,000. This bias does not shrink with N, so 0.3 SE at N = 1,000 is about 1 SE at
   N = 10,000.
@@ -101,6 +104,86 @@ for the engine). Median |ΔP| vs GHK 2^16.
 - **Smoothness:** the prototype (no cutoffs), OVUS and fixed-draw GHK are smooth on both scans; the release engine
   jumps at its cutoffs.
 
+## Follow-up (2026-10-22): J = 10, bias against the truth, matched error metrics
+
+### Bias against the known truth (no reference integrator)
+
+The data are simulated, so the true parameters are known, and an exact likelihood has zero mean score there. On one
+large simulated sample, −I⁻¹ × (a method's mean score at the truth) is that method's large-sample bias, with no GHK
+reference and no fitting. N = 50,000 (about 50 datasets of 1,000; noise about ±0.14 SE); bias in SE at N = 1,000.
+J = 10 (d = 9), one 3-alternative nest, **no nest declared**; minutes per method on one core.
+
+Full covariance (47 parameters), r = 0.97:
+
+| | worst parameter | part-worths | covariance (median) | differenced nest correlation (true 0.981) |
+|---|---|---|---|---|
+| fast engine | **0.42** | ≤ 0.11 | 0.14 | 0.976–0.982 |
+| release engine | 1.05 | ≤ 0.06 | 0.15 | 0.978–0.984 |
+| OVUS | 0.48 | ≤ 0.15 | 0.16 | 0.974–0.981 |
+
+Restricted model (3 part-worths, the nest correlation r, the nest standard deviation):
+
+| true r | fast engine: r → (worst) | release engine | OVUS | SE of r at N = 1,000 |
+|---|---|---|---|---|
+| 0.97 | 0.966 (0.38) | 0.976 (0.65) | 0.967 (0.42) | ~0.01 |
+| 0.9 | 0.888 (0.36) | 0.901 (0.24) | 0.895 (0.50) | ~0.03 |
+
+- The fast engine is never the worst and matches OVUS; part-worths are essentially unbiased for all three.
+- The release engine is best at r = 0.9 and worst near 0.97, where its near-duplicate cutoff sits.
+
+### J = 10 with the GHK-based bias metric (N = 1,000, 47 parameters)
+
+| r | release engine | fast engine | fast engine + nest rewrite |
+|---|---|---|---|
+| 0.97 | 1.87 | **0.64** | 0.88 |
+| 0.9 | **0.35** | 0.55 | 1.02 |
+
+- At J = 10 the nest rewrite is worse than the fast engine alone; at J = 5–6 it was better. The rewritten terms
+  are farther from the engine's base case when many alternatives sit outside the nest.
+- A discrete internal choice in the engine flipped under 1e-5 parameter changes on the rewritten terms, so the
+  rewrite was not smooth until that choice was fixed by the model structure (the numbers above use the fix).
+
+### Actual fit at J = 10 (abandoned)
+
+- Release engine: L-BFGS stalled at a log-likelihood below the truth's (−1376.10 vs −1372.52): its cutoff makes
+  the likelihood jump, and finite-difference gradients go wrong there.
+- Fast engine: L-BFGS stopped on a line-search failure after 30 iterations (finite-difference gradient noise or the
+  overflow warning below; not diagnosed).
+- The GHK polish diverged (undamped BHHH). Replaced by the truth-based check above.
+
+### Probability error vs d, same metrics for every method
+
+The speed benchmark's rows (random Ω, 200 per d), vs GHK 2^16. Per row |ΔP| = |P − P_ref| and
+|Δlog P| = |log P − log P_ref|; median and 90th percentile across rows.
+
+| d | fast engine \|ΔP\| med / p90 | OVUS \|ΔP\| med / p90 | fast engine \|Δlog P\| med / p90 | OVUS \|Δlog P\| med / p90 |
+|---|---|---|---|---|
+| 4 | 1.1e-4 / 5.0e-4 | 5.0e-4 / 2.0e-3 | 3.5e-4 / 2.1e-3 | 1.2e-3 / 1.1e-2 |
+| 8 | 1.8e-4 / 5.3e-4 | 1.1e-3 / 4.0e-3 | 9.2e-4 / 3.3e-3 | 3.5e-3 / 2.8e-2 |
+| 16 | 2.5e-4 / 7.6e-4 | 1.9e-3 / 4.8e-3 | 1.8e-3 / 7.2e-3 | 1.3e-2 / 4.7e-2 |
+| 32 | 7.0e-5 / 2.3e-4 | 2.5e-3 / 5.3e-3 | 6.5e-4 / 1.9e-3 | 2.2e-2 / 0.13 |
+| 64 | 4.0e-5 / 1.6e-4 | 2.4e-3 / 6.5e-3 | 6.1e-4 / 3.0e-3 | 3.1e-2 / 0.23 |
+
+- The release engine is within 1e-4 of the fast engine here (random Ω has no near-1 pairs).
+- OVUS's relative error grows with d; its absolute error levels off because P falls (median P 0.44 → 0.07). The
+  likelihood sums log P, so the log error is what a fit sees.
+- At d = 64 the engine's error is close to the GHK 2^16 reference's own noise.
+
+### Speed, both engines (one core, per row)
+
+| d | release engine | fast engine | OVUS |
+|---|---|---|---|
+| 4 | 49 µs | ~45 µs | 104 µs |
+| 8 | 81 µs | ~75 µs | 174 µs |
+| 16 | 191 µs | ~190 µs | 326 µs |
+| 32 | 437 µs | ~540 µs | 630 µs |
+| 64 | 1.4 ms | ~2.0 ms | 1.4 ms |
+
+- The fast engine's times are the release engine's times × its measured cost ratio (0.88× at d = 6, 0.95× at 12,
+  1.24× at 32, 1.46× at 64), not separate timings.
+- The fast engine is about 2.3× faster than OVUS at d = 8, 1.2× at 32, and about 1.5× slower at 64 (crossover
+  around d ≈ 45, extrapolated); it stays more accurate at every d.
+
 ## Open items
 
 - **Warning:** at r = 0.99 the prototype raised an exp overflow in an intermediate that the sum does not use;
@@ -121,6 +204,10 @@ for the engine). Median |ΔP| vs GHK 2^16.
 - Cross-sectional MNP only. Panel likelihoods with respondent random effects (T18's 240-dimensional orthant)
   stay with GHK.
 - The nested BHHH polish was not fully converged (last step up to 0.1 SE).
+- Follow-up: the truth-based check covers J = 10 only, linearized, one nest structure; each method's SE uses its own
+  information matrix (OVUS's r SE at r = 0.9 is about half the engines'). The fast engine's weak J = 5–6 cases
+  (0.68, 0.85, 1.07) are GHK-based and not yet rechecked against the truth. Untested: r = 0.99 at J = 10, several
+  nests at J = 10, fitting bias at d ≥ 20.
 - CPU timings are numpy on one core; no GPU comparison was run.
 
 ## Code
