@@ -195,7 +195,7 @@ def mnp_fit(prices, y, levels, th_true, M=GHK_M, bc=False, start=None):
 # the second half.
 # ---------------------------------------------------------------------------
 @app.function(image=gpu_image, gpu="T4", timeout=2 * 3600)
-def hb_fit(prices, y, seed, iters=HB_ITERS, keep=10):
+def hb_fit(prices, y, seed, iters=HB_ITERS, keep=10, draws=0):
     import torch
 
     dev = torch.device("cuda")
@@ -217,7 +217,8 @@ def hb_fit(prices, y, seed, iters=HB_ITERS, keep=10):
     rho = 0.1
     ll = loglik(B)
     t0 = time.time()
-    acc_hist, llh, Bsum, nk = [], [], torch.zeros(n, P, device=dev), 0
+    acc_hist, llh, Bsum, nk, Bd = [], [], torch.zeros(n, P, device=dev), 0, []
+    every = max(1, (iters - iters // 2) // draws) if draws else 0
     for it in range(iters):
         L = torch.linalg.cholesky(D)
         Di = torch.cholesky_inverse(L)
@@ -242,8 +243,13 @@ def hb_fit(prices, y, seed, iters=HB_ITERS, keep=10):
             if it >= iters // 2:
                 Bsum += B
                 nk += 1
-    return dict(B=(Bsum / nk).cpu().numpy(), loglike=np.array(llh), accept=float(np.mean(acc_hist[iters // 2:])),
-                rho=rho, alpha=alpha.cpu().numpy(), seconds=time.time() - t0)
+        if draws and it >= iters // 2 and (it - iters // 2) % every == 0 and len(Bd) < draws:
+            Bd.append(B.half().cpu().numpy())
+    out = dict(B=(Bsum / nk).cpu().numpy(), loglike=np.array(llh), accept=float(np.mean(acc_hist[iters // 2:])),
+               rho=rho, alpha=alpha.cpu().numpy(), seconds=time.time() - t0)
+    if draws:
+        out["draws"] = np.stack(Bd)                          # (draws, n, P), float16, evenly over the second half
+    return out
 
 
 def run_fit(reps, tags, arms, bc=False):

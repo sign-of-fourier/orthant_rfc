@@ -1,0 +1,10 @@
+✓ Initialized. View run at 
+https://modal.com/apps/markshipman4273/main/ap-qDZmXNFmDWMWbakZKpvXgG
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+└── 🔨 Created function fit_task.
+[20:11:06] fit est J=60 r0: 3.7 min, 242 iter / 264 evals, nll 44068.3, grad max 4.18e+00
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/markshipman4273/main/ap-qDZmXNFmDWMWbakZKpvXgG

@@ -187,13 +187,16 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 
 ### Closed
 
-- **T31 · B5, MNP fit at large J vs HB-MNL: Part A PASS, Part B PASS at m = 6 (2026-10-23).**
-  - Per-task probit fit (GHK-1k, H100) at J = 20 / 40 / 60: 1.1–1.8 / 6.5–7.1 / 8.6–15 min. HB-MNL misplaces
-    1.6–2.2× MNP's holdout share in all 14 fits. Line + price decision, 10 reps: 1–2% more profit than HB-MNL + SoP
-    at m = 6 (Holm p 0.02, both truths), 2–4% more than + RFC-S; not shown at m = 8 vs SoP. A calibrated
-    compartmentalized incumbent (one study per pack format) is no better than full-shelf HB-MNL.
-  - Sawtooth is limited to logit by its software, not by J or m; the GPU makes the better model usable. All truths
-    are our probit generator (mixed-logit truth not run). [Full write-up](analysis/T31/TEST.md).
+- **T31 · B5, MNP fit at large J vs HB-MNL: Part A PASS, Part B FAIL against HB over posterior draws (2026-10-23).**
+  - Per-task probit fit (GHK-1k, H100) at J = 20 / 40 / 60 in 1.1–1.8 / 6.5–7.1 / 8.6–15 min; a looser stop cuts
+    J = 60 to 3.7 min at the same share error. Against HB-MNL with posterior means plugged into SoP, MNP won on
+    shares (1.6–2.2× less misplaced) and decisions (1–2% at m = 6, Holm p 0.02, 10 reps).
+  - Simulating HB-MNL over its posterior draws closes both gaps (shares 4.1–5.6 vs MNP 4.6–5.6 pts; no decision
+    cell differs, est / stress / mixed-logit truths, 5 reps): the earlier edge was the point-estimate readout, which
+    any HB user can fix without a GPU. MNP's remaining edge: profit forecasts under correlated substitution (HB over
+    draws −7 to −9% under stress, MNP +3%). On a mixed-logit truth MNP does not lose.
+  - Also: a calibrated compartmentalized incumbent is no better than full-shelf HB-MNL; m is not a scale axis.
+    [Full write-up](analysis/T31/TEST.md).
 - **T30 · Line + prices beyond enumeration, greedy + swap vs wide search: no search effect (2026-10-22).**
   - T29 plus 5 price levels per SKU (2.1e7 lines at m = 6, 2.0e9 at m = 8). Greedy + swap matches wide search for
     every arm at m = 4, 6, 8: line profit has diminishing returns, so the search never forces a shortcut. The

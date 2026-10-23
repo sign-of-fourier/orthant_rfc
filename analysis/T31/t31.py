@@ -1,12 +1,14 @@
 """T31. B5: MNP fit at large J (design: analysis/T31/TEST.md).
 
     python analysis/T31/t31.py fit  --truths est,stress --J 20,40,60 --reps 0      # Modal H100: per-task GHK fits
+                                    [--tol 1e-6]                                   # looser stop (file suffix _tol)
     python analysis/T31/t31.py hb   --truths est,stress --J 20,40,60 --reps 0      # Modal T4: HB-MNL (T29 sampler)
     python analysis/T31/t31.py partA                                                # local: holdout shares vs truth
     python analysis/T31/t31.py partB --reps 0,1,2,3,4                               # local: T30 line + price decision
     python analysis/T31/t31.py hbcomp --reps 0,...,9                                # Modal T4: HB-MNL per compartment
     python analysis/T31/t31.py partC --reps 0,...,9                                 # local: compartmentalized incumbent
 
+Truths: est, stress (T29's probit truths) and mxl (HB-MNL's own model: est's tastes, iid Gumbel errors).
 World and survey: T29's (J = 60 uses T29's make_data, so rep 0 matches T29's fits); J < 60 keeps the J SKUs with
 the largest truth shares at base prices (plus none), data re-simulated on that shelf.
 Fit: per-task composite likelihood. Tastes are folded into each task's covariance; each choice is one orthant
@@ -34,6 +36,21 @@ except ModuleNotFoundError:      # inside Modal containers
     T = None
 TVAR = np.pi ** 2 / 6
 GHK_M = 1024
+TAGS = ["est", "stress", "mxl"]          # mxl: HB-MNL's own model (est's tastes, iid Gumbel errors, same variance)
+IID = ("est", "mxl")
+
+
+def sfx(tol):
+    return "" if tol == 1e-8 else f"_tol{tol:g}"
+
+
+def simulate(rng, prices, beta, tag, levels):
+    """T29's simulate; mxl draws iid Gumbel errors (variance pi^2 / 6, as the probit truths' total) instead."""
+    if tag != "mxl":
+        return T.simulate(rng, prices, beta, T.TRUTHS[tag], levels)
+    n, t, J = prices.shape
+    U = np.concatenate([beta[:, None, :J] + beta[:, None, J:] * prices, np.zeros((n, t, 1))], 2)
+    return (U + rng.gumbel(size=U.shape)).argmax(2)
 
 gpu_image = (modal.Image.debian_slim(python_version="3.11").pip_install("torch==2.5.1", "numpy")
              .add_local_file(ROOT / "analysis" / "T18" / "t18.py", "/root/t18.py"))
@@ -61,6 +78,8 @@ def shelf(J):
 def make_data(tag, rep, J):
     """J = 60: T29's make_data. J < 60: the same construction on the kept SKUs, seeds keyed by J."""
     w = T.world()
+    if J >= w["J"] and tag == "mxl":
+        return shelf_data(tag, rep, np.arange(w["J"]), J)
     if J >= w["J"]:
         b, sd = T.load_truth()
         d = T.make_data(tag, rep)
@@ -75,14 +94,14 @@ def shelf_data(tag, rep, keep, key):
     J = len(keep)
     bi = np.r_[keep, w["J"]]
     r_data, r_hold, r_hb = [np.random.default_rng(s) for s in
-                            np.random.SeedSequence([T.SEED, list(T.TRUTHS).index(tag), rep, key]).spawn(3)]
+                            np.random.SeedSequence([T.SEED, TAGS.index(tag), rep, key]).spawn(3)]
     lv = w["levels"][keep]
     price = w["price"][keep]
     beta = b[bi] + sd[bi] * r_data.standard_normal((T.N, J + 1))
     prices = price * T.MULT[r_data.integers(0, 5, (T.N, T.T, J))]
-    y = T.simulate(r_data, prices, beta, T.TRUTHS[tag], lv)
+    y = simulate(r_data, prices, beta, tag, lv)
     Hp = price * T.MULT[np.random.default_rng([T.SEED, 7, J]).integers(0, 5, (T.NH, J))]
-    yh = T.simulate(r_hold, np.broadcast_to(Hp, (T.N, T.NH, J)), beta, T.TRUTHS[tag], lv)
+    yh = simulate(r_hold, np.broadcast_to(Hp, (T.N, T.NH, J)), beta, tag, lv)
     obs = np.stack([np.bincount(yh[:, i], minlength=J + 1) / T.N for i in range(T.NH)])
     return dict(keep=keep, prices=prices.astype(np.float32), y=y.astype(np.int16), Hp=Hp, obs=obs, levels=lv,
                 b=b[bi], sd=sd[bi], hb_seed=int(r_hb.integers(2 ** 31)))
@@ -204,22 +223,23 @@ def fit_task(th0, pr, y, S_lv, iid, M=GHK_M, max_iter=1000, tol_change=1e-8):
                 gpu=torch.cuda.get_device_name(), M=M)
 
 
-def run_fit(tags, Js, reps):
+def run_fit(tags, Js, reps, tol=1e-8):
     with modal.enable_output(), app.run():
         calls = {}
         for tag in tags:
             for J in Js:
                 for rep in reps:
-                    if (OUT / f"fit_{tag}_J{J}_r{rep}.json").exists():
+                    if (OUT / f"fit_{tag}_J{J}_r{rep}{sfx(tol)}.json").exists():
                         continue
                     d = make_data(tag, rep, J)
-                    iid = tag == "est"
+                    iid = tag in IID
                     pr = d["prices"].reshape(-1, J).astype(np.float64)
                     y = d["y"].reshape(-1).astype(np.int64)
-                    calls[(tag, J, rep)] = fit_task.spawn(theta_start(J, iid), pr, y, level_mats(d["levels"], J), iid)
+                    calls[(tag, J, rep)] = fit_task.spawn(theta_start(J, iid), pr, y, level_mats(d["levels"], J), iid,
+                                                          tol_change=tol)
         for (tag, J, rep), c in calls.items():
             r = c.get()
-            (OUT / f"fit_{tag}_J{J}_r{rep}.json").write_text(json.dumps(r))
+            (OUT / f"fit_{tag}_J{J}_r{rep}{sfx(tol)}.json").write_text(json.dumps(r))
             log(f"fit {tag} J={J} r{rep}: {r['seconds'] / 60:.1f} min, {r['n_iter']} iter / {r['n_evals']} evals, "
                 f"nll {r['nll']:.1f}, grad max {r['grad_max']:.2e}")
 
@@ -270,9 +290,25 @@ def hb_holdout(B, Hp):
     return np.array(out)
 
 
+def mxl_shares(b, sd, Hp, n, seed):
+    """Mixed-logit truth: shares (holdout tasks x J + 1) by simulation, Gumbel errors, chunked."""
+    J = Hp.shape[1]
+    out = np.zeros((len(Hp), J + 1))
+    rng = np.random.default_rng(seed)
+    for lo in range(0, n, 20_000):
+        m = min(20_000, n - lo)
+        beta = b + sd * rng.standard_normal((m, J + 1))
+        for i in range(len(Hp)):
+            U = np.c_[beta[:, :J] + beta[:, J:] * Hp[i], np.zeros(m)] + rng.gumbel(size=(m, J + 1))
+            out[i] += np.bincount(U.argmax(1), minlength=J + 1)
+    return out / n
+
+
 def part_a():
     rows = []
     for f in sorted(OUT.glob("fit_*_J*_r*.json")):
+        if "_tol" in f.stem:
+            continue
         _, tag, Js, rs = f.stem.split("_")
         J, rep = int(Js[1:]), int(rs[1:])
         hbf = OUT / f"hb_{tag}_J{J}_r{rep}.npz"
@@ -280,7 +316,8 @@ def part_a():
             continue
         d = make_data(tag, rep, J)
         r = json.loads(f.read_text())
-        truth = holdout_shares(d["b"], d["sd"], np.array(T.TRUTHS[tag]), d["Hp"], d["levels"], 200_000, 900)
+        truth = (mxl_shares(d["b"], d["sd"], d["Hp"], 200_000, 900) if tag == "mxl" else
+                 holdout_shares(d["b"], d["sd"], np.array(T.TRUTHS[tag]), d["Hp"], d["levels"], 200_000, 900))
         mnp = holdout_shares(*unpack(np.array(r["theta"]), J), d["Hp"], d["levels"], 100_000, 901)
         hb = np.load(hbf)
         arms = {"MNP": mnp, "HB-MNL": hb_holdout(hb["B"], d["Hp"]), "observed": d["obs"]}
@@ -300,27 +337,53 @@ def part_a():
 # ---------------------------------------------------------------------------
 # Part B: T30's line + price decision, greedy + swap (local)
 # ---------------------------------------------------------------------------
-def part_b(reps, ms=(6, 8)):
+def mxl_rows(w, b, sd, n, seed):
+    """t30.sim_rows for the mixed-logit truth: iid Gumbel errors."""
+    import t30
+
+    client, comp, pc, prof = t30.setup(w)
+    rng = np.random.default_rng(seed)
+    J = w["J"]
+    beta = b + sd * rng.standard_normal((n, J + 1))
+    e = rng.gumbel(size=(n, J + 1))
+    U0 = np.maximum((beta[:, comp] + beta[:, J:] * w["price"][comp] + e[:, comp]).max(1), e[:, J])
+    Uc = beta[:, client, None] + beta[:, J, None, None] * pc[None] + e[:, client, None]
+    return t30.Rows(U0.astype(np.float32), Uc.astype(np.float32), prof)
+
+
+def part_b(reps, ms=(6, 8), tags=("est", "stress")):
     import t30
 
     w = T.world()
     b, sd = T.load_truth()
     runs = json.loads((ROOT / "analysis" / "T30" / "out" / "runs.json").read_text())
     res = []
-    for tag in T.TRUTHS:
-        truth = t30.sim_rows(w, b, sd, np.array(T.TRUTHS[tag]), 200_000, [T.SEED, 500, list(T.TRUTHS).index(tag)])
-        opt = {m: max(r["opt"] for r in runs if r["truth"] == tag and r["m"] == m) for m in ms}
+    for tag in tags:
+        if tag == "mxl":           # no T30 optimum: truth greedy + swap, raised below to the best line any arm found
+            truth = mxl_rows(w, b, sd, 200_000, [T.SEED, 500, TAGS.index(tag)])
+            opt = {}
+            for m in ms:
+                cs, ks, _ = t30.greedy(truth, m)
+                opt[m] = truth(np.array(cs), np.array(ks))
+        else:
+            truth = t30.sim_rows(w, b, sd, np.array(T.TRUTHS[tag]), 200_000, [T.SEED, 500, TAGS.index(tag)])
+            opt = {m: max(r["opt"] for r in runs if r["truth"] == tag and r["m"] == m) for m in ms}
         for rep in reps:
             fit, hbf = OUT / f"fit_{tag}_J60_r{rep}.json", OUT / f"hb_{tag}_J60_r{rep}.npz"
             if not (fit.exists() and hbf.exists()):
                 continue
-            d = T.make_data(tag, rep)
+            d = make_data(tag, rep, 60)
             B = np.load(hbf)["B"]
             R = T.RFC(B, w["levels"], np.random.default_rng([T.SEED, 99, rep]))
             sig, _ = T.rfc_tune(R, d, w)
             bb, ss, sh = unpack(np.array(json.loads(fit.read_text())["theta"]), w["J"])
             scorers = {"SoP": t30.logit_rows(w, B), "RFC-S": t30.rfc_rows(w, R, sig),
                        "MNP": t30.sim_rows(w, bb, ss, sh, 100_000, [T.SEED, 600, rep])}
+            hbd = OUT / f"hbd_{tag}_J60_r{rep}.npz"
+            if hbd.exists():                   # SoP averaged over posterior draws (draws x respondents as rows)
+                Bd = np.load(hbd)["draws"].astype(np.float64)
+                scorers["SoP-draws"] = t30.logit_rows(w, Bd.reshape(-1, Bd.shape[-1]))
+                del Bd
             for m in ms:
                 for name, f in scorers.items():
                     cs, ks, v = t30.greedy(f, m)
@@ -332,6 +395,12 @@ def part_b(reps, ms=(6, 8)):
                     log(f"{tag} r{rep} m={m} {name:5s}: regret {row['regret']:6.3f} $/1000 trips "
                         f"({100 * row['regret'] / opt[m]:.2f}%), prices {''.join('LlBhH'[k] for k in ks)}")
             del scorers, R
+        if tag == "mxl":
+            for m in ms:
+                rs = [r for r in res if r["truth"] == tag and r["m"] == m]
+                o = max([opt[m]] + [r["true"] for r in rs])
+                for r in rs:
+                    r["opt"], r["regret"] = o, o - r["true"]
         del truth
     f = OUT / "partB.json"
     old = json.loads(f.read_text()) if f.exists() else []
@@ -470,25 +539,66 @@ def part_c(reps, ms=(6,), weighted=False):
     f.write_text(json.dumps(keep + res, indent=1))
 
 
+def run_hb_draws(tags, reps, draws=100):
+    """HB-MNL refit (same data, same seed) keeping posterior draws, for simulation over draws."""
+    with modal.enable_output(), T.app.run():
+        calls = {}
+        for tag in tags:
+            for rep in reps:
+                if (OUT / f"hbd_{tag}_J60_r{rep}.npz").exists():
+                    continue
+                d = make_data(tag, rep, 60)
+                calls[(tag, rep)] = T.hb_fit.spawn(d["prices"], d["y"], d["hb_seed"], draws=draws)
+        for (tag, rep), c in calls.items():
+            r = c.get()
+            np.savez_compressed(OUT / f"hbd_{tag}_J60_r{rep}.npz", B=r["B"], draws=r["draws"], seconds=r["seconds"])
+            log(f"hb draws {tag} r{rep}: {r['seconds'] / 60:.1f} min")
+
+
+def hb_draw_check(tags, reps):
+    """Holdout shares from HB: posterior means + SoP vs SoP averaged over posterior draws; error vs truth."""
+    for tag in tags:
+        for rep in reps:
+            f = OUT / f"hbd_{tag}_J60_r{rep}.npz"
+            if not f.exists():
+                continue
+            d = make_data(tag, rep, 60)
+            tr = (mxl_shares(d["b"], d["sd"], d["Hp"], 200_000, 900) if tag == "mxl" else
+                  holdout_shares(d["b"], d["sd"], np.array(T.TRUTHS[tag]), d["Hp"], d["levels"], 200_000, 900))
+            z = np.load(f)
+            Bd = z["draws"].astype(np.float32)
+            mean = hb_holdout(z["B"], d["Hp"])
+            over = np.mean([hb_holdout(Bk, d["Hp"]) for Bk in Bd], 0)
+            for nm, s in (("posterior means", mean), ("over draws", over)):
+                e = s - tr
+                log(f"{tag} r{rep} HB {nm:15s}: misplaced {100 * 0.5 * np.abs(e).sum(1).mean():.2f} pts, SKUs "
+                    f"{100 * 0.5 * np.abs(e[:, :-1]).sum(1).mean():.2f}, none bias {100 * e[:, -1].mean():+.2f}")
+
+
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("stage", choices=["fit", "hb", "partA", "partB", "hbcomp", "partC"])
+    ap.add_argument("stage", choices=["fit", "hb", "partA", "partB", "hbcomp", "partC", "hbdraws", "drawcheck"])
     ap.add_argument("--truths", default="est,stress")
     ap.add_argument("--J", default="60")
     ap.add_argument("--reps", default="0")
     ap.add_argument("--weighted", action="store_true")
+    ap.add_argument("--tol", type=float, default=1e-8, help="fit: stop when a step changes the mean nll by less")
     a = ap.parse_args()
     OUT.mkdir(exist_ok=True)
     tags, Js, reps = a.truths.split(","), [int(x) for x in a.J.split(",")], [int(x) for x in a.reps.split(",")]
     if a.stage == "fit":
-        run_fit(tags, Js, reps)
+        run_fit(tags, Js, reps, a.tol)
     elif a.stage == "hb":
         run_hb(tags, Js, reps)
     elif a.stage == "partA":
         part_a()
+    elif a.stage == "hbdraws":
+        run_hb_draws(tags, reps)
+    elif a.stage == "drawcheck":
+        hb_draw_check(tags, reps)
     elif a.stage == "hbcomp":
         run_hb_comp(tags, reps)
     elif a.stage == "partC":
         part_c(reps, weighted=a.weighted)
     else:
-        part_b(reps)
+        part_b(reps, tags=tags)

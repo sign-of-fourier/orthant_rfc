@@ -39,7 +39,9 @@ the claim is bottleneck + GPU fix vs the incumbent (HB-MNL + RFC), not what othe
 ### Assessment
 
 Incumbent: Sawtooth CBC/HB on a CPU (no GPU). Us: a GPU, any method. Question: with the GPU, is there a method
-that gives better answers? **Yes, modestly.** Sawtooth users are limited to logit by the software (no probit is
+that gives better answers? **Against HB-MNL simulated over its posterior draws: no, except profit forecasts under
+correlated substitution** (see "HB over posterior draws" below; this overturns the earlier "yes, modestly", which
+was against posterior means plugged into SoP). Earlier wording, kept for the record: **Yes, modestly.** Sawtooth users are limited to logit by the software (no probit is
 offered), not by J or m: HB-MNL stays practical at every size tested, and neither line size nor shelf size widens
 the gap here. What the GPU adds is a better model at a usable cost.
 
@@ -187,3 +189,62 @@ practitioner calibrating separate studies to sales would.
 Calibrated, the compartmentalized incumbent is not distinguishable from full-shelf HB-MNL in either truth; most of
 the unweighted gap came from the naive combination, not from compartmentalizing. MNP beats it under est (10 / 0);
 under stress the gap is +0.8% and not significant. Forecasts: −5% (est), −9% (stress), vs MNP's +2%.
+
+### Fit time: the stopping rule (2026-10-23)
+
+The per-task GHK fit's last two-thirds is a creep along flat directions (each SKU's mean against its taste sd),
+which barely moves shares. est rep 0 from zero: within 8 nats of the final nll at 4.9 min, within 2 at 9.9 min,
+final (44,058.3) at 14.9 min. A looser stop (`fit --tol 1e-6`, files suffixed `_tol1e-06`), est rep 0: **3.7 min** (264
+evaluations) vs 14.9, nll +10.0, holdout share misplaced vs truth 5.46 pts vs 5.53 (MAE 0.179 vs 0.181). The two
+fits' shares differ by 1.38 pts misplaced (max 0.29 on one alternative), inside either fit's error vs the truth.
+Recommended rule for new fits: about 4 min, about $0.25 per J = 60 fit on an H100. (One rep checked.)
+
+### Mixed-logit truth (2026-10-23)
+
+Robustness check against home advantage: the data are generated from HB-MNL's own model (est's tastes, iid Gumbel
+errors with the probit truths' total variance), so logit is correctly specified and the probit is not. Same
+pipeline (`--truths mxl`): J = 60, 5 reps, Part A and Part B (m = 6, 8). No T30 optimum exists for this truth:
+the optimum is the best of a truth greedy + swap and every arm's line. "None" takes 9.4% of survey choices (est
+13.5%): with the same tastes, Gumbel errors give the best of 60 SKUs a heavier right tail.
+
+Results, 5 reps (`partA`, `partB --truths mxl`). Holdout share misplaced vs truth, pts: MNP 4.6–5.6, HB-MNL
+7.1–7.7, observed 1,000-person holdout 8.6–10.0; SKUs only: MNP 4.5–5.4, HB-MNL 5.5–5.8. HB-MNL over-predicts
+"none" by +2.9 to +4.4 pts (MNP −0.7 to +0.4), the same bias as under the probit truths, although logit is the
+true model here: the bias comes from estimation (HB posterior means + SoP, or our HB sampler), not from
+misspecification. Unresolved: whether Sawtooth's HB shows it too.
+
+Part B, regret $ / 1,000 trips, difference = arm − MNP, t CI over 5 reps, Holm over 4:
+
+| m | SoP | RFC-S | MNP | SoP − MNP [95% CI] | RFC-S − MNP [95% CI] | Holm p (SoP / RFC-S) |
+|---|---|---|---|---|---|---|
+| 6 | 3.50 | 3.16 | 1.01 | +2.49 [−1.44, +6.42] | +2.15 [+0.61, +3.70] | 0.31 / 0.072 |
+| 8 | 2.54 | 3.20 | 1.72 | +0.81 [−1.11, +2.74] | +1.48 [−0.39, +3.35] | 0.31 / 0.28 |
+
+MNP does not lose when logit is the true model (guard holds); no difference is significant at 5 reps. Profit
+forecast bias: SoP +3%, RFC-S +10–12%, MNP +3–5%.
+
+### HB over posterior draws (2026-10-23): the incumbent's share and decision gaps close
+
+The HB-MNL arms above plug each respondent's posterior mean into the logit formula (SoP). Averaging SoP over 100
+posterior draws per respondent instead (`hbdraws`, `drawcheck`; same data and seeds) removes HB-MNL's "none" bias
+and its share-error gap. Holdout share misplaced vs truth, pts, reps 0–4:
+
+| truth | HB posterior means | HB over draws | MNP | HB "none" bias, means → draws |
+|---|---|---|---|---|
+| est | 7.4–8.8 | 4.1–5.6 | 4.7–5.5 | +3.0 to +5.1 → −1.8 to −0.3 |
+| mxl | 6.9–8.1 | 4.1–5.4 | 4.6–5.6 | +2.7 to +4.6 → −1.4 to −0.1 |
+
+Part B with the draws arm (SoP-draws), regret $ / 1,000 trips, reps 0–4, SoP-draws − MNP [95% CI], Holm over 6:
+
+| truth | m | SoP | RFC-S | SoP-draws | MNP | SoP-draws − MNP | MNP better / worse | forecast bias, draws / MNP |
+|---|---|---|---|---|---|---|---|---|
+| est | 6 | 4.05 | 8.68 | 1.21 | 0.63 | +0.58 [−2.26, +3.43] | 1 / 1 | −0.9% / +3.5% |
+| est | 8 | 3.43 | 8.54 | 1.69 | 1.63 | +0.05 [−2.21, +2.31] | 2 / 2 | −0.8% / +3.5% |
+| stress | 6 | 2.34 | 3.82 | 0.00 | 1.02 | −1.02 [−2.50, +0.47] | 0 / 3 | −8.8% / +3.2% |
+| stress | 8 | 1.83 | 4.54 | 0.24 | 2.02 | −1.77 [−3.76, +0.21] | 0 / 4 | −7.2% / +3.7% |
+| mxl | 6 | 3.50 | 3.16 | 2.06 | 1.01 | +1.05 [−1.16, +3.26] | 2 / 3 | +1.5% / +3.3% |
+| mxl | 8 | 2.54 | 3.20 | 2.39 | 1.72 | +0.66 [−1.77, +3.10] | 3 / 2 | +2.3% / +4.5% |
+
+No cell differs significantly (Holm p ≥ 0.41); under stress HB over draws is ahead on points. What remains for
+MNP: profit forecasts under correlated substitution (HB over draws under-forecasts by 7–9% under stress, MNP is
++3%). Open: whether Sawtooth's and Conjointly's simulators use posterior draws or point estimates by default.

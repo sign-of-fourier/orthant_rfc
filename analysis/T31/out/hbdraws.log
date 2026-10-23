@@ -1,0 +1,65 @@
+✓ Initialized. View run at 
+https://modal.com/apps/markshipman4273/main/ap-QkfmCt6xDVezsCgozuo17m
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T29/t29.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+├── 🔨 Created function mnp_fit.
+└── 🔨 Created function hb_fit.
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+[21:04:12] hb draws mxl r0: 1.4 min
+[21:04:13] hb draws mxl r1: 1.4 min
+[21:04:14] hb draws mxl r2: 1.3 min
+[21:04:15] hb draws mxl r3: 1.4 min
+[21:05:15] hb draws mxl r4: 1.4 min
+[21:05:16] hb draws est r0: 1.4 min
+[21:05:17] hb draws est r1: 1.3 min
+[21:05:18] hb draws est r2: 1.3 min
+[21:05:19] hb draws est r3: 1.4 min
+[21:05:20] hb draws est r4: 1.4 min
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/markshipman4273/main/ap-QkfmCt6xDVezsCgozuo17m
+✓ Initialized. View run at 
+https://modal.com/apps/markshipman4273/main/ap-M81C0ZVHTMHvEZiYoVdTSJ
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T29/t29.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+├── 🔨 Created function mnp_fit.
+└── 🔨 Created function hb_fit.
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+[21:08:57] hb draws stress r0: 1.4 min
+[21:08:58] hb draws stress r1: 1.4 min
+[21:08:59] hb draws stress r2: 1.4 min
+[21:09:01] hb draws stress r3: 1.4 min
+[21:09:24] hb draws stress r4: 1.7 min
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/markshipman4273/main/ap-M81C0ZVHTMHvEZiYoVdTSJ
