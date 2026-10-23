@@ -1,0 +1,90 @@
+✓ Initialized. View run at 
+https://modal.com/apps/markshipman4273/main/ap-wVycsidst6YyTmsMoJkUeW
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T29/t29.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+├── 🔨 Created function hb_fit.
+└── 🔨 Created function mnp_fit.
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+[15:57:03] hb est 2L r0: 1.4 min
+[15:57:03] hb est single r0: 1.3 min
+[15:57:03] hb est multi r0: 1.3 min
+[15:57:03] hb est 2L r1: 1.3 min
+[15:57:04] hb est single r1: 1.4 min
+[15:57:05] hb est multi r1: 1.3 min
+[15:57:06] hb est 2L r2: 1.3 min
+[15:57:06] hb est single r2: 1.3 min
+[15:57:06] hb est multi r2: 1.3 min
+[15:57:06] hb est 2L r3: 1.3 min
+[15:58:16] hb est single r3: 1.3 min
+[15:58:16] hb est multi r3: 1.2 min
+[15:58:17] hb est 2L r4: 1.3 min
+[15:58:17] hb est single r4: 1.3 min
+[15:58:17] hb est multi r4: 1.3 min
+[15:58:20] hb est 2L r5: 1.3 min
+[15:58:21] hb est single r5: 1.3 min
+[15:58:24] hb est multi r5: 1.3 min
+[15:58:25] hb est 2L r6: 1.3 min
+[15:58:26] hb est single r6: 1.3 min
+[15:59:34] hb est multi r6: 1.3 min
+[15:59:34] hb est 2L r7: 1.3 min
+[15:59:35] hb est single r7: 1.3 min
+[15:59:36] hb est multi r7: 1.3 min
+[15:59:36] hb est 2L r8: 1.2 min
+[15:59:42] hb est single r8: 1.3 min
+[15:59:42] hb est multi r8: 1.3 min
+[15:59:46] hb est 2L r9: 1.3 min
+[15:59:48] hb est single r9: 1.4 min
+[15:59:48] hb est multi r9: 1.3 min
+[16:00:48] hb stress 2L r0: 1.3 min
+[16:00:48] hb stress single r0: 1.3 min
+[16:00:48] hb stress multi r0: 1.2 min
+[16:00:52] hb stress 2L r1: 1.3 min
+[16:00:57] hb stress single r1: 1.3 min
+[16:00:57] hb stress multi r1: 1.3 min
+[16:01:00] hb stress 2L r2: 1.3 min
+[16:01:07] hb stress single r2: 1.3 min
+[16:01:07] hb stress multi r2: 1.3 min
+[16:01:11] hb stress 2L r3: 1.4 min
+[16:02:03] hb stress single r3: 1.3 min
+[16:02:03] hb stress multi r3: 1.2 min
+[16:02:06] hb stress 2L r4: 1.3 min
+[16:02:13] hb stress single r4: 1.3 min
+[16:02:13] hb stress multi r4: 1.3 min
+[16:02:18] hb stress 2L r5: 1.3 min
+[16:02:18] hb stress single r5: 1.3 min
+[16:02:25] hb stress multi r5: 1.3 min
+[16:02:29] hb stress 2L r6: 1.3 min
+[16:02:33] hb stress single r6: 1.4 min
+[16:03:15] hb stress multi r6: 1.2 min
+[16:03:18] hb stress 2L r7: 1.2 min
+[16:03:22] hb stress single r7: 1.3 min
+[16:03:27] hb stress multi r7: 1.3 min
+[16:03:30] hb stress 2L r8: 1.3 min
+[16:03:37] hb stress single r8: 1.3 min
+[16:03:37] hb stress multi r8: 1.3 min
+[16:03:45] hb stress 2L r9: 1.3 min
+[16:03:49] hb stress single r9: 1.3 min
+[16:03:58] hb stress multi r9: 1.4 min
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/markshipman4273/main/ap-wVycsidst6YyTmsMoJkUeW

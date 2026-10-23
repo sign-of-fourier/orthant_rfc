@@ -1,0 +1,36 @@
+[21:40:43] est: RFC-S sd 0.75; scorers built
+[21:42:59] est m=4 truth greedy    : regret  0.000 $/1000 trips (0.00%), predicted  130.37, truth  130.37,     596 evals,     1 s, prices HHlB
+[21:42:59] est m=4 truth wide      : regret  0.000 $/1000 trips (0.00%), predicted  130.37, truth  130.37,    4325 evals,     8 s, prices HHBl
+[21:42:59] est m=4 truth exhaustive: regret  0.000 $/1000 trips (0.00%), predicted  130.37, truth  130.37,       0 evals,   117 s, prices HHBl
+[21:42:59] est m=4 SoP   greedy    : regret  0.000 $/1000 trips (0.00%), predicted  132.89, truth  130.37,     596 evals,     0 s, prices HHlB
+[21:42:59] est m=4 SoP   wide      : regret  0.000 $/1000 trips (0.00%), predicted  132.89, truth  130.37,    4305 evals,     0 s, prices HHBl
+[21:42:59] est m=4 RFC-S greedy    : regret  7.267 $/1000 trips (5.57%), predicted  139.77, truth  123.11,     596 evals,     1 s, prices HHBB
+[21:42:59] est m=4 RFC-S wide      : regret  7.267 $/1000 trips (5.57%), predicted  139.77, truth  123.11,    4305 evals,     4 s, prices HHBB
+[21:42:59] est m=4 MNP   greedy    : regret  7.267 $/1000 trips (5.57%), predicted  145.74, truth  123.11,     596 evals,     1 s, prices HHBB
+[21:42:59] est m=4 MNP   wide      : regret  7.267 $/1000 trips (5.57%), predicted  145.74, truth  123.11,    4305 evals,     4 s, prices HHBB
+[21:49:30] est m=6 truth greedy    : regret  0.000 $/1000 trips (0.00%), predicted  163.38, truth  163.38,    1021 evals,     2 s, prices HHlBBB
+[21:49:30] est m=6 truth wide      : regret  0.000 $/1000 trips (0.00%), predicted  163.38, truth  163.38,   85185 evals,   197 s, prices HHBBlB
+[21:49:30] est m=6 SoP   greedy    : regret  1.875 $/1000 trips (1.15%), predicted  160.77, truth  161.50,    1021 evals,     0 s, prices HHlBBH
+[21:49:30] est m=6 SoP   wide      : regret  1.875 $/1000 trips (1.15%), predicted  160.77, truth  161.50,   83265 evals,     2 s, prices HHBBHl
+[21:49:30] est m=6 RFC-S greedy    : regret  9.678 $/1000 trips (5.92%), predicted  167.52, truth  153.70,    1271 evals,     1 s, prices HHBhBH
+[21:49:30] est m=6 RFC-S wide      : regret  9.678 $/1000 trips (5.92%), predicted  167.52, truth  153.70,   83325 evals,    91 s, prices HHBhHB
+[21:49:30] est m=6 MNP   greedy    : regret  6.068 $/1000 trips (3.71%), predicted  173.79, truth  157.31,    1021 evals,     1 s, prices HHBBBB
+[21:49:30] est m=6 MNP   wide      : regret  6.068 $/1000 trips (3.71%), predicted  173.79, truth  157.31,   84015 evals,    96 s, prices HHBBBB
+[21:49:38] stress: RFC-S sd 0.75; scorers built
+[21:51:53] stress m=4 truth greedy    : regret  0.000 $/1000 trips (0.00%), predicted  137.80, truth  137.80,     596 evals,     1 s, prices HHlB
+[21:51:53] stress m=4 truth wide      : regret  0.000 $/1000 trips (0.00%), predicted  137.80, truth  137.80,    4325 evals,     8 s, prices HHBl
+[21:51:53] stress m=4 truth exhaustive: regret  0.000 $/1000 trips (0.00%), predicted  137.80, truth  137.80,       0 evals,   116 s, prices HHBl
+[21:51:53] stress m=4 SoP   greedy    : regret  0.000 $/1000 trips (0.00%), predicted  131.58, truth  137.80,     596 evals,     0 s, prices HHlB
+[21:51:53] stress m=4 SoP   wide      : regret  0.000 $/1000 trips (0.00%), predicted  131.58, truth  137.80,    4325 evals,     0 s, prices HHBl
+[21:51:53] stress m=4 RFC-S greedy    : regret  0.000 $/1000 trips (0.00%), predicted  134.32, truth  137.80,     596 evals,     1 s, prices HHlB
+[21:51:53] stress m=4 RFC-S wide      : regret  0.000 $/1000 trips (0.00%), predicted  134.32, truth  137.80,    4345 evals,     4 s, prices HHBl
+[21:51:53] stress m=4 MNP   greedy    : regret  6.330 $/1000 trips (4.59%), predicted  145.08, truth  131.47,     596 evals,     1 s, prices HHBB
+[21:51:53] stress m=4 MNP   wide      : regret  6.330 $/1000 trips (4.59%), predicted  145.08, truth  131.47,    4305 evals,     4 s, prices HHBB
+[21:58:21] stress m=6 truth greedy    : regret  0.000 $/1000 trips (0.00%), predicted  168.17, truth  168.17,    1021 evals,     2 s, prices HHlBBB
+[21:58:21] stress m=6 truth wide      : regret  0.000 $/1000 trips (0.00%), predicted  168.17, truth  168.17,   83595 evals,   194 s, prices HHBBlB
+[21:58:21] stress m=6 SoP   greedy    : regret  2.074 $/1000 trips (1.23%), predicted  159.46, truth  166.09,    1021 evals,     0 s, prices HHlBHB
+[21:58:21] stress m=6 SoP   wide      : regret  2.074 $/1000 trips (1.23%), predicted  159.46, truth  166.09,   83295 evals,     2 s, prices HHBBHl
+[21:58:21] stress m=6 RFC-S greedy    : regret  2.405 $/1000 trips (1.43%), predicted  162.49, truth  165.76,    1021 evals,     1 s, prices HHlBBH
+[21:58:21] stress m=6 RFC-S wide      : regret  2.405 $/1000 trips (1.43%), predicted  162.49, truth  165.76,   85845 evals,    93 s, prices HHBHlB
+[21:58:21] stress m=6 MNP   greedy    : regret  6.310 $/1000 trips (3.75%), predicted  176.67, truth  161.86,    1271 evals,     1 s, prices HHBhhB
+[21:58:21] stress m=6 MNP   wide      : regret  6.310 $/1000 trips (3.75%), predicted  176.67, truth  161.86,   83565 evals,    95 s, prices HHBhBh

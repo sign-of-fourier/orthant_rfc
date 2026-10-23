@@ -1,0 +1,109 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-0gxVn0h0JDNiHYoq3A6Q9K
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py
+└── 🔨 Created function bhat_fit.
+Estimating MNP model with 12000 observations, 61 alternatives, 122 parameters
+  Error structure: IID
+  Random coefficients: 61 variables
+  Device: cuda (GPU accelerated)
+Traceback (most recent call last):
+Stopping app - uncaught exception raised in remote container: RuntimeError('einsum(): subscript k has size 2 for operand 1 which does not broadcast with previously seen size 60').
+  File "/pkg/modal/_runtime/container_io_manager.py", line 947, in handle_input_exception
+    yield
+  File "/pkg/modal/_container_entrypoint.py", line 172, in run_input_sync
+    values = io_context.call_function_sync()
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/pkg/modal/_runtime/container_io_manager.py", line 225, in call_function_sync
+    expected_value_or_values = self.finalized_function.callable(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/root/t31.py", line 117, in bhat_fit
+    r = m.fit()
+        ^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/models/_base.py", line 32, in fit
+    self.results_ = self._fit(*args, **kwargs)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_model.py", line 543, in _fit
+    result = minimize_scipy(
+             ^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 208, in minimize_scipy
+    result = _minimize_from(x0)
+             ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 198, in _minimize_from
+    return minimize(
+           ^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_minimize.py", line 779, in minimize
+    res = _minimize_bfgs(fun, x0, args, jac, callback, **options)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 1416, in _minimize_bfgs
+    sf = _prepare_scalar_function(fun, x0, jac, args=args, epsilon=eps,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 310, in _prepare_scalar_function
+    sf = ScalarFunction(fun, x0, args, grad, hess,
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_differentiable_functions.py", line 283, in __init__
+    self._update_fun()
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_differentiable_functions.py", line 362, in _update_fun
+    fx = self._wrapped_fun(self.x)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/_lib/_util.py", line 603, in __call__
+    fx = self.f(np.copy(x), *self.args)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 80, in __call__
+    self._compute_if_needed(x, *args)
+  File "/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 74, in _compute_if_needed
+    fg = self.fun(x, *args)
+         ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 174, in scipy_func
+    f, g = func(x)
+           ^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_model.py", line 498, in _full_objective
+    return mnp_gradient_gpu(
+           ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_grad_gpu.py", line 204, in mnp_gradient_gpu
+    grad_gpu[:n_beta] = torch.einsum('nkv,nk->v', X_diff_all, weighted_grad_a)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/torch/functional.py", line 402, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore[attr-defined]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: einsum(): subscript k has size 2 for operand 1 which does not broadcast with previously seen size 60
+Traceback (most recent call last):
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py", line 152, in <module>
+    probe_gpu(a.J, a.iters, a.method)
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py", line 134, in probe_gpu
+    r = bhat_fit.remote(df, J, ctl)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_object.py", line 46, in wrapped
+    return await method(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 1769, in remote
+    return await self._call_function(args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 1713, in _call_function
+    return await invocation.run_function()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_functions.py", line 496, in run_function
+    return await _process_result(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/modal/_utils/function_utils.py", line 527, in _process_result
+    raise exc_with_hints(exc)
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/root/t31.py", line 117, in bhat_fit
+    r = m.fit()
+      ^^^^^^^^^^
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/models/_base.py", line 32, in fit
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_model.py", line 543, in _fit
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 208, in minimize_scipy
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 198, in _minimize_from
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_minimize.py", line 779, in minimize
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 1416, in _minimize_bfgs
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 310, in _prepare_scalar_function
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_differentiable_functions.py", line 283, in __init__
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_differentiable_functions.py", line 362, in _update_fun
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/_lib/_util.py", line 603, in __call__
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 80, in __call__
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/scipy/optimize/_optimize.py", line 74, in _compute_if_needed
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/optim/_scipy_optim.py", line 174, in scipy_func
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_model.py", line 498, in _full_objective
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/pybhatlib/models/mnp/_mnp_grad_gpu.py", line 204, in mnp_gradient_gpu
+  File "<ta-01M5K5SVWNTTMM5GJYNWXB8A8R>:/usr/local/lib/python3.11/site-packages/torch/functional.py", line 402, in einsum
+RuntimeError: einsum(): subscript k has size 2 for operand 1 which does not broadcast with previously seen size 60

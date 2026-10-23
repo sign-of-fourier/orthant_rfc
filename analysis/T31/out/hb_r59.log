@@ -1,0 +1,40 @@
+✓ Initialized. View run at 
+https://modal.com/apps/markshipman4273/main/ap-0mgIEhKaMvi6Q0uT8W6YhF
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T29/t29.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+├── 🔨 Created function mnp_fit.
+└── 🔨 Created function hb_fit.
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+[13:52:58] hb est J=60 r5: 1.3 min
+[13:53:00] hb est J=60 r6: 1.4 min
+[13:53:00] hb est J=60 r7: 1.3 min
+[13:53:28] hb est J=60 r8: 1.4 min
+[13:53:28] hb est J=60 r9: 1.3 min
+[13:53:29] hb stress J=60 r5: 1.4 min
+[13:53:30] hb stress J=60 r6: 1.4 min
+[13:53:41] hb stress J=60 r7: 1.6 min
+[13:53:41] hb stress J=60 r8: 1.4 min
+[13:53:41] hb stress J=60 r9: 1.3 min
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/markshipman4273/main/ap-0mgIEhKaMvi6Q0uT8W6YhF

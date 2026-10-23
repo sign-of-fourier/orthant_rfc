@@ -1,0 +1,17 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-YPNvv6EopuB0AcRy6hVIEC
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+└── 🔨 Created function fit_task.
+[02:55:40] fit est J=60 r1: 13.6 min, 925 iter / 974 evals, nll 43788.6, grad max 2.30e-01
+[02:55:40] fit est J=60 r2: 9.1 min, 600 iter / 655 evals, nll 44358.3, grad max 1.97e+00
+[02:55:40] fit est J=60 r3: 12.4 min, 832 iter / 897 evals, nll 43896.1, grad max 1.67e-01
+[02:55:40] fit est J=60 r4: 11.0 min, 720 iter / 778 evals, nll 43949.7, grad max 8.15e-01
+[02:55:44] fit stress J=60 r1: 13.1 min, 886 iter / 948 evals, nll 43274.6, grad max 1.63e+00
+[02:55:44] fit stress J=60 r2: 10.0 min, 662 iter / 714 evals, nll 43375.9, grad max 3.08e+00
+[02:55:44] fit stress J=60 r3: 8.6 min, 577 iter / 617 evals, nll 43263.6, grad max 1.97e+00
+[02:55:44] fit stress J=60 r4: 11.8 min, 802 iter / 854 evals, nll 43238.1, grad max 1.58e+00
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-YPNvv6EopuB0AcRy6hVIEC

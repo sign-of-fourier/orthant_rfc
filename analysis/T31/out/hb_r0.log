@@ -1,0 +1,22 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-12deCL8amkPJ40WNePhZbf
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T29/t29.py
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T18/t18.py
+├── 🔨 Created function mnp_fit.
+└── 🔨 Created function hb_fit.
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+/usr/local/lib/python3.11/site-packages/torch/distributions/wishart.py:275: UserWarning: Singular sample detected.
+  warnings.warn("Singular sample detected.")
+[02:28:06] hb est J=20 r0: 1.3 min
+[02:28:11] hb est J=40 r0: 1.4 min
+[02:28:12] hb stress J=20 r0: 1.3 min
+[02:28:37] hb stress J=40 r0: 1.8 min
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 
+https://modal.com/apps/info-29741/main/ap-12deCL8amkPJ40WNePhZbf

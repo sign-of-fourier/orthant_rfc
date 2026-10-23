@@ -1,0 +1,14 @@
+[02:55:58] est J=20 r0: MNP 1.1 min (300 iter) | MAE pts: MNP 0.288 (max 0.94, none +0.08), HB-MNL 0.624 (max 5.47, none +4.89), observed 0.508
+[02:56:05] est J=40 r0: MNP 7.1 min (808 iter) | MAE pts: MNP 0.216 (max 1.07, none +0.07), HB-MNL 0.431 (max 5.57, none +5.30), observed 0.354
+[02:56:16] est J=60 r0: MNP 14.9 min (1000 iter) | MAE pts: MNP 0.181 (max 0.95, none -0.44), HB-MNL 0.267 (max 3.69, none +3.27), observed 0.275
+[02:56:28] est J=60 r1: MNP 13.6 min (925 iter) | MAE pts: MNP 0.153 (max 1.67, none +0.09), HB-MNL 0.279 (max 5.48, none +5.18), observed 0.296
+[02:56:39] est J=60 r2: MNP 9.1 min (600 iter) | MAE pts: MNP 0.175 (max 1.13, none -0.69), HB-MNL 0.243 (max 3.54, none +3.31), observed 0.271
+[02:56:50] est J=60 r3: MNP 12.4 min (832 iter) | MAE pts: MNP 0.175 (max 1.27, none +0.58), HB-MNL 0.283 (max 5.34, none +5.08), observed 0.291
+[02:57:02] est J=60 r4: MNP 11.0 min (720 iter) | MAE pts: MNP 0.160 (max 1.19, none -0.19), HB-MNL 0.298 (max 4.81, none +4.51), observed 0.287
+[02:57:06] stress J=20 r0: MNP 1.8 min (470 iter) | MAE pts: MNP 0.335 (max 1.38, none +1.03), HB-MNL 0.708 (max 7.20, none +6.51), observed 0.485
+[02:57:13] stress J=40 r0: MNP 6.5 min (725 iter) | MAE pts: MNP 0.167 (max 1.19, none -0.11), HB-MNL 0.370 (max 5.28, none +5.08), observed 0.325
+[02:57:24] stress J=60 r0: MNP 15.0 min (1000 iter) | MAE pts: MNP 0.185 (max 1.00, none -0.51), HB-MNL 0.281 (max 3.86, none +3.52), observed 0.280
+[02:57:35] stress J=60 r1: MNP 13.1 min (886 iter) | MAE pts: MNP 0.180 (max 1.26, none +0.22), HB-MNL 0.282 (max 5.02, none +4.57), observed 0.275
+[02:57:47] stress J=60 r2: MNP 10.0 min (662 iter) | MAE pts: MNP 0.184 (max 1.22, none +0.68), HB-MNL 0.280 (max 5.61, none +5.32), observed 0.272
+[02:57:59] stress J=60 r3: MNP 8.6 min (577 iter) | MAE pts: MNP 0.155 (max 1.04, none +0.81), HB-MNL 0.262 (max 6.13, none +5.66), observed 0.282
+[02:58:11] stress J=60 r4: MNP 11.8 min (802 iter) | MAE pts: MNP 0.168 (max 1.08, none +0.17), HB-MNL 0.267 (max 4.93, none +4.47), observed 0.288

@@ -354,7 +354,8 @@ def _eval_rows(kind, spec, Xd, G, tvar, th, r, perm, grad, dt, dch, base, shf, z
                 if perm is not None:
                     eta, cov = permute(eta, cov, perm[r])
                 lp = ghk(eta[:, None, :], torch.linalg.cholesky(cov), w)              # (n, Mc)
-                parts.append(_part(lp, thr, grad))
+                parts.append(_part(lp, thr, grad, spec.get("bc", False)))
+        assert not spec.get("bc") or len(parts) == 1, "bias correction needs one draw chunk"
     else:
         Q = zb_all.shape[1]
         w = torch.remainder(base[None, None] + shf[r][:, :, None], 1.0)[:, None]      # (n, 1, T, R, K-1)
@@ -367,13 +368,16 @@ def _eval_rows(kind, spec, Xd, G, tvar, th, r, perm, grad, dt, dch, base, shf, z
     return _combine(parts, grad)
 
 
-def _part(lp, thr, grad):
+def _part(lp, thr, grad, bc=False):
+    """bc: first-order simulation-bias correction, log p_hat + (1 / ESS) / 2 (one draw chunk only; the constant
+    -1 / (2 M) is left out), differentiated through the draws."""
     import torch
 
     lse = torch.logsumexp(lp, 1)
-    lse2 = torch.logsumexp(2 * lp.detach(), 1)
-    g = torch.autograd.grad(lse.sum(), thr)[0].detach() if grad else None
-    return lse.detach().double(), lse2.double(), lp.shape[1], None if g is None else g.double()
+    lse2 = torch.logsumexp(2 * lp if bc else 2 * lp.detach(), 1)
+    obj = lse + 0.5 * torch.exp(lse2 - 2 * lse) if bc else lse
+    g = torch.autograd.grad(obj.sum(), thr)[0].detach() if grad else None
+    return obj.detach().double(), lse2.detach().double(), lp.shape[1], None if g is None else g.double()
 
 
 def smooth(spec, Xd, G, tvar, th, perm, rows, dirs, hs):

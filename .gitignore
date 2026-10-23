@@ -23,3 +23,5 @@ analysis/T25/out/v1/
 analysis/T26/out/runs/
 analysis/T26/out/v1/runs/
 analysis/T26/out/*.npz
+analysis/T29/out/*.npz
+analysis/T31/out/*.npz

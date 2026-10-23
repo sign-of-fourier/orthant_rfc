@@ -1,0 +1,12 @@
+[15:43:04] truth est: 6475 lines in 532 s
+[15:52:03] truth stress: 6475 lines in 539 s
+[15:52:08] stress r0: RFC-S sd 0.75, holdout MAE 0.0029 (sd 0: 0.0035)
+[15:52:09] stress r0 m=4 SoP  : regret 0.000 $/1000 trips (0.00%), opt 125.62, predicted 125.89, 0 s
+[15:52:19] stress r0 m=4 RFC-S: regret 0.000 $/1000 trips (0.00%), opt 125.62, predicted 128.64, 10 s
+[15:52:20] stress r0 m=4 MNP  : regret 0.000 $/1000 trips (0.00%), opt 125.62, predicted 156.12, 2 s
+[15:52:24] stress r0 m=4 MNP-sim: regret 0.000 $/1000 trips (0.00%), opt 125.62, predicted 138.27, 4 s
+[15:52:25] stress r0 m=6 SoP  : regret 0.000 $/1000 trips (0.00%), opt 157.55, predicted 152.07, 1 s
+[15:54:40] stress r0 m=6 RFC-S: regret 0.000 $/1000 trips (0.00%), opt 157.55, predicted 157.05, 135 s
+[15:54:54] stress r0 m=6 MNP  : regret 0.000 $/1000 trips (0.00%), opt 157.55, predicted 191.43, 13 s
+[15:55:43] stress r0 m=6 MNP-sim: regret 0.000 $/1000 trips (0.00%), opt 157.55, predicted 169.36, 49 s
+[15:55:48] stress r0 m=8 SoP  : regret 4.059 $/1000 trips (2.38%), opt 170.87, predicted 164.76, 5 s

@@ -1,0 +1,35 @@
+✓ Initialized. View run at 
+https://modal.com/apps/info-29741/main/ap-jLIGtENxIKgzmw9cCnboo1
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T31/t31.py
+├── 🔨 Created function bhat_fit.
+└── 🔨 Created function bhat_fit_cpu.
+Estimating MNP model with 12000 observations, 61 alternatives, 122 parameters
+  Error structure: IID
+  Random coefficients: 61 variables
+  Iter    1: f = 4.171083  (124.1s)
+  Iter    2: f = 3.978563  (185.8s)
+  Iter    3: f = 3.868955  (247.2s)
+  Iter    4: f = 3.812668  (308.8s)
+  Iter    5: f = 3.774416  (370.2s)
+  Iter    6: f = 3.743836  (431.1s)
+  Iter    7: f = 3.731571  (492.1s)
+  Iter    8: f = 3.726599  (553.4s)
+  Iter    9: f = 3.726415  (675.1s)
+  Iter   10: f = 3.726194  (796.3s)
+  Iter   11: f = 3.726046  (918.0s)
+Container terminated due to preemption. For more details, see https://modal.com/docs/guide/preemption
+Estimating MNP model with 12000 observations, 61 alternatives, 122 parameters
+  Error structure: IID
+  Random coefficients: 61 variables
+  Iter    1: f = 4.171083  (120.3s)
+  Iter    2: f = 3.978563  (178.8s)
+  Iter    3: f = 3.868955  (238.0s)
+  Iter    4: f = 3.812668  (297.3s)
+  Iter    5: f = 3.774416  (356.3s)
+  Iter    6: f = 3.743836  (416.7s)
+  Iter    7: f = 3.731571  (479.3s)
+  Iter    8: f = 3.726599  (540.4s)
+  Iter    9: f = 3.726415  (659.6s)
+  Iter   10: f = 3.726194  (777.6s)
+  Iter   11: f = 3.726046  (894.6s)

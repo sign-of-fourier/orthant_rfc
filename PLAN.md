@@ -187,6 +187,27 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 
 ### Closed
 
+- **T31 · B5, MNP fit at large J vs HB-MNL: Part A PASS, Part B PASS at m = 6 (2026-10-23).**
+  - Per-task probit fit (GHK-1k, H100) at J = 20 / 40 / 60: 1.1–1.8 / 6.5–7.1 / 8.6–15 min. HB-MNL misplaces
+    1.6–2.2× MNP's holdout share in all 14 fits. Line + price decision, 10 reps: 1–2% more profit than HB-MNL + SoP
+    at m = 6 (Holm p 0.02, both truths), 2–4% more than + RFC-S; not shown at m = 8 vs SoP. A calibrated
+    compartmentalized incumbent (one study per pack format) is no better than full-shelf HB-MNL.
+  - Sawtooth is limited to logit by its software, not by J or m; the GPU makes the better model usable. All truths
+    are our probit generator (mixed-logit truth not run). [Full write-up](analysis/T31/TEST.md).
+- **T30 · Line + prices beyond enumeration, greedy + swap vs wide search: no search effect (2026-10-22).**
+  - T29 plus 5 price levels per SKU (2.1e7 lines at m = 6, 2.0e9 at m = 8). Greedy + swap matches wide search for
+    every arm at m = 4, 6, 8: line profit has diminishing returns, so the search never forces a shortcut. The
+    "larger m or K breaks the incumbent" path is paused. No write-up (`analysis/T30/t30.py`, `out/`).
+- **T29 · Client line from a candidate set, HB-MNL + SoP / RFC-S vs MNP (2026-10-22): superseded by T31.**
+  - Manufacturer 103's 17 SKUs, m = 4–8, exhaustive search, rep 0 only. A small m = 8 edge for MNP (one rep, no
+    CI); its 720-dim panel fit is biased (taste sds 17–23% too wide), which T31's per-task fit replaces.
+
+- **T28 · TURF reach line at scale, stepwise vs exhaustive search: KILL at Gate 0 (2026-10-22).**
+  - dunnhumby soft drinks, J = 30–100, m = 4–15: an off-the-shelf ILP (HiGHS) proves the optimum in 0.05–1.1 s per
+    cell on one CPU core; stepwise is within 0.13 pts of it everywhere, stepwise + swap within 0.04. Holdout gaps
+    are noise (−0.30 to +0.73 pts). The optimal line lives in the top ~30 items, so J doesn't change it. $0.
+  - No reach or speed claim: the incumbent's wall is the software, not the problem.
+  - [Full write-up](analysis/T28/TEST.md).
 - **T17 · Within-person substitution on dunnhumby soft drinks: stopped, power check FAIL (2026-10-17).**
   - Even with a nested-logit truth, the twin test can't separate NL from MNL: Δ +0.02 pts, 95% CI [−0.07, +0.10]
     (materiality 1.0). Pooled nesting by manufacturer is weak (λ 0.82–1.0) and the price coefficient is
