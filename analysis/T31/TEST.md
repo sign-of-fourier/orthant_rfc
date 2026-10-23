@@ -248,3 +248,20 @@ Part B with the draws arm (SoP-draws), regret $ / 1,000 trips, reps 0–4, SoP-d
 No cell differs significantly (Holm p ≥ 0.41); under stress HB over draws is ahead on points. What remains for
 MNP: profit forecasts under correlated substitution (HB over draws under-forecasts by 7–9% under stress, MNP is
 +3%). Open: whether Sawtooth's and Conjointly's simulators use posterior draws or point estimates by default.
+
+### What incumbent users actually run (2026-10-23, documentation check)
+
+- **Sawtooth:** its knowledge base recommends Randomized First Choice in general; simulating on 50–200 HB draws per
+  respondent with share of preference is described as "another solid approach" that needs a manual edit of the
+  .HBU file. Orme's 2020 paper (38 SKUs, brand / price CBC; repeated at 51 SKUs) found point estimates and draws
+  give very similar sourcing, draws slightly stronger differential substitution, and recommends the simpler
+  practice of simulating on point estimates (from the paper's abstract and search snippets; full text not read).
+  So the default practice is point estimates with RFC or share of preference: the Part B arms SoP and RFC-S.
+- **Conjointly:** MCMC HB multinomial logit; shares from "individual coefficients", share of preference by
+  default (first choice optional, no RFC). Whether the coefficients are posterior means or draws is not stated.
+
+Reading: against the incumbents' documented default (point estimates), T31's 10-rep Part B win stands (m = 6:
++1–2% vs SoP, +2–4% vs RFC-S). The same gap closes when HB is simulated over its draws, an option Sawtooth
+documents but advises is unnecessary; so the advantage is real against practice but can be matched without a GPU
+or a probit. Our results disagree with Orme's "very similar" on this shelf (HB "none" bias +3 to +5 pts on point
+estimates, about −1 on draws); his comparison was on sourcing patterns, ours on absolute shares and decisions.
