@@ -1,6 +1,6 @@
 # Where the advantage is
 
-Last updated 2026-10-23 (through T31). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
+Last updated 2026-10-24 (through T35). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
 `analysis/T<n>/TEST.md`.
 
 The project is about scale: unlocking problems that are too big or too slow for the incumbents, (1) with the
