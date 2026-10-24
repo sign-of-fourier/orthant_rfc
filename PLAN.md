@@ -46,6 +46,7 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 - **Coded subset:** items the analyst codes combinatorially (Sawtooth MBC),
   capped at about 5 binary items (≤ ~36 combinations recommended; ≥ ~75 too
   sparse). A modeling choice.
+  Sawtooth's own wording (checked 2026-10-24): Orme (2010, *Menu-Based Choice Modeling Using Traditional Tools*) calls the exhaustive-alternatives (combinatorial) model "practically limited to use with smaller menu problems that don't include very many options", skipped it at 256 combinations ("huge data matrices and glacial run times") and recommends the serial cross-effects model as "a good balance between flexibility and soundness". The MBC v1.1 manual (2016) says most projects have too many alternatives to code the whole menu exhaustively, advises coding "logical sections" (strong substitutes) that way, and calls 515 outcomes too many for HB; its examples use 3-item sections (8 outcomes). Neither gives a numeric cap; the ~5-item / ~36 / ~75 figures above are from an earlier, uncited source.
 - **Decision layer:** the business decision a model output feeds (price, line
   extension, bundle, assortment, a cost-weighted metric). All kill criteria
   are decision-layer tradeoffs set by the user. Designs propose candidate
@@ -187,6 +188,24 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 
 ### Closed
 
+- **T33 · MBC at k = 20 / 30, MVP vs serial cross-effects logit: KILL (2026-10-24).**
+  - T14's menus and truths; Sawtooth's recommended large-menu model (Orme 2010; MBC manual), fitted pooled. Kill
+    pool L1 + L2: SCX 49 vs MVP-IFM 50 flips of 240, regret gap −0.001 (SE 0.046). Guard on a serial-logit truth
+    holds (IFM 42 vs SCX 26 flips; material 4 vs 2). MVP's holdout fit is 0.02-0.04 nats per menu better.
+  - The MBC win stands against coded subsets only. Local CPU, no Modal cost. [Full write-up](analysis/T33/TEST.md).
+- **T35 · T20's RFC-S floor vs HB over posterior draws: INCONCLUSIVE (2026-10-24).**
+  - G1, G2 × N = 150 / 600 / 1,500 × 10 reps; HB refitted with 100 draws; T20's RFC-S reproduced in all 60.
+    RFC-S over draws: floor about halves (pooled ≈ 5.4 → 3.5 points; wrong picks 35 → 20 of 60), flat in N, still
+    above MVP at N = 50 on G1 at N = 1,500 (+4.5, p 0.008), not significant on G2 (+2.3, p 0.14); G1 N = 150 ties.
+  - T20 ran MVP only at N = 50-200, so the comparison is unpaired (T20's own claim). About $2.
+    [Full write-up](analysis/T35/TEST.md).
+- **T34 · T15's assortment win vs HB over posterior draws: HOLDS (2026-10-24).**
+  - T15 D1 (k = 6, 8, 10 of 20), S1 truth, 5 datasets; HB refitted with 100 draws per respondent. Best draws arm
+    (RFC-S over draws) regret 1.74 pts vs MNP 0.00, Δ +1.74 [+1.09, +2.38], Holm p 0.002 (SoP over draws +1.93;
+    T15's RFC-S on point estimates reproduced exactly, +1.85). Draws change one pick in 15; every arm still makes
+    T15's k = 6 error. Incumbent profit forecasts 11-20% low, MNP within 3%.
+  - Unlike T31, the residual is substitution structure (80% of S1's error variance shared by brand / flavor / pack),
+    which neither readout estimates. About $1. [Full write-up](analysis/T34/TEST.md).
 - **T31 · B5, MNP fit at large J vs HB-MNL: Part A PASS, Part B FAIL against HB over posterior draws (2026-10-23).**
   - Per-task probit fit (GHK-1k, H100) at J = 20 / 40 / 60 in 1.1–1.8 / 6.5–7.1 / 8.6–15 min; a looser stop cuts
     J = 60 to 3.7 min at the same share error. Against HB-MNL with posterior means plugged into SoP, MNP won on

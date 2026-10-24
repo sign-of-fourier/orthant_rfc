@@ -23,17 +23,17 @@ method) and is now practical, and it beats the incumbent at something.
 **Incumbent readout.** Unless a row says otherwise, the HB-MNL incumbent is simulated on respondent point estimates
 (posterior means), which is Sawtooth's and Conjointly's documented practice (Sawtooth recommends RFC; Orme 2020
 recommends point estimates over draws). Simulating HB-MNL over its posterior draws is an option Sawtooth documents.
-At J = 60 it closed the share and decision gaps against MNP (T31); the earlier HB-based CBC wins (T15, T20) have
-not been rechecked against it.
+At J = 60 it closed the share and decision gaps against MNP (T31); on T15's assortment decision it did not (T34:
+1.74 of the 1.85-point gap remains); on T20's small CBC it about halved the floor without removing it (T35).
 
 ## At a glance
 
 | problem | source | incumbent: time / error | ours: time / error | enabled | beats the incumbent at |
 |---|---|---|---|---|---|
-| **MBC beyond the coded-subset cap**, k = 6–30 linked items | Model | coded subsets: combinations grow as 2^k, capped near k = 5. Flips 146 of 240 decisions at k = 6–12 (T2), 207 of 240 at k = 20–30 (T14) | MVP by IFM, CPU, seconds. Flips 28 of 240 (T2), 50 of 240 (T14) | **yes** | decisions: 118–157 fewer flips of 240 (sim); real holdouts back MVP 4–0 (T3, 8 items) and 3–0 (T14, 24 items); real takeaway baskets, 21 groups vs coded subsets over all of them: +0.11 to +0.36 nats per order, top-10 bundles 0.16–1.31 pts closer (T21) |
-| **Shelf CBC, multinomial probit**, J = 20, N = 1,000, 12 tasks | Model + GPU; engine screens the decision search | HB-MNL + RFC-S (point estimates), CPU: 3–4 min | MNP before T18: 4.5 h (L4), 19–27 min (H100). After T18: **0.35–2.2 min on an H100**, $0.02–0.15 per fit | **yes** (T18) | assortment regret 1.85 pts lower, 95% CI [1.30, 2.40] (T15, sim, 5 datasets; vs HB over draws untested). Real shelves (Trivago, J = 25, 20k-user panel, T24): no error correlation beyond tastes; MVP ties a panel mixed logit (±0.007 nats per choice) |
+| **MBC beyond the coded-subset cap**, k = 6–30 linked items | Model | coded subsets: combinations grow as 2^k, capped near k = 5. Flips 146 of 240 decisions at k = 6–12 (T2), 207 of 240 at k = 20–30 (T14) | MVP by IFM, CPU, seconds. Flips 28 of 240 (T2), 50 of 240 (T14) | **yes** | decisions: 118–157 fewer flips of 240 (sim); real holdouts back MVP 4–0 (T3, 8 items) and 3–0 (T14, 24 items); real takeaway baskets, 21 groups vs coded subsets over all of them: +0.11 to +0.36 nats per order, top-10 bundles 0.16–1.31 pts closer (T21). **Vs Sawtooth's recommended large-menu model (serial cross-effects): tie**, 49 vs 50 flips of 240 (T33); all-pairs cross-effects tied on real baskets (T19) |
+| **Shelf CBC, multinomial probit**, J = 20, N = 1,000, 12 tasks | Model + GPU; engine screens the decision search | HB-MNL + RFC-S (point estimates), CPU: 3–4 min | MNP before T18: 4.5 h (L4), 19–27 min (H100). After T18: **0.35–2.2 min on an H100**, $0.02–0.15 per fit | **yes** (T18) | assortment regret 1.85 pts lower, 95% CI [1.30, 2.40] (T15, sim, 5 datasets). **Holds vs HB over posterior draws** (T34): best draws arm (RFC-S over draws) 1.74 pts behind [1.09, 2.38], Holm p 0.002; incumbent profit forecasts 11–20% low, MNP within 3%. Truth with heavy shared brand/flavor/pack errors (80% of error variance). Real shelves (Trivago, J = 25, 20k-user panel, T24): no error correlation beyond tastes; MVP ties a panel mixed logit (±0.007 nats per choice) |
 | **Large shelf CBC**, J = 60, N = 1,000, 12 tasks, line + price decision | Model + GPU | HB-MNL + SoP / RFC-S (point estimates): fit 1.3–1.8 min (T4); none over-predicted by 3–7 pts | per-task MNP fit **3.7 min on an H100** (about $0.25); share misplaced 1.6–2.2× lower | **yes** (T31) | vs the documented default: line + price profit +1–2% vs SoP at m = 6 (Holm p 0.02, both truths, 10 reps), +2–4% vs RFC-S. **Vs HB over posterior draws: tie** on shares and decisions; MNP's profit forecasts less biased under correlated substitution (+3% vs −7 to −9%, 5 reps). Does not lose on a mixed-logit truth |
-| **Small CBC**, J ≤ 6, mixed MNP | Model | HB-MNL + RFC-S (point estimates): about 5% cost regret at every N from 50 to 1,500, a bias floor that more respondents do not lower | MVP fit 10–30 s on a T4 at N = 50–200; 0.2–1.6% cost regret already at **N = 50** | — | decisions at any sample size: RFC-S at N = 1,500 is still worse than MVP at N = 50, so the sample-size ratio is unbounded (> 30× at N = 50, grid-limited) (T20, sim); recovers σ and the error correlation that RFC gets wrong by construction (T1). Real stated choice (Swissmetro, J = 3, T22): MVP best holdout log-likelihood at N = 100–468 but by only 0.001–0.043 nats per choice over RFC-S; no error correlation in that data, so no floor |
+| **Small CBC**, J ≤ 6, mixed MNP | Model | HB-MNL + RFC-S (point estimates): about 5% cost regret at every N from 50 to 1,500, a bias floor that more respondents do not lower | MVP fit 10–30 s on a T4 at N = 50–200; 0.2–1.6% cost regret already at **N = 50** | — | decisions at any sample size: RFC-S at N = 1,500 is still worse than MVP at N = 50, so the sample-size ratio is unbounded (> 30× at N = 50, grid-limited) (T20, sim). Against RFC-S over posterior draws the floor about halves, still above MVP on G1 (+4.5 pts, p 0.008), not significant on G2 (T35); recovers σ and the error correlation that RFC gets wrong by construction (T1). Real stated choice (Swissmetro, J = 3, T22): MVP best holdout log-likelihood at N = 100–468 but by only 0.001–0.043 nats per choice over RFC-S; no error correlation in that data, so no floor |
 | **Dependence across subsets in decision search** (choose m of N: baskets in MBC, assortments in shelf CBC) | Model + engine | the analyst declares groups before the fit (coded subsets in MBC; nests, or RFC's attribute errors, in CBC) and independence across them; each candidate is then a cheap closed form | the full error correlation is estimated, so no grouping is declared; each candidate is one orthant per item or pattern, and the engine makes brute-force search over candidates practical (3.6–20× OVUS, T15; about 500× QMC, T2) | — | decisions on candidates that span groups: MBC T2/T14 (118–157 fewer flips of 240); real MBC (T21, takeaway baskets): coded subsets equal independence on pairs that span blocks, where MVP is 0.13–0.27 pts better; inside a block coded subsets are 0.03–0.24 pts better. CBC vs RFC T15/T20. Not vs a structural nested logit (untested); a cross-effects logit that estimates every pair tied MVP (T19) |
 | **Orthant screening in decision search** (population shares, dim = shelf size) | Engine | OVUS | engine **3.6–20× faster** at equal decision adequacy, gap growing with dimension (T15) | — | speed. Real d = 24 shelf shares (Trivago, T24): "high" 2.4× OVUS with lower median \|ΔP\| (0.0011 vs 0.0036); "highest" 0.00024, the only method with max share error under 0.005 |
 | **Scoring pattern probabilities** on a near-singular Σ, d = 8–16 | Engine | OVUS: 1.8–3.2e-4 s/row, median \|ΔP\| 0.0007–0.0015. SciPy: 1.1–1.8 s/row | engine "high": **3–6e-5 s/row**, median \|ΔP\| 0.0034–0.0048; "highest": 0.9–2.0e-4 s/row, 0.0022–0.0029 | — | speed: 5–6× OVUS, 28,000–37,000× SciPy ([mvprobit benchmarks](https://github.com/sign-of-fourier/multivariate-probit/blob/main/docs/benchmarks.md); engine times remeasured 2026-10-19). **Real d = 21 (T21, takeaway basket patterns, median P 5e-5): 3× OVUS, but median \|ΔP\| 1.2–1.5e-5 vs OVUS 0.4–1.5e-6, and "high" returns P = 0 on 4 of 200: fails the accuracy guard for likelihood scoring** |
@@ -56,8 +56,9 @@ not been rechecked against it.
   truth it ties or slightly beats the incumbent, so it does not invent similarity.
 - **Accuracy guard.** T18's fit recovers the true parameters (joint Wald p 0.85–0.88); with non-normal tastes a
   Gaussian copula keeps it to one orthant with share error within 0.014 pts of the exact arm.
-- **Evidence:** simulation. Real shelf data is the open gap. The incumbent ran on HB point estimates; against HB
-  over posterior draws this has not been rechecked (at J = 60 that readout tied MNP, T31).
+- **Evidence:** simulation. Real shelf data is the open gap. Against HB over posterior draws it holds (T34): RFC-S over
+  draws is 1.74 pts behind, 95% CI [1.09, 2.38]. Draws fix the readout's overconfidence but add no substitution
+  structure, which is what this truth is heavy in (at J = 60, with a milder truth, that readout tied MNP, T31).
 
 ### Large shelves, J = 20–60 (enabled; win against the documented default, tie against HB over draws)
 
@@ -105,14 +106,16 @@ not been rechecked against it.
   stays at 3.7–4.0% against MVP's 0 (T20 floor check, 5 replicates).
 - **Not yet tested against a structural incumbent** fitted to the choices (nested or cross-nested logit). In MBC,
   the structural cross-effects logit tied MVP (T19).
-- **Readout.** RFC-S here runs on HB point estimates (Sawtooth practice). Not rechecked against HB over posterior
-  draws, which closed the gap at J = 60 (T31).
+- **Readout (T35).** Against RFC-S over HB posterior draws the floor about halves (pooled ≈ 5.4 → 3.5 points;
+  wrong picks 35 → 20 of 60 datasets) and stays flat in N. It is still above MVP at N = 50: significant on G1 at
+  N = 1,500 (+4.5 points, p 0.008), not on G2 (+2.3, p 0.14); one cell (G1, N = 150) ties MVP. So the unbounded
+  sample-size ratio holds on G1 and is unproven on G2 against the draws readout.
 - **Explanation.** RFC's σ is wrong by construction (S1 capped at 2/3, tuned on share fit), so its "why" is wrong
   even when its shares are right. MVP recovers σ and the error correlation (T1).
 
 ## MBC (pick-any menus, linked items)
 
-### Beyond the coded-subset cap, k = 6–30 (enabled)
+### Beyond the coded-subset cap, k = 6–30 (win against coded subsets, tie against serial cross-effects)
 
 - **Source.** Model. The fit is on CPU in seconds; the engine scores the high-dimensional decision queries.
 - **Speed/scale.** Coded subsets enumerate 2^k combinations and Sawtooth caps them near k = 5, so they cannot represent
@@ -122,6 +125,12 @@ not been rechecked against it.
     disagreements, coded subsets on 0 (T3).
   - k = 20–30: 50 vs 207 flips of 240 (T14 Part A, sim); a real 24-item baking cluster backed MVP 3 to 0 (T14 Part B).
 - **Untested.** The same comparison against an HB coded-subset incumbent (Sawtooth fits MBC by HB).
+- **Which incumbent.** Sawtooth's own wording (checked 2026-10-24): Orme (2010, *Menu-Based Choice Modeling Using Traditional Tools*) calls the exhaustive-alternatives (combinatorial) model "practically limited to use with smaller menu problems that don't include very many options", skipped it at 256 combinations ("huge data matrices and glacial run times") and recommends the serial cross-effects model as "a good balance between flexibility and soundness". The MBC v1.1 manual (2016) says most projects have too many alternatives to code the whole menu exhaustively, advises coding "logical sections" (strong substitutes) that way, and calls 515 outcomes too many for HB; its examples use 3-item sections (8 outcomes). Neither gives a numeric cap; the ~5-item / ~36 / ~75 figures above are from an earlier, uncited source. So for large menus Sawtooth's recommended incumbent is serial cross-effects, not
+  coded subsets; an all-pairs cross-effects logit tied MVP on real baskets (T19).
+- **Against serial cross-effects (T33): tie.** On T14's menus (k = 20 / 30, 80 datasets, 240 decisions) a pooled
+  serial cross-effects logit flips 49 decisions vs MVP-IFM's 50, regret gap −0.001 points (SE 0.046). Fits in
+  1-3 s. MVP's holdout fit is better by 0.02-0.04 nats per menu, which moves no decision. Not covered: respondent
+  heterogeneity (Sawtooth fits it by HB) and an analyst-chosen item order.
 
 ## Across subsets (CBC and MBC)
 
@@ -211,4 +220,5 @@ Every advantage here is in a case practitioners can't keep small:
 That is also where the GPU fit (T18) and the engine's speed matter most. The advantage holds against incumbents
 that bolt similarity on or declare it away. Against one that estimates the dependence from the choices, it has
 so far been a tie (T19). In shelf CBC it holds against the incumbents' documented readout (HB point estimates);
-against HB simulated over its posterior draws it has so far been a tie (T31).
+against HB simulated over its posterior draws it tied at J = 60 (T31) and held on the J = 20 assortment, where
+the truth's substitution structure is heavy (T34).

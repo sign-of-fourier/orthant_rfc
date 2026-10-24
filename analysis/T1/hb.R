@@ -3,6 +3,8 @@
 # in.csv columns: resp, task, alt, chosen, x1..xP (alternatives in the same order every task).
 # Writes <out_prefix>_beta.csv (posterior means over the second half of kept draws, one row per
 # respondent in resp order) and <out_prefix>_loglike.csv (log-likelihood trace of kept draws).
+# Optional 6th argument D: also writes <out_prefix>_draws.f32, D kept draws evenly spaced over the second half,
+# float32, column-major (resp, var, draw) (T34).
 suppressMessages(library(bayesm))
 a <- commandArgs(trailingOnly = TRUE)
 d <- read.csv(a[1]); R <- as.integer(a[3]); keep <- as.integer(a[4]); set.seed(as.integer(a[5]))
@@ -22,3 +24,8 @@ nk <- dim(out$betadraw)[3]
 bm <- apply(out$betadraw[, , (nk %/% 2 + 1):nk, drop = FALSE], c(1, 2), mean)
 write.csv(bm, paste0(a[2], "_beta.csv"), row.names = FALSE)
 write.csv(data.frame(loglike = out$loglike), paste0(a[2], "_loglike.csv"), row.names = FALSE)
+if (length(a) >= 6) {
+  D <- as.integer(a[6])
+  idx <- round(seq(nk %/% 2 + 1, nk, length.out = D))
+  writeBin(as.vector(out$betadraw[, , idx, drop = FALSE]), paste0(a[2], "_draws.f32"), size = 4)
+}

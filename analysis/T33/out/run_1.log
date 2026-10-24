@@ -1,0 +1,51 @@
+[00:46:20] L1 k=20 r0: scx fit 2.2 s, total 88 s (89 s)
+[00:46:20] L1 k=30 r0: cached (89 s)
+[00:46:20] L2 k=20 r0: scx fit 2.4 s, total 87 s (89 s)
+[00:48:47] L2 k=30 r0: scx fit 3.4 s, total 148 s (236 s)
+[00:48:47] L0 k=20 r0: scx fit 1.3 s, total 50 s (236 s)
+[00:50:34] L0 k=30 r0: scx fit 1.7 s, total 204 s (343 s)
+[00:50:34] LC k=20 r0: scx fit 0.5 s, total 39 s (343 s)
+[00:53:20] LC k=30 r0: scx fit 1.9 s, total 234 s (509 s)
+[00:53:20] CL k=20 r0: scx fit 0.7 s, total 35 s (509 s)
+concurrent.futures.process._RemoteTraceback: 
+"""
+Traceback (most recent call last):
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/process.py", line 264, in _process_worker
+    r = call_item.fn(*call_item.args, **call_item.kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/process.py", line 213, in _process_chunk
+    return [fn(*args) for args in chunk]
+            ^^^^^^^^^
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T33/t33.py", line 207, in job
+    project_correlation=False).fit(X, Y.astype(int))
+                               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/multivariate_probit/model.py", line 296, in fit
+    _require_positive_definite(self.correlation_)
+  File "/home/ubuntu/miniconda3/lib/python3.12/site-packages/multivariate_probit/model.py", line 65, in _require_positive_definite
+    raise ValueError(
+ValueError: the fitted correlation matrix is not positive definite (smallest eigenvalue -0.006977). Pairwise estimates are fitted independently and need not be jointly coherent, so this is expected with project_correlation=False. Set project_correlation=True to project onto the nearest valid correlation matrix, or call pairwise_correlation(..., project=False) directly if you want the raw estimates for inspection.
+"""
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T33/t33.py", line 304, in <module>
+    main()
+  File "/home/ubuntu/projects/orthant_rfc/analysis/T33/t33.py", line 299, in main
+    for tr, k, rep, msg in ex.map(job, *zip(*jobs)):
+                           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/process.py", line 636, in _chain_from_iterable_of_lists
+    for element in iterable:
+                   ^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 619, in result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 317, in _result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ubuntu/miniconda3/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+ValueError: the fitted correlation matrix is not positive definite (smallest eigenvalue -0.006977). Pairwise estimates are fitted independently and need not be jointly coherent, so this is expected with project_correlation=False. Set project_correlation=True to project onto the nearest valid correlation matrix, or call pairwise_correlation(..., project=False) directly if you want the raw estimates for inspection.
