@@ -1,7 +1,8 @@
 # Where the advantage is
 
-Last updated 2026-10-24 (through T35). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
-`analysis/T<n>/TEST.md`.
+Last updated 2026-10-24 (through T37). Maintained alongside [PLAN.md](PLAN.md); each test's full write-up is in
+`analysis/T<n>/TEST.md`. The business use cases this supports, and which survive the incumbents' workarounds, are
+in [USE_CASES.md](USE_CASES.md).
 
 The project is about scale: unlocking problems that are too big or too slow for the incumbents, (1) with the
 engine and (2) with the GPU. This page lists only the cases where we have an advantage. Speed claims are against
@@ -31,7 +32,7 @@ At J = 60 it closed the share and decision gaps against MNP (T31); on T15's asso
 | problem | source | incumbent: time / error | ours: time / error | enabled | beats the incumbent at |
 |---|---|---|---|---|---|
 | **MBC beyond the coded-subset cap**, k = 6–30 linked items | Model | coded subsets: combinations grow as 2^k, capped near k = 5. Flips 146 of 240 decisions at k = 6–12 (T2), 207 of 240 at k = 20–30 (T14) | MVP by IFM, CPU, seconds. Flips 28 of 240 (T2), 50 of 240 (T14) | **yes** | decisions: 118–157 fewer flips of 240 (sim); real holdouts back MVP 4–0 (T3, 8 items) and 3–0 (T14, 24 items); real takeaway baskets, 21 groups vs coded subsets over all of them: +0.11 to +0.36 nats per order, top-10 bundles 0.16–1.31 pts closer (T21). **Vs Sawtooth's recommended large-menu model (serial cross-effects): tie**, 49 vs 50 flips of 240 (T33); all-pairs cross-effects tied on real baskets (T19) |
-| **Shelf CBC, multinomial probit**, J = 20, N = 1,000, 12 tasks | Model + GPU; engine screens the decision search | HB-MNL + RFC-S (point estimates), CPU: 3–4 min | MNP before T18: 4.5 h (L4), 19–27 min (H100). After T18: **0.35–2.2 min on an H100**, $0.02–0.15 per fit | **yes** (T18) | assortment regret 1.85 pts lower, 95% CI [1.30, 2.40] (T15, sim, 5 datasets). **Holds vs HB over posterior draws** (T34): best draws arm (RFC-S over draws) 1.74 pts behind [1.09, 2.38], Holm p 0.002; incumbent profit forecasts 11–20% low, MNP within 3%. Truth with heavy shared brand/flavor/pack errors (80% of error variance). Real shelves (Trivago, J = 25, 20k-user panel, T24): no error correlation beyond tastes; MVP ties a panel mixed logit (±0.007 nats per choice) |
+| **Shelf CBC, multinomial probit**, J = 20, N = 1,000, 12 tasks | Model + GPU; engine screens the decision search | HB-MNL + RFC-S (point estimates), CPU: 3–4 min | MNP before T18: 4.5 h (L4), 19–27 min (H100). After T18: **0.35–2.2 min on an H100**, $0.02–0.15 per fit | **yes** (T18) | assortment regret 1.85 pts lower, 95% CI [1.30, 2.40] (T15, sim, 5 datasets). **Holds vs HB over posterior draws** (T34): best draws arm (RFC-S over draws) 1.74 pts behind [1.09, 2.38], Holm p 0.002; incumbent profit forecasts 11–20% low, MNP within 3%. **Not a probit advantage** (T37): an error-component mixed logit fitted to the choices is 0.35 pts behind MNP [−0.18, +0.88], a cross-nested logit 0.27; neither ships in Sawtooth or Conjointly. Truth with heavy shared brand/flavor/pack errors (80% of error variance). Real shelves (Trivago, J = 25, 20k-user panel, T24): no error correlation beyond tastes; MVP ties a panel mixed logit (±0.007 nats per choice) |
 | **Large shelf CBC**, J = 60, N = 1,000, 12 tasks, line + price decision | Model + GPU | HB-MNL + SoP / RFC-S (point estimates): fit 1.3–1.8 min (T4); none over-predicted by 3–7 pts | per-task MNP fit **3.7 min on an H100** (about $0.25); share misplaced 1.6–2.2× lower | **yes** (T31) | vs the documented default: line + price profit +1–2% vs SoP at m = 6 (Holm p 0.02, both truths, 10 reps), +2–4% vs RFC-S. **Vs HB over posterior draws: tie** on shares and decisions; MNP's profit forecasts less biased under correlated substitution (+3% vs −7 to −9%, 5 reps). Does not lose on a mixed-logit truth |
 | **Small CBC**, J ≤ 6, mixed MNP | Model | HB-MNL + RFC-S (point estimates): about 5% cost regret at every N from 50 to 1,500, a bias floor that more respondents do not lower | MVP fit 10–30 s on a T4 at N = 50–200; 0.2–1.6% cost regret already at **N = 50** | — | decisions at any sample size: RFC-S at N = 1,500 is still worse than MVP at N = 50, so the sample-size ratio is unbounded (> 30× at N = 50, grid-limited) (T20, sim). Against RFC-S over posterior draws the floor about halves, still above MVP on G1 (+4.5 pts, p 0.008), not significant on G2 (T35); recovers σ and the error correlation that RFC gets wrong by construction (T1). Real stated choice (Swissmetro, J = 3, T22): MVP best holdout log-likelihood at N = 100–468 but by only 0.001–0.043 nats per choice over RFC-S; no error correlation in that data, so no floor |
 | **Dependence across subsets in decision search** (choose m of N: baskets in MBC, assortments in shelf CBC) | Model + engine | the analyst declares groups before the fit (coded subsets in MBC; nests, or RFC's attribute errors, in CBC) and independence across them; each candidate is then a cheap closed form | the full error correlation is estimated, so no grouping is declared; each candidate is one orthant per item or pattern, and the engine makes brute-force search over candidates practical (3.6–20× OVUS, T15; about 500× QMC, T2) | — | decisions on candidates that span groups: MBC T2/T14 (118–157 fewer flips of 240); real MBC (T21, takeaway baskets): coded subsets equal independence on pairs that span blocks, where MVP is 0.13–0.27 pts better; inside a block coded subsets are 0.03–0.24 pts better. CBC vs RFC T15/T20. Not vs a structural nested logit (untested); a cross-effects logit that estimates every pair tied MVP (T19) |
@@ -59,6 +60,11 @@ At J = 60 it closed the share and decision gaps against MNP (T31); on T15's asso
 - **Evidence:** simulation. Real shelf data is the open gap. Against HB over posterior draws it holds (T34): RFC-S over
   draws is 1.74 pts behind, 95% CI [1.09, 2.38]. Draws fix the readout's overconfidence but add no substitution
   structure, which is what this truth is heavy in (at J = 60, with a milder truth, that readout tied MNP, T31).
+- **What wins (T37).** Estimating the dependence, not the probit. An error-component mixed logit (normal error
+  components per brand / flavor / pack level, simulated ML on an H100, 250 × 500 draws, 1.6–3.8 min) is 0.35 pts
+  behind MNP (95% CI [−0.18, +0.88]); a pooled cross-nested logit is 0.27 behind. Both close 80–85% of the
+  incumbent's gap. MNP keeps the profit forecast: within 3%, against −8 to +1% (EC) and +11 to +18% (CNL). Under
+  fewer draws (200 × 50) the EC fit collapses its error components and makes the incumbent's k = 6 error.
 
 ### Large shelves, J = 20–60 (enabled; win against the documented default, tie against HB over draws)
 
@@ -154,8 +160,9 @@ At J = 60 it closed the share and decision gaps against MNP (T31); on T15's asso
   - CBC: against HB-MNL + RFC-S, assortment regret is 1.85 pts lower (T15). In small CBC, RFC-S has a ~5% floor
     (T20).
 - **Boundary.** An incumbent that estimates the dependence from the choices is a different case. The MBC
-  cross-effects logit (210 pairwise parameters) tied MVP on real takeaway baskets (T19). The structural incumbent
-  for shelf CBC, an estimated nested or cross-nested logit, has not been tested.
+  cross-effects logit (210 pairwise parameters) tied MVP on real takeaway baskets (T19). In shelf CBC an
+  error-component mixed logit and a cross-nested logit fitted to the choices came within 0.27–0.35 pts of MNP on
+  T15's assortment (T37). Neither ships in Sawtooth or Conjointly.
   - With similarity on crossed attributes (flavor and pack in T1/T5/T20), one tree can hold only one of them. A
     cross-nested logit needs the allocations declared by hand.
 
@@ -179,6 +186,12 @@ At J = 60 it closed the share and decision gaps against MNP (T31); on T15's asso
     3-alternative nest at r = 0.97. A private prototype with an exact rewrite of analyst-declared nests brings every
     case tested to 0.06–0.21 SE, where OVUS reaches 5.35 SE on a 3-alternative nest at r = 0.9. Each rewritten term
     is a within-nest winner's probability, so near-substitutes stay in the model rather than being dropped.
+- **Near-clone shelves (T36).** As the MNP likelihood at J = 10 with a clone family of 2–5 at r = 0.97–0.995, the
+  engine with its near-duplicate setting off is within OVUS + 0.3 SE of bias in all 9 cells and 1.9× faster; the
+  release default reaches 2.24 SE (r 0.97, family 5). One row in 20,000 came back non-finite (a well-conditioned
+  block plus a near-independent coordinate, not a clone), which kills T36 as specified. A private revision for
+  block-structured matrices, with OVUS as a guard on rows with P ≤ 0, passes all 9 cells on a fresh seed at 2.2× OVUS's
+  speed (OVUS 0.85–1.03 SE on families of 5, the engine 0.61–0.83).
 - **Its niche.** Many high-dimensional queries in a huge search space, where speed is a sample-size multiplier at a
   fixed budget, and cross-sectional MNP likelihoods at small J against OVUS (T27). Panel likelihoods with respondent
   random effects stay with GHK (T18).
@@ -203,7 +216,6 @@ higher.
 |---|---|---|---|
 | **HB-MVP for stated MBC** (respondent random effects) | Model + GPU | Medium–high. The T2/T14 wins should carry over, and individual pick-any patterns are no longer pooled. The per-respondent panel likelihood is the same compute problem T18 solved for MNP (one orthant per respondent, tastes integrated analytically) | T14-style simulation with respondent heterogeneity, against HB coded subsets |
 | **Real stated MBC** (designed menus, not baskets) | Model | Likely the T14 pattern. Menus are designed and prices randomised, so cleaner evidence than revealed baskets | a real stated MBC dataset with a holdout |
-| **Shelf CBC vs an estimated nested / cross-nested logit** | Model | Medium. A single nest tree cannot hold similarity on crossed attributes; a cross-nested logit can, but its allocations are declared by hand, which is the across-subsets problem again. The T19 tie says an incumbent that estimates the dependence can match MVP | T20 or T15 data with a nested logit (one tree per attribute) and a cross-nested logit fitted to the choices |
 | **Near-clone line extensions** (a new SKU nearly identical to one on the shelf; cannibalization within the family) | Model + engine | Medium–high. This is the near-1 nest case: the release engine reached 5 SE bias on a 3-alternative nest at r = 0.97, and the prototype with declared nests 0.14 (T27). Each rewritten term is a family member's win probability against the rest of the shelf, so within-family cannibalization is computed directly instead of being inflated into σ (RFC) or dropped by the analyst | a T15 / T25-style shelf with clone SKUs at ρ = 0.95–0.99: cannibalization and line-decision regret for the release engine, the prototype, OVUS and GHK, against the truth |
 | **Consistent screening across assortments with near-duplicate families** | Engine | Medium. With its fixed near-duplicate cutoff, the release engine changes how it treats a family when a candidate shelf adds or drops a near-duplicate, so neighbouring candidates can be scored by different approximations; the prototype has no cutoff and costs the same (0.88–1.46×, T27) | a T15 / T26 screen on shelves with near-clone families: ranking flips against GHK, release engine vs prototype vs OVUS at equal time |
 | **Gradient-based price and margin optimization on near-duplicate shelves** | Engine | Medium. Shares from the prototype are smooth in prices and correlations, so an optimizer can use exact gradients. The release engine's shares have jumps around near-duplicate families (T27 scans), and OVUS's variable ordering can switch as prices move. Caveat: GHK with fixed draws is also differentiable (autograd), and the shelf orthant's dimension includes every competitor, not just the line, so the engine's edge here is speed at its accuracy, not access to gradients. Caveat: the prototype still makes one discrete internal choice, which flipped under tiny parameter changes on rewritten nest terms (T27 follow-up); on shelves with negative correlations it could flip as prices move | L-BFGS on shelf margin over prices with near-duplicates: time to the optimum and regret, prototype vs release engine vs OVUS vs GHK |
@@ -219,6 +231,6 @@ Every advantage here is in a case practitioners can't keep small:
 
 That is also where the GPU fit (T18) and the engine's speed matter most. The advantage holds against incumbents
 that bolt similarity on or declare it away. Against one that estimates the dependence from the choices, it has
-so far been a tie (T19). In shelf CBC it holds against the incumbents' documented readout (HB point estimates);
+so far been a tie (T19 in MBC, T37 in shelf CBC on picks; MNP keeps the profit forecast). In shelf CBC it holds against the incumbents' documented readout (HB point estimates);
 against HB simulated over its posterior draws it tied at J = 60 (T31) and held on the J = 20 assortment, where
 the truth's substitution structure is heavy (T34).

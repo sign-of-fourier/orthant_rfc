@@ -1,0 +1,13 @@
+✓ Initialized. View run at 
+✓ Created objects.
+├── 🔨 Created mount /home/ubuntu/projects/orthant_rfc/analysis/T37/t37.py
+├── 🔨 Created mount PythonPackage:t4, PythonPackage:t15, PythonPackage:t34
+└── 🔨 Created function run_rep.
+rep 0: ec fit 96 s nit 44 CONVERGENCE: RELATIVE REDUCTIO  cnl fit 0 s nit 59 CONVERGENCE: RELATIVE REDUCTIO
+  EC theta: [0.773, 0.376, -0.388, 0.209, 0.608, -0.116, -0.426, 0.446, -0.014, -1.861, 3.272, 0.317, 0.289, 0.408, 0.291, -0.012, 0.046, 0.176, -0.13, -0.161, -0.454, -0.511, -1.658, 0.307, 0.359, 0.523]
+  CNL theta: [0.227, 0.035, -0.218, -0.041, 0.213, -0.063, -0.185, 0.174, -0.004, -0.691, 0.64, -0.146, 0.219, -0.073, 0.046, -0.005, -0.321]
+  D1_k6: MNP 0.00  RFC-S draws 2.78  ec 0.00 (fc -7.4%)  cnl 0.00 (fc +14.8%)
+  D1_k8: MNP 0.00  RFC-S draws 0.57  ec 0.57 (fc -5.1%)  cnl 0.33 (fc +12.7%)
+  D1_k10: MNP 0.00  RFC-S draws 0.26  ec 0.26 (fc -4.2%)  cnl 0.48 (fc +10.9%)
+Stopping app - local entrypoint completed.
+✓ App completed. View run at 

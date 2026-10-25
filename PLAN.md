@@ -1,9 +1,10 @@
 # Plan: where multivariate probit beats incumbent choice methods
 
-Status 2026-10-21: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
+Status 2026-10-24: T1–T3, T5, T6, T14 PASS. T7, T8, T9, T11 FAIL. T13 KILL. T10 Part A inconclusive, Part B
 paused. T4 paused. T15: D1 PASS / D4 SOFT FAIL, S0 guard pass. T16 FAIL (T6's win is heterogeneity). T17 stopped (power check FAIL). T18 PASS (A and B). T19: MVP ≫ independence, ≈ cross-effects logit (no win). T20–T22, T24:
 see Open. T23 has no write-up yet. T25: MNP evaluators beat logit and RFC. T26: the simulator screen beats the
-engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; near-1 nests need a fix.
+engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; near-1 nests need a fix. T31-T37: see Closed;
+T38 open.
 
 - **Each test's full write-up** (design, kill criteria, user decisions, results) is in `analysis/T<n>/TEST.md`.
   T1–T3 are in their own DESIGN.md / RESULTS.md, with the original plan and history in [HISTORY.md](HISTORY.md).
@@ -75,6 +76,13 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 ## Tests
 
 ### Open
+
+- **T38 · MACML vs GPU MNP on T34's assortment (scoped 2026-10-24; Step 0 only).**
+  - Step 0 probe: MACML at J = 20 (pairs of tasks, d = 40, 66,000 orthants per likelihood) on CPU with
+    finite-difference gradients is 6-57 h per fit. OVUS's median |Δlog P| on pair orthants is 0.084; the release
+    engine fails on them (15 of 40 off by more than a factor e), because pair matrices are two blocks with strong
+    mixed-sign cross correlation. A private engine revision for block-structured matrices brings it to 0.037 at
+    OVUS's speed. Porting MACML with OVUS is dropped (user); the GPU port is pending.
 
 - **T27 · The engine as an MNP likelihood (2026-10-21, exploratory): on one CPU core it is faster and more accurate
   than OVUS at d = 4–64; an engine fit lands within 0.33 SE of the GHK MLE; near-substitute nests need a fix.**
@@ -188,6 +196,22 @@ engine screen. T27 (exploratory): the engine as an MNP likelihood beats OVUS; ne
 
 ### Closed
 
+- **T37 · T34's assortment win vs logits that estimate the error dependence: WIN IS ESTIMATING THE DEPENDENCE
+  (2026-10-24).**
+  - Error-component mixed logit (simulated ML, H100, 250 × 500 draws) regret 0.35 vs MNP 0.00, Δ +0.35
+    [−0.18, +0.88]; pooled cross-nested logit 0.27; incumbent's best (T34) 1.74. Both close 80-85% of the gap.
+    MNP's profit forecast is the only one within 3% (EC −8 to +1%, CNL +11 to +18%). At 200 × 50 draws EC
+    collapsed its error components (regret 1.54).
+  - T34 holds against the incumbent (neither model ships in Sawtooth or Conjointly); it is not a probit advantage.
+    About $1. [Full write-up](analysis/T37/TEST.md).
+- **T36 · Near-clone shelves, engine vs OVUS as the MNP likelihood: KILL as specified; revised engine PASSES
+  Stage A on a fresh seed (2026-10-24/25).**
+  - J = 10, clone family 2 / 3 / 5 at r 0.97 / 0.99 / 0.995, N = 20,000, bias vs truth. Engine (near-duplicate
+    setting off) within OVUS + 0.3 SE in all 9 cells, 1.9× faster, but 1 non-finite row in 20,000 (r 0.99, family
+    2), a well-conditioned block-plus-independent matrix, not a clone. Release default 2.24 SE at r 0.97 family 5.
+  - A private revision for block-structured matrices passes all 9 cells at 1.7× OVUS's speed; designed on this
+    data. With OVUS as a guard on rows with P ≤ 0 it PASSES Stage A on a fresh seed (103): within OVUS + 0.3 SE in
+    all 9 cells, 2.2× faster, 0 non-finite; the guard costs nothing measurable on the known bad row. Stage B not run. Under $4. [Full write-up](analysis/T36/TEST.md).
 - **T33 · MBC at k = 20 / 30, MVP vs serial cross-effects logit: KILL (2026-10-24).**
   - T14's menus and truths; Sawtooth's recommended large-menu model (Orme 2010; MBC manual), fitted pooled. Kill
     pool L1 + L2: SCX 49 vs MVP-IFM 50 flips of 240, regret gap −0.001 (SE 0.046). Guard on a serial-logit truth
