@@ -10,6 +10,15 @@ advantages; this one lists the business decisions they change, and keeps only th
    Methods that exist only in research code (Apollo, Biogeme, Bhat's GAUSS) are noted but do not count as the
    incumbent's workaround.
 
+**Focus: stated preference.** These cases are stated preference (SP: designed conjoint surveys) against SP
+incumbents, because that is where the product fits; revealed preference (RP) isn't the fit, so it isn't the focus.
+Each claim, test and incumbent is labelled SP or RP and only like is compared with like. RP demand tools
+(scanner-data transference, loyalty panels, consumer decision trees from sales) answer some of the same decisions;
+here they appear in "who buys": a buyer with rich sales history answers ranging from RP, and the SP opening is
+where RP has no history (new products, ranges outside historical variation). RP results are kept in
+[ADVANTAGES.md](ADVANTAGES.md#revealed-preference-results-not-the-focus). An SP + RP fusion study would be a
+separate, labelled case.
+
 Decisions are named in the client's terms. Regret is in points of the best achievable outcome against a known truth
 (simulation) unless a row says otherwise.
 
@@ -40,9 +49,10 @@ Decisions are named in the client's terms. Regret is in points of the best achie
 - **What it is not.** Not a probit advantage. An error-component mixed logit or a cross-nested logit fitted to the
   choices gets within 0.27–0.35 pts (T37). Neither ships in Sawtooth or Conjointly, so the claim stands against
   them, but it is "estimates near-substitution from the choices, not from the attribute list", not "probit".
-- **Evidence.** Simulation; the truth is heavy in shared errors (80% of error variance by brand / flavor / pack).
-  Real shelves tested so far (Trivago, T24) show no error correlation beyond tastes, so the size of this effect in
-  real data is the open question.
+- **Evidence.** Simulation; the truth is heavy in shared errors (80% of error variance by brand / flavor / pack),
+  drawn fresh per choice occasion (not per respondent, so HB's random part-worths cannot absorb it). The evidence
+  it still needs is SP: a stated-shelf CBC with occasion variation in the design and a holdout. Scanner data can
+  motivate that occasion-level substitution is plausible in a category; it cannot stand in for that test.
 
 ### Forecast level for go / no-go, hurdle and ROI
 
@@ -95,4 +105,4 @@ Decisions are named in the client's terms. Regret is in points of the best achie
 - **MACML at shelf size (T38).** If a composite-likelihood probit fit on a GPU matches MNP, the ranging and
   forecast cases above become cheaper to deliver; it does not change their verdicts against the incumbents.
 - **Hurdle flips** (see the forecast case).
-- **Real data with strong near-substitution.** All passing cases are simulation.
+- **Real SP data with strong near-substitution** (a stated-shelf CBC with a holdout). All passing cases are simulation.
