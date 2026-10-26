@@ -1,6 +1,6 @@
 # Business use cases
 
-Last updated 2026-10-24 (through T37). The layer over [ADVANTAGES.md](ADVANTAGES.md): that page lists technical
+Last updated 2026-10-25 (through T37). The layer over [ADVANTAGES.md](ADVANTAGES.md): that page lists technical
 advantages; this one lists the business decisions they change, and keeps only those that pass two tests.
 
 1. **Speed enables it.** The GPU fit or the engine makes a method practical that was too slow, too costly, or
@@ -9,6 +9,23 @@ advantages; this one lists the business decisions they change, and keeps only th
    coded subsets, serial cross-effects, simulation over posterior draws), cannot reach an equally good decision.
    Methods that exist only in research code (Apollo, Biogeme, Bhat's GAUSS) are noted but do not count as the
    incumbent's workaround.
+
+**From advantage to use case.** [ADVANTAGES.md](ADVANTAGES.md) lists technical advantages, each against its own
+comparator. A row there is not a use case until it passes both tests above. Inferences that do not follow:
+
+- **Faster than a method the incumbent does not use.** The engine is 3.6–20× faster than OVUS at screening
+  candidates (T15) and faster than OVUS as the probit likelihood (T27, T36). Sawtooth and Conjointly score
+  candidates with logit share of preference or RFC, which compute no orthants, so the engine has no incumbent step
+  to be faster than. Engine speed counts only through a case whose model needs orthants.
+- **A component the incumbent already has.** A shared-draw simulator over the fitted probit works, and at times
+  beats the engine as a screen (T26). RFC is also a shared-draw simulator. What the incumbent lacks is the
+  error covariance estimated from the choices, which is the fit, and that is counted in the cases below.
+- **Cheap anywhere.** If the incumbent could run it today at no real cost, speed does not enable it (test 1).
+  TURF is solved exactly by an ILP in about 1 s (T28).
+- **The cost of delivering a case.** Which scorer computes a passing case (engine, simulator, GHK), or whether a
+  faster fit exists (MACML, T38), changes its cost, not its verdict.
+- **Beats the incumbent's documented default only.** A case must also beat the best practice the incumbent
+  ships: HB over posterior draws (T31 tie, T34 holds), serial cross-effects for large menus (T33 tie).
 
 **Focus: stated preference.** These cases are stated preference (SP: designed conjoint surveys) against SP
 incumbents, because that is where the product fits; revealed preference (RP) isn't the fit, so it isn't the focus.
